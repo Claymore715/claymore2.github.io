@@ -272,6 +272,53 @@
 
 
   
+    <article id="post-pool-map" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/pool-map/" class="article-date">
+  <time datetime="2020-06-14T16:00:00.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/pool-map/">pool</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、什么是线程池</p>
+<p>系统启动一个新线程的成本是比较高的，因为它涉及与操作系统的交互。在这种情形下，使用线程池可以很好地提升性能，尤其是当程序中需要创建大量生存期很短暂的线程时，更应该考虑使用线程池。</p>
+<p>线程池在系统启动时即创建大量空闲的线程，程序只要将一个函数提交给线程池，线程池就会启动一个空闲的线程来执行它。当该函数执行结束后，该线程并不会死亡，而是再次返回到线程池中变成空闲状态，等待执行下一个函数。</p>
+<p>此外，使用线程池可以有效地控制系统中并发线程的数量。当系统中包含有大量的并发线程时，会导致系统性能急剧下降，甚至导致 Python 解释器崩溃，而线程池的最大线程数参数可以控制系统中并发线程的数量不超过此数。</p>
+<h2 id="二、如何创建线程池"><a href="#二、如何创建线程池" class="headerlink" title="二、如何创建线程池"></a>二、如何创建线程池</h2><p>python里面创建线程池很简单，只需要简单几行代码即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#实例化对象</span></span><br><span class="line">pool=Pool(num)</span><br><span class="line"><span class="comment">#开启线程池，get_down为函数名且不加‘（）’，list为一个可迭代对象</span></span><br><span class="line">pool.map(get_down,list)</span><br><span class="line"><span class="comment">#关闭</span></span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+
+<p>三、单线程与线程池执行效率对比<br>1.单线程实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#  # Created by 老刘 on 2020/5/11</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing.dummy <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_down</span><span class="params">(list)</span>:</span></span><br><span class="line">    print(<span class="string">"正在下载"</span>,list)</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'下载完毕！'</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment">#单线程</span></span><br><span class="line">    s = time.time()</span><br><span class="line">    list=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">    <span class="keyword">for</span> list <span class="keyword">in</span> list:</span><br><span class="line">        get_down(list)</span><br><span class="line">    e=time.time()</span><br><span class="line">    print(<span class="string">"共耗时："</span>,e-s)</span><br><span class="line">        ******************************</span><br><span class="line">    output：共耗时： <span class="number">8.001622200012207</span></span><br><span class="line">     ******************************</span><br><span class="line">    ```</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>多线程实例</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line"><span class="keyword">from</span> multiprocessing.dummy <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_down</span><span class="params">(list)</span>:</span></span><br><span class="line">    print(<span class="string">"正在下载"</span>,list)</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'下载完毕！'</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line">    list=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">    <span class="comment">#实例化线程池</span></span><br><span class="line">    pool=Pool(<span class="number">4</span>)</span><br><span class="line">    <span class="comment">#开启线程池，get_down函数，list为可迭代对象</span></span><br><span class="line">    pool.map(get_down,list)</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br><span class="line">    end=time.time()</span><br><span class="line">    print(<span class="string">"共耗时："</span>,end-start)</span><br><span class="line">    ******************************</span><br><span class="line">    output：共耗时： <span class="number">2.024726152420044</span></span><br><span class="line">     ******************************</span><br></pre></td></tr></table></figure>
+
+<p>由两个实例不难看出，单线程耗时： 8.001622200012207秒，而线程池只需2.024726152420044秒，多线程明显可以提高执行效率。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/15/pool-map/" data-id="ckbgb2p5m0000u0elb0hf5jin" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-jplag" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/04/jplag/" class="article-date">
@@ -555,7 +602,7 @@
           </li>
         
           <li>
-            <a href="/2020/06/04/jplag/">jplag</a>
+            <a href="/2020/06/15/pool-map/">pool</a>
           </li>
         
       </ul>
