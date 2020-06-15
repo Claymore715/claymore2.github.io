@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ffmpeg | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="剪辑视频如果有一段很长的视频只需保留其中的一段，可以使用下面命令对视频进行剪辑。 $ ffmpeg -i a.mov -ss 00:00:21 -t 00:00:10 -acodec aac -vcodec h264 -strict -2 out.mp4其中 -ss 00:00:21 表示开始剪辑的位置（时间点），-t 00:00:10 表示剪辑的长度，即 10 秒钟。 缩小视频假设原始视频尺寸是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ffmpeg">
+<meta property="og:url" content="http://yoursite.com/2020/06/15/ffmpeg/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="剪辑视频如果有一段很长的视频只需保留其中的一段，可以使用下面命令对视频进行剪辑。 $ ffmpeg -i a.mov -ss 00:00:21 -t 00:00:10 -acodec aac -vcodec h264 -strict -2 out.mp4其中 -ss 00:00:21 表示开始剪辑的位置（时间点），-t 00:00:10 表示剪辑的长度，即 10 秒钟。 缩小视频假设原始视频尺寸是">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-15T04:47:55.000Z">
+<meta property="article:modified_time" content="2020-06-15T04:49:32.626Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ffmpeg" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/ffmpeg/" class="article-date">
+  <time datetime="2020-06-15T04:47:55.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ffmpeg
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>剪辑视频<br>如果有一段很长的视频只需保留其中的一段，可以使用下面命令对视频进行剪辑。</p>
+<p>$ ffmpeg -i a.mov -ss 00:00:21 -t 00:00:10 -acodec aac -vcodec h264 -strict -2 out.mp4<br>其中 -ss 00:00:21 表示开始剪辑的位置（时间点），-t 00:00:10 表示剪辑的长度，即 10 秒钟。</p>
+<p>缩小视频<br>假设原始视频尺寸是 1080p（即 1920×1080 px，16:9），使用下面命令可以缩小到 480p：</p>
+<p>$ ffmpeg -i a.mov -vf scale=853:480 -acodec aac -vcodec h264 out.mp4<br>各个参数的含义：</p>
+<p>-i a.mov 指定待处理视频的文件名<br>-vf scale=853:480 vf 参数用于指定视频滤镜，其中 scale 表示缩放，后面的数字表示缩放至 853×480 px，其中的 853px 是计算而得，因为原始视频的宽高比为 16:9，所以为了让目标视频的高度为 480px，则宽度 = 480 x 9 / 16 = 853<br>-acodec aac 指定音频使用 aac 编码。注：因为 ffmpeg 的内置 aac 编码目前（写这篇文章时）还是试验阶段，故会提示添加参数 “-strict -2” 才能继续，尽管添加即可。又或者使用外部的 libfaac（需要重新编译 ffmpeg）。<br>-vcodec h264 指定视频使用 h264 编码。注：目前手机一般视频拍摄的格式（封装格式、文件格式）为 mov 或者 mp4，这两者的音频编码都是 aac，视频都是 h264。<br>out.mp4 指定输出文件名<br>上面的参数 scale=853:480 当中的宽度和高度实际应用场景中通常只需指定一个，比如指定高度为 480 或者 720，至于宽度则可以传入 “-1” 表示由原始视频的宽高比自动计算而得。即参数可以写为：scale=-1:480，当然也可以 scale=480:-1 </p>
+<p>裁剪视频<br>有时可能只需要视频的正中一块，而两头的内容不需要，这时可以对视频进行裁剪（crop），比如有一个竖向的视频 1080 x 1920，如果指向保留中间 1080×1080 部分，可以使用下面的命令：</p>
+<p>$ ffmpeg -i a.mov -strict -2 -vf crop=1080:1080:0:420 out.mp4<br>其中的 crop=1080:1080:0:420 才裁剪参数，具体含义是 crop=width:height:x:y，其中 width 和 height 表示裁剪后的尺寸，x:y 表示裁剪区域的左上角坐标。比如当前这个示例，我们只需要保留竖向视频的中间部分，所以 x 不用偏移，故传入0，而 y 则需要向下偏移：(1920 – 1080) / 2 = 420</p>
+<p>视频缩放和裁剪是可以同时进行的，如下命令则为将视频缩小至 853×480，然后裁剪保留横向中间部分：</p>
+<p>$ ffmpeg -i IMG_4940.MOV -strict -2 -vf scale=853:480,crop=480:480:186:0 out.mp4</p>
+<h3 id="转码"><a href="#转码" class="headerlink" title="转码"></a>转码</h3><p>最简单命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i out.ogv -vcodec h264 out.mp4ffmpeg -i out.ogv -vcodec mpeg4 out.mp4ffmpeg -i out.ogv -vcodec libxvid out.mp4ffmpeg -i out.mp4 -vcodec wmv1 out.wmvffmpeg -i out.mp4 -vcodec wmv2 out.wmv</span><br></pre></td></tr></table></figure>
+
+<p><code>-i</code> 后面是输入文件名。<code>-vcodec</code> 后面是编码格式，h264 最佳，但 Windows 系统默认不安装。如果是要插入 ppt 的视频，选择 wmv1 或 wmv2 基本上万无一失。</p>
+<p>附加选项：<code>-r</code> 指定帧率，<code>-s</code> 指定分辨率，<code>-b</code> 指定比特率；于此同时可以对声道进行转码，<code>-acodec</code> 指定音频编码，<code>-ab</code> 指定音频比特率，<code>-ac</code> 指定声道数，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i out.ogv -s 640x480 -b 500k -vcodec h264 -r 29.97 -acodec libfaac -ab 48k -ac 2 out.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="剪切"><a href="#剪切" class="headerlink" title="剪切"></a>剪切</h3><p>用 <code>-ss</code> 和 <code>-t</code> 选项， 从第 30 秒开始，向后截取 10 秒的视频，并保存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wmv -ss 00:00:30.0 -c copy -t 00:00:10.0 output.wmvffmpeg -i input.wmv -ss 30 -c copy -t 10 output.wmv</span><br></pre></td></tr></table></figure>
+
+<p>达成相同效果，也可以用 <code>-ss</code> 和 <code>-to</code> 选项， 从第 30 秒截取到第 40 秒：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wmv -ss 30 -c copy -to 40 output.wmv</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，ffmpeg 为了加速，会使用关键帧技术， 所以有时剪切出来的结果在起止时间上未必准确。 通常来说，把 <code>-ss</code> 选项放在 <code>-i</code> 之前，会使用关键帧技术； 把 <code>-ss</code> 选项放在 <code>-i</code> 之后，则不使用关键帧技术。 如果要使用关键帧技术又要保留时间戳，可以加上 <code>-copyts</code> 选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 00:01:00 -i video.mp4 -to 00:02:00 -c copy -copyts cut.mp4</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://trac.ffmpeg.org/wiki/Seeking" target="_blank" rel="noopener">ffmpeg.org</a></p>
+<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>把两个视频文件合并成一个。</p>
+<p>简单地使用 <code>concat demuxer</code>，示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat mylist.txtfile &#39;&#x2F;path&#x2F;to&#x2F;file1&#39;file &#39;&#x2F;path&#x2F;to&#x2F;file2&#39;file &#39;&#x2F;path&#x2F;to&#x2F;file3&#39; $ ffmpeg -f concat -i mylist.txt -c copy output</span><br></pre></td></tr></table></figure>
+
+<p>更多时候，由于输入文件的多样性，需要转成中间格式再合成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input1.avi -qscale:v 1 intermediate1.mpgffmpeg -i input2.avi -qscale:v 1 intermediate2.mpgcat intermediate1.mpg intermediate2.mpg &gt; intermediate_all.mpgffmpeg -i intermediate_all.mpg -qscale:v 2 output.avi</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://stackoverflow.com/questions/7333232/concatenate-two-mp4-files-using-ffmpeg" target="_blank" rel="noopener">stackoverflow</a>； <a href="https://ffmpeg.org/faq.html#How-can-I-join-video-files_003f" target="_blank" rel="noopener">ffmpeg.org</a>。</p>
+<h3 id="调整播放速度"><a href="#调整播放速度" class="headerlink" title="调整播放速度"></a>调整播放速度</h3><p>加速四倍：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i TheOrigin.mp4 -vf  &quot;setpts&#x3D;0.25*PTS&quot; UpTheOrigin.mp4</span><br></pre></td></tr></table></figure>
+
+<p>四倍慢速：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ffmpeg -i TheOrigin.mp4 -vf &quot;setpts&#x3D;4*PTS&quot; DownTheOrigin.mp4</span><br></pre></td></tr></table></figure>
+
+<p>转载：<a href="https://fzheng.me/2016/01/08/ffmpeg/" target="_blank" rel="noopener">https://fzheng.me/2016/01/08/ffmpeg/</a></p>
+<p>使用愉快！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/15/ffmpeg/" data-id="ckbg0rl1e0000x8el55sk1lxf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/15/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">环境变量</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1/" rel="tag">1</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/1/" style="font-size: 10px;">1</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/15/ffmpeg/">ffmpeg</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/15/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">环境变量</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/15/mysql/">mysql下如何执行sql脚本</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/04/jplag/">jplag</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/">狗男孩</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
