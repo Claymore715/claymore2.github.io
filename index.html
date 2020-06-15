@@ -64,6 +64,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-爬虫性能优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/%E7%88%AC%E8%99%AB%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="article-date">
+  <time datetime="2020-06-15T12:51:51.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/%E7%88%AC%E8%99%AB%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">爬虫性能优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一.优化方向(阻塞与非阻塞,同步,异步,回调)<br>##1. 阻塞与非阻塞的应用程序的状态</p>
+<p>request.get()</p>
+<p>1.阻塞<br>2.就绪<br>就绪和阻塞给用户的感觉就是卡,阻塞是指程序遇到了io操作,无法继续执行</p>
+<p>3.运行<br>对于io操作,可以使用多线程也可以使用多进程</p>
+<p>io密集型 :可以使用多线程<br>计算密集型 :必须使用多进程</p>
+<p>二.同步和异步 指的是提交任务的方式<br>同步:指的是提交任务之后就在原地等待,必须执行完毕之后才能继续,效率低下</p>
+<p>异步: 提交任务之后就不用管了,可以继续执行,效率较高</p>
+<p>1.同步调用<br>import requests</p>
+<p>def parse_page(res):<br>    print(‘解析 %s’ %(len(res)))</p>
+<p>def get_page(url):<br>    print(‘下载 %s’ %url)<br>    response=requests.get(url)<br>    if response.status_code == 200:<br>        return response.text</p>
+<p>urls=[‘<a href="https://www.baidu.com/&#39;,&#39;http://www.sina.com.cn/&#39;,&#39;https://www.python.org&#39;]" target="_blank" rel="noopener">https://www.baidu.com/&#39;,&#39;http://www.sina.com.cn/&#39;,&#39;https://www.python.org&#39;]</a><br>for url in urls:<br>    res=get_page(url) #调用一个任务，就在原地等待任务结束拿到结果后才继续往后执行<br>    parse_page(res)<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>1.1解决方案(多线程或者多进程)<br>在服务器使用多线程或者多进程的时候,是让每一个链接都拥有独立的线程(进程),这样任何一个拦截的阻塞都不会影响其他链接(但是现场太多的话会对服务器的压力太大)</p>
+<p>#IO密集型程序应该用多线程<br>import requests<br>from threading import Thread,current_thread</p>
+<p>def parse_page(res):<br>    print(‘%s 解析 %s’ %(current_thread().getName(),len(res)))</p>
+<p>def get_page(url,callback=parse_page):<br>    print(‘%s 下载 %s’ %(current_thread().getName(),url))<br>    response=requests.get(url)<br>    if response.status_code == 200:<br>        callback(response.text)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    urls=[‘<a href="https://www.baidu.com/&#39;,&#39;http://www.sina.com.cn/&#39;,&#39;https://www.python.org&#39;]" target="_blank" rel="noopener">https://www.baidu.com/&#39;,&#39;http://www.sina.com.cn/&#39;,&#39;https://www.python.org&#39;]</a><br>    list = []<br>    for url in urls:<br>        t=Thread(target=get_page,args=(url,))<br>        t.start()<br>         list.append(t)<br>    # 等待全部线程结束之后才结束主线程<br>    for i in list:<br>        i.join()<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>1.2 改进方案(线程池与进程池+异步调用)<br>解决方式:进程池或者线程池+回调机制</p>
+<p>线程池:在减少创建的和销毁线程的频率,其维持在一定合理数量的线程,并让空闲的线程重新承担新的执行任务</p>
+<p>链接池:维持链接的缓存池,尽量重用已有的连接,减少创建和关闭链接的频率</p>
+<p>以上两种计数可以很好的降低系统的开销,都被广泛的应用</p>
+<p>import requests<br>from threading import current_thread<br>from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor</p>
+<p>def parse_page(res):<br>    res = res.result()<br>    print(‘%s 解析 %s’ % (current_thread().getName(), len(res)))</p>
+<p>def get_page(url):<br>    print(‘%s 下载 %s’ % (current_thread().getName(), url))<br>    response = requests.get(url)<br>    if response.status_code == 200:<br>        return response.text</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    urls = [<br>        ‘<a href="https://www.baidu.com/&#39;" target="_blank" rel="noopener">https://www.baidu.com/&#39;</a>, ‘<a href="http://www.sina.com.cn/&#39;" target="_blank" rel="noopener">http://www.sina.com.cn/&#39;</a>, ‘<a href="https://www.python.org&#39;" target="_blank" rel="noopener">https://www.python.org&#39;</a><br>    ]<br>    pool = ThreadPoolExecutor(50)</p>
+<pre><code>for url in urls:
+    pool.submit(get_page, url).add_done_callback(parse_page)
+# 等待线程池全部线程结束才结束主线程
+pool.shutdown(wait=True)</code></pre><p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>改进之后依然存在的问题:</p>
+<p>线程池和连接池技术也只是在一定程度上缓解了频繁调用Io带来的调用资源的问题,当请求的数量大大超过了线程的数量的时候,与没有线程池相比并没有很大的区别,所以要根据响应规模来调整线程池的大小</p>
+<p>多线程模型可以方便高效的解决小规模的服务请求,但是面对大规模的服务请求,多线程模型也会遇到瓶颈,解决方式就是使用非阻塞io接口</p>
+<p>二.非阻塞IO(异步调用)<br><strong>分析问题:</strong>解决问题的的关键是我们从应用程序级别检测,当程序遇到io操作时,我们就切换到程序的别的操作,这样就最大程度的运用了cpu的效率,把程序的Io降到最低,这样操作系统会认为这个程序整体的Io较少的运行程序,cpu就最大限度的分配给我们</p>
+<p>1.asyncio模块<br>在python3.3之后新增了asyncio模块,可以帮我们自动检测io,实现应用程序的切换,原理同gevent一样,都是在遇到io时就切换一个任务(也就是协程)</p>
+<p>详情操作:<a href="https://blog.csdn.net/qq_42737056/article/details/86645971" target="_blank" rel="noopener">https://blog.csdn.net/qq_42737056/article/details/86645971</a></p>
+<p>import asyncio</p>
+<h1 id="装饰器和下面的Io检测搭配使用"><a href="#装饰器和下面的Io检测搭配使用" class="headerlink" title="装饰器和下面的Io检测搭配使用"></a>装饰器和下面的Io检测搭配使用</h1><p>@asyncio.coroutine<br>def task(task_id, senconds):<br>    print(‘%s is start’ % task_id)<br>    yield from asyncio.sleep(senconds)  # yield from在每一个Io操作都加,这样就能检测到io切换任务的执行<br>    print(‘%s is end’ % task_id)</p>
+<p>tasks = [task(task_id=”任务1”, senconds=3), task(“任务2”, 2), task(task_id=”任务3”, senconds=1)]</p>
+<p>loop = asyncio.get_event_loop()</p>
+<h1 id="等待任务全部执行完在执行下面的代码"><a href="#等待任务全部执行完在执行下面的代码" class="headerlink" title="等待任务全部执行完在执行下面的代码"></a>等待任务全部执行完在执行下面的代码</h1><p>loop.run_until_complete(asyncio.wait(tasks))<br>print(‘任务全部执行完毕’)<br>loop.close()<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>2.asyncio+requests<br>由于asycio只能发送tcp协议的请求,要是发送http协议的请求头得自己定义报头,所以就和requests进行分工操作</p>
+<p>import asyncio<br>import requests</p>
+<p>def get_page(func, *args):<br>    print(‘GET: %s’ % args[0])<br>    loop = asyncio.get_event_loop()<br>    future = loop.run_in_executor(None, func, *args)<br>    response = yield from future</p>
+<pre><code>print(response.url, len(response.text))
+return (&apos;complete&apos;)</code></pre><p>tasks = [<br>    get_page(requests.get, ‘<a href="https://www.python.org/doc&#39;" target="_blank" rel="noopener">https://www.python.org/doc&#39;</a>),<br>    get_page(requests.get, ‘<a href="https://www.cnblogs.com/linhaifeng&#39;" target="_blank" rel="noopener">https://www.cnblogs.com/linhaifeng&#39;</a>),<br>    get_page(requests.get, ‘<a href="https://www.openstack.org&#39;" target="_blank" rel="noopener">https://www.openstack.org&#39;</a>)<br>]</p>
+<p>def run():<br>    loop = asyncio.get_event_loop()<br>    results = loop.run_until_complete(asyncio.gather(*tasks))<br>    loop.close()<br>    print(‘&gt;&gt;&gt;’, results)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    run()</p>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>3.gevent模块(异步提交任务)<br>from gevent import monkey;monkey.patch_all()<br>import gevent<br>import requests</p>
+<p>def get_page(url):<br>    print(‘GET:%s’ %url)<br>    response=requests.get(url)<br>    print(url,len(response.text))<br>    return 1</p>
+<p>#协程池<br>from gevent.pool import Pool<br>pool=Pool(2)<br>g1=pool.spawn(get_page,’<a href="https://www.python.org/doc&#39;" target="_blank" rel="noopener">https://www.python.org/doc&#39;</a>)<br>g2=pool.spawn(get_page,’<a href="https://www.cnblogs.com/linhaifeng&#39;" target="_blank" rel="noopener">https://www.cnblogs.com/linhaifeng&#39;</a>)<br>g3=pool.spawn(get_page,’<a href="https://www.openstack.org&#39;" target="_blank" rel="noopener">https://www.openstack.org&#39;</a>)<br>gevent.joinall([g1,g2,g3,])<br>print(g1.value,g2.value,g3.value) #拿到返回值<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>4.grequests模块<br>封装了request+gevent模块</p>
+<p>#pip3 install grequests<br>import grequests</p>
+<p>request_list=[<br>    grequests.get(‘<a href="https://wwww.xxxx.org/doc1&#39;" target="_blank" rel="noopener">https://wwww.xxxx.org/doc1&#39;</a>),<br>    grequests.get(‘<a href="https://www.cnblogs.com/linhaifeng&#39;" target="_blank" rel="noopener">https://www.cnblogs.com/linhaifeng&#39;</a>),<br>    grequests.get(‘<a href="https://www.openstack.org&#39;" target="_blank" rel="noopener">https://www.openstack.org&#39;</a>)<br>]</p>
+<h1 id="执行并获取响应列表（处理异常）"><a href="#执行并获取响应列表（处理异常）" class="headerlink" title="执行并获取响应列表（处理异常）"></a>执行并获取响应列表（处理异常）</h1><p>def exception_handler(request, exception):<br>    # print(request,exception)<br>    print(“%s Request failed” %request.url)</p>
+<h1 id="执行并获取响应列表"><a href="#执行并获取响应列表" class="headerlink" title="执行并获取响应列表"></a>执行并获取响应列表</h1><p>response_list = grequests.map(request_list, exception_handler=exception_handler)<br>print(response_list)<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>5.twisted<br>Twisted是用Python实现的基于事件驱动的网络引擎框架，Twisted支持许多常见的传输及应用层协议，包括TCP、UDP、HTTP、等。</p>
+<p>注意，python3中，字符串必须转码成utf8的格式，否则无法发送。比如str(“test”).encode(“utf8”)即可</p>
+<p>from twisted.web.client import getPage, defer<br>from twisted.internet import reactor</p>
+<p>def all_done(args):<br>    # print(args)<br>    reactor.stop()</p>
+<p>def callback(res):<br>    print(res)<br>    return 1</p>
+<p>defer_list = []<br>urls = [<br>    ‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>,<br>    ‘<a href="http://www.bing.com&#39;" target="_blank" rel="noopener">http://www.bing.com&#39;</a>,<br>    ‘<a href="https://www.python.org&#39;" target="_blank" rel="noopener">https://www.python.org&#39;</a>,<br>]<br>for url in urls:<br>    obj = getPage(url.encode(‘utf-8’), )<br>    obj.addCallback(callback)<br>    defer_list.append(obj)<br>defer.DeferredList(defer_list).addBoth(all_done)<br>reactor.run()<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>6.tornado模块<br>Tornado是使用Python编写的一个强大的、可扩展的Web服务器。它在处理严峻的网络流量时表现得足够强健，但却在创建和编写时有着足够的轻量级，并能够被用在大量的应用和工具中。</p>
+<p>from tornado.httpclient import AsyncHTTPClient<br>from tornado.httpclient import HTTPRequest<br>from tornado import ioloop</p>
+<p>count=0</p>
+<p>def handle_response(response):<br>    “””<br>    处理返回值内容（需要维护计数器，来停止IO循环），调用 ioloop.IOLoop.current().stop()<br>    :param response:<br>    :return:<br>    “””<br>    if response.error:<br>        print(“Error:”, response.error)<br>    else:<br>        print(len(response.body))</p>
+<pre><code>global count
+count-=1 #完成一次回调，计数减1
+if count == 0:
+    ioloop.IOLoop.current().stop()</code></pre><p>def func():<br>    url_list = [<br>        ‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a>,<br>        ‘<a href="http://www.bing.com&#39;" target="_blank" rel="noopener">http://www.bing.com&#39;</a>,<br>    ]</p>
+<pre><code>global count
+for url in url_list:
+    print(url)
+    http_client = AsyncHTTPClient()
+    http_client.fetch(HTTPRequest(url), handle_response)
+    count+=1 #计数加1</code></pre><p>ioloop.IOLoop.current().add_callback(func)<br>ioloop.IOLoop.current().start()<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>twisted与tornado的区别</p>
+<p>都是基于爬虫的服务器框架(技能写服务器,有能写客户端)</p>
+<p>twisted:性能较强但是对cpu的占用也很强<br>tornado:性能先比较弱,对于cpu的占用也较弱<br>————————————————<br>版权声明：本文为CSDN博主「初相识.」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_42737056/article/details/86650049" target="_blank" rel="noopener">https://blog.csdn.net/qq_42737056/article/details/86650049</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/15/%E7%88%AC%E8%99%AB%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" data-id="ckbghzutp00007welc9tqgajr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-异步" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/15/%E5%BC%82%E6%AD%A5/" class="article-date">
@@ -489,50 +594,6 @@
 
 
   
-    <article id="post-my-first-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/31/my-first-post/" class="article-date">
-  <time datetime="2020-05-31T07:25:56.629Z" itemprop="datePublished">2020-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/my-first-post/">my-first-post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​—<br>title: my-first-post<br>date: 2018-10-06 10:10:24</p>
-<p>tags:</p>
-<p>​—</p>
-<h1 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h1><p>-hexo s -g #生成并本地预览<br>hexo d -g #生成并上传<br>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #部署到GitHub<br>hexo help  # 查看帮助<br>hexo version  #查看Hexo的版本<br>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/31/my-first-post/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/my-first-post/" data-id="ckauu1e4s0002x8el77u79rtn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -583,6 +644,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/15/%E7%88%AC%E8%99%AB%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">爬虫性能优化</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/15/%E5%BC%82%E6%AD%A5/">异步</a>
           </li>
         
@@ -596,10 +661,6 @@
         
           <li>
             <a href="/2020/06/15/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">环境变量</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/15/mysql/">mysql下如何执行sql脚本</a>
           </li>
         
       </ul>
