@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-固件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/27/%E5%9B%BA%E4%BB%B6/" class="article-date">
+  <time datetime="2020-06-27T13:43:14.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/27/%E5%9B%BA%E4%BB%B6/">固件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者：时国怀</p>
+<p>驱动和固件（firmware）都是代码，<strong>前者为软件服务，后者为硬件服务</strong>。</p>
+<p>在操作系统概念还不明确的时代，二者是没有明显区别的。</p>
+<p>但是随着计算机体系结构的发展，硬件的种类开始变多，操作系统的种类也变多了。</p>
+<p>这个时候，因为各种技术的、商业的原因，硬件厂商希望自己的硬件能被更多的软件厂商使用，所以就需要在硬件之上做一些封装，让自己的硬件操纵起来更容易，这个时候就要有firmware这种东西了，它简化了软件与硬件的交互。</p>
+<p>但是为什么不把fimware做的很完美，做的不需要驱动支持呢？因为有不同的操作系统。我不知道你对操作系统的理解是到什么程度？只知道Windows？还是还仅仅知道Linux？还是清楚Unix和FreeBSD是不同的系统？知道有RTOS？知道有上百种不同的内核？</p>
+<p>不同的操作系统，对于操作硬件的方式完全不同，在Windows里应用态是无法直接写IO端口的，而在嵌入式系统里，一般都不限制直接操作IO端口。所以，硬件厂商一方面为了自己的硬件能被软件更简单的使用，就需要写firmware，而另一方面为了兼容各种操作系统，又不能把firmware写的太死，必须预留足够的余地让软件自由发挥——软件的自由发挥就是驱动。</p>
+<p>不同操作系统的驱动是不能兼容的，原因就是驱动是为操作系统服务的，有的操作系统是单线程的，有些操作系统不允许动态申请内存，所以不同的操作系统要操作硬件，就要根据自身的特性编写对应的操作代码，这就是驱动存在的意义——适应系统需要。</p>
+<p>假如世界上只有一种操作系统，并且版本永远不会改变，那么firmware和驱动就可以融合在一起，但这只能一个不现实的梦想，要知道民用操作系统和工业控制操作系统差别是十分巨大的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/27/%E5%9B%BA%E4%BB%B6/" data-id="ckbxp3wzu0000g0elabqadg7b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/22/redis/" class="article-date">
@@ -501,47 +546,6 @@
 
 
   
-    <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/31/hexo/" class="article-date">
-  <time datetime="2020-05-31T08:47:05.000Z" itemprop="datePublished">2020-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/hexo/">hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h1><p>-hexo s -g #生成并本地预览<br>hexo d -g #生成并上传<br>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #部署到GitHub<br>hexo help  # 查看帮助<br>hexo version  #查看Hexo的版本<br>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/31/hexo/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/hexo/" data-id="ckauu1e4p0001x8elce4rb3g3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -592,6 +596,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/27/%E5%9B%BA%E4%BB%B6/">固件</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/22/redis/">redis</a>
           </li>
         
@@ -605,10 +613,6 @@
         
           <li>
             <a href="/2020/06/15/ffmpeg/">ffmpeg</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/15/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">环境变量</a>
           </li>
         
       </ul>
