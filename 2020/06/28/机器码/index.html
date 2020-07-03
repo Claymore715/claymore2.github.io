@@ -5,17 +5,17 @@
   
 
   
-  <title>jplag | Hexo</title>
+  <title>机器码 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是JPlag最近写毕设接近尾声了，出现了一些小小的问题。我毕设涉及到一些计算代码相似度的东西，本来想试一试SIM和MOSS，但是在优秀的正爸爸的实验下发现似乎并不是很靠谱（详情点这里）。于是决定试试往指令层面去靠一下。正好搜论文的时候搜到了一篇，里面略微提到了一下JPlag，就想试试看效果如何。 JPlag是一种基于词法的文本相似度计算工具，由德国卡尔斯鲁厄大学开发，他的GitHub在这里。">
+  <meta name="description" content="编译器是想滚雪球一样滚出来的，一开始用机器语言写一个很功能有限的汇编器（汇编接近机器语言，几乎就是简单的替换，比较好写），然后用它编译更强大的汇编器&#x2F;编译器。更高级的语言由稍微低级点的语言编写，然后发展到合适的程度之后，某些语言实现了自举，即自己编译自己的编译器。 编译的结果是二进制文件，二进制文件其实是和系统关系并没有那么大，只是一个内存的镜像。具体的Windows或者Linux之间不同的只是封">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jplag">
-<meta property="og:url" content="http://yoursite.com/2020/06/04/jplag/index.html">
+<meta property="og:title" content="机器码">
+<meta property="og:url" content="http://yoursite.com/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="什么是JPlag最近写毕设接近尾声了，出现了一些小小的问题。我毕设涉及到一些计算代码相似度的东西，本来想试一试SIM和MOSS，但是在优秀的正爸爸的实验下发现似乎并不是很靠谱（详情点这里）。于是决定试试往指令层面去靠一下。正好搜论文的时候搜到了一篇，里面略微提到了一下JPlag，就想试试看效果如何。 JPlag是一种基于词法的文本相似度计算工具，由德国卡尔斯鲁厄大学开发，他的GitHub在这里。">
+<meta property="og:description" content="编译器是想滚雪球一样滚出来的，一开始用机器语言写一个很功能有限的汇编器（汇编接近机器语言，几乎就是简单的替换，比较好写），然后用它编译更强大的汇编器&#x2F;编译器。更高级的语言由稍微低级点的语言编写，然后发展到合适的程度之后，某些语言实现了自举，即自己编译自己的编译器。 编译的结果是二进制文件，二进制文件其实是和系统关系并没有那么大，只是一个内存的镜像。具体的Windows或者Linux之间不同的只是封">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-06-04T14:09:43.000Z">
-<meta property="article:modified_time" content="2020-06-04T14:11:22.526Z">
+<meta property="article:published_time" content="2020-06-28T12:00:30.000Z">
+<meta property="article:modified_time" content="2020-06-28T13:03:13.271Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-jplag" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-机器码" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/06/04/jplag/" class="article-date">
-  <time datetime="2020-06-04T14:09:43.000Z" itemprop="datePublished">2020-06-04</time>
+    <a href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/" class="article-date">
+  <time datetime="2020-06-28T12:00:30.000Z" itemprop="datePublished">2020-06-28</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jplag
+      机器码
     </h1>
   
 
@@ -88,22 +88,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>什么是JPlag<br>最近写毕设接近尾声了，出现了一些小小的问题。我毕设涉及到一些计算代码相似度的东西，本来想试一试SIM和MOSS，但是在优秀的正爸爸的实验下发现似乎并不是很靠谱（详情点这里）。于是决定试试往指令层面去靠一下。正好搜论文的时候搜到了一篇，里面略微提到了一下JPlag，就想试试看效果如何。</p>
-<p>JPlag是一种基于词法的文本相似度计算工具，由德国卡尔斯鲁厄大学开发，他的GitHub在这里。</p>
-<p>预备工作<br>首先你需要把JPlag下下来，截至2019年4月15日，JPlag的最新版为v2.12.1-SNAPSHOT，下载地址点我。下那个jar就可以了，别下成了source code。</p>
-<p>然后要把java的版本更新一下，1.8是肯定不行的，我用的是11。</p>
-<p>更新完之后，所有准备工作就完成了。</p>
-<p>使用方法<br>进入你刚刚下好的jar的目录，然后建一个名字叫exercise1的文件夹（其实叫什么都可以），文件夹结构如下：</p>
-<p>exercise1<br>    |<br>    ├─ student1<br>    |       └─1.c<br>    |<br>    └─ student2<br>            └─2.c<br>这里的1.c和2.c就是要测试相似度的两个文件，当然不仅限于c/c++，JPlag支持很多语言，具体看他的Github。</p>
-<p>以正爸爸的实验为例，1.c代码如下（正爸爸实验中的sample1.c）：</p>
-<p>#include &lt;stdio.h&gt;<br>int main()<br>{<br>    int n;<br>    scanf(“%d”, &amp;n);<br>    int ans = 0;<br>    for(int i = 1; i &lt;= n; ++i)<br>    {<br>        int b;<br>        scanf(“%d”, &amp;b);<br>        ans += b;<br>    }<br>    printf(“%d\n”, ans);<br>    return 0;<br>}<br>2.c的代码如下（正爸爸实验中的sample6.c）：</p>
-<p>#include &lt;stdio.h&gt;<br>int main()<br>{<br>    int a, b;<br>    scanf(“%d”, &amp;a);<br>    b = 0;<br>    for(int c = 1; c &lt;= a; ++c)<br>    {<br>        int d;<br>        scanf(“%d”, &amp;d);<br>        b = b + d;<br>    }<br>    printf(“%d\n”, b);<br>    return 0;<br>}<br>接下来打开你的控制台，进入JPlag的jar的文件夹（注意这个jar包和exercise1在同一个文件夹中），输入java -jar jplag-2.12.1-SNAPSHOT-jar-with-dependencies.jar -l c/c++ -r tmp -s exercise1即可。解释一下：</p>
-<p>-l后面的参数用于指代语言<br>-r后面的参数用于指代检测结果存放的目录<br>-s后面的参数用于指代检测的源文件夹<br>经过这么一番操作，你可以看到和jar包、exercise1同级的地方多出了一个tmp文件夹，这就是检测结果，打开tmp/match0.html就能看到相似度了。我这里检测结果相似度为82.7%，比SIM/MOSS还是正经很多的。</p>
+        <p>编译器是想滚雪球一样滚出来的，一开始用机器语言写一个很功能有限的汇编器（汇编接近机器语言，几乎就是简单的替换，比较好写），然后用它编译更强大的汇编器/编译器。更高级的语言由稍微低级点的语言编写，然后发展到合适的程度之后，某些语言实现了自举，即自己编译自己的编译器。</p>
+<p>编译的结果是二进制文件，二进制文件其实是和系统关系并没有那么大，只是一个内存的镜像。具体的Windows或者Linux之间不同的只是封装格式PE/EFI的区别，这些信息只是用来告诉系统该怎么加载这个镜像而已，自己写一个操作系统来加载RAW内存镜像，这样的程序也是可以运行的。如果一个程序没有用系统提供的API，能够直接访问硬件中断的话就和系统无关了。不过现在的系统都有保护，不允许直接调用硬件中断，都是调用系统的API，系统再调用硬件，来执行。</p>
+<p>作者：xuzhenglun<br>链接：<a href="https://segmentfault.com/q/1010000004105427#answer-1020000004106569" target="_blank" rel="noopener">https://segmentfault.com/q/1010000004105427#answer-1020000004106569</a><br>来源：SegmentFault 思否<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p> 语言和系统都是运行在CPU上的，不是语言运行在系统里。系统应该被看成类库和框架。 </p>
+<p>编程语言是一种可执行程序的表达方式，编译器把编程语言的表达方式转换为可执行的程序，而编译器做转换的过程，可以操作系统相关(也就是转换出的程序运行在特定操作系统上)，也可以操作系统无关(直接在裸机运行)。而操作系统，本身是一个程序，也可以是编程语言来表达的(编译后通常操作系统无关)，也可以不是(直接写机器码)，而操作系统这个特殊的程序，提供了库，硬件驱动，运行时环境，框架等，是为了让运行在其上的程序写得更容易</p>
+<p>不同cpu识别的机器码不同</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/04/jplag/" data-id="ckb0uyzgk00004cel8bqceeid" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/" data-id="ckc6b40700003wwelcxk34ixy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,19 +107,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/06/15/pool-map/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/03/%E5%9B%BE/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          pool
+          图
         
       </div>
     </a>
   
   
-    <a href="/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/27/MB/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">狗男孩</div>
+      <div class="article-nav-title">MB</div>
     </a>
   
 </nav>

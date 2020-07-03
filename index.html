@@ -64,6 +64,247 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-glibc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/03/glibc/" class="article-date">
+  <time datetime="2020-07-03T11:08:51.000Z" itemprop="datePublished">2020-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/03/glibc/">glibc</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="c语言库函数和编译器"><a href="#c语言库函数和编译器" class="headerlink" title="c语言库函数和编译器"></a>c语言库函数和编译器</h1><p>C标准库，顾名思义既然是标准，就是由标准组织制定的。是由“美国国家标准协会（American National Standards Institute,ANSI）”为了规范C语言库而制定的标准。在最初，各个大学各个公司使用的C语言库都不尽相同，造成相互移植非常困难，在这个背景下，制定了这个标准。</p>
+<p>C运行库，是和平台相关的，即和操作系统相关的。它由不同操作系统不同开发平台提供不同的C运行库。但是C运行库的部分实现是基于C标准库的，即C运行库是各个操作系统各个开发工具根据自身平台开发的库，某种程度上，可以说C运行库是C标准库的一个扩展库，只是加了很多C标准库所没有的与平台相关的或者不相关的库接口函数。举例子如：c标准库的strcpy函数负责字符串的拷贝，但是由于缺少对目地字符串缓冲区大小的控制，极有可能导致缓冲区溢出（大量的缓冲区溢出攻击都是由于这种漏洞而产生的）；相反，Windows提供了能够实现同样功能的安全的字符串拷贝函数，减少了缓冲区攻击的可能，strcpy_s。这些函数是以c运行库的方式提供的，当然，不同的操作系统，c运行时库可能不同，但是对c标准库的支持是完全一致的，也就是说，在不同的操作系统上，使用同一个c标准库的函数必然产生一致的结果。</p>
+<p>任何一个C程序要想要得到实现，都离不开背后的一套庞大的代码来进行支持（至少包括入口函数，以及其所依赖的函数所构成的函数集合等），这样一套背后代码被称为运行库，C语言的运行库叫做CRT（Runtime Library）。</p>
+<p>C语言的运行库某种程度上就是C语言的程序和不同操作系统平台之间的抽象层。它将不同的操作系统API抽象成相同的库函数（银弹理论的又一次胜利）。比如可以在不同OS上使用fread来读取文件，而事实上，fread在不同的操作系统平台下的实现是不同的，但作为运行库的使用者我们不需要关心这一点。<br>虽然各个平台下的C语言运行库提供了很多功能，但很多时候它们毕竟有限，比如用户的权限控制、操作系统线程创建等都不是属于标准的C语言运行库，于是我们不得不通过其他的办法，诸如绕过C语言运行直接调用操作系统API或使用其他的库。</p>
+<p>值得注意的是，像线程操作这样的功能并不是标准的C语言运行库的一部分，但是glibc和MSVCRT都包含了线程操作的库函数。比如glibc有一个可选的pthread库中pthread_create()函数可以用来创建线程；而MSVCRT中可以使用_beginthread()函数来创建线程。所以glibc和MSVCRT都是标准C语言运行库的超集，它们各自对C标准库进行了一些扩展。</p>
+<p>总结一下，C标准库就是任何平台都可以使用的基本C语言库。而CRT除了将C标准库加入所属范围外，还扩展了与平台相关的接口库，这些接口实现根据不同平台调用不同平台的操作系统API。</p>
+<p>如下图所示，采用C标准库编写的程序可以应用到windows平台，也可以应用到linux平台；而用CRT另外与平台相关的库函数编写的应用程序不能跨平台运行。</p>
+<p> <a href="https://blog.csdn.net/qq_21950929/article/details/79754552" target="_blank" rel="noopener">https://blog.csdn.net/qq_21950929/article/details/79754552</a> </p>
+<p>  glibc是gnu发布的c运行库。glibc是linux 系统中最底层的api（应用程序开发接口），几乎其它任何的运行库都会倚赖于glibc。 </p>
+<p>msvc crt则是windows</p>
+<p>C语言编译器</p>
+<p>  1.MSVC是指微软的VC编译器 </p>
+<p>2.gcc系列</p>
+<p>MinGW项目<code>（[官方网站](http://www.mingw.org/)）是</code>Minimalist GNU for Windows`的缩写，是<strong>本地Windows应用程序的极简主义开发环境</strong>，该项目旨在<strong>将gcc编译器移植到Windows系统上</strong> 。</p>
+<p> cygwin/gcc和MinGW都是gcc在windows下的编译环境</p>
+<p>cygwin/gcc完全可以和在linux下的gcc化做等号，这个可以从boost库的划分中可以看出来端倪，cygwin下的gcc和linux下的gcc完全使用的是相同的Toolsets。</p>
+<p>所以完全可以和linux一起同步更新gcc版本，而不用担心问题，并且在cygwin/gcc做的东西（不用win32的）可以无缝的用在linux下，没有任何问题。是在windows下开发linux程序的一个很好的选择。</p>
+<p>但是 <strong>在cygwin/gcc下编译出来的程序，在windows执行必须依赖cygwin1.dll，并且速度有些慢，</strong> 如果不想依赖这个东西的化，必须在gcc的编译选项中加入-mno-cygwin。加入这个选项其实gcc编译器就会自动的选择在安装cygwin/gcc时安上的mingw,这个mingw就是gcc的一个交叉编译。</p>
+<p>对于mingw作为gcc在windows上的一个实现，不像cygwin的gcc在一个模拟linux上运行，同时相当一部分linux的工具不能够使用。</p>
+<p>根据以上的分析，如果在windows开发linux程序，cygwin是很好的选择。如果你开发的程序不介意有一个cygwin1.dll的话，也是可以选择cygwin的。如果你是想开发windows下的程序，还要必须用gcc的化，mingw是很好的一个选择 </p>
+<p>MinGW与Cygwin:原理与比较**</p>
+<p>首先 MinGW 和 Cygwin 都可以用来跨平台开发。</p>
+<p>MinGW 是 Minimalistic GNU for Windows 的缩写，也就是 Win 版的 GCC。</p>
+<p>Cygwin 则是全面模拟了Linux的接口，提供给运行在它上面的的程序使用，并提供了大量现成的软件，更像是一个平台。</p>
+<p>相对的 MingW 也有一个叫 MSys（Minimal SYStem）的子项目，主要是提供了一个模拟 Linux 的 Shell 和一些基本的 Linux 工具。因为编译一个大型程序，光靠一个 GCC 是不够的，还需要有 Autoconf 等工具来配置项目，所以一般在 Windows 下编译 ffmpeg 等 Linux 下的大型项目都是通过Msys 来完成的，当然 Msys 只是一个辅助环境，根本的工作还是 MingW 来做的。</p>
+<p>基本原理<br>修改编译器，让 Window 下的编译器把诸如 fork 的调用翻译成等价的形式，这就是 MingW 的做法.<br>修改库，让 Window 提供一个类似 UNIX 提供的库，他们对程序的接口如同 UNIX 一样，而这些库，当然是由 win32 的 API 实现的，这就是 Cygwin 的做法.<br>用 MingW 和 Cygwin 编译出来的程序的区别<br>首先 MingW 和 Cygwin 都不能让 Linux 下的程序直接运行在 Windows 上，必需通过源代码重新编译。</p>
+<p>现代操作系统包括 Windows 和 Linux 的基本设计概念像进程线程地址空间虚拟内存这些都是大同小异的，之所以二者上的程序不能兼容，主要是它们对这些功能具体实现上的差异，首先是可执行文件的格式，Window 使用 PE 的格式，并且要求以 .EXE 为后缀名。Linux 则使用 Elf。其次操作系统的 API 也不一样，如 Windows 用 CreateProcess() 创建进程，而 Linux 使用 fork()。</p>
+<p>所以要移植程序必然要在这些地方进行改变，MingW 有专门的 W32api 头文件，来把代码中 Linux 方式的系统调用替换为对应的 Windows 方式。而 Cygwin 则通过 cygwin1.dll 这个文件来实现这种 API 的转换，并模拟一个 Linux 系统调用接口给程序，程序依然以 Linux 的方式调用系统 API，只不过这个 API 在 cygwin1.dll 上，cygwin1.dll 再调用 Windows 对应的实现，来把结果返回给程序。<br>二者生成的程序都是能在 Windows 上运行的 EXE 文件，显然都是 PE 格式，用一个PE格式查看工具检查一下就能发现，Cygwin 生成的程序依然有 fork() 这样的 Linux 系统调用，但目标库是 cygwin1。而 MingW 生成的程序，则全部使用从 KERNEL32 导出的标准 Windows 系统 API。</p>
+<p>这样看来用 MingW 编译的程序性能会高一点，而且也不用带着那个接近两兆的 cygwin1.dll 文件。</p>
+<p>但 Cygwin 对 Linux 的模拟比较完整，甚至有一个 Cygwin X 的项目，可以直接用 Cygwin 跑 X。</p>
+<p>另外 Cygwin 可以设置 -mno-cygwin 的 flag，来使用 MingW 编译。</p>
+<p>而与 Cygwin 更有可比性的 MSys 上的工具也是通过 Cygwin 这种模拟的方式来提供的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/03/glibc/" data-id="ckc6b406i0001wwelavgj02n0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/03/%E5%9B%BE/" class="article-date">
+  <time datetime="2020-07-03T01:37:47.000Z" itemprop="datePublished">2020-07-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/03/%E5%9B%BE/">图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一.无根图转化为有根图</p>
+<p>#include <iostream><br>#include <vector></p>
+<p>using namespace std;</p>
+<p>#define MAX 1000001</p>
+<p>vector<int> G[MAX];<br>int P[MAX];</p>
+<p>void inputTree(int n)<br>{<br>    int u, v; //存放两个节点编号</p>
+<pre><code>//输入边信息
+for (int i = 0; i &lt; n-1; ++i)
+{
+    cin &gt;&gt; u &gt;&gt; v;
+    G[u].push_back(v);
+    G[v].push_back(u);
+}</code></pre><p>}</p>
+<p>//u为当前节点,fa为它的父节点<br>void dfs(int u, int fa)<br>{a<br>    int d = G[u].size();</p>
+<pre><code>for (int i = 0; i &lt; d; ++i)
+{
+    int v = G[u][i];
+
+    if (v != fa)
+        dfs(v, P[v] = u);
+}</code></pre><p>}</p>
+<p>int main()<br>{<br>    int n; //节点数<br>    int root; //根节点编号<br>    cin &gt;&gt; n;<br>    inputTree(n);</p>
+<pre><code>cin &gt;&gt; root;
+P[root] = -1;
+dfs(root, P[root]);
+
+//输出
+for (int i = 0; i &lt; n; ++i)
+{
+    cout &lt;&lt; &quot;R[&quot; &lt;&lt; i &lt;&lt; &quot;] : &quot; &lt;&lt; P[i] &lt;&lt; endl;
+}
+
+return 0;</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/03/%E5%9B%BE/" data-id="ckc6b406l0002wwelc4vqanej" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-机器码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/" class="article-date">
+  <time datetime="2020-06-28T12:00:30.000Z" itemprop="datePublished">2020-06-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/">机器码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>编译器是想滚雪球一样滚出来的，一开始用机器语言写一个很功能有限的汇编器（汇编接近机器语言，几乎就是简单的替换，比较好写），然后用它编译更强大的汇编器/编译器。更高级的语言由稍微低级点的语言编写，然后发展到合适的程度之后，某些语言实现了自举，即自己编译自己的编译器。</p>
+<p>编译的结果是二进制文件，二进制文件其实是和系统关系并没有那么大，只是一个内存的镜像。具体的Windows或者Linux之间不同的只是封装格式PE/EFI的区别，这些信息只是用来告诉系统该怎么加载这个镜像而已，自己写一个操作系统来加载RAW内存镜像，这样的程序也是可以运行的。如果一个程序没有用系统提供的API，能够直接访问硬件中断的话就和系统无关了。不过现在的系统都有保护，不允许直接调用硬件中断，都是调用系统的API，系统再调用硬件，来执行。</p>
+<p>作者：xuzhenglun<br>链接：<a href="https://segmentfault.com/q/1010000004105427#answer-1020000004106569" target="_blank" rel="noopener">https://segmentfault.com/q/1010000004105427#answer-1020000004106569</a><br>来源：SegmentFault 思否<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p> 语言和系统都是运行在CPU上的，不是语言运行在系统里。系统应该被看成类库和框架。 </p>
+<p>编程语言是一种可执行程序的表达方式，编译器把编程语言的表达方式转换为可执行的程序，而编译器做转换的过程，可以操作系统相关(也就是转换出的程序运行在特定操作系统上)，也可以操作系统无关(直接在裸机运行)。而操作系统，本身是一个程序，也可以是编程语言来表达的(编译后通常操作系统无关)，也可以不是(直接写机器码)，而操作系统这个特殊的程序，提供了库，硬件驱动，运行时环境，框架等，是为了让运行在其上的程序写得更容易</p>
+<p>不同cpu识别的机器码不同</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/" data-id="ckc6b40700003wwelcxk34ixy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/27/MB/" class="article-date">
+  <time datetime="2020-06-27T13:52:09.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/27/MB/">MB</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有的时候我会有点误解</p>
+<p>为什么类似steam的下载速度在5.6MB/s的时候，某些软件却有50Mb/s的速度？？？</p>
+<p>————————————————————————</p>
+<p>先直接上结论：</p>
+<p>1MB/s等于8Mbit/s<br>——————————————————————————</p>
+<p>这是因为MB/s和Mb/s本来就不是一个单位。</p>
+<p>数据传输率的单位一般采用MB/s或Mbit/s，尤其在内部数据传输率上官方数据中更多的采用Mbit/s为单位。</p>
+<p>MB/s的含义是兆字节每秒，Mbit/s的含义是兆比特每秒，前者是指每秒传输的字节数量，后者是指每秒传输的比特位数。</p>
+<p>MB/s中的B字母是Byte的含义，虽然与Mbit/s中的bit翻译一样，都是比特，也都是数据量度单位，但二者是完全不同的。</p>
+<p>Byte是字节数，bit是位数，在计算机中每八位为一字节，也就是1Byte=8bit，是1：8的对应关系。因此1MB/s等于8Mbit/s。</p>
+<p>因此在在书写单位时一定要注意B字母的大小写，尤其有些人还把Mbit/s简写为Mb/s，此时B字母的大小真可以称为失之毫厘，谬以千里。</p>
+<p>——————————————————————————————————</p>
+<p>上面这是一般情况下MB/s与Mbit/s的对应关系，但在硬盘的数据传输率上二者就不能用一般的MB和Mbit的换算关系(1B=8bit)来进行换算。</p>
+<p>比如某款产品官方标称的内部数据传输率为683Mbit/s，此时不能简单的认为683除以8得到85.375，就认为85MB/s是该硬盘的内部数据传输率。因为在683Mbit中还包含有许多bit(位)的辅助信息，不完全是硬盘传输的数据，简单的用8来换算，将无法得到真实的内部数据传输率数值。</p>
+<p>——————————————————————————————————————</p>
+<p>计算光纤传输的真实速度：</p>
+<p>推广的，我们可以推出一些网络运营商的真实网络运营速度：</p>
+<p>如果网络服务商声称光纤的速度为“ 5M”</p>
+<p>他的下载真实速度为：</p>
+<p>首先网络运营商按照千进制来计算：</p>
+<p>即5M=5000Kbit/s</p>
+<p>1Byte=8bit.而我们常说的下载速度都指的是Byte/s </p>
+<p>因此电信所说的“5M”经过还换算后就成为了(5000/8)KByte/s=625KByte/s</p>
+<p>此外还要排除网络损耗以及线路衰减等原因</p>
+<p>因此真正的下载速度可能还不到600KB/S 不过只要是550KB/S以上都算正常</p>
+<p>本篇结束<br>————————————————<br>版权声明：本文为CSDN博主「TaoiR」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_40245756/article/details/83993772" target="_blank" rel="noopener">https://blog.csdn.net/qq_40245756/article/details/83993772</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/27/MB/" data-id="ckc6b406a0000wwelf6uigi1i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-固件" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/27/%E5%9B%BA%E4%BB%B6/" class="article-date">
@@ -369,183 +610,6 @@
 
 
   
-    <article id="post-mysql" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/15/mysql/" class="article-date">
-  <time datetime="2020-06-15T00:41:16.000Z" itemprop="datePublished">2020-06-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/15/mysql/">mysql下如何执行sql脚本</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首要步骤(一般可省略):<br>开启mysql服务(默认是开机时就自动运行了):<br>控制面板–&gt;管理工具–&gt;服务,在里面找到名称为mysql的项,双击就可看它的服务状态是启动还是停止,把它设为启动</p>
-<p>连接mysql:<br>在命令行下输入 mysql -h localhost -u root -p回车,然后输入密码即可;或直接运行mysql自带的连接工具,然后输入密码即可.</p>
-<p>1.编写sql脚本,假设内容如下:</p>
-<p>  create database dearabao;<br>  use dearabao;<br>  create table niuzi (name varchar(20));</p>
-<p>  保存脚本文件,假设我把它保存在F盘的hello world目录下,于是该文件的路径为:F:\hello world\niuzi.sql</p>
-<p>2.执行sql脚本,可以有2种方法:<br>  第一种方法:<br> 在命令行下(未连接数据库),输入 mysql -h localhost -u root -p123456 &lt; F:\hello world\niuzi.sql (注意路径不用加引号的!!) 回车即可.<br>  第二种方法:<br> 在命令行下(已连接数据库,此时的提示符为 mysql&gt; ),输入 source F:\hello world\niuzi.sql (注意路径不用加引号的) 或者 . F:\hello world\niuzi.sql (注意路径不用加引号的) 回车即可</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/15/mysql/" data-id="ckbg0rl1w0001x8el13rrdq2l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-pool-map" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/15/pool-map/" class="article-date">
-  <time datetime="2020-06-14T16:00:00.000Z" itemprop="datePublished">2020-06-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/15/pool-map/">pool</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一、什么是线程池</p>
-<p>系统启动一个新线程的成本是比较高的，因为它涉及与操作系统的交互。在这种情形下，使用线程池可以很好地提升性能，尤其是当程序中需要创建大量生存期很短暂的线程时，更应该考虑使用线程池。</p>
-<p>线程池在系统启动时即创建大量空闲的线程，程序只要将一个函数提交给线程池，线程池就会启动一个空闲的线程来执行它。当该函数执行结束后，该线程并不会死亡，而是再次返回到线程池中变成空闲状态，等待执行下一个函数。</p>
-<p>此外，使用线程池可以有效地控制系统中并发线程的数量。当系统中包含有大量的并发线程时，会导致系统性能急剧下降，甚至导致 Python 解释器崩溃，而线程池的最大线程数参数可以控制系统中并发线程的数量不超过此数。</p>
-<h2 id="二、如何创建线程池"><a href="#二、如何创建线程池" class="headerlink" title="二、如何创建线程池"></a>二、如何创建线程池</h2><p>python里面创建线程池很简单，只需要简单几行代码即可</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#实例化对象</span></span><br><span class="line">pool=Pool(num)</span><br><span class="line"><span class="comment">#开启线程池，get_down为函数名且不加‘（）’，list为一个可迭代对象</span></span><br><span class="line">pool.map(get_down,list)</span><br><span class="line"><span class="comment">#关闭</span></span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
-
-<p>三、单线程与线程池执行效率对比<br>1.单线程实例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#  # Created by 老刘 on 2020/5/11</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing.dummy <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_down</span><span class="params">(list)</span>:</span></span><br><span class="line">    print(<span class="string">"正在下载"</span>,list)</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'下载完毕！'</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment">#单线程</span></span><br><span class="line">    s = time.time()</span><br><span class="line">    list=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">    <span class="keyword">for</span> list <span class="keyword">in</span> list:</span><br><span class="line">        get_down(list)</span><br><span class="line">    e=time.time()</span><br><span class="line">    print(<span class="string">"共耗时："</span>,e-s)</span><br><span class="line">        ******************************</span><br><span class="line">    output：共耗时： <span class="number">8.001622200012207</span></span><br><span class="line">     ******************************</span><br><span class="line">    ```</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>多线程实例</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line"><span class="keyword">from</span> multiprocessing.dummy <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_down</span><span class="params">(list)</span>:</span></span><br><span class="line">    print(<span class="string">"正在下载"</span>,list)</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(<span class="string">'下载完毕！'</span>)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    start = time.time()</span><br><span class="line">    list=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">    <span class="comment">#实例化线程池</span></span><br><span class="line">    pool=Pool(<span class="number">4</span>)</span><br><span class="line">    <span class="comment">#开启线程池，get_down函数，list为可迭代对象</span></span><br><span class="line">    pool.map(get_down,list)</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br><span class="line">    end=time.time()</span><br><span class="line">    print(<span class="string">"共耗时："</span>,end-start)</span><br><span class="line">    ******************************</span><br><span class="line">    output：共耗时： <span class="number">2.024726152420044</span></span><br><span class="line">     ******************************</span><br></pre></td></tr></table></figure>
-
-<p>由两个实例不难看出，单线程耗时： 8.001622200012207秒，而线程池只需2.024726152420044秒，多线程明显可以提高执行效率。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/15/pool-map/" data-id="ckbgb2p5m0000u0elb0hf5jin" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jplag" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/04/jplag/" class="article-date">
-  <time datetime="2020-06-04T14:09:43.000Z" itemprop="datePublished">2020-06-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/jplag/">jplag</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>什么是JPlag<br>最近写毕设接近尾声了，出现了一些小小的问题。我毕设涉及到一些计算代码相似度的东西，本来想试一试SIM和MOSS，但是在优秀的正爸爸的实验下发现似乎并不是很靠谱（详情点这里）。于是决定试试往指令层面去靠一下。正好搜论文的时候搜到了一篇，里面略微提到了一下JPlag，就想试试看效果如何。</p>
-<p>JPlag是一种基于词法的文本相似度计算工具，由德国卡尔斯鲁厄大学开发，他的GitHub在这里。</p>
-<p>预备工作<br>首先你需要把JPlag下下来，截至2019年4月15日，JPlag的最新版为v2.12.1-SNAPSHOT，下载地址点我。下那个jar就可以了，别下成了source code。</p>
-<p>然后要把java的版本更新一下，1.8是肯定不行的，我用的是11。</p>
-<p>更新完之后，所有准备工作就完成了。</p>
-<p>使用方法<br>进入你刚刚下好的jar的目录，然后建一个名字叫exercise1的文件夹（其实叫什么都可以），文件夹结构如下：</p>
-<p>exercise1<br>    |<br>    ├─ student1<br>    |       └─1.c<br>    |<br>    └─ student2<br>            └─2.c<br>这里的1.c和2.c就是要测试相似度的两个文件，当然不仅限于c/c++，JPlag支持很多语言，具体看他的Github。</p>
-<p>以正爸爸的实验为例，1.c代码如下（正爸爸实验中的sample1.c）：</p>
-<p>#include &lt;stdio.h&gt;<br>int main()<br>{<br>    int n;<br>    scanf(“%d”, &amp;n);<br>    int ans = 0;<br>    for(int i = 1; i &lt;= n; ++i)<br>    {<br>        int b;<br>        scanf(“%d”, &amp;b);<br>        ans += b;<br>    }<br>    printf(“%d\n”, ans);<br>    return 0;<br>}<br>2.c的代码如下（正爸爸实验中的sample6.c）：</p>
-<p>#include &lt;stdio.h&gt;<br>int main()<br>{<br>    int a, b;<br>    scanf(“%d”, &amp;a);<br>    b = 0;<br>    for(int c = 1; c &lt;= a; ++c)<br>    {<br>        int d;<br>        scanf(“%d”, &amp;d);<br>        b = b + d;<br>    }<br>    printf(“%d\n”, b);<br>    return 0;<br>}<br>接下来打开你的控制台，进入JPlag的jar的文件夹（注意这个jar包和exercise1在同一个文件夹中），输入java -jar jplag-2.12.1-SNAPSHOT-jar-with-dependencies.jar -l c/c++ -r tmp -s exercise1即可。解释一下：</p>
-<p>-l后面的参数用于指代语言<br>-r后面的参数用于指代检测结果存放的目录<br>-s后面的参数用于指代检测的源文件夹<br>经过这么一番操作，你可以看到和jar包、exercise1同级的地方多出了一个tmp文件夹，这就是检测结果，打开tmp/match0.html就能看到相似度了。我这里检测结果相似度为82.7%，比SIM/MOSS还是正经很多的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/04/jplag/" data-id="ckb0uyzgk00004cel8bqceeid" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-狗男孩" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/" class="article-date">
-  <time datetime="2020-05-31T08:53:38.000Z" itemprop="datePublished">2020-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/">狗男孩</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="DOG-BOY-XIEYUE"><a href="#DOG-BOY-XIEYUE" class="headerlink" title="DOG BOY XIEYUE"></a>DOG BOY XIEYUE</h1><h1 id="喜曰"><a href="#喜曰" class="headerlink" title="喜曰"></a>喜曰</h1><p>#祈雨房<br>经济开放后的莫斯科，城郊有无数流离失所的孩童，他们依傍垃圾山捡拾食物而活。主角小罗莫年仅四岁，母亲不知所踪，同居的叔叔已经数天不见人影。他吃完家里的所有东西，被迫在隆冬冒险走上街头。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/" data-id="ckauu1e4u0003x8el64i1505z" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -583,7 +647,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
     </div>
   </div>
 
@@ -596,23 +660,23 @@
       <ul>
         
           <li>
+            <a href="/2020/07/03/glibc/">glibc</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/03/%E5%9B%BE/">图</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/">机器码</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/27/MB/">MB</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/27/%E5%9B%BA%E4%BB%B6/">固件</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/22/redis/">redis</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/15/%E5%BC%82%E6%AD%A5/">异步</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/15/source/">source</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/15/ffmpeg/">ffmpeg</a>
           </li>
         
       </ul>
