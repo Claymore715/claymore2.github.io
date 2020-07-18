@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>多用户多任务操作系统 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响   个人计算机操作系统早期一般都是单用户操作系统，其主要特点是在某一时间为单个用户服务。早期的DOS操作系统是单用户单任务操作系统，Windows XP则是单用户多任务操作系统。现在常用的Windows操作系统都是多用户、多任务的操">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多用户多任务操作系统">
+<meta property="og:url" content="http://yoursite.com/2020/07/05/linux/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响   个人计算机操作系统早期一般都是单用户操作系统，其主要特点是在某一时间为单个用户服务。早期的DOS操作系统是单用户单任务操作系统，Windows XP则是单用户多任务操作系统。现在常用的Windows操作系统都是多用户、多任务的操">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-05T05:50:45.000Z">
+<meta property="article:modified_time" content="2020-07-05T09:02:29.773Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/05/linux/" class="article-date">
+  <time datetime="2020-07-05T05:50:45.000Z" itemprop="datePublished">2020-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      多用户多任务操作系统
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响 </p>
+<p> 个人计算机操作系统早期一般都是单用户操作系统，其主要特点是在某一时间为单个用户服务。早期的DOS操作系统是单用户单任务操作系统，Windows XP则是单用户多任务操作系统。现在常用的Windows操作系统都是多用户、多任务的操作系统，使用最广泛的win7，win10都是多用户，多任务操作系统。 </p>
+<p> /boot 这是个目录， 可以分成一个分区，然后挂载到/boot目录， 也可以只用一个/分区， 里面会有boot目录的，保存的是引导文件，内核等</p>
+<p>/boot分区就是操作系统的内核及在引导过程中使用的文件，一般是几年前的版本要求划分的一个区，大小为100MB左右，但现在的新版本都不需要对这个分区进行单独划分，也就是说你完全可以不分/boot。<br>安装Linux只要求两个基本分区，即根分区及交换分区，如果你的磁盘空间足够大，可以多划分空间给根分区，你也可以把常用的目录新建到桌面，如下载的软件包，放到桌面不影响你进入Linux系统的速度，当然这要求你有足够大的根分区。</p>
+<p> 曾经给/boot一个很小的分区是有十分充足的理由的，因为在二十几年前，BIOS只能认一个1024柱面的硬盘，如果启动文件放在0-1023（从0开始数，共1024个柱面）之外，BIOS就无法读取启动所需的文件，从而无法启动。为了兼容这种BIOS，就需要在磁盘前端分出一个小分区专门来存储启动文件。<br>但是现在，应该是找不到那么古老的主板了，即使能找到，也无法安装现在的linux了。<br>100MB的boot分区，有什么害处呢？<br>太小了，放不下现在启动所需的文件了。现在的linux，留下两个内核是很正常的，如果新内核有什么问题，还可以用老内核。这台机器上现在有两个版本的linux内核（3.13.0-85 和 4.4.0.21），一共多大呢？<br>代码:<br>ls -al –block-size=M /boot<br>total 98M<br>看上去两个内核100MB勉强够用，但是现在的启动文件是越来越大的，例如3.13的initrd是29M，但4.4的initrd有35M，下一次升级内核，100MB就不够用了。<br>另外在Debian系的Linux发行版上，还有另一个问题，老旧的内核不会被自动清除。上次手动清理冗余内核的时候，/boot已经达到了700+MB。/boot分区满了，内核就无法安装，引发问题。<br>所以，不要划分/boot分区。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/05/linux/" data-id="ckcrh5pcq00037selcbj74esz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/06/vim/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vim 查看编辑文件，出现.swp文件的情况和处理方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/03/glibc/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">glibc</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1/" rel="tag">1</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/1/" style="font-size: 10px;">1</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">python虚拟环境</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/10/gcc%E5%92%8Cmake/">gcc和make</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/10/csdn%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">csdn缓存问题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/08/git/">Git远程操作</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/07/linux-1/">linux</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

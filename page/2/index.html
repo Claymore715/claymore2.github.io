@@ -64,6 +64,374 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-MB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/27/MB/" class="article-date">
+  <time datetime="2020-06-27T13:52:09.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/27/MB/">MB</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有的时候我会有点误解</p>
+<p>为什么类似steam的下载速度在5.6MB/s的时候，某些软件却有50Mb/s的速度？？？</p>
+<p>————————————————————————</p>
+<p>先直接上结论：</p>
+<p>1MB/s等于8Mbit/s</p>
+<p>Mbps=Mbit/s即兆比特每秒（1,000,000bit/s），Million bits per second的缩bai写——————————————————————————</p>
+<p>这是因为MB/s和Mb/s本来就不是一个单位。</p>
+<p>数据传输率的单位一般采用MB/s或Mbit/s，尤其在内部数据传输率上官方数据中更多的采用Mbit/s为单位。</p>
+<p>MB/s的含义是兆字节每秒，Mbit/s的含义是兆比特每秒，前者是指每秒传输的字节数量，后者是指每秒传输的比特位数。</p>
+<p>MB/s中的B字母是Byte的含义，虽然与Mbit/s中的bit翻译一样，都是比特，也都是数据量度单位，但二者是完全不同的。</p>
+<p>Byte是字节数，bit是位数，在计算机中每八位为一字节，也就是1Byte=8bit，是1：8的对应关系。因此1MB/s等于8Mbit/s。</p>
+<p>因此在在书写单位时一定要注意B字母的大小写，尤其有些人还把Mbit/s简写为Mb/s，此时B字母的大小真可以称为失之毫厘，谬以千里。</p>
+<p>——————————————————————————————————</p>
+<p>上面这是一般情况下MB/s与Mbit/s的对应关系，但在硬盘的数据传输率上二者就不能用一般的MB和Mbit的换算关系(1B=8bit)来进行换算。</p>
+<p>比如某款产品官方标称的内部数据传输率为683Mbit/s，此时不能简单的认为683除以8得到85.375，就认为85MB/s是该硬盘的内部数据传输率。因为在683Mbit中还包含有许多bit(位)的辅助信息，不完全是硬盘传输的数据，简单的用8来换算，将无法得到真实的内部数据传输率数值。</p>
+<p>——————————————————————————————————————</p>
+<p>计算光纤传输的真实速度：</p>
+<p>推广的，我们可以推出一些网络运营商的真实网络运营速度：</p>
+<p>如果网络服务商声称光纤的速度为“ 5M”</p>
+<p>他的下载真实速度为：</p>
+<p>首先网络运营商按照千进制来计算：</p>
+<p>即5M=5000Kbit/s</p>
+<p>1Byte=8bit.而我们常说的下载速度都指的是Byte/s </p>
+<p>因此电信所说的“5M”经过还换算后就成为了(5000/8)KByte/s=625KByte/s</p>
+<p>此外还要排除网络损耗以及线路衰减等原因</p>
+<p>因此真正的下载速度可能还不到600KB/S 不过只要是550KB/S以上都算正常</p>
+<p>本篇结束<br>————————————————<br>版权声明：本文为CSDN博主「TaoiR」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_40245756/article/details/83993772" target="_blank" rel="noopener">https://blog.csdn.net/qq_40245756/article/details/83993772</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/27/MB/" data-id="ckc6b406a0000wwelf6uigi1i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-固件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/27/%E5%9B%BA%E4%BB%B6/" class="article-date">
+  <time datetime="2020-06-27T13:43:14.000Z" itemprop="datePublished">2020-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/27/%E5%9B%BA%E4%BB%B6/">固件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者：时国怀</p>
+<p>驱动和固件（firmware）都是代码，<strong>前者为软件服务，后者为硬件服务</strong>。</p>
+<p>在操作系统概念还不明确的时代，二者是没有明显区别的。</p>
+<p>但是随着计算机体系结构的发展，硬件的种类开始变多，操作系统的种类也变多了。</p>
+<p>这个时候，因为各种技术的、商业的原因，硬件厂商希望自己的硬件能被更多的软件厂商使用，所以就需要在硬件之上做一些封装，让自己的硬件操纵起来更容易，这个时候就要有firmware这种东西了，它简化了软件与硬件的交互。</p>
+<p>但是为什么不把fimware做的很完美，做的不需要驱动支持呢？因为有不同的操作系统。我不知道你对操作系统的理解是到什么程度？只知道Windows？还是还仅仅知道Linux？还是清楚Unix和FreeBSD是不同的系统？知道有RTOS？知道有上百种不同的内核？</p>
+<p>不同的操作系统，对于操作硬件的方式完全不同，在Windows里应用态是无法直接写IO端口的，而在嵌入式系统里，一般都不限制直接操作IO端口。所以，硬件厂商一方面为了自己的硬件能被软件更简单的使用，就需要写firmware，而另一方面为了兼容各种操作系统，又不能把firmware写的太死，必须预留足够的余地让软件自由发挥——软件的自由发挥就是驱动。</p>
+<p>不同操作系统的驱动是不能兼容的，原因就是驱动是为操作系统服务的，有的操作系统是单线程的，有些操作系统不允许动态申请内存，所以不同的操作系统要操作硬件，就要根据自身的特性编写对应的操作代码，这就是驱动存在的意义——适应系统需要。</p>
+<p>假如世界上只有一种操作系统，并且版本永远不会改变，那么firmware和驱动就可以融合在一起，但这只能一个不现实的梦想，要知道民用操作系统和工业控制操作系统差别是十分巨大的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/27/%E5%9B%BA%E4%BB%B6/" data-id="ckbxp3wzu0000g0elabqadg7b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/22/redis/" class="article-date">
+  <time datetime="2020-06-22T05:31:06.000Z" itemprop="datePublished">2020-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/22/redis/">redis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>打开文件夹，内容如下：</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/11/C2CEBAA0-30B9-4340-8D23-78F6FEB8CBE2.png%22" alt="img"></p>
+<p>打开一个 <strong>cmd</strong> 窗口 使用 cd 命令切换目录到 <strong>C:\redis</strong> 运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server.exe redis.windows.conf</span><br></pre></td></tr></table></figure>
+
+<p>也可以在服务里把redis设成自启动</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/11/redis-install1.png" alt="Redis 安装"></p>
+<p>切换到 redis 目录下运行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli.exe -h 127.0.0.1 -p 6379</span><br></pre></td></tr></table></figure>
+
+<p>设置键值对:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set myKey abc</span><br></pre></td></tr></table></figure>
+
+<p>取出键值对:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get myKey</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/11/redis-install2.jpg" alt="Redis 安装"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/22/redis/" data-id="ckbq2m3ln00009welgv9q9ije" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-异步" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/%E5%BC%82%E6%AD%A5/" class="article-date">
+  <time datetime="2020-06-15T12:32:40.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/%E5%BC%82%E6%AD%A5/">异步</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1 什么是异步编程<br>1.1 阻塞<br>程序未得到所需计算资源时被挂起的状态。<br>程序在等待某个操作完成期间，自身无法继续干别的事情，则称该程序在该操作上是阻塞的。<br>常见的阻塞形式有：网络I/O阻塞、磁盘I/O阻塞、用户输入阻塞等。<br>阻塞是无处不在的，包括CPU切换上下文时，所有的进程都无法真正干事情，它们也会被阻塞。（如果是多核CPU则正在执行上下文切换操作的核不可被利用。）</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/15/%E5%BC%82%E6%AD%A5/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/15/%E5%BC%82%E6%AD%A5/" data-id="ckbghbyhd0000koeldnt71gu1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-source" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/source/" class="article-date">
+  <time datetime="2020-06-15T07:25:00.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/source/">source</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如果是js文件可以直接在sources里修改，用Ctrl+s保存后，可以直接生效。</p>
+<p>如果非js文件，是在页面里写的js，可以把要修改的js函数的代码复制到console里执行，这样就会替换掉原js里的函数。这里要注意，是要以函数为单元修改。</p>
+<p>如原来js的有一个函数</p>
+<p>function aa（）</p>
+<p>{</p>
+<p>  return  tag&gt;1</p>
+<p>}</p>
+<p>你可以这样做</p>
+<p>在console里执行如下：</p>
+<p>function aa（）</p>
+<p>{</p>
+<p>  return  true;</p>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/15/source/" data-id="ckbg6b8qv00000gel6f8q2knm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ffmpeg" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/ffmpeg/" class="article-date">
+  <time datetime="2020-06-15T04:47:55.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/ffmpeg/">ffmpeg</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>剪辑视频<br>如果有一段很长的视频只需保留其中的一段，可以使用下面命令对视频进行剪辑。</p>
+<p>$ ffmpeg -i a.mov -ss 00:00:21 -t 00:00:10 -acodec aac -vcodec h264 -strict -2 out.mp4<br>其中 -ss 00:00:21 表示开始剪辑的位置（时间点），-t 00:00:10 表示剪辑的长度，即 10 秒钟。</p>
+<p>缩小视频<br>假设原始视频尺寸是 1080p（即 1920×1080 px，16:9），使用下面命令可以缩小到 480p：</p>
+<p>$ ffmpeg -i a.mov -vf scale=853:480 -acodec aac -vcodec h264 out.mp4<br>各个参数的含义：</p>
+<p>-i a.mov 指定待处理视频的文件名<br>-vf scale=853:480 vf 参数用于指定视频滤镜，其中 scale 表示缩放，后面的数字表示缩放至 853×480 px，其中的 853px 是计算而得，因为原始视频的宽高比为 16:9，所以为了让目标视频的高度为 480px，则宽度 = 480 x 9 / 16 = 853<br>-acodec aac 指定音频使用 aac 编码。注：因为 ffmpeg 的内置 aac 编码目前（写这篇文章时）还是试验阶段，故会提示添加参数 “-strict -2” 才能继续，尽管添加即可。又或者使用外部的 libfaac（需要重新编译 ffmpeg）。<br>-vcodec h264 指定视频使用 h264 编码。注：目前手机一般视频拍摄的格式（封装格式、文件格式）为 mov 或者 mp4，这两者的音频编码都是 aac，视频都是 h264。<br>out.mp4 指定输出文件名<br>上面的参数 scale=853:480 当中的宽度和高度实际应用场景中通常只需指定一个，比如指定高度为 480 或者 720，至于宽度则可以传入 “-1” 表示由原始视频的宽高比自动计算而得。即参数可以写为：scale=-1:480，当然也可以 scale=480:-1 </p>
+<p>裁剪视频<br>有时可能只需要视频的正中一块，而两头的内容不需要，这时可以对视频进行裁剪（crop），比如有一个竖向的视频 1080 x 1920，如果指向保留中间 1080×1080 部分，可以使用下面的命令：</p>
+<p>$ ffmpeg -i a.mov -strict -2 -vf crop=1080:1080:0:420 out.mp4<br>其中的 crop=1080:1080:0:420 才裁剪参数，具体含义是 crop=width:height:x:y，其中 width 和 height 表示裁剪后的尺寸，x:y 表示裁剪区域的左上角坐标。比如当前这个示例，我们只需要保留竖向视频的中间部分，所以 x 不用偏移，故传入0，而 y 则需要向下偏移：(1920 – 1080) / 2 = 420</p>
+<p>视频缩放和裁剪是可以同时进行的，如下命令则为将视频缩小至 853×480，然后裁剪保留横向中间部分：</p>
+<p>$ ffmpeg -i IMG_4940.MOV -strict -2 -vf scale=853:480,crop=480:480:186:0 out.mp4</p>
+<h3 id="转码"><a href="#转码" class="headerlink" title="转码"></a>转码</h3><p>最简单命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i out.ogv -vcodec h264 out.mp4ffmpeg -i out.ogv -vcodec mpeg4 out.mp4ffmpeg -i out.ogv -vcodec libxvid out.mp4ffmpeg -i out.mp4 -vcodec wmv1 out.wmvffmpeg -i out.mp4 -vcodec wmv2 out.wmv</span><br></pre></td></tr></table></figure>
+
+<p><code>-i</code> 后面是输入文件名。<code>-vcodec</code> 后面是编码格式，h264 最佳，但 Windows 系统默认不安装。如果是要插入 ppt 的视频，选择 wmv1 或 wmv2 基本上万无一失。</p>
+<p>附加选项：<code>-r</code> 指定帧率，<code>-s</code> 指定分辨率，<code>-b</code> 指定比特率；于此同时可以对声道进行转码，<code>-acodec</code> 指定音频编码，<code>-ab</code> 指定音频比特率，<code>-ac</code> 指定声道数，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i out.ogv -s 640x480 -b 500k -vcodec h264 -r 29.97 -acodec libfaac -ab 48k -ac 2 out.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="剪切"><a href="#剪切" class="headerlink" title="剪切"></a>剪切</h3><p>用 <code>-ss</code> 和 <code>-t</code> 选项， 从第 30 秒开始，向后截取 10 秒的视频，并保存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wmv -ss 00:00:30.0 -c copy -t 00:00:10.0 output.wmvffmpeg -i input.wmv -ss 30 -c copy -t 10 output.wmv</span><br></pre></td></tr></table></figure>
+
+<p>达成相同效果，也可以用 <code>-ss</code> 和 <code>-to</code> 选项， 从第 30 秒截取到第 40 秒：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wmv -ss 30 -c copy -to 40 output.wmv</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是，ffmpeg 为了加速，会使用关键帧技术， 所以有时剪切出来的结果在起止时间上未必准确。 通常来说，把 <code>-ss</code> 选项放在 <code>-i</code> 之前，会使用关键帧技术； 把 <code>-ss</code> 选项放在 <code>-i</code> 之后，则不使用关键帧技术。 如果要使用关键帧技术又要保留时间戳，可以加上 <code>-copyts</code> 选项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 00:01:00 -i video.mp4 -to 00:02:00 -c copy -copyts cut.mp4</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://trac.ffmpeg.org/wiki/Seeking" target="_blank" rel="noopener">ffmpeg.org</a></p>
+<h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>把两个视频文件合并成一个。</p>
+<p>简单地使用 <code>concat demuxer</code>，示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat mylist.txtfile &#39;&#x2F;path&#x2F;to&#x2F;file1&#39;file &#39;&#x2F;path&#x2F;to&#x2F;file2&#39;file &#39;&#x2F;path&#x2F;to&#x2F;file3&#39; $ ffmpeg -f concat -i mylist.txt -c copy output</span><br></pre></td></tr></table></figure>
+
+<p>更多时候，由于输入文件的多样性，需要转成中间格式再合成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input1.avi -qscale:v 1 intermediate1.mpgffmpeg -i input2.avi -qscale:v 1 intermediate2.mpgcat intermediate1.mpg intermediate2.mpg &gt; intermediate_all.mpgffmpeg -i intermediate_all.mpg -qscale:v 2 output.avi</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://stackoverflow.com/questions/7333232/concatenate-two-mp4-files-using-ffmpeg" target="_blank" rel="noopener">stackoverflow</a>； <a href="https://ffmpeg.org/faq.html#How-can-I-join-video-files_003f" target="_blank" rel="noopener">ffmpeg.org</a>。</p>
+<h3 id="调整播放速度"><a href="#调整播放速度" class="headerlink" title="调整播放速度"></a>调整播放速度</h3><p>加速四倍：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i TheOrigin.mp4 -vf  &quot;setpts&#x3D;0.25*PTS&quot; UpTheOrigin.mp4</span><br></pre></td></tr></table></figure>
+
+<p>四倍慢速：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ffmpeg -i TheOrigin.mp4 -vf &quot;setpts&#x3D;4*PTS&quot; DownTheOrigin.mp4</span><br></pre></td></tr></table></figure>
+
+<p>转载：<a href="https://fzheng.me/2016/01/08/ffmpeg/" target="_blank" rel="noopener">https://fzheng.me/2016/01/08/ffmpeg/</a></p>
+<p>使用愉快！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/15/ffmpeg/" data-id="ckbg0rl1e0000x8el55sk1lxf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-环境变量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" class="article-date">
+  <time datetime="2020-06-15T01:27:39.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">环境变量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>C:\Program Files (x86)\Common Files\Oracle\Java\javapath;%JAVA_HOME%\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\：;;CATALINA_HOME%\bin;%CATALINA_HOME%\lib;%MAVEN_HOME%\bin;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;C:\Program Files\nodejs;E:\ffmpeg-20200612-38737b3-win64-static\bin</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/15/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" data-id="ckbfy5cia00002gelh7nw7tgx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/1/" rel="tag">1</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/15/mysql/" class="article-date">
@@ -200,186 +568,11 @@
 
 
   
-    <article id="post-狗男孩" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/" class="article-date">
-  <time datetime="2020-05-31T08:53:38.000Z" itemprop="datePublished">2020-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/">狗男孩</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="DOG-BOY-XIEYUE"><a href="#DOG-BOY-XIEYUE" class="headerlink" title="DOG BOY XIEYUE"></a>DOG BOY XIEYUE</h1><h1 id="喜曰"><a href="#喜曰" class="headerlink" title="喜曰"></a>喜曰</h1><p>#祈雨房<br>经济开放后的莫斯科，城郊有无数流离失所的孩童，他们依傍垃圾山捡拾食物而活。主角小罗莫年仅四岁，母亲不知所踪，同居的叔叔已经数天不见人影。他吃完家里的所有东西，被迫在隆冬冒险走上街头。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/%E7%8B%97%E7%94%B7%E5%AD%A9/" data-id="ckauu1e4u0003x8el64i1505z" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/31/hexo/" class="article-date">
-  <time datetime="2020-05-31T08:47:05.000Z" itemprop="datePublished">2020-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/hexo/">hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h1><p>-hexo s -g #生成并本地预览<br>hexo d -g #生成并上传<br>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #部署到GitHub<br>hexo help  # 查看帮助<br>hexo version  #查看Hexo的版本<br>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/31/hexo/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/hexo/" data-id="ckauu1e4p0001x8elce4rb3g3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-my-first-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/31/my-first-post/" class="article-date">
-  <time datetime="2020-05-31T07:25:56.629Z" itemprop="datePublished">2020-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/my-first-post/">my-first-post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​—<br>title: my-first-post<br>date: 2018-10-06 10:10:24</p>
-<p>tags:</p>
-<p>​—</p>
-<h1 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h1><p>-hexo s -g #生成并本地预览<br>hexo d -g #生成并上传<br>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #部署到GitHub<br>hexo help  # 查看帮助<br>hexo version  #查看Hexo的版本<br>hexo n == hexo new<br>hexo g == hexo generate<br>hexo s == hexo server<br>hexo d == hexo deploy</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/31/my-first-post/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/my-first-post/" data-id="ckauu1e4s0002x8el77u79rtn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/31/hello-world/" class="article-date">
-  <time datetime="2020-05-31T06:31:28.561Z" itemprop="datePublished">2020-05-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/hello-world/" data-id="ckauu1e4h0000x8el58sb4taq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -425,23 +618,23 @@
       <ul>
         
           <li>
-            <a href="/2020/07/03/glibc/">glibc</a>
+            <a href="/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">python虚拟环境</a>
           </li>
         
           <li>
-            <a href="/2020/07/03/%E5%9B%BE/">图</a>
+            <a href="/2020/07/10/gcc%E5%92%8Cmake/">gcc和make</a>
           </li>
         
           <li>
-            <a href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/">机器码</a>
+            <a href="/2020/07/10/csdn%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">csdn缓存问题</a>
           </li>
         
           <li>
-            <a href="/2020/06/27/MB/">MB</a>
+            <a href="/2020/07/08/git/">Git远程操作</a>
           </li>
         
           <li>
-            <a href="/2020/06/27/%E5%9B%BA%E4%BB%B6/">固件</a>
+            <a href="/2020/07/07/linux-1/">linux</a>
           </li>
         
       </ul>
