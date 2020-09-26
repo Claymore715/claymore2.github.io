@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>django | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="django-admin startproject 项目名   一个项目由很多个应用组成的，每一个应用完成一个功能模块。 创建应用的命令如下： python manage.py startapp 应用名 注意：创建应用时需要先进入项目目录。 运行： python manage.py runserver   停止      ctrl c 安装  在dos命令行中输入 pip 如下命令进行安装：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django">
+<meta property="og:url" content="http://yoursite.com/2020/07/31/django/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="django-admin startproject 项目名   一个项目由很多个应用组成的，每一个应用完成一个功能模块。 创建应用的命令如下： python manage.py startapp 应用名 注意：创建应用时需要先进入项目目录。 运行： python manage.py runserver   停止      ctrl c 安装  在dos命令行中输入 pip 如下命令进行安装：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200923211450992.png">
+<meta property="article:published_time" content="2020-07-31T14:39:04.000Z">
+<meta property="article:modified_time" content="2020-09-23T13:19:25.552Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200923211450992.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-django" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/31/django/" class="article-date">
+  <time datetime="2020-07-31T14:39:04.000Z" itemprop="datePublished">2020-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      django
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  django-admin startproject 项目名  </p>
+<p>一个项目由很多个应用组成的，每一个应用完成一个功能模块。</p>
+<p>创建应用的命令如下：</p>
+<p>python manage.py startapp 应用名</p>
+<p>注意：创建应用时需要先进入项目目录。</p>
+<p>运行： python manage.py runserver  </p>
+<p>停止      ctrl c</p>
+<p>安装</p>
+<ol>
+<li><p>在dos命令行中输入 pip 如下命令进行安装：</p>
+<p>安装最新的版本的 Django 命令如下：</p>
+<p>pip install django</p>
+<p>安装 指定版本的 Django 命令如下：</p>
+<p>pip install django==1.10.3</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>使用 show 来查看当前安装的 django库</p>
+<p>pip show django</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>使用pip命令来 卸载 Django</p>
+<p>pip uninstall django</p>
+</li>
+</ol>
+<p> #代表网页中的一个位置，浏览器读取后就将该位置滚动到可视区域。在网页中为位置指定标识符方法有两个，一个是利用锚点，例如<a name='page1'></a>，另外可以使用id属性，例如<div id='page2'></div>。</p>
+<p>   #是用来指导浏览器动作的，http请求中是不包括#部分的，不会发送到服务器端。因此改变location.hash部分，浏览器不会发送请求重新加载页面。</p>
+<p>   但是改变location.hash会在浏览器的访问历史中增加一个记录，使用后退键时可以回到上一个浏览位置。利用这一点就可以解决ajax中无访问状态的问题，配合#和历史记录，就可以在无刷新的ajax中顺利往返于各个访问状态。</p>
+<p><img src="C:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200923211450992.png" alt="image-20200923211450992"></p>
+<p>下面来比较window.location.href和window.locaiton.hash的区别。</p>
+<p>​    （1）window.location.href</p>
+<p>​        得到和使用的是完整的url，比如window.location.href=”<a href="http://www.baidu.com”表示的是重新定向，页面跳转" target="_blank" rel="noopener">www.baidu.com”表示的是重新定向，页面跳转</a></p>
+<p>到新的页面。也可以通过window.location.href得到a标签的完整的href，比如<a href="#book">如果使用href，那</p>
+<p>么可以得到完整的链接（url）</p>
+<p>​    （2）window.location.hash</p>
+<p>​        得到的是锚链接。相比如href,通过window.location.hash并不会跳转到新的链接，只会在当前链接里面</p>
+<p>改变锚链。并且如果有<a href="#book">通过window.location.hash得不到完整的链接（URL），仅仅得到#book.</p>
+<p>window.location.hash简单应用</p>
+<p>一、#的涵义</p>
+<p>#代表网页中的一个位置。其右面的字符，就是该位置的标识符。比如，</p>
+<p>　　http://www.example.com/index.html#print</p>
+<p>就代表网页index.html的print位置。浏览器读取这个URL后，会自动将print位置滚动至可视区域。</p>
+<p>为网页位置指定标识符，有两个方法。一是使用锚点，比如<a name="print"></a>，二是使用id属性，比如<div id="print" >。</p>
+<p>二、HTTP请求不包括#</p>
+<p>#是用来指导浏览器动作的，对服务器端完全无用。所以，HTTP请求中不包括#。</p>
+<p>比如，访问下面的网址，</p>
+<p>　　<a href="http://www.example.com/index.html#print" target="_blank" rel="noopener">http://www.example.com/index.html#print</a></p>
+<p>浏览器实际发出的请求是这样的：</p>
+<p>　　GET /index.html HTTP/1.1</p>
+<p>　　Host: <a href="http://www.example.com/" target="_blank" rel="noopener">www.example.com</a></p>
+<p>可以看到，只是请求index.html，根本没有”#print”的部分。</p>
+<p>三、#后的字符</p>
+<p>在第一个#后面出现的任何字符，都会被浏览器解读为位置标识符。这意味着，这些字符都不会被发送到服务器端。</p>
+<p>比如，下面URL的原意是指定一个颜色值：</p>
+<p>　　<a href="http://www.example.com/?color=#fff" target="_blank" rel="noopener">http://www.example.com/?color=#fff</a></p>
+<p>但是，浏览器实际发出的请求是：</p>
+<p>　　GET /?color= HTTP/1.1</p>
+<p>　　Host: <a href="http://www.example.com/" target="_blank" rel="noopener">www.example.com</a></p>
+<p>可以看到，”#fff”被省略了。只有将#转码为%23，浏览器才会将其作为实义字符处理。也就是说，上面的网址应该被写成：</p>
+<p>　　<a href="http://example.com/?color=%23fff" target="_blank" rel="noopener">http://example.com/?color=%23fff</a></p>
+<p>四、改变#不触发网页重载</p>
+<p>单单改变#后的部分，浏览器只会滚动到相应位置，不会重新加载网页。</p>
+<p>比如，从</p>
+<p>　　<a href="http://www.example.com/index.html#location1" target="_blank" rel="noopener">http://www.example.com/index.html#location1</a></p>
+<p>改成</p>
+<p>　　<a href="http://www.example.com/index.html#location2" target="_blank" rel="noopener">http://www.example.com/index.html#location2</a></p>
+<p>浏览器不会重新向服务器请求index.html。</p>
+<p>五、改变#会改变浏览器的访问历史</p>
+<p>每一次改变#后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置。</p>
+<p>这对于ajax应用程序特别有用，可以用不同的#值，表示不同的访问状态，然后向用户给出可以访问某个状态的链接。</p>
+<p>值得注意的是，上述规则对IE 6和IE 7不成立，它们不会因为#的改变而增加历史记录。</p>
+<p>六、window.location.hash读取#值</p>
+<p>window.location.hash这个属性可读可写。读取时，可以用来判断网页状态是否改变；写入时，则会在不重载网页的前提下，创造一条访问历史记录。</p>
+<p>七、onhashchange事件</p>
+<p>这是一个HTML 5新增的事件，当#值发生变化时，就会触发这个事件。IE8+、Firefox 3.6+、Chrome 5+、Safari 4.0+支持该事件。</p>
+<p>它的使用方法有三种：</p>
+<p>　　window.onhashchange = func;</p>
+<p>　　&lt;body οnhashchange=”func();”&gt;</p>
+<p>　　window.addEventListener(“hashchange”, func, false);</p>
+<p>对于不支持onhashchange的浏览器，可以用setInterval监控location.hash的变化。</p>
+<p>八、Google抓取#的机制</p>
+<p>默认情况下，Google的网络蜘蛛忽视URL的#部分。</p>
+<p>但是，Google还规定，如果你希望Ajax生成的内容被浏览引擎读取，那么URL中可以使用”#!”，Google会自动将其后面的内容转成查询字符串_escaped_fragment_的值。</p>
+<p>比如，Google发现新版twitter的URL如下：</p>
+<p>　　<a href="http://twitter.com/#!/username" target="_blank" rel="noopener">http://twitter.com/#!/username</a></p>
+<p>就会自动抓取另一个URL：</p>
+<p>　　<a href="http://twitter.com/?_escaped_fragment_=/username" target="_blank" rel="noopener">http://twitter.com/?_escaped_fragment_=/username</a></p>
+<p>通过这种机制，Google就可以索引动态的Ajax内容。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/31/django/" data-id="ckfjo92580003ywel2kp533ij" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          转义字符
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在线算法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1/" rel="tag">1</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/1/" style="font-size: 10px;">1</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/26/C-std/">C++ std</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/19/ida-pro/">ida pro</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/ssti/">ssti</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/google-hack/">google hack</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/06/cors/">cors</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
