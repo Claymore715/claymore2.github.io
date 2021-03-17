@@ -64,6 +64,436 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-google-hack" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/google-hack/" class="article-date">
+  <time datetime="2020-08-07T02:16:04.000Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/google-hack/">google hack</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>vul—漏洞</p>
+<p>poc—证明存不存在漏洞</p>
+<p>exp—漏洞利用代demo</p>
+<p>cve—漏洞编号，漏洞字典，国际上的</p>
+<p>cnvd—漏洞编号，漏洞字典，咱们自己的</p>
+<p>0day—没打补丁，没公开的漏洞</p>
+<p>shellcode—也是一种payload</p>
+<p> payload（有效攻击负载）是包含在你用于一次漏洞利用（exploit）中的ShellCode中的主要功能代码 </p>
+<p>apt—Advanced Persistent Threat  高级可持续性攻击</p>
+<p>owaspbwa，vulhub</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/07/google-hack/" data-id="ckfjo92550001ywelddbghu30" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cors" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/06/cors/" class="article-date">
+  <time datetime="2020-08-06T03:49:03.000Z" itemprop="datePublished">2020-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/06/cors/">cors</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>面试问到数据交互的时候，经常会问跨域如何处理。大部分人都会回答JSONP，然后面试官紧接着就会问：“JSONP缺点是什么啊？”这个时候坑就来了，如果面试者说它支持GET方式，然后面试官就会追问，那如果POST方式发送请求怎么办？基础扎实一些的面试者会说，使用CORS跨域，不扎实的可能就摇摇头了。</p>
+<p>这还没结束，如果公司比较正规或者很在乎技术功底，你面试的又是重要岗位，HR还想砍你的工资，就会再补一刀，CORS跨域有什么问题呢？这时候能回答上来的就没几个了，就算是你答出来兼容性不好，需要IE10+浏览器,对方依然有话说，那兼容性怎么处理呢？应试者就没话了，要么被Pass掉，即便留下来，谈工资的时候就没底气了。</p>
+<p>CORS跨域实在是面试官pass一个人的利器。</p>
+<p>为什么会这样呢？</p>
+<p>1.遇到CORS请求的情况不多，开发者使用这个场景的很少，大部分都JSONP搞定了。</p>
+<p>2.开发者自身技能不扎实，偷懒心态，平常没有意识和意愿去提升自己的技术水平。</p>
+<p>3.相关的学习资料少、纯前端小白搭建可测试的环境难度大。</p>
+<p>面对这条拦路虎，我们今天就彻底解决掉它，让它不再是我们的软肋，而是彰显我们技术实力的亮点。</p>
+<p>首先，什么是CORS?</p>
+<p><img src="https://cdn.segmentfault.com/v-5f0a9217/global/img/squares.svg" alt="图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CORS是一个W3C标准，全称是&quot;跨域资源共享&quot;（Cross-origin resource sharing）。</span><br><span class="line">它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。</span><br></pre></td></tr></table></figure>
+
+<p>优缺点</p>
+<p>优点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.支持POST以及所有HTTP请求</span><br><span class="line">2.安全性相对JSOP更高</span><br><span class="line">3.前端要做的事儿比较少</span><br></pre></td></tr></table></figure>
+
+<p>缺点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.不兼容老版本浏览器，如IE9及其以下</span><br><span class="line">2.需要服务端支持</span><br><span class="line">3.使用起来稍微复杂了些</span><br></pre></td></tr></table></figure>
+
+<p>怎么用？</p>
+<p>前端部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;CORS跨域请求&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function createCORSRequest(method, url) &#123;</span><br><span class="line">            var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">            if (&quot;withCredentials&quot; in xhr) &#123;</span><br><span class="line">                xhr.open(method, url, true);</span><br><span class="line">            &#125; else if (typeof XDomainRequest !&#x3D; &quot;undefined&quot;) &#123;</span><br><span class="line">                xhr &#x3D; new XDomainRequest();</span><br><span class="line">                xhr.open(method, url);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                xhr &#x3D; null;</span><br><span class="line">            &#125;</span><br><span class="line">            return xhr;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        window.onload &#x3D; function () &#123;</span><br><span class="line">            var oBtn &#x3D; document.getElementById(&#39;btn1&#39;);</span><br><span class="line">            oBtn.onclick &#x3D; function () &#123;</span><br><span class="line">                var xhr &#x3D; createCORSRequest(&quot;get&quot;, &quot;http:&#x2F;&#x2F;wpdic.com&#x2F;cors.php&quot;);</span><br><span class="line">                if (xhr) &#123;</span><br><span class="line">                    xhr.onload &#x3D; function () &#123;</span><br><span class="line">                        var json &#x3D; JSON.parse(xhr.responseText);</span><br><span class="line">                        alert(json.a);</span><br><span class="line">                    &#125;;</span><br><span class="line">                    xhr.onerror &#x3D; function () &#123;</span><br><span class="line">                        alert(&#39;请求失败.&#39;);</span><br><span class="line">                    &#125;;</span><br><span class="line">                    xhr.send();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;获取数据&quot; id&#x3D;&quot;btn1&quot;&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意点：</p>
+<p>1.上面代码兼容IE8,因为用了XDomainRequest</p>
+<p>2.其它代码你就当成XMLHttpRequset用，别考虑什么2.0不2.0的</p>
+<p>3.如果你想post数据，可以往 xhr.send()里面搞</p>
+<p>4.这里不建议大家研究”simple methdod”之类的知识，代码弄懂了会用就行，遇到问题了再查也不晚</p>
+<p>后台部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&#39;content-type:application:json;charset&#x3D;utf8&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Origin:*&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Methods:GET,POST&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Credentials: true&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Headers:x-requested-with,content-type&#39;);</span><br><span class="line">$str &#x3D; &#39;&#123;&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3,&quot;d&quot;:4,&quot;e&quot;:5&#125;&#39;; </span><br><span class="line">echo $str;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意点：</p>
+<p>1.Access-Control-Allow-Origin: <em>表示允许任何域名跨域访问，如果需要指定某域名才允许跨域访问，只需把Access-Control-Allow-Origin:</em>改为Access-Control-Allow-Origin:允许的域名,实际工作也要这么做2.Access-Control-Allow-Methods:GET,POST 规定允许的方法，建议控制严格些，不要随意放开DELETE之类的权限</p>
+<p>2.Access-Control-Allow-Credentials</p>
+<p>该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。设为true，即表示服务器明确许可，Cookie可以包含在请求中，一起发给服务器。这个值也只能设为true，如果服务器不要浏览器发送Cookie，删除该字段即可。</p>
+<p>最后，面试常考问题：</p>
+<p>CORS和JSONP的应用场景区别？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CORS要求浏览器(&gt;IE10)和服务器的同时支持，是跨域的根本解决方法，由浏览器自动完成。优点在于功能更加强大支持各种HTTP Method，缺点是兼容性不如JSONP。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/06/cors/" data-id="ckfjo925c0005ywel3dvbat3z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-转义字符" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" class="article-date">
+  <time datetime="2020-08-05T10:05:51.000Z" itemprop="datePublished">2020-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/">转义字符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#include &lt;stdio.h&gt;</p>
+<p>int main()<br>{ char s=’\x35’; //注意： \xhh为十六进制所代表的字符 （先转化为10进制，再对照ascll转化成字符） </p>
+<p>printf(“%c”,s);//输出5（16进制的35等于10进制的53，ascll表中对应字符’5’）<br>return 0;<br> } </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" data-id="ckfjo925a0004ywel5k50fpbg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/31/django/" class="article-date">
+  <time datetime="2020-07-31T14:39:04.000Z" itemprop="datePublished">2020-07-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/31/django/">django</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  django-admin startproject 项目名  </p>
+<p>一个项目由很多个应用组成的，每一个应用完成一个功能模块。</p>
+<p>创建应用的命令如下：</p>
+<p>python manage.py startapp 应用名</p>
+<p>注意：创建应用时需要先进入项目目录。</p>
+<p>运行： python manage.py runserver  </p>
+<p>停止      ctrl c</p>
+<p>安装</p>
+<ol>
+<li><p>在dos命令行中输入 pip 如下命令进行安装：</p>
+<p>安装最新的版本的 Django 命令如下：</p>
+<p>pip install django</p>
+<p>安装 指定版本的 Django 命令如下：</p>
+<p>pip install django==1.10.3</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>使用 show 来查看当前安装的 django库</p>
+<p>pip show django</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>使用pip命令来 卸载 Django</p>
+<p>pip uninstall django</p>
+</li>
+</ol>
+<p> #代表网页中的一个位置，浏览器读取后就将该位置滚动到可视区域。在网页中为位置指定标识符方法有两个，一个是利用锚点，例如<a name='page1'></a>，另外可以使用id属性，例如<div id='page2'></div>。</p>
+<p>   #是用来指导浏览器动作的，http请求中是不包括#部分的，不会发送到服务器端。因此改变location.hash部分，浏览器不会发送请求重新加载页面。</p>
+<p>   但是改变location.hash会在浏览器的访问历史中增加一个记录，使用后退键时可以回到上一个浏览位置。利用这一点就可以解决ajax中无访问状态的问题，配合#和历史记录，就可以在无刷新的ajax中顺利往返于各个访问状态。</p>
+<p><img src="C:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200923211450992.png" alt="image-20200923211450992"></p>
+<p>下面来比较window.location.href和window.locaiton.hash的区别。</p>
+<p>​    （1）window.location.href</p>
+<p>​        得到和使用的是完整的url，比如window.location.href=”<a href="http://www.baidu.com”表示的是重新定向，页面跳转" target="_blank" rel="noopener">www.baidu.com”表示的是重新定向，页面跳转</a></p>
+<p>到新的页面。也可以通过window.location.href得到a标签的完整的href，比如<a href="#book">如果使用href，那</p>
+<p>么可以得到完整的链接（url）</p>
+<p>​    （2）window.location.hash</p>
+<p>​        得到的是锚链接。相比如href,通过window.location.hash并不会跳转到新的链接，只会在当前链接里面</p>
+<p>改变锚链。并且如果有<a href="#book">通过window.location.hash得不到完整的链接（URL），仅仅得到#book.</p>
+<p>window.location.hash简单应用</p>
+<p>一、#的涵义</p>
+<p>#代表网页中的一个位置。其右面的字符，就是该位置的标识符。比如，</p>
+<p>　　http://www.example.com/index.html#print</p>
+<p>就代表网页index.html的print位置。浏览器读取这个URL后，会自动将print位置滚动至可视区域。</p>
+<p>为网页位置指定标识符，有两个方法。一是使用锚点，比如<a name="print"></a>，二是使用id属性，比如<div id="print" >。</p>
+<p>二、HTTP请求不包括#</p>
+<p>#是用来指导浏览器动作的，对服务器端完全无用。所以，HTTP请求中不包括#。</p>
+<p>比如，访问下面的网址，</p>
+<p>　　<a href="http://www.example.com/index.html#print" target="_blank" rel="noopener">http://www.example.com/index.html#print</a></p>
+<p>浏览器实际发出的请求是这样的：</p>
+<p>　　GET /index.html HTTP/1.1</p>
+<p>　　Host: <a href="http://www.example.com/" target="_blank" rel="noopener">www.example.com</a></p>
+<p>可以看到，只是请求index.html，根本没有”#print”的部分。</p>
+<p>三、#后的字符</p>
+<p>在第一个#后面出现的任何字符，都会被浏览器解读为位置标识符。这意味着，这些字符都不会被发送到服务器端。</p>
+<p>比如，下面URL的原意是指定一个颜色值：</p>
+<p>　　<a href="http://www.example.com/?color=#fff" target="_blank" rel="noopener">http://www.example.com/?color=#fff</a></p>
+<p>但是，浏览器实际发出的请求是：</p>
+<p>　　GET /?color= HTTP/1.1</p>
+<p>　　Host: <a href="http://www.example.com/" target="_blank" rel="noopener">www.example.com</a></p>
+<p>可以看到，”#fff”被省略了。只有将#转码为%23，浏览器才会将其作为实义字符处理。也就是说，上面的网址应该被写成：</p>
+<p>　　<a href="http://example.com/?color=%23fff" target="_blank" rel="noopener">http://example.com/?color=%23fff</a></p>
+<p>四、改变#不触发网页重载</p>
+<p>单单改变#后的部分，浏览器只会滚动到相应位置，不会重新加载网页。</p>
+<p>比如，从</p>
+<p>　　<a href="http://www.example.com/index.html#location1" target="_blank" rel="noopener">http://www.example.com/index.html#location1</a></p>
+<p>改成</p>
+<p>　　<a href="http://www.example.com/index.html#location2" target="_blank" rel="noopener">http://www.example.com/index.html#location2</a></p>
+<p>浏览器不会重新向服务器请求index.html。</p>
+<p>五、改变#会改变浏览器的访问历史</p>
+<p>每一次改变#后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置。</p>
+<p>这对于ajax应用程序特别有用，可以用不同的#值，表示不同的访问状态，然后向用户给出可以访问某个状态的链接。</p>
+<p>值得注意的是，上述规则对IE 6和IE 7不成立，它们不会因为#的改变而增加历史记录。</p>
+<p>六、window.location.hash读取#值</p>
+<p>window.location.hash这个属性可读可写。读取时，可以用来判断网页状态是否改变；写入时，则会在不重载网页的前提下，创造一条访问历史记录。</p>
+<p>七、onhashchange事件</p>
+<p>这是一个HTML 5新增的事件，当#值发生变化时，就会触发这个事件。IE8+、Firefox 3.6+、Chrome 5+、Safari 4.0+支持该事件。</p>
+<p>它的使用方法有三种：</p>
+<p>　　window.onhashchange = func;</p>
+<p>　　&lt;body οnhashchange=”func();”&gt;</p>
+<p>　　window.addEventListener(“hashchange”, func, false);</p>
+<p>对于不支持onhashchange的浏览器，可以用setInterval监控location.hash的变化。</p>
+<p>八、Google抓取#的机制</p>
+<p>默认情况下，Google的网络蜘蛛忽视URL的#部分。</p>
+<p>但是，Google还规定，如果你希望Ajax生成的内容被浏览引擎读取，那么URL中可以使用”#!”，Google会自动将其后面的内容转成查询字符串_escaped_fragment_的值。</p>
+<p>比如，Google发现新版twitter的URL如下：</p>
+<p>　　<a href="http://twitter.com/#!/username" target="_blank" rel="noopener">http://twitter.com/#!/username</a></p>
+<p>就会自动抓取另一个URL：</p>
+<p>　　<a href="http://twitter.com/?_escaped_fragment_=/username" target="_blank" rel="noopener">http://twitter.com/?_escaped_fragment_=/username</a></p>
+<p>通过这种机制，Google就可以索引动态的Ajax内容。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/31/django/" data-id="ckfjo92580003ywel2kp533ij" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-在线算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2020-07-30T02:30:59.000Z" itemprop="datePublished">2020-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/">在线算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们常常会听到对于区间修改、区间查询等问题的处理时，大佬们口中说的“离线”，“在线”等名词，一开始自然是一脸蒙逼。</p>
+<p><strong>在线</strong>和<strong>离线</strong>可以简单的理解为<strong>对于所有的操作是否需要读入完毕</strong>。</p>
+<p>在线的要求是可以不用先知道所有的操作（类似询问、修改），边读入边执行，类似<strong>“走一步，做一步”</strong>的思想。</p>
+<p>离线则与在线相反，要求必须知道所有的操作，类似<strong>“记录所有步，回头再做”</strong>的思想，一般用Query[]记录所有操作。</p>
+<p>常见的在线算法：带有<strong>“可持久化”</strong>字样的（主席树（可持久化线段树）、可持久化字典树、etc），<del>其实正常写题时基本上都是在线的思路……</del></p>
+<p>常见的离线算法：整体二分、陈丹琦（CDQ）分治、莫队算法</p>
+<p>对于正常的题目来讲，两种算法其实都可以使用，经典的题目如：动态第K大问题（zoj 2112），解法有树套树（在线）和整体二分/CDQ分治（离线），但是区别在于：</p>
+<p>在线算法的思路相对简单，而代码量大（如某些毒瘤题），容易爆栈，赛场上及其考验心态（<del>菜逼表示早就炸了</del>）</p>
+<p>离线算法的思路相对复杂，而代码量小，建议选手多采用（毕竟代码越多，debug越困难）</p>
+<p>在线算法（online algorithm）和离线算法（offline algorithm）</p>
+<p>维基百科举了这样一个例子，选择排序是离线算法，而插入排序是在线算法。那就从这两个算法来看看在线算法和离线算法的区别。</p>
+<p>选择排序是不断地从未排序的元素中找到最大（小）的元素放到排序序列的起始位置。</p>
+<p>插入排序是不断将未排序的序列插入到有序的序列中，有序序列中的元素相对位置会在一定程度上被改变。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/" data-id="ckfjo925d0006ywel139o46gz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python虚拟环境" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="article-date">
+  <time datetime="2020-07-10T12:37:03.000Z" itemprop="datePublished">2020-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">python虚拟环境</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>创建 python -m venv file_name</p>
+<p>创建不同版本 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\aaa\AppData\Local\Programs\Python\Python35\python -m venv file_name</span><br></pre></td></tr></table></figure>
+
+<p>进入虚拟环境  file_name\scripts\activate </p>
+<p>退出虚拟环境 file_name\scripts\deactivate.bat</p>
+<p>cmd.exe对话框中如何返回上一级，如何返回根目录?</p>
+<p>返回上一级 输入 cd..   回车 </p>
+<p>返回根目录 输入  cd\  回车 </p>
+<p>使用 pip freeze 获取安装的 Python 包<br>有时，我们为了代码稳定、代码迁移等，需要获取当前 Python 工程依赖包的安装列表。这个列表要包括需要安装什么包、以及包的版本。这便是：requirements.txt。</p>
+<p>pip 使用 requirements.txt 安装<br>输入命令：</p>
+<p>pip install -r requirements.txt<br>1<br>即可安装 requirements.txt 中的所有包（指定版本）。</p>
+<p>pip freeze<br>使用 pip freeze 会输出所有在本地已安装的包（但不包括 pip、wheel、setuptools 等自带包），若需要输出内容与 pip list 一致，需使用 pip freeze -all。</p>
+<p>使用方法：</p>
+<p>pip freeze &gt; requirements.txt<br>1<br>适用场合<br>由于 pip freeze 与 pip list 内容区别不大，所以，若想要用其作为工程依赖包列表，一定要配合 Python 虚拟环境 virtualenv 使用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" data-id="ckcrh5pct00057sel70zo8l70" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-gcc和make" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/10/gcc%E5%92%8Cmake/" class="article-date">
+  <time datetime="2020-07-10T09:33:31.000Z" itemprop="datePublished">2020-07-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/10/gcc%E5%92%8Cmake/">gcc和make</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.gcc是GNU Compiler Collection（就是GNU编译器套件），也可以简单认为是编译器，它可以编译很多种编程语言（括C、C++、Objective-C、Fortran、Java等等）。</p>
+<p>2.当你的程序只有一个源文件时，直接就可以用gcc命令编译它。</p>
+<p>3.但是当你的程序包含很多个源文件时，用gcc命令逐个去编译时，你就很容易混乱而且工作量大</p>
+<p>4.所以出现了make工具<br>make工具可以看成是一个智能的批处理工具，它本身并没有编译和链接的功能，而是用类似于批处理的方式—通过调用makefile文件中用户指定的命令来进行编译和链接的。</p>
+<p>5.makefile是什么？简单的说就像一首歌的乐谱，make工具就像指挥家，指挥家根据乐谱指挥整个乐团怎么样演奏，make工具就根据makefile中的命令进行编译和链接的。</p>
+<p>6.makefile命令中就包含了调用gcc（也可以是别的编译器）去编译某个源文件的命令。</p>
+<p>7.makefile在一些简单的工程完全可以人工手下，但是当工程非常大的时候，手写makefile也是非常麻烦的，如果换了个平台makefile又要重新修改。</p>
+<p>8.这时候就出现了Cmake这个工具，cmake就可以更加简单的生成makefile文件给上面那个make用。当然cmake还有其他功能，就是可以跨平台生成对应平台能用的makefile，你不用再自己去修改了。</p>
+<p>9.可是cmake根据什么生成makefile呢？它又要根据一个叫CMakeLists.txt文件（学名：组态档）去生成makefile。</p>
+<p>10.到最后CMakeLists.txt文件谁写啊？亲，是你自己手写的。</p>
+<p>11.当然如果你用IDE，类似VS这些一般它都能帮你弄好了，你只需要按一下那个三角形</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/10/gcc%E5%92%8Cmake/" data-id="ckcrh5pcn00027selamcl8c52" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-csdn缓存问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/07/10/csdn%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" class="article-date">
@@ -289,7 +719,56 @@
 <p>上面命令使用<code>--force</code>选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用<code>--force</code>选项。</p>
 <p>最后，<code>git push</code>不会推送标签（tag），除非使用<code>--tags</code>选项。</p>
 <blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure></blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="上传本地代码及更新代码到GitHub教程"><a href="#上传本地代码及更新代码到GitHub教程" class="headerlink" title="上传本地代码及更新代码到GitHub教程"></a>上传本地代码及更新代码到GitHub教程</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><h2 id="上传本地代码"><a href="#上传本地代码" class="headerlink" title="上传本地代码"></a>上传本地代码</h2><h2 id="第一步：去github上创建自己的Repository，创建页面如下图所示："><a href="#第一步：去github上创建自己的Repository，创建页面如下图所示：" class="headerlink" title="第一步：去github上创建自己的Repository，创建页面如下图所示："></a>第一步：去github上创建自己的Repository，创建页面如下图所示：</h2><p><img src="https://images2017.cnblogs.com/blog/1249529/201710/1249529-20171025111734035-171097772.png" alt="img"></p>
+<h2 id="红框为新建的仓库的https地址"><a href="#红框为新建的仓库的https地址" class="headerlink" title="红框为新建的仓库的https地址"></a>红框为新建的仓库的https地址</h2><p><img src="https://images2017.cnblogs.com/blog/1249529/201710/1249529-20171025111740348-1861677831.png" alt="img"></p>
+<h2 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;# Test&quot; &gt;&gt; README.md</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：建立git仓库"><a href="#第三步：建立git仓库" class="headerlink" title="第三步：建立git仓库"></a>第三步：建立git仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：将项目的所有文件添加到仓库中"><a href="#第四步：将项目的所有文件添加到仓库中" class="headerlink" title="第四步：将项目的所有文件添加到仓库中"></a>第四步：将项目的所有文件添加到仓库中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<h2 id="第五步："><a href="#第五步：" class="headerlink" title="第五步："></a>第五步：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README.md</span><br></pre></td></tr></table></figure>
+
+<h2 id="第六步：提交到仓库"><a href="#第六步：提交到仓库" class="headerlink" title="第六步：提交到仓库"></a>第六步：提交到仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;注释语句&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第七步：将本地的仓库关联到GitHub，后面的https改成刚刚自己的地址，上面的红框处"><a href="#第七步：将本地的仓库关联到GitHub，后面的https改成刚刚自己的地址，上面的红框处" class="headerlink" title="第七步：将本地的仓库关联到GitHub，后面的https改成刚刚自己的地址，上面的红框处"></a>第七步：将本地的仓库关联到GitHub，后面的https改成刚刚自己的地址，上面的红框处</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zlxzlxzlx&#x2F;Test.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="第八步：上传github之前pull一下"><a href="#第八步：上传github之前pull一下" class="headerlink" title="第八步：上传github之前pull一下"></a>第八步：上传github之前pull一下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="第九步：上传代码到GitHub远程仓库"><a href="#第九步：上传代码到GitHub远程仓库" class="headerlink" title="第九步：上传代码到GitHub远程仓库"></a>第九步：上传代码到GitHub远程仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了。执行完后，如果没有异常，等待执行完就上传成功了。"><a href="#中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了。执行完后，如果没有异常，等待执行完就上传成功了。" class="headerlink" title="中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了。执行完后，如果没有异常，等待执行完就上传成功了。"></a>中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了。执行完后，如果没有异常，等待执行完就上传成功了。</h2><h2 id="更新代码"><a href="#更新代码" class="headerlink" title="更新代码"></a>更新代码</h2><h2 id="第一步：查看当前的git仓库状态，可以使用git-status"><a href="#第一步：查看当前的git仓库状态，可以使用git-status" class="headerlink" title="第一步：查看当前的git仓库状态，可以使用git status"></a>第一步：查看当前的git仓库状态，可以使用git status</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：更新全部"><a href="#第二步：更新全部" class="headerlink" title="第二步：更新全部"></a>第二步：更新全部</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：接着输入git-commit-m-“更新说明”"><a href="#第三步：接着输入git-commit-m-“更新说明”" class="headerlink" title="第三步：接着输入git commit -m “更新说明”"></a>第三步：接着输入git commit -m “更新说明”</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;更新说明&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：先git-pull-拉取当前分支最新代码"><a href="#第四步：先git-pull-拉取当前分支最新代码" class="headerlink" title="第四步：先git pull,拉取当前分支最新代码"></a>第四步：先git pull,拉取当前分支最新代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<h2 id="第五步：push到远程master分支上"><a href="#第五步：push到远程master分支上" class="headerlink" title="第五步：push到远程master分支上"></a>第五步：push到远程master分支上</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="如何在Github上给别人的项目贡献代码"><a href="#如何在Github上给别人的项目贡献代码" class="headerlink" title="如何在Github上给别人的项目贡献代码"></a>如何在Github上给别人的项目贡献代码</h1><ul>
+<li><p>进入自己的主页，选择fork别人的项目（已修改过代码），然后点击</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1863913-4020d4095b1eb280.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/309/format/webp" alt="img"></p>
+<p>进入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pull request</span><br></pre></td></tr></table></figure>
+
+<p>页面，确认提交的更改，确认无误后，开始填写说明。</p>
+</li>
+</ul>
+<ul>
+<li><p>如下，点击<code>create pull request</code>来填写说明</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1863913-3c2f8a9329096037.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1020/format/webp" alt="img"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1863913-66be4191fdb268f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/968/format/webp" alt="img"></p>
+</li>
+</ul>
+<h1 id="fork后如何同步-源库-的新更新内容"><a href="#fork后如何同步-源库-的新更新内容" class="headerlink" title="fork后如何同步 源库 的新更新内容"></a>fork后如何同步 源库 的新更新内容</h1><p><a href="https://blog.csdn.net/qq1332479771/article/details/56087333" target="_blank" rel="noopener">https://blog.csdn.net/qq1332479771/article/details/56087333</a></p>
 
       
     </div>
@@ -345,394 +824,6 @@
 
 
   
-    <article id="post-vim" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/06/vim/" class="article-date">
-  <time datetime="2020-07-06T11:09:38.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/vim/">vim 查看编辑文件，出现.swp文件的情况和处理方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vim-查看编辑文件，出现-swp文件的情况和处理方法"><a href="#vim-查看编辑文件，出现-swp文件的情况和处理方法" class="headerlink" title="vim 查看编辑文件，出现.swp文件的情况和处理方法"></a>vim 查看编辑文件，出现.swp文件的情况和处理方法</h1><p><strong>在用vim打开一个文件时，会产生一个cmd.swap文件，用于保存数据：</strong></p>
-<p><strong>1、当编辑中的文件非正常关闭时，可用此.swp文件来恢复（非正常关闭时，不会被删除，所以提示存在.swap文件）；</strong></p>
-<p><strong>2、当编辑文件正常关闭时，此.swp文件会被删除；</strong></p>
-<p>解决办法：</p>
-<p>你可以使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -r</span><br></pre></td></tr></table></figure>
-
-<p>来查看当前目录下的所有swp文件 </p>
-<p>你也可以使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim -r filename</span><br></pre></td></tr></table></figure>
-
-<p>来恢复文件，这样上次意外退出没有保存的修改，就会覆盖文件。</p>
-<p>然后用rm 命令删除交换文件。</p>
-<p>rm就可以了，不过要加两个参数-rf 即：rm -rf 目录名字</p>
-<p>-r 就是向下递归，不管有多少级目录，一并删除（只删除一个文件不用 -r）</p>
-<p> -f 就是直接强行删除，不作任何提示的意思 </p>
-<p>如果你不想vim产生交换文件，可以使用如下命令禁止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set noswapfile</span><br></pre></td></tr></table></figure>
-
-<p>也可以使用以下命令，设置生成交换文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set swapfile</span><br></pre></td></tr></table></figure>
-
-<p>注意，以上设置仅针对当前文件生效。</p>
-<p>注：.swp文件是个隐藏文件，一般的 ls -l 命令是查看不到的，所以要用 ll -a 命令查看</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/06/vim/" data-id="ckcrh5pcs00047seldhp5a0j0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/05/linux/" class="article-date">
-  <time datetime="2020-07-05T05:50:45.000Z" itemprop="datePublished">2020-07-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/linux/">多用户多任务操作系统</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响 </p>
-<p> 个人计算机操作系统早期一般都是单用户操作系统，其主要特点是在某一时间为单个用户服务。早期的DOS操作系统是单用户单任务操作系统，Windows XP则是单用户多任务操作系统。现在常用的Windows操作系统都是多用户、多任务的操作系统，使用最广泛的win7，win10都是多用户，多任务操作系统。 </p>
-<p> /boot 这是个目录， 可以分成一个分区，然后挂载到/boot目录， 也可以只用一个/分区， 里面会有boot目录的，保存的是引导文件，内核等</p>
-<p>/boot分区就是操作系统的内核及在引导过程中使用的文件，一般是几年前的版本要求划分的一个区，大小为100MB左右，但现在的新版本都不需要对这个分区进行单独划分，也就是说你完全可以不分/boot。<br>安装Linux只要求两个基本分区，即根分区及交换分区，如果你的磁盘空间足够大，可以多划分空间给根分区，你也可以把常用的目录新建到桌面，如下载的软件包，放到桌面不影响你进入Linux系统的速度，当然这要求你有足够大的根分区。</p>
-<p> 曾经给/boot一个很小的分区是有十分充足的理由的，因为在二十几年前，BIOS只能认一个1024柱面的硬盘，如果启动文件放在0-1023（从0开始数，共1024个柱面）之外，BIOS就无法读取启动所需的文件，从而无法启动。为了兼容这种BIOS，就需要在磁盘前端分出一个小分区专门来存储启动文件。<br>但是现在，应该是找不到那么古老的主板了，即使能找到，也无法安装现在的linux了。<br>100MB的boot分区，有什么害处呢？<br>太小了，放不下现在启动所需的文件了。现在的linux，留下两个内核是很正常的，如果新内核有什么问题，还可以用老内核。这台机器上现在有两个版本的linux内核（3.13.0-85 和 4.4.0.21），一共多大呢？<br>代码:<br>ls -al –block-size=M /boot<br>total 98M<br>看上去两个内核100MB勉强够用，但是现在的启动文件是越来越大的，例如3.13的initrd是29M，但4.4的initrd有35M，下一次升级内核，100MB就不够用了。<br>另外在Debian系的Linux发行版上，还有另一个问题，老旧的内核不会被自动清除。上次手动清理冗余内核的时候，/boot已经达到了700+MB。/boot分区满了，内核就无法安装，引发问题。<br>所以，不要划分/boot分区。 </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/05/linux/" data-id="ckcrh5pcq00037selcbj74esz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-glibc" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/03/glibc/" class="article-date">
-  <time datetime="2020-07-03T11:08:51.000Z" itemprop="datePublished">2020-07-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/03/glibc/">glibc</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="c语言库函数和编译器"><a href="#c语言库函数和编译器" class="headerlink" title="c语言库函数和编译器"></a>c语言库函数和编译器</h1><p>C标准库，顾名思义既然是标准，就是由标准组织制定的。是由“美国国家标准协会（American National Standards Institute,ANSI）”为了规范C语言库而制定的标准。在最初，各个大学各个公司使用的C语言库都不尽相同，造成相互移植非常困难，在这个背景下，制定了这个标准。</p>
-<p>C运行库，是和平台相关的，即和操作系统相关的。它由不同操作系统不同开发平台提供不同的C运行库。但是C运行库的部分实现是基于C标准库的，即C运行库是各个操作系统各个开发工具根据自身平台开发的库，某种程度上，可以说C运行库是C标准库的一个扩展库，只是加了很多C标准库所没有的与平台相关的或者不相关的库接口函数。举例子如：c标准库的strcpy函数负责字符串的拷贝，但是由于缺少对目地字符串缓冲区大小的控制，极有可能导致缓冲区溢出（大量的缓冲区溢出攻击都是由于这种漏洞而产生的）；相反，Windows提供了能够实现同样功能的安全的字符串拷贝函数，减少了缓冲区攻击的可能，strcpy_s。这些函数是以c运行库的方式提供的，当然，不同的操作系统，c运行时库可能不同，但是对c标准库的支持是完全一致的，也就是说，在不同的操作系统上，使用同一个c标准库的函数必然产生一致的结果。</p>
-<p>任何一个C程序要想要得到实现，都离不开背后的一套庞大的代码来进行支持（至少包括入口函数，以及其所依赖的函数所构成的函数集合等），这样一套背后代码被称为运行库，C语言的运行库叫做CRT（Runtime Library）。</p>
-<p>C语言的运行库某种程度上就是C语言的程序和不同操作系统平台之间的抽象层。它将不同的操作系统API抽象成相同的库函数（银弹理论的又一次胜利）。比如可以在不同OS上使用fread来读取文件，而事实上，fread在不同的操作系统平台下的实现是不同的，但作为运行库的使用者我们不需要关心这一点。<br>虽然各个平台下的C语言运行库提供了很多功能，但很多时候它们毕竟有限，比如用户的权限控制、操作系统线程创建等都不是属于标准的C语言运行库，于是我们不得不通过其他的办法，诸如绕过C语言运行直接调用操作系统API或使用其他的库。</p>
-<p>值得注意的是，像线程操作这样的功能并不是标准的C语言运行库的一部分，但是glibc和MSVCRT都包含了线程操作的库函数。比如glibc有一个可选的pthread库中pthread_create()函数可以用来创建线程；而MSVCRT中可以使用_beginthread()函数来创建线程。所以glibc和MSVCRT都是标准C语言运行库的超集，它们各自对C标准库进行了一些扩展。</p>
-<p>总结一下，C标准库就是任何平台都可以使用的基本C语言库。而CRT除了将C标准库加入所属范围外，还扩展了与平台相关的接口库，这些接口实现根据不同平台调用不同平台的操作系统API。</p>
-<p>如下图所示，采用C标准库编写的程序可以应用到windows平台，也可以应用到linux平台；而用CRT另外与平台相关的库函数编写的应用程序不能跨平台运行。</p>
-<p> <a href="https://blog.csdn.net/qq_21950929/article/details/79754552" target="_blank" rel="noopener">https://blog.csdn.net/qq_21950929/article/details/79754552</a> </p>
-<p>  glibc是gnu发布的c运行库。glibc是linux 系统中最底层的api（应用程序开发接口），几乎其它任何的运行库都会倚赖于glibc。 </p>
-<p>msvc crt则是windows</p>
-<p>C语言编译器</p>
-<p>  1.MSVC是指微软的VC编译器 </p>
-<p>2.gcc系列</p>
-<p>MinGW项目<code>（[官方网站](http://www.mingw.org/)）是</code>Minimalist GNU for Windows`的缩写，是<strong>本地Windows应用程序的极简主义开发环境</strong>，该项目旨在<strong>将gcc编译器移植到Windows系统上</strong> 。</p>
-<p> cygwin/gcc和MinGW都是gcc在windows下的编译环境</p>
-<p>cygwin/gcc完全可以和在linux下的gcc化做等号，这个可以从boost库的划分中可以看出来端倪，cygwin下的gcc和linux下的gcc完全使用的是相同的Toolsets。</p>
-<p>所以完全可以和linux一起同步更新gcc版本，而不用担心问题，并且在cygwin/gcc做的东西（不用win32的）可以无缝的用在linux下，没有任何问题。是在windows下开发linux程序的一个很好的选择。</p>
-<p>但是 <strong>在cygwin/gcc下编译出来的程序，在windows执行必须依赖cygwin1.dll，并且速度有些慢，</strong> 如果不想依赖这个东西的化，必须在gcc的编译选项中加入-mno-cygwin。加入这个选项其实gcc编译器就会自动的选择在安装cygwin/gcc时安上的mingw,这个mingw就是gcc的一个交叉编译。</p>
-<p>对于mingw作为gcc在windows上的一个实现，不像cygwin的gcc在一个模拟linux上运行，同时相当一部分linux的工具不能够使用。</p>
-<p>根据以上的分析，如果在windows开发linux程序，cygwin是很好的选择。如果你开发的程序不介意有一个cygwin1.dll的话，也是可以选择cygwin的。如果你是想开发windows下的程序，还要必须用gcc的化，mingw是很好的一个选择 </p>
-<p>MinGW与Cygwin:原理与比较**</p>
-<p>首先 MinGW 和 Cygwin 都可以用来跨平台开发。</p>
-<p>MinGW 是 Minimalistic GNU for Windows 的缩写，也就是 Win 版的 GCC。</p>
-<p>Cygwin 则是全面模拟了Linux的接口，提供给运行在它上面的的程序使用，并提供了大量现成的软件，更像是一个平台。</p>
-<p>相对的 MingW 也有一个叫 MSys（Minimal SYStem）的子项目，主要是提供了一个模拟 Linux 的 Shell 和一些基本的 Linux 工具。因为编译一个大型程序，光靠一个 GCC 是不够的，还需要有 Autoconf 等工具来配置项目，所以一般在 Windows 下编译 ffmpeg 等 Linux 下的大型项目都是通过Msys 来完成的，当然 Msys 只是一个辅助环境，根本的工作还是 MingW 来做的。</p>
-<p>基本原理<br>修改编译器，让 Window 下的编译器把诸如 fork 的调用翻译成等价的形式，这就是 MingW 的做法.<br>修改库，让 Window 提供一个类似 UNIX 提供的库，他们对程序的接口如同 UNIX 一样，而这些库，当然是由 win32 的 API 实现的，这就是 Cygwin 的做法.<br>用 MingW 和 Cygwin 编译出来的程序的区别<br>首先 MingW 和 Cygwin 都不能让 Linux 下的程序直接运行在 Windows 上，必需通过源代码重新编译。</p>
-<p>现代操作系统包括 Windows 和 Linux 的基本设计概念像进程线程地址空间虚拟内存这些都是大同小异的，之所以二者上的程序不能兼容，主要是它们对这些功能具体实现上的差异，首先是可执行文件的格式，Window 使用 PE 的格式，并且要求以 .EXE 为后缀名。Linux 则使用 Elf。其次操作系统的 API 也不一样，如 Windows 用 CreateProcess() 创建进程，而 Linux 使用 fork()。</p>
-<p>所以要移植程序必然要在这些地方进行改变，MingW 有专门的 W32api 头文件，来把代码中 Linux 方式的系统调用替换为对应的 Windows 方式。而 Cygwin 则通过 cygwin1.dll 这个文件来实现这种 API 的转换，并模拟一个 Linux 系统调用接口给程序，程序依然以 Linux 的方式调用系统 API，只不过这个 API 在 cygwin1.dll 上，cygwin1.dll 再调用 Windows 对应的实现，来把结果返回给程序。<br>二者生成的程序都是能在 Windows 上运行的 EXE 文件，显然都是 PE 格式，用一个PE格式查看工具检查一下就能发现，Cygwin 生成的程序依然有 fork() 这样的 Linux 系统调用，但目标库是 cygwin1。而 MingW 生成的程序，则全部使用从 KERNEL32 导出的标准 Windows 系统 API。</p>
-<p>这样看来用 MingW 编译的程序性能会高一点，而且也不用带着那个接近两兆的 cygwin1.dll 文件。</p>
-<p>但 Cygwin 对 Linux 的模拟比较完整，甚至有一个 Cygwin X 的项目，可以直接用 Cygwin 跑 X。</p>
-<p>另外 Cygwin 可以设置 -mno-cygwin 的 flag，来使用 MingW 编译。</p>
-<p>而与 Cygwin 更有可比性的 MSys 上的工具也是通过 Cygwin 这种模拟的方式来提供的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/03/glibc/" data-id="ckc6b406i0001wwelavgj02n0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-图" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/03/%E5%9B%BE/" class="article-date">
-  <time datetime="2020-07-03T01:37:47.000Z" itemprop="datePublished">2020-07-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/03/%E5%9B%BE/">图</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一.无根图转化为有根图</p>
-<p>#include <iostream><br>#include <vector></p>
-<p>using namespace std;</p>
-<p>#define MAX 1000001</p>
-<p>vector<int> G[MAX];<br>int P[MAX];</p>
-<p>void inputTree(int n)<br>{<br>    int u, v; //存放两个节点编号</p>
-<pre><code>//输入边信息
-for (int i = 0; i &lt; n-1; ++i)
-{
-    cin &gt;&gt; u &gt;&gt; v;
-    G[u].push_back(v);
-    G[v].push_back(u);
-}</code></pre><p>}</p>
-<p>//u为当前节点,fa为它的父节点<br>void dfs(int u, int fa)<br>{a<br>    int d = G[u].size();</p>
-<pre><code>for (int i = 0; i &lt; d; ++i)
-{
-    int v = G[u][i];
-
-    if (v != fa)
-        dfs(v, P[v] = u);
-}</code></pre><p>}</p>
-<p>int main()<br>{<br>    int n; //节点数<br>    int root; //根节点编号<br>    cin &gt;&gt; n;<br>    inputTree(n);</p>
-<pre><code>cin &gt;&gt; root;
-P[root] = -1;
-dfs(root, P[root]);
-
-//输出
-for (int i = 0; i &lt; n; ++i)
-{
-    cout &lt;&lt; &quot;R[&quot; &lt;&lt; i &lt;&lt; &quot;] : &quot; &lt;&lt; P[i] &lt;&lt; endl;
-}
-
-return 0;</code></pre><p>}</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/03/%E5%9B%BE/" data-id="ckc6b406l0002wwelc4vqanej" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-机器码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/" class="article-date">
-  <time datetime="2020-06-28T12:00:30.000Z" itemprop="datePublished">2020-06-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/">机器码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>编译器是想滚雪球一样滚出来的，一开始用机器语言写一个很功能有限的汇编器（汇编接近机器语言，几乎就是简单的替换，比较好写），然后用它编译更强大的汇编器/编译器。更高级的语言由稍微低级点的语言编写，然后发展到合适的程度之后，某些语言实现了自举，即自己编译自己的编译器。</p>
-<p>编译的结果是二进制文件，二进制文件其实是和系统关系并没有那么大，只是一个内存的镜像。具体的Windows或者Linux之间不同的只是封装格式PE/EFI的区别，这些信息只是用来告诉系统该怎么加载这个镜像而已，自己写一个操作系统来加载RAW内存镜像，这样的程序也是可以运行的。如果一个程序没有用系统提供的API，能够直接访问硬件中断的话就和系统无关了。不过现在的系统都有保护，不允许直接调用硬件中断，都是调用系统的API，系统再调用硬件，来执行。</p>
-<p>作者：xuzhenglun<br>链接：<a href="https://segmentfault.com/q/1010000004105427#answer-1020000004106569" target="_blank" rel="noopener">https://segmentfault.com/q/1010000004105427#answer-1020000004106569</a><br>来源：SegmentFault 思否<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<p> 语言和系统都是运行在CPU上的，不是语言运行在系统里。系统应该被看成类库和框架。 </p>
-<p>编程语言是一种可执行程序的表达方式，编译器把编程语言的表达方式转换为可执行的程序，而编译器做转换的过程，可以操作系统相关(也就是转换出的程序运行在特定操作系统上)，也可以操作系统无关(直接在裸机运行)。而操作系统，本身是一个程序，也可以是编程语言来表达的(编译后通常操作系统无关)，也可以不是(直接写机器码)，而操作系统这个特殊的程序，提供了库，硬件驱动，运行时环境，框架等，是为了让运行在其上的程序写得更容易</p>
-<p>不同cpu识别的机器码不同</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/28/%E6%9C%BA%E5%99%A8%E7%A0%81/" data-id="ckc6b40700003wwelcxk34ixy" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MB" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/27/MB/" class="article-date">
-  <time datetime="2020-06-27T13:52:09.000Z" itemprop="datePublished">2020-06-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/27/MB/">MB</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有的时候我会有点误解</p>
-<p>为什么类似steam的下载速度在5.6MB/s的时候，某些软件却有50Mb/s的速度？？？</p>
-<p>————————————————————————</p>
-<p>先直接上结论：</p>
-<p>1MB/s等于8Mbit/s</p>
-<p>Mbps=Mbit/s即兆比特每秒（1,000,000bit/s），Million bits per second的缩bai写——————————————————————————</p>
-<p>这是因为MB/s和Mb/s本来就不是一个单位。</p>
-<p>数据传输率的单位一般采用MB/s或Mbit/s，尤其在内部数据传输率上官方数据中更多的采用Mbit/s为单位。</p>
-<p>MB/s的含义是兆字节每秒，Mbit/s的含义是兆比特每秒，前者是指每秒传输的字节数量，后者是指每秒传输的比特位数。</p>
-<p>MB/s中的B字母是Byte的含义，虽然与Mbit/s中的bit翻译一样，都是比特，也都是数据量度单位，但二者是完全不同的。</p>
-<p>Byte是字节数，bit是位数，在计算机中每八位为一字节，也就是1Byte=8bit，是1：8的对应关系。因此1MB/s等于8Mbit/s。</p>
-<p>因此在在书写单位时一定要注意B字母的大小写，尤其有些人还把Mbit/s简写为Mb/s，此时B字母的大小真可以称为失之毫厘，谬以千里。</p>
-<p>——————————————————————————————————</p>
-<p>上面这是一般情况下MB/s与Mbit/s的对应关系，但在硬盘的数据传输率上二者就不能用一般的MB和Mbit的换算关系(1B=8bit)来进行换算。</p>
-<p>比如某款产品官方标称的内部数据传输率为683Mbit/s，此时不能简单的认为683除以8得到85.375，就认为85MB/s是该硬盘的内部数据传输率。因为在683Mbit中还包含有许多bit(位)的辅助信息，不完全是硬盘传输的数据，简单的用8来换算，将无法得到真实的内部数据传输率数值。</p>
-<p>——————————————————————————————————————</p>
-<p>计算光纤传输的真实速度：</p>
-<p>推广的，我们可以推出一些网络运营商的真实网络运营速度：</p>
-<p>如果网络服务商声称光纤的速度为“ 5M”</p>
-<p>他的下载真实速度为：</p>
-<p>首先网络运营商按照千进制来计算：</p>
-<p>即5M=5000Kbit/s</p>
-<p>1Byte=8bit.而我们常说的下载速度都指的是Byte/s </p>
-<p>因此电信所说的“5M”经过还换算后就成为了(5000/8)KByte/s=625KByte/s</p>
-<p>此外还要排除网络损耗以及线路衰减等原因</p>
-<p>因此真正的下载速度可能还不到600KB/S 不过只要是550KB/S以上都算正常</p>
-<p>本篇结束<br>————————————————<br>版权声明：本文为CSDN博主「TaoiR」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_40245756/article/details/83993772" target="_blank" rel="noopener">https://blog.csdn.net/qq_40245756/article/details/83993772</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/27/MB/" data-id="ckc6b406a0000wwelf6uigi1i" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-固件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/27/%E5%9B%BA%E4%BB%B6/" class="article-date">
-  <time datetime="2020-06-27T13:43:14.000Z" itemprop="datePublished">2020-06-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/27/%E5%9B%BA%E4%BB%B6/">固件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>作者：时国怀</p>
-<p>驱动和固件（firmware）都是代码，<strong>前者为软件服务，后者为硬件服务</strong>。</p>
-<p>在操作系统概念还不明确的时代，二者是没有明显区别的。</p>
-<p>但是随着计算机体系结构的发展，硬件的种类开始变多，操作系统的种类也变多了。</p>
-<p>这个时候，因为各种技术的、商业的原因，硬件厂商希望自己的硬件能被更多的软件厂商使用，所以就需要在硬件之上做一些封装，让自己的硬件操纵起来更容易，这个时候就要有firmware这种东西了，它简化了软件与硬件的交互。</p>
-<p>但是为什么不把fimware做的很完美，做的不需要驱动支持呢？因为有不同的操作系统。我不知道你对操作系统的理解是到什么程度？只知道Windows？还是还仅仅知道Linux？还是清楚Unix和FreeBSD是不同的系统？知道有RTOS？知道有上百种不同的内核？</p>
-<p>不同的操作系统，对于操作硬件的方式完全不同，在Windows里应用态是无法直接写IO端口的，而在嵌入式系统里，一般都不限制直接操作IO端口。所以，硬件厂商一方面为了自己的硬件能被软件更简单的使用，就需要写firmware，而另一方面为了兼容各种操作系统，又不能把firmware写的太死，必须预留足够的余地让软件自由发挥——软件的自由发挥就是驱动。</p>
-<p>不同操作系统的驱动是不能兼容的，原因就是驱动是为操作系统服务的，有的操作系统是单线程的，有些操作系统不允许动态申请内存，所以不同的操作系统要操作硬件，就要根据自身的特性编写对应的操作代码，这就是驱动存在的意义——适应系统需要。</p>
-<p>假如世界上只有一种操作系统，并且版本永远不会改变，那么firmware和驱动就可以融合在一起，但这只能一个不现实的梦想，要知道民用操作系统和工业控制操作系统差别是十分巨大的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/27/%E5%9B%BA%E4%BB%B6/" data-id="ckbxp3wzu0000g0elabqadg7b" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -770,7 +861,7 @@ return 0;</code></pre><p>}</p>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
     </div>
   </div>
 
@@ -783,23 +874,23 @@ return 0;</code></pre><p>}</p>
       <ul>
         
           <li>
-            <a href="/2020/09/26/C-std/">C++ std</a>
+            <a href="/2021/03/17/Hill/">Hill</a>
           </li>
         
           <li>
-            <a href="/2020/08/19/ida-pro/">ida pro</a>
+            <a href="/2021/03/16/matrix/">matrix</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/ssti/">ssti</a>
+            <a href="/2020/11/22/tenserflow-python/">tenserflow+python</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/google-hack/">google hack</a>
+            <a href="/2020/10/28/%E5%9B%BD%E7%8E%8B%E7%9A%84%E7%83%A6%E6%81%BC/">国王的烦恼</a>
           </li>
         
           <li>
-            <a href="/2020/08/06/cors/">cors</a>
+            <a href="/2020/10/25/%E5%9C%B0%E5%AE%AB/">地宫</a>
           </li>
         
       </ul>
@@ -814,7 +905,7 @@ return 0;</code></pre><p>}</p>
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
+      &copy; 2021 John Doe<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

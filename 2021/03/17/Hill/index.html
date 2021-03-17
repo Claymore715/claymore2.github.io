@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hill | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Hill 加密算法12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364import numpy as npdef encode(string, size):        #把 string 转换成 size x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hill">
+<meta property="og:url" content="http://yoursite.com/2021/03/17/Hill/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Hill 加密算法12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364import numpy as npdef encode(string, size):        #把 string 转换成 size x">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-17T15:23:19.000Z">
+<meta property="article:modified_time" content="2021-03-17T15:24:48.886Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Hill" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/17/Hill/" class="article-date">
+  <time datetime="2021-03-17T15:23:19.000Z" itemprop="datePublished">2021-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hill
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Hill-加密算法"><a href="#Hill-加密算法" class="headerlink" title="Hill 加密算法"></a>Hill 加密算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def encode(string, size):</span><br><span class="line"></span><br><span class="line">        #把 string 转换成 size x size 的 int32 numpy.ndarray</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # 分成 size 字的分段</span><br><span class="line">    blocks &#x3D; (string[i:i + size] for i in range(0, len(string), size))</span><br><span class="line">    # 将 a-z 编码为 0-25</span><br><span class="line">    return np.array([list(map(ord, block)) for block in blocks], dtype&#x3D;&#39;int32&#39;) - ord(&#39;a&#39;)</span><br><span class="line"></span><br><span class="line">def matrixMul(A, B):</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    res &#x3D; [[0] * len(B[0]) for i in range(len(A))]</span><br><span class="line">    for i in range(len(A)):</span><br><span class="line">        for j in range(len(B[0])):</span><br><span class="line">            for k in range(len(B)):</span><br><span class="line">                res[i][j] +&#x3D; A[i][k] * B[k][j]</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def modify(x):</span><br><span class="line">    return chr(x%26+ord(&#39;a&#39;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 要加密的信息</span><br><span class="line">msg &#x3D; &#39;cybercyber&#39;</span><br><span class="line"></span><br><span class="line"># 加密矩阵</span><br><span class="line">encryptermatrix &#x3D; [[10, 5, 12, 0, 0], [3, 14, 21, 0, 0], [8, 9, 11, 0, 0], [0, 0, 0, 11, 8], [0, 0, 0, 3, 7]]</span><br><span class="line">#print(encryptermatrix)</span><br><span class="line">print(encode(msg, 5))</span><br><span class="line"># 加密代码</span><br><span class="line">encrypted &#x3D; matrixMul(encode(msg, 5),encryptermatrix )#密文矩阵</span><br><span class="line">print(encrypted)</span><br><span class="line">encryptedlist &#x3D;sum(encrypted,[])#转一维</span><br><span class="line"></span><br><span class="line">cipher &#x3D; &#39;&#39;.join(map(modify, encryptedlist))#映射到字母</span><br><span class="line">print(cipher)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 解密矩阵decrypter。矩阵A的逆是(det A)^-1*伴随(A)</span><br><span class="line"></span><br><span class="line">inverseelement&#x3D;[0,1,0,9,0,21,0,15,0,3,0,19,0,0,0,7,0,23,0,11,0,5,0,17,0,25]#0到25在mod(26)下逆元</span><br><span class="line">det&#x3D;(int)(np.linalg.det(encryptermatrix))#求行列式</span><br><span class="line">#np.linalg.det(encryptermatrix)*np.linalg.inv(encryptermatrix为伴随矩阵</span><br><span class="line">decryptermatrix &#x3D;[[(round(z)*(inverseelement[det%26]))%26 for  z in  y ]for y in (np.linalg.det(encryptermatrix)*np.linalg.inv(encryptermatrix)).tolist()]</span><br><span class="line">#decrypter&#x3D;[[21,15,17,0,0],[23,2,16,0,0],[25,4,3,0,0],[0,0,0,7,18],[0,0,0,23,11]]</span><br><span class="line">print(decryptermatrix)</span><br><span class="line"># 解密代码</span><br><span class="line">decrypted &#x3D; matrixMul(encode(cipher, 5),decryptermatrix)</span><br><span class="line">decryptedlist&#x3D;sum(decrypted,[])#list转一维</span><br><span class="line"></span><br><span class="line"># 明文</span><br><span class="line">plain &#x3D; &#39;&#39;.join(map(modify,decryptedlist))#map对list批量操作</span><br><span class="line">print(plain)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/17/Hill/" data-id="ckmdlisxw0000lsel588c2cj0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/16/matrix/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">matrix</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1/" rel="tag">1</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/1/" style="font-size: 10px;">1</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/17/Hill/">Hill</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/16/matrix/">matrix</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/22/tenserflow-python/">tenserflow+python</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/28/%E5%9B%BD%E7%8E%8B%E7%9A%84%E7%83%A6%E6%81%BC/">国王的烦恼</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/25/%E5%9C%B0%E5%AE%AB/">地宫</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

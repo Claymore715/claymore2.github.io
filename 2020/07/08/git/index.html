@@ -15,8 +15,13 @@
 <meta property="og:description" content="一、git clone远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。  1$ git clone &lt;版本库的网址&gt;  比如，克隆jQuery的版本库。  1$ git clone https:&#x2F;&#x2F;github.com&#x2F;jquery&#x2F;jquery.git  该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2014/bg2014061202.jpg">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1249529/201710/1249529-20171025111734035-171097772.png">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1249529/201710/1249529-20171025111740348-1861677831.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1863913-4020d4095b1eb280.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/309/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1863913-3c2f8a9329096037.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1020/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1863913-66be4191fdb268f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/968/format/webp">
 <meta property="article:published_time" content="2020-07-08T14:06:22.000Z">
-<meta property="article:modified_time" content="2020-07-08T14:16:29.906Z">
+<meta property="article:modified_time" content="2021-02-25T11:40:14.802Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2014/bg2014061202.jpg">
@@ -254,7 +259,56 @@
 <p>上面命令使用<code>--force</code>选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用<code>--force</code>选项。</p>
 <p>最后，<code>git push</code>不会推送标签（tag），除非使用<code>--tags</code>选项。</p>
 <blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure></blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="上传本地代码及更新代码到GitHub教程"><a href="#上传本地代码及更新代码到GitHub教程" class="headerlink" title="上传本地代码及更新代码到GitHub教程"></a>上传本地代码及更新代码到GitHub教程</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><h2 id="上传本地代码"><a href="#上传本地代码" class="headerlink" title="上传本地代码"></a>上传本地代码</h2><h2 id="第一步：去github上创建自己的Repository，创建页面如下图所示："><a href="#第一步：去github上创建自己的Repository，创建页面如下图所示：" class="headerlink" title="第一步：去github上创建自己的Repository，创建页面如下图所示："></a>第一步：去github上创建自己的Repository，创建页面如下图所示：</h2><p><img src="https://images2017.cnblogs.com/blog/1249529/201710/1249529-20171025111734035-171097772.png" alt="img"></p>
+<h2 id="红框为新建的仓库的https地址"><a href="#红框为新建的仓库的https地址" class="headerlink" title="红框为新建的仓库的https地址"></a>红框为新建的仓库的https地址</h2><p><img src="https://images2017.cnblogs.com/blog/1249529/201710/1249529-20171025111740348-1861677831.png" alt="img"></p>
+<h2 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;# Test&quot; &gt;&gt; README.md</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：建立git仓库"><a href="#第三步：建立git仓库" class="headerlink" title="第三步：建立git仓库"></a>第三步：建立git仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：将项目的所有文件添加到仓库中"><a href="#第四步：将项目的所有文件添加到仓库中" class="headerlink" title="第四步：将项目的所有文件添加到仓库中"></a>第四步：将项目的所有文件添加到仓库中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<h2 id="第五步："><a href="#第五步：" class="headerlink" title="第五步："></a>第五步：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add README.md</span><br></pre></td></tr></table></figure>
+
+<h2 id="第六步：提交到仓库"><a href="#第六步：提交到仓库" class="headerlink" title="第六步：提交到仓库"></a>第六步：提交到仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;注释语句&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第七步：将本地的仓库关联到GitHub，后面的https改成刚刚自己的地址，上面的红框处"><a href="#第七步：将本地的仓库关联到GitHub，后面的https改成刚刚自己的地址，上面的红框处" class="headerlink" title="第七步：将本地的仓库关联到GitHub，后面的https改成刚刚自己的地址，上面的红框处"></a>第七步：将本地的仓库关联到GitHub，后面的https改成刚刚自己的地址，上面的红框处</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;zlxzlxzlx&#x2F;Test.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="第八步：上传github之前pull一下"><a href="#第八步：上传github之前pull一下" class="headerlink" title="第八步：上传github之前pull一下"></a>第八步：上传github之前pull一下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="第九步：上传代码到GitHub远程仓库"><a href="#第九步：上传代码到GitHub远程仓库" class="headerlink" title="第九步：上传代码到GitHub远程仓库"></a>第九步：上传代码到GitHub远程仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了。执行完后，如果没有异常，等待执行完就上传成功了。"><a href="#中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了。执行完后，如果没有异常，等待执行完就上传成功了。" class="headerlink" title="中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了。执行完后，如果没有异常，等待执行完就上传成功了。"></a>中间可能会让你输入Username和Password，你只要输入github的账号和密码就行了。执行完后，如果没有异常，等待执行完就上传成功了。</h2><h2 id="更新代码"><a href="#更新代码" class="headerlink" title="更新代码"></a>更新代码</h2><h2 id="第一步：查看当前的git仓库状态，可以使用git-status"><a href="#第一步：查看当前的git仓库状态，可以使用git-status" class="headerlink" title="第一步：查看当前的git仓库状态，可以使用git status"></a>第一步：查看当前的git仓库状态，可以使用git status</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：更新全部"><a href="#第二步：更新全部" class="headerlink" title="第二步：更新全部"></a>第二步：更新全部</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add *</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：接着输入git-commit-m-“更新说明”"><a href="#第三步：接着输入git-commit-m-“更新说明”" class="headerlink" title="第三步：接着输入git commit -m “更新说明”"></a>第三步：接着输入git commit -m “更新说明”</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;更新说明&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：先git-pull-拉取当前分支最新代码"><a href="#第四步：先git-pull-拉取当前分支最新代码" class="headerlink" title="第四步：先git pull,拉取当前分支最新代码"></a>第四步：先git pull,拉取当前分支最新代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<h2 id="第五步：push到远程master分支上"><a href="#第五步：push到远程master分支上" class="headerlink" title="第五步：push到远程master分支上"></a>第五步：push到远程master分支上</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="如何在Github上给别人的项目贡献代码"><a href="#如何在Github上给别人的项目贡献代码" class="headerlink" title="如何在Github上给别人的项目贡献代码"></a>如何在Github上给别人的项目贡献代码</h1><ul>
+<li><p>进入自己的主页，选择fork别人的项目（已修改过代码），然后点击</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1863913-4020d4095b1eb280.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/309/format/webp" alt="img"></p>
+<p>进入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pull request</span><br></pre></td></tr></table></figure>
+
+<p>页面，确认提交的更改，确认无误后，开始填写说明。</p>
+</li>
+</ul>
+<ul>
+<li><p>如下，点击<code>create pull request</code>来填写说明</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1863913-3c2f8a9329096037.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1020/format/webp" alt="img"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1863913-66be4191fdb268f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/968/format/webp" alt="img"></p>
+</li>
+</ul>
+<h1 id="fork后如何同步-源库-的新更新内容"><a href="#fork后如何同步-源库-的新更新内容" class="headerlink" title="fork后如何同步 源库 的新更新内容"></a>fork后如何同步 源库 的新更新内容</h1><p><a href="https://blog.csdn.net/qq1332479771/article/details/56087333" target="_blank" rel="noopener">https://blog.csdn.net/qq1332479771/article/details/56087333</a></p>
 
       
     </div>
@@ -318,7 +372,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
     </div>
   </div>
 
@@ -331,23 +385,23 @@
       <ul>
         
           <li>
-            <a href="/2020/09/26/C-std/">C++ std</a>
+            <a href="/2021/03/17/Hill/">Hill</a>
           </li>
         
           <li>
-            <a href="/2020/08/19/ida-pro/">ida pro</a>
+            <a href="/2021/03/16/matrix/">matrix</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/ssti/">ssti</a>
+            <a href="/2020/11/22/tenserflow-python/">tenserflow+python</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/google-hack/">google hack</a>
+            <a href="/2020/10/28/%E5%9B%BD%E7%8E%8B%E7%9A%84%E7%83%A6%E6%81%BC/">国王的烦恼</a>
           </li>
         
           <li>
-            <a href="/2020/08/06/cors/">cors</a>
+            <a href="/2020/10/25/%E5%9C%B0%E5%AE%AB/">地宫</a>
           </li>
         
       </ul>
@@ -362,7 +416,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
+      &copy; 2021 John Doe<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

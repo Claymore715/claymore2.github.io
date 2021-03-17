@@ -64,6 +64,412 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Hill" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/17/Hill/" class="article-date">
+  <time datetime="2021-03-17T15:23:19.000Z" itemprop="datePublished">2021-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/17/Hill/">Hill</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Hill-加密算法"><a href="#Hill-加密算法" class="headerlink" title="Hill 加密算法"></a>Hill 加密算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def encode(string, size):</span><br><span class="line"></span><br><span class="line">        #把 string 转换成 size x size 的 int32 numpy.ndarray</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # 分成 size 字的分段</span><br><span class="line">    blocks &#x3D; (string[i:i + size] for i in range(0, len(string), size))</span><br><span class="line">    # 将 a-z 编码为 0-25</span><br><span class="line">    return np.array([list(map(ord, block)) for block in blocks], dtype&#x3D;&#39;int32&#39;) - ord(&#39;a&#39;)</span><br><span class="line"></span><br><span class="line">def matrixMul(A, B):</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    res &#x3D; [[0] * len(B[0]) for i in range(len(A))]</span><br><span class="line">    for i in range(len(A)):</span><br><span class="line">        for j in range(len(B[0])):</span><br><span class="line">            for k in range(len(B)):</span><br><span class="line">                res[i][j] +&#x3D; A[i][k] * B[k][j]</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def modify(x):</span><br><span class="line">    return chr(x%26+ord(&#39;a&#39;))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 要加密的信息</span><br><span class="line">msg &#x3D; &#39;cybercyber&#39;</span><br><span class="line"></span><br><span class="line"># 加密矩阵</span><br><span class="line">encryptermatrix &#x3D; [[10, 5, 12, 0, 0], [3, 14, 21, 0, 0], [8, 9, 11, 0, 0], [0, 0, 0, 11, 8], [0, 0, 0, 3, 7]]</span><br><span class="line">#print(encryptermatrix)</span><br><span class="line">print(encode(msg, 5))</span><br><span class="line"># 加密代码</span><br><span class="line">encrypted &#x3D; matrixMul(encode(msg, 5),encryptermatrix )#密文矩阵</span><br><span class="line">print(encrypted)</span><br><span class="line">encryptedlist &#x3D;sum(encrypted,[])#转一维</span><br><span class="line"></span><br><span class="line">cipher &#x3D; &#39;&#39;.join(map(modify, encryptedlist))#映射到字母</span><br><span class="line">print(cipher)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 解密矩阵decrypter。矩阵A的逆是(det A)^-1*伴随(A)</span><br><span class="line"></span><br><span class="line">inverseelement&#x3D;[0,1,0,9,0,21,0,15,0,3,0,19,0,0,0,7,0,23,0,11,0,5,0,17,0,25]#0到25在mod(26)下逆元</span><br><span class="line">det&#x3D;(int)(np.linalg.det(encryptermatrix))#求行列式</span><br><span class="line">#np.linalg.det(encryptermatrix)*np.linalg.inv(encryptermatrix为伴随矩阵</span><br><span class="line">decryptermatrix &#x3D;[[(round(z)*(inverseelement[det%26]))%26 for  z in  y ]for y in (np.linalg.det(encryptermatrix)*np.linalg.inv(encryptermatrix)).tolist()]</span><br><span class="line">#decrypter&#x3D;[[21,15,17,0,0],[23,2,16,0,0],[25,4,3,0,0],[0,0,0,7,18],[0,0,0,23,11]]</span><br><span class="line">print(decryptermatrix)</span><br><span class="line"># 解密代码</span><br><span class="line">decrypted &#x3D; matrixMul(encode(cipher, 5),decryptermatrix)</span><br><span class="line">decryptedlist&#x3D;sum(decrypted,[])#list转一维</span><br><span class="line"></span><br><span class="line"># 明文</span><br><span class="line">plain &#x3D; &#39;&#39;.join(map(modify,decryptedlist))#map对list批量操作</span><br><span class="line">print(plain)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/17/Hill/" data-id="ckmdlisxw0000lsel588c2cj0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-matrix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/16/matrix/" class="article-date">
+  <time datetime="2021-03-16T06:18:37.000Z" itemprop="datePublished">2021-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/16/matrix/">matrix</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> NumPy 最重要的一个特点是其 N 维数组对象 ndarray，它是一系列同类型数据的集合，以 0 下标为开始进行集合中元素的索引。ndarray 对象是用于存放同类型元素的多维数组。ndarray 中的每个元素在内存中都有相同存储大小的区域。创建一个 ndarray 只需调用 NumPy 的 array 函数即可 </p>
+<p>有ndarray.tolist()</p>
+<p>map(function, array)对array元素批量操作</p>
+<p>sum(二维array,[])二维转一维</p>
+<p>1-D 矩阵 a=np.array([2,24,1,4,17])</p>
+<p>(2-D矩阵)  a=np.array([[2,24,1,4,17]])</p>
+<p>5*5(2-D矩阵) b=np.array([[10,5,12,0,0],[3,14,21,0,0],[8,9,11,0,0],[0,0,0,11,8],[0,0,0,3,7]])</p>
+<h3 id="一-矩阵A-B-A矩阵列数-B矩阵行数"><a href="#一-矩阵A-B-A矩阵列数-B矩阵行数" class="headerlink" title="一. 矩阵A*B, A矩阵列数=B矩阵行数"></a>一. 矩阵A*B, A矩阵列数=B矩阵行数</h3><h3 id="np-dot"><a href="#np-dot" class="headerlink" title="np.dot()"></a>np.dot()</h3><p>​     </p>
+<ul>
+<li><p>对二维矩阵，计算真正意义上的矩阵乘积。</p>
+</li>
+<li><p>对于一维矩阵，计算两者的内积</p>
+<p>​                  np.dot(a, b)//注意a，b顺序</p>
+<ul>
+<li>If both <em>a</em> and <em>b</em> are 1-D arrays, it is inner product of vectors (without complex conjugation).</li>
+<li>If both <em>a</em> and <em>b</em> are 2-D arrays, it is matrix multiplication, but using <a href="https://numpy.org/doc/stable/reference/generated/numpy.matmul.html#numpy.matmul" target="_blank" rel="noopener"><code>matmul</code></a> or <code>a @ b</code> is preferred.</li>
+<li>If either <em>a</em> or <em>b</em> is 0-D (scalar), it is equivalent to <a href="https://numpy.org/doc/stable/reference/generated/numpy.multiply.html#numpy.multiply" target="_blank" rel="noopener"><code>multiply</code></a> and using <code>numpy.multiply(a, b)</code> or <code>a * b</code> is preferred.</li>
+<li>If <em>a</em> is an N-D array and <em>b</em> is a 1-D array, it is a sum product over the last axis of <em>a</em> and <em>b</em>.</li>
+<li>If <em>a</em> is an N-D array and <em>b</em> is an M-D array (where <code>M&gt;=2</code>), it is a sum product over the last axis of <em>a</em> and the second-to-last axis of <em>b</em>:</li>
+</ul>
+</li>
+</ul>
+<h3 id="numpy-matmul（x1-x2）"><a href="#numpy-matmul（x1-x2）" class="headerlink" title="numpy.matmul（x1,x2）"></a><strong>numpy.matmul</strong>（x1,x2）</h3><p><strong>x1, x2</strong>  :array_like</p>
+<p>Input arrays, scalars not allowed.</p>
+<ul>
+<li>If both arguments are 2-D they are multiplied like conventional matrices.</li>
+<li>If either argument is N-D, N &gt; 2, it is treated as a stack of matrices residing in the last two indexes and broadcast accordingly.</li>
+<li>If the first argument is 1-D, it is promoted to a matrix by prepending a 1 to its dimensions. After matrix multiplication the prepended 1 is removed.</li>
+<li>If the second argument is 1-D, it is promoted to a matrix by appending a 1 to its dimensions. After matrix multiplication the appended 1 is removed.</li>
+</ul>
+<p>`</p>
+<p>matmul<code>differs from</code>dot` in two important ways:</p>
+<ul>
+<li>Multiplication by scalars is not allowed, use <code>*</code> instead.</li>
+<li>Stacks of matrices are broadcast together as if the matrices were elements, respecting the signature <code>(n,k),(k,m)-&gt;(n,m)</code>:</li>
+</ul>
+<h3 id="二-np-multiply-或"><a href="#二-np-multiply-或" class="headerlink" title="二. np.multiply()或 *"></a>二. np.multiply()或 *</h3><p>1.在Python中，实现两矩阵对应元素相乘（element-wise product），有2种方式，</p>
+<p>两矩阵大小要相同</p>
+<ul>
+<li>一个是np.multiply()</li>
+<li>另外一个是 *</li>
+</ul>
+<h3 id="三-np-arange"><a href="#三-np-arange" class="headerlink" title="三.np.arange()"></a>三.np.arange()</h3><p>函数返回一个有终点和起点的固定步长的排列，如[1,2,3,4,5]，起点是1，终点是6，步长为1。<br>参数个数情况： np.arange()函数分为一个参数，两个参数，三个参数三种情况<br>1）一个参数时，参数值为终点，起点取默认值0，步长取默认值1。<br>2）两个参数时，第一个参数为起点，第二个参数为终点，步长取默认值1。<br>3）三个参数时，第一个参数为起点，第二个参数为终点，第三个参数为步长。其中步长支持小数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#一个参数 默认起点0，步长为1 输出：[0 1 2]</span><br><span class="line">a &#x3D; np.arange(3)</span><br><span class="line"></span><br><span class="line">#两个参数 默认步长为1 输出[3 4 5 6 7 8]</span><br><span class="line">a &#x3D; np.arange(3,9)</span><br><span class="line"></span><br><span class="line">#三个参数 起点为0，终点为3，步长为0.1 输出[ 0.   0.1  0.2  0.3  0.4  0.5  0.6  0.7  0.8  0.9  1.   1.1  1.2  1.3  1.4 1.5  1.6  1.7  1.8  1.9  2.   2.1  2.2  2.3  2.4  2.5  2.6  2.7  2.8  2.9]</span><br><span class="line">a &#x3D; np.arange(0, 3, 0.1)</span><br></pre></td></tr></table></figure>
+
+<h3 id="四-numpy-reshape-a-newshape-order-’C’"><a href="#四-numpy-reshape-a-newshape-order-’C’" class="headerlink" title="四  numpy.reshape(a, newshape, order=’C’)"></a>四  numpy.reshape(a, newshape, order=’C’)</h3><p>1、a : 数组——需要处理的数据。</p>
+<p>2、newshape : 新的格式——整数或整数数组，如(2,3)表示2行3列。新的形状应该与原来的形状兼容，即行数和列数相乘后等于a中元素的数量。如果是整数，则结果将是长度的一维数组，所以这个整数必须等于a中元素数量。元组中其中一个数据可以为-1。在这种情况下，另一个值python会自动从根据第二个数值和剩余维度推断出来。</p>
+<p>3.order: 可选为(C, F, A)</p>
+<p>C: 按照行来填充</p>
+<p>F: 按照列的顺序来填充</p>
+<p>A: 按任意方向，(default)。 这里相当于行</p>
+<p> np.transpose(matrix_2) </p>
+<h3 id="五-numpy-ravel-a-order-’C’"><a href="#五-numpy-ravel-a-order-’C’" class="headerlink" title="五. numpy.ravel(a, order=’C’**)**"></a>五. <code>numpy.ravel</code><strong>(</strong>a<strong>,</strong> <em>order=’C’**</em>)**</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; np.array([[1, 2, 3], [4, 5, 6]])</span><br><span class="line">np.ravel(x)</span><br><span class="line">-&gt;array([1, 2, 3, 4, 5, 6])</span><br></pre></td></tr></table></figure>
+
+<h3 id="六-np-transpose-x"><a href="#六-np-transpose-x" class="headerlink" title="六.np.transpose(x)"></a>六.np.transpose(x)</h3><p>矩阵转置</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/16/matrix/" data-id="ckmdlisy50001lselh9hu1dtu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-tenserflow-python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/22/tenserflow-python/" class="article-date">
+  <time datetime="2020-11-22T07:13:09.000Z" itemprop="datePublished">2020-11-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/22/tenserflow-python/">tenserflow+python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 用pip -V可以查看版本，是大写的V </p>
+<p>系统环境变对全部用户起作用，而用户环境变量仅仅对当前用户起作用。</p>
+<p>Path`这个变量在用户变量和环境变量中都有：PATH是路径的意思，PATH环境变量中存放的值，就是一连串的路径。不同的路径之间，用英文的分号（;）分隔开。系统执行用户命令时，若用户未给出绝对路径，则首先在当前目录下寻找相应的可执行文件、批处理文件（另外一种可以执行的文件）等。若找不到，再依次在PATH保存的这些路径中寻找相应的可执行的程序文件。系统就以第一次找到的为准；</p>
+<p>C:\Users\aaa\AppData\Local\Programs\Python\Python37\Scripts;C:\Users\aaa\AppData\Local\Programs\Python\Python37;</p>
+<ol>
+<li>conda config –add channels <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</a> </li>
+<li>conda config –set show_channel_urls yes </li>
+</ol>
+<p>1、首先在所在系统中安装Anaconda。可以打开命令行输入conda -V检验是否安装以及当前conda的版本。</p>
+<p>2、conda常用的命令。</p>
+<p>  1）conda list 查看安装了哪些包。</p>
+<p>  2）conda env list 或 conda info -e 查看当前存在哪些虚拟环境</p>
+<p>  3）conda update conda 检查更新当前conda</p>
+<p>3、创建python虚拟环境。</p>
+<p>  使用 conda create -n your_env_name python=X.X（2.7、3.6等） 创建python版本为X.X、名字为your_env_name的虚拟环境。your_env_name文件可以在Anaconda安装目录envs文件下找到。</p>
+<p>4、使用激活(或切换不同python版本)的虚拟环境。</p>
+<p>  打开命令行输入python –version可以检查当前python的版本。</p>
+<p> 使用如下命令即可 激活你的虚拟环境(即将python的版本改变)。</p>
+<p>  Linux: source activate your_env_name(虚拟环境名称)</p>
+<p>  Windows: activate your_env_name(虚拟环境名称)</p>
+<p> 这是再使用python –version可以检查当前python版本是否为想要的。</p>
+<p>5、对虚拟环境中安装额外的包。</p>
+<p>  使用命令conda install -n your_env_name [package]即可安装package到your_env_name中</p>
+<p>6、关闭虚拟环境(即从当前环境退出返回使用PATH环境中的默认python版本)。</p>
+<p> 使用如下命令即可。</p>
+<p> Linux: source deactivate</p>
+<p> Windows: conda deactivate</p>
+<p>7、删除虚拟环境。</p>
+<p> 使用命令conda remove -n your_env_name(虚拟环境名称) –all， 即可删除。</p>
+<p>8、删除环境中的某个包。</p>
+<p> 使用命令conda remove –name $your_env_name  $package_name 即可。</p>
+<p> 如果不知道要找的包的确切名称，可以尝试使用 <code>conda search search_term</code> 进行搜索。例如，我知道我想安装 <a href="https://www.crummy.com/software/BeautifulSoup/" target="_blank" rel="noopener">Beautiful Soup</a>，但我不清楚确切的包名称。因此，我尝试执行 <code>conda search beautifulsoup</code>。 </p>
+<h3 id="安装tensorflow-2-0"><a href="#安装tensorflow-2-0" class="headerlink" title="安装tensorflow 2.0"></a>安装tensorflow 2.0</h3><p>目前tensorflow 2.0 alpha0是最新版，安装命令为：</p>
+<p>pip install tensorflow==2.0.0-alpha0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install tensorflow&#x3D;2.0.0</span><br></pre></td></tr></table></figure>
+
+<p> pip install –upgrade –ignore-installed tensorflow==1.15 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/11/22/tenserflow-python/" data-id="ckmdlisyb0002lsel5vd6d0wi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-国王的烦恼" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/28/%E5%9B%BD%E7%8E%8B%E7%9A%84%E7%83%A6%E6%81%BC/" class="article-date">
+  <time datetime="2020-10-27T23:58:00.000Z" itemprop="datePublished">2020-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/28/%E5%9B%BD%E7%8E%8B%E7%9A%84%E7%83%A6%E6%81%BC/">国王的烦恼</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="历届试题-国王的烦恼"><a href="#历届试题-国王的烦恼" class="headerlink" title="历届试题 国王的烦恼"></a>历届试题 国王的烦恼</h3><p>问题描述<br>C国由n个小岛组成，为了方便小岛之间联络，C国在小岛间建立了m座大桥，每座大桥连接两座小岛。两个小岛间可能存在多座桥连接。然而，由于海水冲刷，有一些大桥面临着不能使用的危险。</p>
+<p>如果两个小岛间的所有大桥都不能使用，则这两座小岛就不能直接到达了。然而，只要这两座小岛的居民能通过其他的桥或者其他的小岛互相到达，他们就会安然无事。但是，如果前一天两个小岛之间还有方法可以到达，后一天却不能到达了，居民们就会一起抗议。</p>
+<p>现在C国的国王已经知道了每座桥能使用的天数，超过这个天数就不能使用了。现在他想知道居民们会有多少天进行抗议。</p>
+<p>输入格式<br>输入的第一行包含两个整数n, m，分别表示小岛的个数和桥的数量。<br>接下来m行，每行三个整数a, b, t，分别表示该座桥连接a号和b号两个小岛，能使用t天。小岛的编号从1开始递增。</p>
+<p>输出格式<br>输出一个整数，表示居民们会抗议的天数。</p>
+<p>样例输入<br>4 4<br>1 2 2<br>1 3 2<br>2 3 1<br>3 4 3</p>
+<p>样例输出<br>2</p>
+<p>样例说明<br>第一天后2和3之间的桥不能使用，不影响。<br>第二天后1和2之间，以及1和3之间的桥不能使用，居民们会抗议。<br>第三天后3和4之间的桥不能使用，居民们会抗议。</p>
+<p>数据规模和约定<br>对于30%的数据，1&lt;=n&lt;=20，1&lt;=m&lt;=100；<br>对于50%的数据，1&lt;=n&lt;=500，1&lt;=m&lt;=10000；<br>对于100%的数据，1&lt;=n&lt;=10000，1&lt;=m&lt;=100000，1&lt;=a, b&lt;=n， 1&lt;=t&lt;=100000。</p>
+<hr>
+<h4 id="——-分割线之初入江湖-——"><a href="#——-分割线之初入江湖-——" class="headerlink" title="—— 分割线之初入江湖 ——"></a>—— 分割线之初入江湖 ——</h4><hr>
+<p>分析：<br>这道题一定要认真读题<br>题中有句话：“如果前一天两个小岛之间还有方法可以到达，后一天却不能到达了，居民们就会一起抗议”。这句话针对的仅仅是某两座小岛，而并非所有的小岛，举个例子，如下图所示：<br><img src="https://img-blog.csdnimg.cn/20200328173840562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第1天"><br>第1天，所有小岛均正常，无任何居民抗议<br>第2天，桥d损坏（如下图所示），此时小岛3和小岛4的居民由于在第1天能互通而现在不能互通，于是开始抗议。这是抗议的第1次。<br><img src="https://img-blog.csdnimg.cn/20200328174131940.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第2天"><br>第3天，桥c损坏（如下图所示），此时小岛1和小岛3仍能互通（通过小岛2），因此无任何居民抗议。此时你肯定有疑惑了，为什么小岛3和小岛4的居民不抗议呢？如果你产生了这样的疑惑，那么恭喜你，你和我犯了一样的错！兄弟，看清题目：“如果前一天两个小岛之间还有方法可以到达，后一天却不能到达了，居民们就会一起抗议”。在第2天的时候，小岛3和小岛4就已经不互通了，现在到了第3天它们依然不互通，所以根本不会抗议！<br><img src="https://img-blog.csdnimg.cn/20200328174332782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第3天"><br>因此我们得出结论：抗议与否是由两个小岛在两天之间是否发生了连通分支数增加的事件所决定的，换言之，一旦某个桥的损坏导致了两个小岛不互通，就仅仅是会抗议那一天，之后就没它们的什么事儿了。<br>都走到这步了，我们就继续演示这个过程吧<br>第4天，桥a损坏（如下图所示），此时小岛1和小岛3的居民由于在第3天能互通而现在不能互通，于是开始抗议。这是抗议的第2次。<br><img src="https://img-blog.csdnimg.cn/20200328174512144.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第4天"><br>第5天，此时桥b仍未损坏（如上图所示），由于在第4天的时候小岛1与小岛2、小岛1与小岛3、小岛3与小岛4均不能互通，而在第5天的情况依然如此，所以此时没有任何居民会抗议<br>第6天，桥b损坏（如下图所示），显然此时小岛2与小岛3的居民会抗议，这是抗议的第3次<br><img src="https://img-blog.csdnimg.cn/20200328174642280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第5天"><br>于是对于我给出的这个测试样例，程序最终应该输出3<br>上述演示过程实际上也给我们提供了一种解题的思路：模拟<br>怎么个模拟法？很简单，首先我们定义一个结构体Bridge（包含了桥的可用天数day，以及其连接的两座小岛的序号x和y），如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Bridge</span>		//代表桥 </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y;		<span class="comment">//表示桥连接的两个地方 </span></span><br><span class="line">	<span class="keyword">int</span> day;		<span class="comment">//表示这个桥的可用时限（天数）</span></span><br><span class="line">	Bridge()&#123; &#125;</span><br><span class="line">	Bridge(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c):x(a),y(b),day(c)&#123; &#125; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="number">1234567</span></span><br></pre></td></tr></table></figure>
+
+<p>然后把输入的多个桥的数据放进一个Bridge型数组中，并根据这些桥的可用时限进行一个升序排序<br>在录入桥的信息后，我们通过并查集来将把这些桥的联通情况记录下来<br>接着，就开始模拟上面的过程了<br>首先是一个循环i，该循环的次数为录入的桥的数量，循环里的内容如下：<br>模拟当前的桥bridge[i]损坏，并判断此时整个小岛所构成的并查集中是否有发生连通分支数的增加<br>如果是：说明桥bridge[i]的损坏会导致其连接的两个小岛的居民抗议，于是执行ans++<br>否则：说明桥bridge[i]的损坏不会使其连接的两个小岛的居民抗议，因此不执行ans++<br>最后输出答案即可<br>不过有一个情况似乎被遗漏掉了，接下来我们看一下另一组测试数据（情况如下）：<br><img src="https://img-blog.csdnimg.cn/20200328174833738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="特殊情况"><br>注意到可用时限为1天的桥有两座（桥b和桥c），那么在第2天时，小岛1和小岛3、小岛3和小岛4的居民就由第1天的能互通变成了现在的不互通，因此ans++。但是我们的程序是顺序执行的（通过一个循环），因此在执行的时候会将这种情况作为两次不同的情况来处理，于是会导致程序ans++两次。而实际上，尽管那一天是两座桥损坏，但是却是再同一天啊！因此居民只会抗议那一天！<br>处理这个情况很简单，我们只需要在i循环内，预先探测下一个桥的可用时限(bridge[i+1].day)。这样在循环时，我们每次都先用bridge[i+1].day来和当前桥的使用时限(bridge[i].day)进行对比，如果两个天数不一致，则直接模拟当前桥被损坏的过程；否则，跳过当前循环。这样一来就能避免在这种情况下执行两次（甚至更多的）ans++。</p>
+<p>这样的思路很清晰，也很简单。但是往往想法很美好，现实却很残酷。<br>对于i循环，其循环次数为桥的数量，题目给的最大的桥的数量为105<br>而在i循环内部，模拟桥bridge[i]损坏却相当麻烦，因为每当某座桥损坏，我们都必须重新将剩下的所有小岛进行一个Unite操作，然后再扫描所有小岛构成的并查集，以检测其连通分支数是否发生改变。在这个过程中，将剩下的小岛进行Unite操作是一个O(n)级别，扫描小岛构成的并查集也是一个O(n)级别。即，在i循环内部是一个2*O(n)级别的操作<br>综上，此种方法下，程序的时间复杂度在O(n2)级别，那么在105的极限情况下，程序必然超时无疑<br>因此我们必须换一种思路（个人认为，当换了这样的思路之后，整个题的大门就立刻被打开了）</p>
+<hr>
+<h4 id="——-分割线之踏雪寻梅-——"><a href="#——-分割线之踏雪寻梅-——" class="headerlink" title="—— 分割线之踏雪寻梅 ——"></a>—— 分割线之踏雪寻梅 ——</h4><hr>
+<p>题目要我们做的是求居民抗议的天数。我们如果从一开始去模拟一座桥一座桥的坏掉，那有可能遇到很坏的情况——在很后面才遇到那个割线（离散数学术语，表示当当前边被除去后，整个图的连通分支数就由1变为了2）。而你在每一次坏掉一座桥的时候都需要从头去联合这些桥以判断所有小岛的连通性，这样必然会超时。那我们完全可以逆向思维，不去模拟桥的坏掉，而是去模拟“桥的修建”！！！这样一来我们的程序就只需要循环一次去联合(unite)这些桥，一旦出现某座桥在进行Unite操作时，该桥的Unite操作导致了其连接的两个小岛的代表元发生变化（说明该桥是一条割线），就表示这个桥的损坏会使某两个小岛的居民由前一天的互通变为后一天的不互通，也就是说需要执行一次ans++。采用这样逆向修建的思路，我们就需要将给出的测试数据由桥的使用时限进行降序排序（此时使用时间最长的就是最开始被枚举的！因为它最晚坏，所以在逆向看来它是最先修建的）。<br>接下来我们用题目给的测试数据进行一个演示（已经进行了降序排序）：<br><img src="https://img-blog.csdnimg.cn/20200328175102223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="测试数据"><br>首先一开始（第4天），是4座互相孤立的小岛，此时所有居民均不互通，如下：<br><img src="https://img-blog.csdnimg.cn/20200328174642280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第4天"><br>① 时间来到第3天，小岛3和小岛4之间的桥被修建好（如下图所示），那么此时小岛3和小岛4的居民就由第4天的不互通变成了现在的互通。反过来就是在第3天时小岛3和小岛4的居民互通，但是在第4天就不互通了，因此这两座小岛上的居民会抗议，即ans++。<br><img src="https://img-blog.csdnimg.cn/20200328175302946.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第3天"><br>② 接下来是第2天，修建了小岛1和小岛2之间的桥（如下图所示）<br><img src="https://img-blog.csdnimg.cn/20200328175433699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第2天"><br>此时小岛1和小岛2的居民由第3天的不互通变成了现在的互通。反过来就是在第2天时小岛1和小岛2的居民互通，但是在第3天就不互通了，因此这两座小岛上的居民会抗议，即ans++。<br>现在有个问题，在天数为2的小桥中，还有一座啊！接下来程序继续扫描，遇到了同样是使用时限为2的另一座小桥，但是它连接的是小岛1与小岛3（此时情况如下）。<br><img src="https://img-blog.csdnimg.cn/20200328175556822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第2天"><br>根据上面的分析：小岛1和小岛3的居民由第3天的不互通变成了现在的互通。反过来就是在第2天时小岛1和小岛3的居民互通，但是在第3天就不互通了，因此这两座小岛上的居民会抗议，即ans++。<br>但是实际上，这一天依然还是第2天，也就是说实际情况是：第2天，桥a和桥b都在，小岛1和小岛2、小岛1和小岛3都是联通的，但是在第3天的时候，这两座桥都损坏了，于是小岛1、2、3彼此被分割开，因此这3座小岛的居民就开始抗议，但是仅抗议这1天，即ans++只执行一次。<br>由于我们的程序是顺序执行的，因此其会将这个情况视为两天不同的情况。我们如何规避？<br>通过一个lastDay变量即可，这个变量的作用是记录前一次某个桥的使用天数，如果在循环中，检测到当前桥的使用天数和lastDay不相等，并且将当前桥连接的两个小岛进行Unite操作后其确实使得这两个岛的代表元发生了改变，就说明此时需要执行ans++，否则一律不执行。</p>
+<p>③ 接下来时间来到第1天，此时所有小岛的连通情况如下图所示：<br><img src="https://img-blog.csdnimg.cn/20200328175721975.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RoZV9aRUQ=,size_16,color_FFFFFF,t_70" alt="第1天"><br>这一天，所有小岛之间是保持着连通性的，和第2天情况一样，所以这里不执行ans++。<br>此时i循环结束，输出ans=2<br>以上便是通过转换思路后得到的解题方法，可见其时间复杂度仅为O(n)，这在m=105的极限情况下仍能保持较好的性能，因此完全可行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int N&#x3D;10010;</span><br><span class="line">const int M&#x3D;100010;</span><br><span class="line">struct Bridge		&#x2F;&#x2F;代表桥 </span><br><span class="line">&#123;</span><br><span class="line">	int x,y;		&#x2F;&#x2F;表示桥连接的两个地方 </span><br><span class="line">	int day;		&#x2F;&#x2F;表示这个桥的可用时限（天数）</span><br><span class="line">	Bridge()&#123; &#125;</span><br><span class="line">	Bridge(int a,int b,int c):x(a),y(b),day(c)&#123; &#125; </span><br><span class="line">&#125;; </span><br><span class="line">Bridge bridge[M];	&#x2F;&#x2F;用于存储所有的桥 </span><br><span class="line">int pre[N];		   	&#x2F;&#x2F;用于存储每个小岛的“上级” </span><br><span class="line"></span><br><span class="line">void init(int n)</span><br><span class="line">&#123;</span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		pre[i]&#x3D;i;</span><br><span class="line">&#125;</span><br><span class="line">int find_pre(int n)</span><br><span class="line">&#123;</span><br><span class="line">	if(pre[n]&#x3D;&#x3D;n) return n;</span><br><span class="line">	else return pre[n]&#x3D;find_pre(pre[n]);</span><br><span class="line">&#125;</span><br><span class="line">bool unite(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	int rootx&#x3D;find_pre(x);</span><br><span class="line">	int rooty&#x3D;find_pre(y);</span><br><span class="line">	if(rootx!&#x3D;rooty)&#123;</span><br><span class="line">		pre[rootx]&#x3D;rooty;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	else return false;</span><br><span class="line">&#125;</span><br><span class="line">bool cmp(Bridge a,Bridge b)</span><br><span class="line">&#123; return a.day&gt;b.day; &#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int n,m,a,b,t;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	init(n);</span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;m;i++)&#123;</span><br><span class="line">		cin&gt;&gt;a&gt;&gt;b&gt;&gt;t;</span><br><span class="line">		bridge[i]&#x3D;Bridge(a,b,t);</span><br><span class="line">	&#125;</span><br><span class="line">	sort(bridge+1,bridge+1+m,cmp);</span><br><span class="line">	int ans&#x3D;0,lastDay&#x3D;0;							&#x2F;&#x2F;lastDay用于探测一次某个桥的生命时限 </span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		bool flag&#x3D;unite(bridge[i].x,bridge[i].y);	&#x2F;&#x2F;如果为真表示当前这两个岛未联通</span><br><span class="line">		if(flag &amp;&amp; bridge[i].day!&#x3D;lastDay)	 		&#x2F;&#x2F;未连通，且此桥的天数是第一次出现，那么就增加了抗议的天数 </span><br><span class="line">		&#123;</span><br><span class="line">			ans++;</span><br><span class="line">			lastDay&#x3D;bridge[i].day;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/28/%E5%9B%BD%E7%8E%8B%E7%9A%84%E7%83%A6%E6%81%BC/" data-id="ckmdlisyf0004lsel0rumene3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-地宫" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/25/%E5%9C%B0%E5%AE%AB/" class="article-date">
+  <time datetime="2020-10-25T06:21:45.000Z" itemprop="datePublished">2020-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/25/%E5%9C%B0%E5%AE%AB/">地宫</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>超时版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int MAX&#x3D;55;</span><br><span class="line">const int MOD&#x3D;1000000007; </span><br><span class="line">int n,m,k,ans;</span><br><span class="line">int map[MAX][MAX];</span><br><span class="line"></span><br><span class="line">void dfs(int x,int y,int maxValue,int num)</span><br><span class="line">&#123;</span><br><span class="line">	if(x&#x3D;&#x3D;n &amp;&amp; y&#x3D;&#x3D;m)&#123;</span><br><span class="line">		if(num&#x3D;&#x3D;k || (num&#x3D;&#x3D;k-1 &amp;&amp; maxValue&lt;map[x][y]))</span><br><span class="line">			ans++;</span><br><span class="line">		ans%&#x3D;MOD;</span><br><span class="line">	&#125;</span><br><span class="line">	if(x+1&lt;&#x3D;n)&#123;	&#x2F;&#x2F;可以继续向下走 </span><br><span class="line">		if(maxValue&lt;map[x][y]) dfs(x+1,y,map[x][y],num+1);	&#x2F;&#x2F;当前宝物价值大于前一个则可以拿 </span><br><span class="line">		dfs(x+1,y,maxValue,num);							&#x2F;&#x2F;当然也可以不拿 </span><br><span class="line">	&#125;</span><br><span class="line">	if(y+1&lt;&#x3D;m)&#123;	&#x2F;&#x2F;可以继续往右走 </span><br><span class="line">		if(maxValue&lt;map[x][y]) dfs(x,y+1,map[x][y],num+1);</span><br><span class="line">		dfs(x,y+1,maxValue,num);</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		for(int j&#x3D;1;j&lt;&#x3D;m;j++)</span><br><span class="line">			cin&gt;&gt;map[i][j];</span><br><span class="line">	dfs(1,1,-1,0);</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>记忆化搜索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">const int MAX&#x3D;55;</span><br><span class="line">const int K&#x3D;15; </span><br><span class="line">const int MOD&#x3D;1000000007; </span><br><span class="line">int n,m,k;</span><br><span class="line">int map[MAX][MAX];</span><br><span class="line">int dp[MAX][MAX][K][K];	&#x2F;&#x2F;dp[x][y][num][max]&#x3D;n表示当在位置x,y时，其手上共有num件宝物</span><br><span class="line">						&#x2F;&#x2F;其中价值最大的是max，从这个位置到终点共有n种取法（走的路线和拿的策略） </span><br><span class="line">int dfs(int x,int y,int num,int maxValue)</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F;记忆化（若在之前遍历过而已经得的了这个情况下的数据时，就不再继续dfs下去了） </span><br><span class="line">	if(dp[x][y][num][maxValue+1]!&#x3D;-1) &#x2F;&#x2F;由于maxValue的初始值必须为-1，在索引里最小为0，因此需要+1 </span><br><span class="line">		return dp[x][y][num][maxValue+1];</span><br><span class="line">	&#x2F;&#x2F;当到达出口时判断 </span><br><span class="line">	if(x&#x3D;&#x3D;n &amp;&amp; y&#x3D;&#x3D;m)&#123;</span><br><span class="line">		if(num&#x3D;&#x3D;k || num&#x3D;&#x3D;k-1&amp;&amp;map[x][y]&gt;maxValue) </span><br><span class="line">			return 1;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F;两种行走方式 </span><br><span class="line">	long long sum&#x3D;0;			&#x2F;&#x2F;用long long（最大为900多亿亿）保险 </span><br><span class="line">	if(x+1&lt;&#x3D;n)&#123;					&#x2F;&#x2F;如果可以往下走 </span><br><span class="line">		if(map[x][y]&gt;maxValue)	&#x2F;&#x2F;如果当前手中宝物最大值小于当前正在的这个点的宝物价值 </span><br><span class="line">			sum+&#x3D;dfs(x+1,y,num+1,map[x][y]);	&#x2F;&#x2F;则可以拿 </span><br><span class="line">		sum+&#x3D;dfs(x+1,y,num,maxValue); 			&#x2F;&#x2F;也可以不拿 </span><br><span class="line">	&#125;</span><br><span class="line">	if(y+1&lt;&#x3D;m)&#123;					&#x2F;&#x2F;如果可以往右走 </span><br><span class="line">		if(map[x][y]&gt;maxValue)</span><br><span class="line">			sum+&#x3D;dfs(x,y+1,num+1,map[x][y]);</span><br><span class="line">		sum+&#x3D;dfs(x,y+1,num,maxValue);</span><br><span class="line">	&#125;</span><br><span class="line">	return dp[x][y][num][maxValue+1]&#x3D;sum%MOD;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;k;</span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		for(int j&#x3D;1;j&lt;&#x3D;m;j++)</span><br><span class="line">			cin&gt;&gt;map[i][j];</span><br><span class="line">	memset(dp,-1,sizeof(dp));</span><br><span class="line">	dfs(1,1,0,-1);				&#x2F;&#x2F;特别注意：你的初始价值必须为-1，因为宝物的最小值是包括了0的 </span><br><span class="line">	cout&lt;&lt;dp[1][1][0][0]&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a href="https://blog.csdn.net/the_ZED/article/details/102971371?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param" target="_blank" rel="noopener">https://blog.csdn.net/the_ZED/article/details/102971371?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.channel_param</a> </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/25/%E5%9C%B0%E5%AE%AB/" data-id="ckmdlisye0003lseldgq66lzp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-剪格子" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/24/%E5%89%AA%E6%A0%BC%E5%AD%90/" class="article-date">
+  <time datetime="2020-10-24T05:16:56.000Z" itemprop="datePublished">2020-10-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/24/%E5%89%AA%E6%A0%BC%E5%AD%90/">剪格子</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[10][10];</span><br><span class="line">int dir[4][2]&#x3D;&#123;0,1,1,0,0,-1,-1,0&#125;;</span><br><span class="line">int vis[10][10];</span><br><span class="line">int vis2[10][10];</span><br><span class="line">int sum;</span><br><span class="line">int ans&#x3D;0x7fffffff;</span><br><span class="line">int n,m;&#x2F;&#x2F;</span><br><span class="line">int min1&#x3D;0x7fffffff;</span><br><span class="line">bool judge2(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    if(x&lt;0||y&lt;0||x&gt;n-1||y&gt;m-1)</span><br><span class="line">        return false;</span><br><span class="line">    if(vis[x][y]&#x3D;&#x3D;1||vis2[x][y]&#x3D;&#x3D;1)</span><br><span class="line">        return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">void print1()</span><br><span class="line">&#123;for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;vis[i][j]&lt;&lt;&quot; &quot;;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void print2()</span><br><span class="line">&#123;cout&lt;&lt;&quot;vis2&quot;&lt;&lt;endl;</span><br><span class="line">for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;vis2[i][j]&lt;&lt;&quot; &quot;;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">bool judge(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    if(x&lt;0||y&lt;0||x&gt;n-1||y&gt;m-1)</span><br><span class="line">        return false;</span><br><span class="line">    if(vis[x][y])</span><br><span class="line">        return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfs(int x,int y,int num,int cnt)</span><br><span class="line">&#123;</span><br><span class="line">    if(num&gt;sum&#x2F;2)</span><br><span class="line">        return ;</span><br><span class="line">    if(num&#x3D;&#x3D;sum&#x2F;2)</span><br><span class="line">    &#123; int sum2&#x3D;0;int flag&#x3D;0;</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">      &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;vis2[i][j]&#x3D;0;&#125;&#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">	for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;   if(flag&#x3D;&#x3D;1)break;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">           if(vis[i][j]&#x3D;&#x3D;0)</span><br><span class="line">           &#123; </span><br><span class="line">           </span><br><span class="line">           </span><br><span class="line">		              queue&lt; pair&lt;int,int&gt; &gt; q;</span><br><span class="line">           q.push(pair&lt;int,int&gt;(i,j));vis2[i][j]&#x3D;1;sum2++;</span><br><span class="line">           while(!q.empty())</span><br><span class="line">           &#123;pair&lt;int,int&gt; a1&#x3D;(pair&lt;int,int&gt;)q.front();q.pop();</span><br><span class="line">           for(int i&#x3D;0;i&lt;4;i++)</span><br><span class="line">          &#123;</span><br><span class="line">        int x1&#x3D;a1.first+dir[i][0];</span><br><span class="line">        int y1&#x3D;a1.second+dir[i][1];</span><br><span class="line">        if(judge2(x1,y1)&#x3D;&#x3D;true)</span><br><span class="line">        &#123;   vis2[x1][y1]&#x3D;1;sum2++;</span><br><span class="line">            q.push(pair&lt;int,int&gt;(x1,y1));</span><br><span class="line">        &#125;</span><br><span class="line">		   &#125;</span><br><span class="line">		   &#125; </span><br><span class="line">		   </span><br><span class="line">        </span><br><span class="line">		   if (sum2!&#x3D;m*n-cnt)  &#123;return;&#125;</span><br><span class="line">		   else &#123;flag&#x3D;1;break;&#125;</span><br><span class="line">		   for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">      &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;vis2[i][j]&#x3D;0;&#125;&#125;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        sum2&#x3D;0;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">        if(vis[0][0]&#x3D;&#x3D;0)</span><br><span class="line">        &#123;cnt&#x3D;n*m-cnt;</span><br><span class="line">		&#125;</span><br><span class="line">	ans&#x3D;min(ans,cnt);</span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;print1();</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i&#x3D;0;i&lt;4;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int xx&#x3D;x+dir[i][0];</span><br><span class="line">        int yy&#x3D;y+dir[i][1];</span><br><span class="line">        if(judge(xx,yy))</span><br><span class="line">        &#123;</span><br><span class="line">            vis[xx][yy]&#x3D;1;</span><br><span class="line">            dfs(xx,yy,num+a[xx][yy],cnt+1);</span><br><span class="line">            vis[xx][yy]&#x3D;0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void clear()</span><br><span class="line">&#123;for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[i][j]&#x3D;0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;m,&amp;n);</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;a[i][j]);</span><br><span class="line">            sum+&#x3D;a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;vis[i][0]&#x3D;1;</span><br><span class="line">        dfs(i,0,a[i][0],1);</span><br><span class="line">        clear();</span><br><span class="line">    &#125;</span><br><span class="line">    for(int j&#x3D;1;j&lt;m;j++)</span><br><span class="line">        &#123;vis[0][j]&#x3D;1;</span><br><span class="line">		dfs(0,j,a[0][j],1);</span><br><span class="line">		 clear();</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">   </span><br><span class="line">    printf(&quot;%d\n&quot;,ans);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[10][10];</span><br><span class="line">int dir[4][2]&#x3D;&#123;0,1,1,0,0,-1,-1,0&#125;;</span><br><span class="line">int vis[10][10];</span><br><span class="line">int vis2[10][10];</span><br><span class="line">int sum;</span><br><span class="line">int ans&#x3D;0x7fffffff;</span><br><span class="line">int n,m;&#x2F;&#x2F;</span><br><span class="line">int min1&#x3D;0x7fffffff;</span><br><span class="line">bool judge2(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    if(x&lt;0||y&lt;0||x&gt;n-1||y&gt;m-1)</span><br><span class="line">        return false;</span><br><span class="line">    if(vis[x][y]&#x3D;&#x3D;1||vis2[x][y]&#x3D;&#x3D;1)</span><br><span class="line">        return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">void print1()</span><br><span class="line">&#123;for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;vis[i][j]&lt;&lt;&quot; &quot;;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void print2()</span><br><span class="line">&#123;cout&lt;&lt;&quot;vis2&quot;&lt;&lt;endl;</span><br><span class="line">for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;vis2[i][j]&lt;&lt;&quot; &quot;;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">bool judge(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">    if(x&lt;0||y&lt;0||x&gt;n-1||y&gt;m-1)</span><br><span class="line">        return false;</span><br><span class="line">    if(vis[x][y])</span><br><span class="line">        return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfs(int x,int y,int num,int cnt)</span><br><span class="line">&#123;</span><br><span class="line">    if(num&gt;sum&#x2F;2)</span><br><span class="line">        return ;</span><br><span class="line">    if(num&#x3D;&#x3D;sum&#x2F;2)</span><br><span class="line">    &#123; int sum2&#x3D;0;int flag&#x3D;0;</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">      &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;vis2[i][j]&#x3D;0;&#125;&#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">	for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;   if(flag&#x3D;&#x3D;1)break;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">           if(vis[i][j]&#x3D;&#x3D;0)</span><br><span class="line">           &#123; cout&lt;&lt;&quot;xin&quot;&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;j&lt;&lt;&quot; faxian &quot;&lt;&lt;endl;</span><br><span class="line">           </span><br><span class="line">           </span><br><span class="line">		              queue&lt; pair&lt;int,int&gt; &gt; q;</span><br><span class="line">           q.push(pair&lt;int,int&gt;(i,j));vis2[i][j]&#x3D;1;sum2++;</span><br><span class="line">           while(!q.empty())</span><br><span class="line">           &#123;pair&lt;int,int&gt; a1&#x3D;(pair&lt;int,int&gt;)q.front();q.pop();</span><br><span class="line">           for(int i&#x3D;0;i&lt;4;i++)</span><br><span class="line">          &#123;</span><br><span class="line">        int x1&#x3D;a1.first+dir[i][0];</span><br><span class="line">        int y1&#x3D;a1.second+dir[i][1];</span><br><span class="line">        if(judge2(x1,y1)&#x3D;&#x3D;true)</span><br><span class="line">        &#123;   vis2[x1][y1]&#x3D;1;sum2++;</span><br><span class="line">            q.push(pair&lt;int,int&gt;(x1,y1));</span><br><span class="line">        &#125;</span><br><span class="line">		   &#125;</span><br><span class="line">		   &#125; </span><br><span class="line">		   </span><br><span class="line">        </span><br><span class="line">		   if (sum2!&#x3D;m*n-cnt)  &#123;cout&lt;&lt;&quot;sum2 wrong&quot;&lt;&lt;sum2&lt;&lt;&quot; &quot;&lt;&lt;cnt&lt;&lt;endl;cout&lt;&lt;&quot;vis1&quot;&lt;&lt;endl;print1();cout&lt;&lt;&quot;vis2 后&quot;;print2();cout&lt;&lt;endl;return;&#125;</span><br><span class="line">		   else &#123;flag&#x3D;1;break;&#125;</span><br><span class="line">		   for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">      &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;vis2[i][j]&#x3D;0;&#125;&#125;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        sum2&#x3D;0;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">        if(vis[0][0]&#x3D;&#x3D;0)</span><br><span class="line">        &#123;cnt&#x3D;n*m-cnt;</span><br><span class="line">		&#125;</span><br><span class="line">	ans&#x3D;min(ans,cnt);</span><br><span class="line">	cout&lt;&lt;&quot;cnt为&quot;&lt;&lt;cnt&lt;&lt;endl;</span><br><span class="line">	&#x2F;&#x2F;print1();</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i&#x3D;0;i&lt;4;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        int xx&#x3D;x+dir[i][0];</span><br><span class="line">        int yy&#x3D;y+dir[i][1];</span><br><span class="line">        if(judge(xx,yy))</span><br><span class="line">        &#123;</span><br><span class="line">            vis[xx][yy]&#x3D;1;</span><br><span class="line">            dfs(xx,yy,num+a[xx][yy],cnt+1);</span><br><span class="line">            vis[xx][yy]&#x3D;0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">void clear()</span><br><span class="line">&#123;for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            vis[i][j]&#x3D;0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;m,&amp;n);</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        for(int j&#x3D;0;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            scanf(&quot;%d&quot;,&amp;a[i][j]);</span><br><span class="line">            sum+&#x3D;a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i&#x3D;0;i&lt;n;i++)</span><br><span class="line">    &#123;vis[i][0]&#x3D;1;</span><br><span class="line">        dfs(i,0,a[i][0],1);</span><br><span class="line">        clear();</span><br><span class="line">    &#125;</span><br><span class="line">    for(int j&#x3D;1;j&lt;m;j++)</span><br><span class="line">        &#123;vis[0][j]&#x3D;1;</span><br><span class="line">		dfs(0,j,a[0][j],1);</span><br><span class="line">		 clear();</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line">   &#x2F;&#x2F; vis[0][0]&#x3D;1;</span><br><span class="line">   &#x2F;&#x2F; dfs(0,0,a[0][0],1);</span><br><span class="line">    printf(&quot;%d\n&quot;,ans);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/24/%E5%89%AA%E6%A0%BC%E5%AD%90/" data-id="ckmdlisyn0005lsel42jle5fq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-虚拟地址" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/08/%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80/" class="article-date">
+  <time datetime="2020-10-08T11:59:26.000Z" itemprop="datePublished">2020-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/08/%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80/">虚拟地址</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 实模式下的寻址方式“段基址+段偏移”的形式 </p>
+<p> 虚拟地址是Windows程序时运行在386保护模式下，这样程序访问<a href="https://baike.baidu.com/item/存储器/1583185" target="_blank" rel="noopener">存储器</a>所使用的<a href="https://baike.baidu.com/item/逻辑地址/3283849" target="_blank" rel="noopener">逻辑地址</a>称为虚拟地址 </p>
+<p> Windows 2000 使用基于<a href="https://baike.baidu.com/item/分页" target="_blank" rel="noopener">分页</a>机制的<a href="https://baike.baidu.com/item/虚拟内存" target="_blank" rel="noopener">虚拟内存</a>。每个进程有4GB的虚拟<a href="https://baike.baidu.com/item/地址空间" target="_blank" rel="noopener">地址空间</a>。基于分页机制，这4GB地址空间的一些部分被映射了<a href="https://baike.baidu.com/item/物理内存" target="_blank" rel="noopener">物理内存</a>，一些部分映射硬盘上的交换文件，一些部分什么也没有映射。程序中使用的都是4GB地址空间中的虚拟地址。而访问物理内存，需要使用<a href="https://baike.baidu.com/item/物理地址" target="_blank" rel="noopener">物理地址</a>。 </p>
+<p><a href="https://baike.baidu.com/item/物理地址" target="_blank" rel="noopener"><strong>物理地址</strong></a> (physical address): 放在寻址总线上的地址。放在寻址总线上，如果是读，电路根据这个地址每位的值就将相应地址的<a href="https://baike.baidu.com/item/物理内存" target="_blank" rel="noopener">物理内存</a>中的数据放到<a href="https://baike.baidu.com/item/数据总线" target="_blank" rel="noopener">数据总线</a>中传输。如果是写，电路根据这个地址每位的值就在相应地址的物理内存中放入数据总线上的内容。物理内存是以<a href="https://baike.baidu.com/item/字节" target="_blank" rel="noopener">字节</a>(8位)为单位<a href="https://baike.baidu.com/item/编址" target="_blank" rel="noopener">编址</a>的。</p>
+<p><strong>虚拟地址</strong> (virtual address): CPU启动保护模式后，程序运行在虚拟<a href="https://baike.baidu.com/item/地址空间" target="_blank" rel="noopener">地址空间</a>中。注意，并不是所有的“程序”都是运行在虚拟地址中。CPU在启动的时候是运行在实模式的，Bootloader以及内核在初始化页表之前并不使用虚拟地址，而是直接使用物理地址的。</p>
+<p>如果CPU寄存器中的分页标志位被设置，那么执行内存操作的<a href="https://baike.baidu.com/item/机器指令" target="_blank" rel="noopener">机器指令</a>时，CPU（准确来说，是<a href="https://baike.baidu.com/item/MMU" target="_blank" rel="noopener">MMU</a>，即Memory Management Unit，内存管理单元）会自动根据页目录和<a href="https://baike.baidu.com/item/页表" target="_blank" rel="noopener">页表</a>中的信息，把虚拟地址转换成物理地址，完成该指令。</p>
+<p> 如果是32位处理器，则内地址总线是32位的，与CPU执行单元相连（图中只是示意性地画了4条地址线），而经过MMU转换之后的外地址总线则不一定是32位的。也就是说，虚拟地址空间和物理地址空间是独立的，32位处理器的虚拟地址空间是4GB，而物理地址空间既可以大于也可以小于4GB。 </p>
+<p>CPU通过地址来访问内存中的单元，地址有虚拟地址和物理地址之分，如果CPU没有MMU（Memory Management Unit，内存管理单元），或者有MMU但没有启用，CPU核在取指令或访问内存时发出的地址将直接传到CPU芯片的外部地址引脚上，直接被内存芯片（以下称为物理内存，以便与虚拟内存区分）接收，这称为物理地址（Physical Address，以下简称PA）</p>
+<p>​                          </p>
+<p>如果CPU启用了MMU，CPU核发出的地址将被MMU截获，从CPU到MMU的地址称为虚拟地址（Virtual Address，以下简称VA），而MMU将这个地址翻译成另一个地址发到CPU芯片的外部地址引脚上，也就是将虚拟地址映射成物理地址</p>
+<p>​        虚拟内存：虚拟内存是一种逻辑上扩充物理内存的技术。基本思想是用软、硬件技术把内存与外存这两级存储器当做一级存储器来用。虚拟内存技术的实现利用了自动覆盖和交换技术。简单的说就是将硬盘的一部分作为内存来使用。</p>
+<p>  虚拟地址空间：在32位的i386 CPU的地址总线的是32位的，也就是说可以寻找到4G的地址空间。我们的程序被CPU执行，就是在0x00000000到0xFFFFFFFF这一段地址中。高2G的空间为内核空间，由操作系统调用，低2G的空间为用户空间，由用户使用。</p>
+<p>  CPU在寻址的时候，是按照虚拟地址来寻址，然后通过MMU(内存管理单元)将虚拟地址转换为物理地址。因为只有程序的一部分加入到内存中，所以会出现所寻找的地址不在内存中的情况（CPU产生缺页异常），如果在内存不足的情况下，就会通过页面调度算法来将内存中的页面置换出来，然后将在外存中的页面加入到内存中，使程序继续正常运行。</p>
+<p> 可以看出，虚拟地址空间和虚拟内存的一个关键的因素是MMU（内存管理单元）。</p>
+<p>  现在一个程序的执行现在可以分为3部分：</p>
+<p>  1：CPU需要执行的语句的虚拟地址。</p>
+<p>  2：程序装入内存的部分</p>
+<p>  3：程序再外存中的部分</p>
+<p>  因为CPU是通过时间片轮转的方法使不同的程序并发执行的。所以在某一时刻只有一个程序占据CPU资源，CPU的最大的寻址空间为4G，所以说可以将每个程序可以看做独立占据4G的内存（只是可以看成，但是它并没有占据实际的4G内存）。而CPU是将虚拟地址空间里面的代码执行，如果在内存中寻找不到所需要的页面，就需要到外存中寻找，外存的这一部分，我们可以当成内存来使用，这也就是虚拟内存。虚拟地址空间不等于虚拟内存。虚拟地址空间是一个空间，不是真正存在的，只是通过CPU的寻址虚拟出来的一个范围。而虚拟内存是实实在在的硬盘的空间。               </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/10/08/%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80/" data-id="ckmdlisyq0006lsel58u6bkj3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-C-std" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/26/C-std/" class="article-date">
@@ -117,6 +523,45 @@ for (i = 0; i &lt; s.length(); i++) {
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c[<span class="number">100</span>];</span><br><span class="line">gets(c);<span class="number">12</span></span><br></pre></td></tr></table></figure>
 
 <p>gets也会读取空格。利用puts输出即可。而如果使用: scanf(“%s”, c); 也是遇到空格停止读取。</p>
+<h1 id="【C-】STL之队列queue"><a href="#【C-】STL之队列queue" class="headerlink" title="【C++】STL之队列queue"></a><a href="https://www.cnblogs.com/wanglei5205/p/8630897.html" target="_blank" rel="noopener">【C++】STL之队列queue</a></h1><h1 id="include"><a href="#include" class="headerlink" title="# include"></a># include<queue></h1><ul>
+<li><p><strong>empty()</strong></p>
+</li>
+<li><ul>
+<li>当队列为空时，返回true</li>
+</ul>
+</li>
+<li><p><strong>size()</strong></p>
+</li>
+<li><ul>
+<li>返回队列内元素个数</li>
+</ul>
+</li>
+<li><p><strong>front()</strong></p>
+</li>
+<li><ul>
+<li>返回队首元素</li>
+</ul>
+</li>
+<li><p><strong>back()</strong></p>
+</li>
+<li><ul>
+<li>返回队尾元素</li>
+</ul>
+</li>
+<li><p><strong>push(x)</strong></p>
+</li>
+<li><ul>
+<li>将x压入队尾</li>
+</ul>
+</li>
+<li><p><strong>pop()</strong></p>
+</li>
+<li><ul>
+<li>弹出队首元素</li>
+</ul>
+</li>
+</ul>
+<p> <img src="http://images.cnitblog.com/i/617081/201405/092204364017544.jpg" alt="img"> </p>
 
       
     </div>
@@ -392,436 +837,6 @@ for (i = 0; i &lt; s.length(); i++) {
 
 
   
-    <article id="post-google-hack" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/google-hack/" class="article-date">
-  <time datetime="2020-08-07T02:16:04.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/google-hack/">google hack</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>vul—漏洞</p>
-<p>poc—证明存不存在漏洞</p>
-<p>exp—漏洞利用代demo</p>
-<p>cve—漏洞编号，漏洞字典，国际上的</p>
-<p>cnvd—漏洞编号，漏洞字典，咱们自己的</p>
-<p>0day—没打补丁，没公开的漏洞</p>
-<p>shellcode—也是一种payload</p>
-<p> payload（有效攻击负载）是包含在你用于一次漏洞利用（exploit）中的ShellCode中的主要功能代码 </p>
-<p>apt—Advanced Persistent Threat  高级可持续性攻击</p>
-<p>owaspbwa，vulhub</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/07/google-hack/" data-id="ckfjo92550001ywelddbghu30" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cors" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/06/cors/" class="article-date">
-  <time datetime="2020-08-06T03:49:03.000Z" itemprop="datePublished">2020-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/06/cors/">cors</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>面试问到数据交互的时候，经常会问跨域如何处理。大部分人都会回答JSONP，然后面试官紧接着就会问：“JSONP缺点是什么啊？”这个时候坑就来了，如果面试者说它支持GET方式，然后面试官就会追问，那如果POST方式发送请求怎么办？基础扎实一些的面试者会说，使用CORS跨域，不扎实的可能就摇摇头了。</p>
-<p>这还没结束，如果公司比较正规或者很在乎技术功底，你面试的又是重要岗位，HR还想砍你的工资，就会再补一刀，CORS跨域有什么问题呢？这时候能回答上来的就没几个了，就算是你答出来兼容性不好，需要IE10+浏览器,对方依然有话说，那兼容性怎么处理呢？应试者就没话了，要么被Pass掉，即便留下来，谈工资的时候就没底气了。</p>
-<p>CORS跨域实在是面试官pass一个人的利器。</p>
-<p>为什么会这样呢？</p>
-<p>1.遇到CORS请求的情况不多，开发者使用这个场景的很少，大部分都JSONP搞定了。</p>
-<p>2.开发者自身技能不扎实，偷懒心态，平常没有意识和意愿去提升自己的技术水平。</p>
-<p>3.相关的学习资料少、纯前端小白搭建可测试的环境难度大。</p>
-<p>面对这条拦路虎，我们今天就彻底解决掉它，让它不再是我们的软肋，而是彰显我们技术实力的亮点。</p>
-<p>首先，什么是CORS?</p>
-<p><img src="https://cdn.segmentfault.com/v-5f0a9217/global/img/squares.svg" alt="图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CORS是一个W3C标准，全称是&quot;跨域资源共享&quot;（Cross-origin resource sharing）。</span><br><span class="line">它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。</span><br></pre></td></tr></table></figure>
-
-<p>优缺点</p>
-<p>优点：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.支持POST以及所有HTTP请求</span><br><span class="line">2.安全性相对JSOP更高</span><br><span class="line">3.前端要做的事儿比较少</span><br></pre></td></tr></table></figure>
-
-<p>缺点：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.不兼容老版本浏览器，如IE9及其以下</span><br><span class="line">2.需要服务端支持</span><br><span class="line">3.使用起来稍微复杂了些</span><br></pre></td></tr></table></figure>
-
-<p>怎么用？</p>
-<p>前端部分：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;CORS跨域请求&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function createCORSRequest(method, url) &#123;</span><br><span class="line">            var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">            if (&quot;withCredentials&quot; in xhr) &#123;</span><br><span class="line">                xhr.open(method, url, true);</span><br><span class="line">            &#125; else if (typeof XDomainRequest !&#x3D; &quot;undefined&quot;) &#123;</span><br><span class="line">                xhr &#x3D; new XDomainRequest();</span><br><span class="line">                xhr.open(method, url);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                xhr &#x3D; null;</span><br><span class="line">            &#125;</span><br><span class="line">            return xhr;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        window.onload &#x3D; function () &#123;</span><br><span class="line">            var oBtn &#x3D; document.getElementById(&#39;btn1&#39;);</span><br><span class="line">            oBtn.onclick &#x3D; function () &#123;</span><br><span class="line">                var xhr &#x3D; createCORSRequest(&quot;get&quot;, &quot;http:&#x2F;&#x2F;wpdic.com&#x2F;cors.php&quot;);</span><br><span class="line">                if (xhr) &#123;</span><br><span class="line">                    xhr.onload &#x3D; function () &#123;</span><br><span class="line">                        var json &#x3D; JSON.parse(xhr.responseText);</span><br><span class="line">                        alert(json.a);</span><br><span class="line">                    &#125;;</span><br><span class="line">                    xhr.onerror &#x3D; function () &#123;</span><br><span class="line">                        alert(&#39;请求失败.&#39;);</span><br><span class="line">                    &#125;;</span><br><span class="line">                    xhr.send();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;获取数据&quot; id&#x3D;&quot;btn1&quot;&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注意点：</p>
-<p>1.上面代码兼容IE8,因为用了XDomainRequest</p>
-<p>2.其它代码你就当成XMLHttpRequset用，别考虑什么2.0不2.0的</p>
-<p>3.如果你想post数据，可以往 xhr.send()里面搞</p>
-<p>4.这里不建议大家研究”simple methdod”之类的知识，代码弄懂了会用就行，遇到问题了再查也不晚</p>
-<p>后台部分：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&#39;content-type:application:json;charset&#x3D;utf8&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Origin:*&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Methods:GET,POST&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Credentials: true&#39;);</span><br><span class="line">header(&#39;Access-Control-Allow-Headers:x-requested-with,content-type&#39;);</span><br><span class="line">$str &#x3D; &#39;&#123;&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3,&quot;d&quot;:4,&quot;e&quot;:5&#125;&#39;; </span><br><span class="line">echo $str;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注意点：</p>
-<p>1.Access-Control-Allow-Origin: <em>表示允许任何域名跨域访问，如果需要指定某域名才允许跨域访问，只需把Access-Control-Allow-Origin:</em>改为Access-Control-Allow-Origin:允许的域名,实际工作也要这么做2.Access-Control-Allow-Methods:GET,POST 规定允许的方法，建议控制严格些，不要随意放开DELETE之类的权限</p>
-<p>2.Access-Control-Allow-Credentials</p>
-<p>该字段可选。它的值是一个布尔值，表示是否允许发送Cookie。默认情况下，Cookie不包括在CORS请求之中。设为true，即表示服务器明确许可，Cookie可以包含在请求中，一起发给服务器。这个值也只能设为true，如果服务器不要浏览器发送Cookie，删除该字段即可。</p>
-<p>最后，面试常考问题：</p>
-<p>CORS和JSONP的应用场景区别？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CORS要求浏览器(&gt;IE10)和服务器的同时支持，是跨域的根本解决方法，由浏览器自动完成。优点在于功能更加强大支持各种HTTP Method，缺点是兼容性不如JSONP。</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/06/cors/" data-id="ckfjo925c0005ywel3dvbat3z" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-转义字符" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" class="article-date">
-  <time datetime="2020-08-05T10:05:51.000Z" itemprop="datePublished">2020-08-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/">转义字符</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#include &lt;stdio.h&gt;</p>
-<p>int main()<br>{ char s=’\x35’; //注意： \xhh为十六进制所代表的字符 （先转化为10进制，再对照ascll转化成字符） </p>
-<p>printf(“%c”,s);//输出5（16进制的35等于10进制的53，ascll表中对应字符’5’）<br>return 0;<br> } </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/05/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/" data-id="ckfjo925a0004ywel5k50fpbg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/31/django/" class="article-date">
-  <time datetime="2020-07-31T14:39:04.000Z" itemprop="datePublished">2020-07-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/31/django/">django</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  django-admin startproject 项目名  </p>
-<p>一个项目由很多个应用组成的，每一个应用完成一个功能模块。</p>
-<p>创建应用的命令如下：</p>
-<p>python manage.py startapp 应用名</p>
-<p>注意：创建应用时需要先进入项目目录。</p>
-<p>运行： python manage.py runserver  </p>
-<p>停止      ctrl c</p>
-<p>安装</p>
-<ol>
-<li><p>在dos命令行中输入 pip 如下命令进行安装：</p>
-<p>安装最新的版本的 Django 命令如下：</p>
-<p>pip install django</p>
-<p>安装 指定版本的 Django 命令如下：</p>
-<p>pip install django==1.10.3</p>
-</li>
-</ol>
-<ol start="2">
-<li><p>使用 show 来查看当前安装的 django库</p>
-<p>pip show django</p>
-</li>
-</ol>
-<ol start="3">
-<li><p>使用pip命令来 卸载 Django</p>
-<p>pip uninstall django</p>
-</li>
-</ol>
-<p> #代表网页中的一个位置，浏览器读取后就将该位置滚动到可视区域。在网页中为位置指定标识符方法有两个，一个是利用锚点，例如<a name='page1'></a>，另外可以使用id属性，例如<div id='page2'></div>。</p>
-<p>   #是用来指导浏览器动作的，http请求中是不包括#部分的，不会发送到服务器端。因此改变location.hash部分，浏览器不会发送请求重新加载页面。</p>
-<p>   但是改变location.hash会在浏览器的访问历史中增加一个记录，使用后退键时可以回到上一个浏览位置。利用这一点就可以解决ajax中无访问状态的问题，配合#和历史记录，就可以在无刷新的ajax中顺利往返于各个访问状态。</p>
-<p><img src="C:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200923211450992.png" alt="image-20200923211450992"></p>
-<p>下面来比较window.location.href和window.locaiton.hash的区别。</p>
-<p>​    （1）window.location.href</p>
-<p>​        得到和使用的是完整的url，比如window.location.href=”<a href="http://www.baidu.com”表示的是重新定向，页面跳转" target="_blank" rel="noopener">www.baidu.com”表示的是重新定向，页面跳转</a></p>
-<p>到新的页面。也可以通过window.location.href得到a标签的完整的href，比如<a href="#book">如果使用href，那</p>
-<p>么可以得到完整的链接（url）</p>
-<p>​    （2）window.location.hash</p>
-<p>​        得到的是锚链接。相比如href,通过window.location.hash并不会跳转到新的链接，只会在当前链接里面</p>
-<p>改变锚链。并且如果有<a href="#book">通过window.location.hash得不到完整的链接（URL），仅仅得到#book.</p>
-<p>window.location.hash简单应用</p>
-<p>一、#的涵义</p>
-<p>#代表网页中的一个位置。其右面的字符，就是该位置的标识符。比如，</p>
-<p>　　http://www.example.com/index.html#print</p>
-<p>就代表网页index.html的print位置。浏览器读取这个URL后，会自动将print位置滚动至可视区域。</p>
-<p>为网页位置指定标识符，有两个方法。一是使用锚点，比如<a name="print"></a>，二是使用id属性，比如<div id="print" >。</p>
-<p>二、HTTP请求不包括#</p>
-<p>#是用来指导浏览器动作的，对服务器端完全无用。所以，HTTP请求中不包括#。</p>
-<p>比如，访问下面的网址，</p>
-<p>　　<a href="http://www.example.com/index.html#print" target="_blank" rel="noopener">http://www.example.com/index.html#print</a></p>
-<p>浏览器实际发出的请求是这样的：</p>
-<p>　　GET /index.html HTTP/1.1</p>
-<p>　　Host: <a href="http://www.example.com/" target="_blank" rel="noopener">www.example.com</a></p>
-<p>可以看到，只是请求index.html，根本没有”#print”的部分。</p>
-<p>三、#后的字符</p>
-<p>在第一个#后面出现的任何字符，都会被浏览器解读为位置标识符。这意味着，这些字符都不会被发送到服务器端。</p>
-<p>比如，下面URL的原意是指定一个颜色值：</p>
-<p>　　<a href="http://www.example.com/?color=#fff" target="_blank" rel="noopener">http://www.example.com/?color=#fff</a></p>
-<p>但是，浏览器实际发出的请求是：</p>
-<p>　　GET /?color= HTTP/1.1</p>
-<p>　　Host: <a href="http://www.example.com/" target="_blank" rel="noopener">www.example.com</a></p>
-<p>可以看到，”#fff”被省略了。只有将#转码为%23，浏览器才会将其作为实义字符处理。也就是说，上面的网址应该被写成：</p>
-<p>　　<a href="http://example.com/?color=%23fff" target="_blank" rel="noopener">http://example.com/?color=%23fff</a></p>
-<p>四、改变#不触发网页重载</p>
-<p>单单改变#后的部分，浏览器只会滚动到相应位置，不会重新加载网页。</p>
-<p>比如，从</p>
-<p>　　<a href="http://www.example.com/index.html#location1" target="_blank" rel="noopener">http://www.example.com/index.html#location1</a></p>
-<p>改成</p>
-<p>　　<a href="http://www.example.com/index.html#location2" target="_blank" rel="noopener">http://www.example.com/index.html#location2</a></p>
-<p>浏览器不会重新向服务器请求index.html。</p>
-<p>五、改变#会改变浏览器的访问历史</p>
-<p>每一次改变#后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置。</p>
-<p>这对于ajax应用程序特别有用，可以用不同的#值，表示不同的访问状态，然后向用户给出可以访问某个状态的链接。</p>
-<p>值得注意的是，上述规则对IE 6和IE 7不成立，它们不会因为#的改变而增加历史记录。</p>
-<p>六、window.location.hash读取#值</p>
-<p>window.location.hash这个属性可读可写。读取时，可以用来判断网页状态是否改变；写入时，则会在不重载网页的前提下，创造一条访问历史记录。</p>
-<p>七、onhashchange事件</p>
-<p>这是一个HTML 5新增的事件，当#值发生变化时，就会触发这个事件。IE8+、Firefox 3.6+、Chrome 5+、Safari 4.0+支持该事件。</p>
-<p>它的使用方法有三种：</p>
-<p>　　window.onhashchange = func;</p>
-<p>　　&lt;body οnhashchange=”func();”&gt;</p>
-<p>　　window.addEventListener(“hashchange”, func, false);</p>
-<p>对于不支持onhashchange的浏览器，可以用setInterval监控location.hash的变化。</p>
-<p>八、Google抓取#的机制</p>
-<p>默认情况下，Google的网络蜘蛛忽视URL的#部分。</p>
-<p>但是，Google还规定，如果你希望Ajax生成的内容被浏览引擎读取，那么URL中可以使用”#!”，Google会自动将其后面的内容转成查询字符串_escaped_fragment_的值。</p>
-<p>比如，Google发现新版twitter的URL如下：</p>
-<p>　　<a href="http://twitter.com/#!/username" target="_blank" rel="noopener">http://twitter.com/#!/username</a></p>
-<p>就会自动抓取另一个URL：</p>
-<p>　　<a href="http://twitter.com/?_escaped_fragment_=/username" target="_blank" rel="noopener">http://twitter.com/?_escaped_fragment_=/username</a></p>
-<p>通过这种机制，Google就可以索引动态的Ajax内容。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/31/django/" data-id="ckfjo92580003ywel2kp533ij" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-在线算法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/" class="article-date">
-  <time datetime="2020-07-30T02:30:59.000Z" itemprop="datePublished">2020-07-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/">在线算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们常常会听到对于区间修改、区间查询等问题的处理时，大佬们口中说的“离线”，“在线”等名词，一开始自然是一脸蒙逼。</p>
-<p><strong>在线</strong>和<strong>离线</strong>可以简单的理解为<strong>对于所有的操作是否需要读入完毕</strong>。</p>
-<p>在线的要求是可以不用先知道所有的操作（类似询问、修改），边读入边执行，类似<strong>“走一步，做一步”</strong>的思想。</p>
-<p>离线则与在线相反，要求必须知道所有的操作，类似<strong>“记录所有步，回头再做”</strong>的思想，一般用Query[]记录所有操作。</p>
-<p>常见的在线算法：带有<strong>“可持久化”</strong>字样的（主席树（可持久化线段树）、可持久化字典树、etc），<del>其实正常写题时基本上都是在线的思路……</del></p>
-<p>常见的离线算法：整体二分、陈丹琦（CDQ）分治、莫队算法</p>
-<p>对于正常的题目来讲，两种算法其实都可以使用，经典的题目如：动态第K大问题（zoj 2112），解法有树套树（在线）和整体二分/CDQ分治（离线），但是区别在于：</p>
-<p>在线算法的思路相对简单，而代码量大（如某些毒瘤题），容易爆栈，赛场上及其考验心态（<del>菜逼表示早就炸了</del>）</p>
-<p>离线算法的思路相对复杂，而代码量小，建议选手多采用（毕竟代码越多，debug越困难）</p>
-<p>在线算法（online algorithm）和离线算法（offline algorithm）</p>
-<p>维基百科举了这样一个例子，选择排序是离线算法，而插入排序是在线算法。那就从这两个算法来看看在线算法和离线算法的区别。</p>
-<p>选择排序是不断地从未排序的元素中找到最大（小）的元素放到排序序列的起始位置。</p>
-<p>插入排序是不断将未排序的序列插入到有序的序列中，有序序列中的元素相对位置会在一定程度上被改变。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/30/%E5%9C%A8%E7%BA%BF%E7%AE%97%E6%B3%95/" data-id="ckfjo925d0006ywel139o46gz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python虚拟环境" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="article-date">
-  <time datetime="2020-07-10T12:37:03.000Z" itemprop="datePublished">2020-07-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">python虚拟环境</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>创建 python -m venv file_name</p>
-<p>创建不同版本 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\aaa\AppData\Local\Programs\Python\Python35\python -m venv file_name</span><br></pre></td></tr></table></figure>
-
-<p>进入虚拟环境  file_name\scripts\activate </p>
-<p>退出虚拟环境 file_name\scripts\deactivate.bat</p>
-<p>cmd.exe对话框中如何返回上一级，如何返回根目录?</p>
-<p>返回上一级 输入 cd..   回车 </p>
-<p>返回根目录 输入  cd\  回车 </p>
-<p>使用 pip freeze 获取安装的 Python 包<br>有时，我们为了代码稳定、代码迁移等，需要获取当前 Python 工程依赖包的安装列表。这个列表要包括需要安装什么包、以及包的版本。这便是：requirements.txt。</p>
-<p>pip 使用 requirements.txt 安装<br>输入命令：</p>
-<p>pip install -r requirements.txt<br>1<br>即可安装 requirements.txt 中的所有包（指定版本）。</p>
-<p>pip freeze<br>使用 pip freeze 会输出所有在本地已安装的包（但不包括 pip、wheel、setuptools 等自带包），若需要输出内容与 pip list 一致，需使用 pip freeze -all。</p>
-<p>使用方法：</p>
-<p>pip freeze &gt; requirements.txt<br>1<br>适用场合<br>由于 pip freeze 与 pip list 内容区别不大，所以，若想要用其作为工程依赖包列表，一定要配合 Python 虚拟环境 virtualenv 使用。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/10/python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" data-id="ckcrh5pct00057sel70zo8l70" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-gcc和make" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/10/gcc%E5%92%8Cmake/" class="article-date">
-  <time datetime="2020-07-10T09:33:31.000Z" itemprop="datePublished">2020-07-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/10/gcc%E5%92%8Cmake/">gcc和make</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.gcc是GNU Compiler Collection（就是GNU编译器套件），也可以简单认为是编译器，它可以编译很多种编程语言（括C、C++、Objective-C、Fortran、Java等等）。</p>
-<p>2.当你的程序只有一个源文件时，直接就可以用gcc命令编译它。</p>
-<p>3.但是当你的程序包含很多个源文件时，用gcc命令逐个去编译时，你就很容易混乱而且工作量大</p>
-<p>4.所以出现了make工具<br>make工具可以看成是一个智能的批处理工具，它本身并没有编译和链接的功能，而是用类似于批处理的方式—通过调用makefile文件中用户指定的命令来进行编译和链接的。</p>
-<p>5.makefile是什么？简单的说就像一首歌的乐谱，make工具就像指挥家，指挥家根据乐谱指挥整个乐团怎么样演奏，make工具就根据makefile中的命令进行编译和链接的。</p>
-<p>6.makefile命令中就包含了调用gcc（也可以是别的编译器）去编译某个源文件的命令。</p>
-<p>7.makefile在一些简单的工程完全可以人工手下，但是当工程非常大的时候，手写makefile也是非常麻烦的，如果换了个平台makefile又要重新修改。</p>
-<p>8.这时候就出现了Cmake这个工具，cmake就可以更加简单的生成makefile文件给上面那个make用。当然cmake还有其他功能，就是可以跨平台生成对应平台能用的makefile，你不用再自己去修改了。</p>
-<p>9.可是cmake根据什么生成makefile呢？它又要根据一个叫CMakeLists.txt文件（学名：组态档）去生成makefile。</p>
-<p>10.到最后CMakeLists.txt文件谁写啊？亲，是你自己手写的。</p>
-<p>11.当然如果你用IDE，类似VS这些一般它都能帮你弄好了，你只需要按一下那个三角形</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/07/10/gcc%E5%92%8Cmake/" data-id="ckcrh5pcn00027selamcl8c52" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -859,7 +874,7 @@ for (i = 0; i &lt; s.length(); i++) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
     </div>
   </div>
 
@@ -872,23 +887,23 @@ for (i = 0; i &lt; s.length(); i++) {
       <ul>
         
           <li>
-            <a href="/2020/09/26/C-std/">C++ std</a>
+            <a href="/2021/03/17/Hill/">Hill</a>
           </li>
         
           <li>
-            <a href="/2020/08/19/ida-pro/">ida pro</a>
+            <a href="/2021/03/16/matrix/">matrix</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/ssti/">ssti</a>
+            <a href="/2020/11/22/tenserflow-python/">tenserflow+python</a>
           </li>
         
           <li>
-            <a href="/2020/08/07/google-hack/">google hack</a>
+            <a href="/2020/10/28/%E5%9B%BD%E7%8E%8B%E7%9A%84%E7%83%A6%E6%81%BC/">国王的烦恼</a>
           </li>
         
           <li>
-            <a href="/2020/08/06/cors/">cors</a>
+            <a href="/2020/10/25/%E5%9C%B0%E5%AE%AB/">地宫</a>
           </li>
         
       </ul>
@@ -903,7 +918,7 @@ for (i = 0; i &lt; s.length(); i++) {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
+      &copy; 2021 John Doe<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
